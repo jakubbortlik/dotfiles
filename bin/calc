@@ -1,0 +1,7 @@
+#!/bin/bash
+# open all files that match a parameter in localc:
+
+for var in "$@"
+do
+	localc "$var" &> /dev/null &
+done

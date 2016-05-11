@@ -1,0 +1,44 @@
+#!/bin/bash
+# change the IP address assignment for the netctl profile to static
+
+if [ $1 ]
+then
+	args=$#
+	if [ "$args" -gt "1" ]
+	then
+		echo "Pass just one argument: a number between 101-112"
+	else
+		str=`echo "$1" | grep -E "[^0-9]"`
+		if [ "$str" ]
+		then
+			echo "The argument has to be a number between 101-112, but is $str".
+		else
+			if [ "$1" -lt "101" ] || [ "$1" -gt "112" ]
+			then
+				echo "The argument has to be a number between 101-112, but is $1".
+			else
+				# delete excessive IP addresses assigned to an interface
+ 				sudo ip addr flush dev wlp12s0
+				sudo sed -ri '/Address/ s/...$/'"$1"'/' ~/comp/internet/netctl/netctl_hrad_static
+				sudo cp ~/comp/internet/netctl/netctl_hrad_static /etc/netctl/hrad
+				sudo systemctl reset-failed
+				sudo systemctl stop netctl-auto@wlp12s0.service
+				sudo netctl stop-all
+				sudo netctl start hrad
+				ping -c3 8.8.8.8
+				if [ "$?" -gt "0" ]
+				then
+					systemctl status netctl@hrad.service
+				fi
+			fi
+		fi
+	fi
+else
+	sudo systemctl reset-failed
+	sudo ip addr flush dev wlp12s0
+	sudo cp ~/comp/internet/netctl/netctl_hrad_static /etc/netctl/hrad
+	sudo systemctl stop netctl-auto@wlp12s0.service
+	sudo netctl restart hrad
+fi
+
+exit

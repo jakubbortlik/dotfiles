@@ -1,0 +1,50 @@
+" LaTeX specific settings
+
+" mapping for opening this file in a new window
+nnoremap <leader>tt :vne ~/.vim/ftplugin/tex.vim \| setlocal nowrap<CR>
+
+" mapping for sourcing this file
+nnoremap <leader>ts :source ~/.vim/ftplugin/tex.vim<CR>
+
+" map <leader>sh to show :Tshortcuts
+nnoremap <leader>sh :Tshortcuts<CR>
+
+" change the Tex_Leader from ` to + to enable writing single quotes within `'
+let g:Tex_Leader = "+"
+
+" Format lines to be up to 78 characters long
+setlocal tw=78
+
+" in visual mode put \url{} around the selected text
+vmap <leader>ur `>a}`<i\url{
+
+" map <leader>cip to paste \citep[<++>]{<++>}<++> and go inside the []
+call IMAP('CIP', '\citep[<++>]{<++>}<++>', 'tex')
+nmap <leader>cip aCIP
+
+" define expansion rule for citep
+let g:Tex_Com_citep = "\\citep[<++>]{<++>}<++>"
+
+"map <leader>cc to close the Errorwindow
+nnoremap <leader>cc :ccl<CR>
+
+" make using the Alt+Key macros possible
+set winaltkeys=no
+
+" ways to generate pdf files. there are soo many...
+" NOTE: pdflatex generates the same output as latex. therefore quickfix is
+"       possible.
+let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode -file-line-error-style $*'
+let g:Tex_DefaultTargetFormat = 'pdf'
+
+
+" This is because of vim-latex suite:
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+ 
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'

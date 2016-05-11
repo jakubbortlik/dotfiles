@@ -1,0 +1,24 @@
+"3.10.1 (created: 2015/08/25 00:41:59)
+
+source! /home/jakub/.vimperatorrc.local
+
+" vim: set ft=vimperator:
+set gui=nobookmarks,nomenu,nonavigation
+
+let mapleader = ","
+map <leader>a :set gui+=navigation<CR>
+map <leader>n :set gui+=nonavigation<CR>
+map <leader>t :tabduplicate<CR>
+map <leader>gr :ignorekeys remove mail.google.com<CR>
+map <leader>ga :ignorekeys add mail.google.com<CR>
+
+" vimperatorrc management
+map <leader>vv :!gvim ~/.vimperatorrc<CR>
+map <leader>vs :source ~/.vimperatorrc<CR>
+
+" stop loading pages
+map <leader>st :stop<CR>
+map <leader>sa :stopall<CR>
+
+" Remove search highlighting
+map <leader>h :noh<CR>

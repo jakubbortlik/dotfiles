@@ -1,0 +1,28 @@
+#/bin/bash
+# script for rotating all even pages of a document
+
+# enough arguments?
+if [ $# -ne 4 ]; then
+         echo
+         echo 1>&2 Usage: bash pdf-rotate-odd-even.sh input.pdf direction_odd direction_even output.pdf
+         echo
+         exit 127
+    fi
+
+# generate a temporary directory
+TEMPDIR=/tmp/pdf`date +%N`
+mkdir $TEMPDIR
+
+# rotate all even pages, keep the odd ones
+pdftk $1 cat 1-endodd$2 output $TEMPDIR/odd.pdf
+pdftk $1 cat 1-endeven$3 output $TEMPDIR/even.pdf
+
+# split the files...
+pdftk $TEMPDIR/odd.pdf burst output $TEMPDIR/pg%04d_A.pdf
+pdftk $TEMPDIR/even.pdf burst output $TEMPDIR/pg%04d_B.pdf
+
+# ... and recombine them, "_A" and "_B" suffixes leading to the correct order
+pdftk $TEMPDIR/pg*.pdf cat output $4
+
+# cleanup
+rm -r $TEMPDIR

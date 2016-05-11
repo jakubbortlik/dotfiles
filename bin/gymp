@@ -1,0 +1,7 @@
+#!/bin/bash
+# open all files that match a parameter in lowriter:
+
+for var in "$@"
+do
+	gimp "$var" &> /dev/null &
+done

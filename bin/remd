@@ -1,0 +1,38 @@
+#! /bin/bash
+#
+# remd = rem(ove) d(iacritics) by Kuba
+#
+# Distributed under terms of the GNU licence.
+#
+
+for file in "$@"
+do
+	a=$(file $file | cut -f2 -d' ')
+	b="directory"
+	if [ "$a" != "$b" ]
+	then
+		filename=${file%.*}
+		extension=${file##*.}
+		file_clean=`echo $filename | iconv -f utf8 -t ascii//TRANSLIT`
+		final="$file_clean.$extension"
+		if [ "$file" != "$final" ]
+		then
+			mv $file $final
+			echo "Renamed '$file' as '$final'"
+
+		else
+			echo "No diacritics to be removed from file name '$file'!"
+		fi
+	else
+		filename=${file}
+		final=`echo $filename | iconv -f utf8 -t ascii//TRANSLIT`
+		if [ "$file" != "$final" ]
+		then
+			mv $file $final
+		else
+			echo "No diacritics to be removed from file name '$file'!"
+		fi
+	fi
+done
+
+exit

@@ -1,0 +1,16 @@
+#!/bin/bash
+# remc - rem(ove) c(apital letters)
+
+for var in "$@"
+do
+	new=$(echo $var | tr '[:upper:]' '[:lower:]')
+	if [ $var != $new ]
+	then
+		mv -i "$var" "$new"
+		echo "Renamed '$var' as '$new'"
+	else
+		echo "No capital letters to replace in file name '$var'."
+	fi
+done
+
+exit
