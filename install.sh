@@ -1,7 +1,7 @@
 #!/bin/bash
 # 
 # the script cd's to the ~/dotfiles directory, finds all files with the
-# ".symlink" extension and creates links in $HOME
+# ".symlink" extension and creates links in ${HOME}
 #
 # Further, it makes a link for ~/dotfiles/bin if the folder exists
 
@@ -15,11 +15,11 @@ fi
 if [ "${PWD}" = "${HOME}/dotfiles" ]; then
 	echo "Installing symlinks"
 	link_file() {
-		source="${PWD}/$@"
+		source="${PWD}/${@}"
 
 		# get the relative path to the directory with the file to be linked
 		dn=$(dirname ${@})
-		if [ "$dn" = "." ]; then
+		if [ "${dn}" = "." ]; then
 			# if the file is in ~/dotfiles, do not use any subdirectories
 			dir=""
 		else
@@ -43,8 +43,13 @@ if [ "${PWD}" = "${HOME}/dotfiles" ]; then
 			mkdir -p ${targetdir}
 		fi
 
-		# create the symbolic link and create a backup with final "~" if necessary
-		ln -sfb "${source}" "${target}"
+		# Create the symbolic link if it does not exist yet. If there is a file
+		# with the same name, but does not link to the same target, back it up
+		# with final "~" (the -b option).
+		linktarget=$(readlink -f "${target}")
+		if [ ! -e "${target}" ] || [ "${linktarget}" != "${source}" ]; then
+			ln -sfb "${source}" "${target}"
+		fi
 	}
 	
 	# find recursively all readable regular files with the .symlink extension
@@ -52,13 +57,16 @@ if [ "${PWD}" = "${HOME}/dotfiles" ]; then
 	shopt -s globstar
 	for i in **/*.symlink; do
 		if [ -e "${PWD}/${i}" ] && [ -r "${PWD}/${i}" ] && [ ! -d "${PWD}/${i}" ]; then
-			link_file "$i"
+			link_file "${i}"
 		fi
 	done
 
 	# create the link to the ~/dotfiles/bin directory if it exists
+	linkbin=$(readlink -f "${HOME}/.bin")
 	if [ -d "${PWD}/bin" ]; then
-		ln -nsfb "${PWD}/bin" "${HOME}/.bin"
+		if [ ! -d "${HOME}/.bin" ] || [ "${linkbin}" != "${PWD}/bin" ]; then
+			ln -nsfb "${PWD}/bin" "${HOME}/.bin"
+		fi
 	fi
 else
 	echo "Cannot cd to ${HOME}/dotfiles"
