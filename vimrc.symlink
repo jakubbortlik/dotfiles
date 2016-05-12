@@ -28,7 +28,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 	Plugin 'VundleVim/Vundle.vim'		" let Vundle manage Vundle
-	Plugin 'dopefishh/vim-praat'		" syntax highlighting for praat
 	Plugin 'tommcdo/vim-exchange'		" easy exange of two portions of text
 	Plugin 'vim-airline/vim-airline'	" activate the vim-airline
 	Plugin 'vim-airline/vim-airline-themes'	" themse for the vim-airline
@@ -40,6 +39,8 @@ call vundle#begin()
 	Plugin 'tpope/vim-speeddating'		" let <C-A>, <C-X> work on dates properly
 	"Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
 	"Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
+	Plugin 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
+	Plugin 'jakubbortlik/vim-praat'		" syntax highlighting for praat
 
 	" Colors
 	Plugin 'nanotech/jellybeans.vim'
@@ -155,13 +156,15 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" edit and source vimrc
-nnoremap <Leader>vv :tabedit ~/.vimrc<CR>
+" edit vimrc in the ~/dotfiles/
+nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.symlink \| setlocal nowrap<CR>
+nnoremap <Leader>vt :tabedit ~/dotfiles/vimrc.symlink<CR>
+" source the linked .vimrc from ~/
 nnoremap <Leader>vs :source ~/.vimrc<CR>
 
 " edit and source the keymap file for Czech
-nnoremap <Leader>cc :tabedit ~/comp/vim/czech_utf-8.vim<CR>
-nnoremap <Leader>cs :source ~/comp/vim/czech_utf-8.vim<CR>
+nnoremap <Leader>cc :tabedit ~/code/vim-keymaps/keymap/czech_utf-8.vim<CR>
+nnoremap <Leader>cs :source ~/code/vim-keymaps/keymap/czech_utf-8.vim<CR>
 
 " language settings
 nnoremap <Leader>cz :setlocal keymap=czech<CR>
