@@ -77,9 +77,9 @@ runtime macros/matchit.vim	" matchit plugin finds matching if/endif, etc.
 
 " jump to the next <++> placeholder in Latex-Suite. Default <c-j> conflicts
 " with mapping to move between split windows
-imap <C-N> <Plug>IMAP_JumpForward
-nmap <C-N> <Plug>IMAP_JumpForward
-vmap <C-N> <Plug>IMAP_JumpForward
+imap <C-M> <Plug>IMAP_JumpForward
+nmap <C-M> <Plug>IMAP_JumpForward
+vmap <C-M> <Plug>IMAP_JumpForward
 
 "==========================================
 " Put your non-Plugin stuff after this line
