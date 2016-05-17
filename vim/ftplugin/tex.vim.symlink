@@ -15,15 +15,21 @@ let g:Tex_Leader = "+"
 " Format lines to be up to 78 characters long
 setlocal tw=78
 
+" Set shiftwidth to 2
+setlocal sw=2
+
+" Set the tabstop to 2
+setlocal ts=2
+
 " in visual mode put \url{} around the selected text
 vmap <leader>ur `>a}`<i\url{
 
-" map <leader>cip to paste \citep[<++>]{<++>}<++> and go inside the []
-call IMAP('CIP', '\citep[<++>]{<++>}<++>', 'tex')
-nmap <leader>cip aCIP
+" map <leader>cit to paste \autocite[<++>]{<++>}<++> and go inside the []
+call IMAP('CIT', '\autocite[<++>]{<++>}<++>', 'tex')
+nmap <leader>cit aCIT
 
-" define expansion rule for citep
-let g:Tex_Com_citep = "\\citep[<++>]{<++>}<++>"
+" define expansion rule for autocite
+let g:Tex_Com_autocite = "\\autocite[<++>]{<++>}<++>"
 
 "map <leader>cc to close the Errorwindow
 nnoremap <leader>cc :ccl<CR>
