@@ -39,6 +39,7 @@ call vundle#begin()
 	Plugin 'tpope/vim-speeddating'		" let <C-A>, <C-X> work on dates properly
 	"Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
 	"Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
+	Plugin 'vim-scripts/bash-support.vim' " selfexplanatory
 	Plugin 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
 	Plugin 'jakubbortlik/vim-praat'		" syntax highlighting for praat
 
@@ -69,17 +70,22 @@ set noshowmode " do not show mode I am currently in. HOWTO show language or inse
 "
 " see :h vundle for more details or wiki for FAQ
 
-"=================
-" builtin plugins:
-"=================
-
-runtime macros/matchit.vim	" matchit plugin finds matching if/endif, etc.
-
 " jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (<C-@>).
 " Default <c-j> conflicts with custom mapping to move between split windows.
 imap <C-@> <Plug>IMAP_JumpForward
 nmap <C-@> <Plug>IMAP_JumpForward
 vmap <C-@> <Plug>IMAP_JumpForward
+
+let g:tex_flavor='latex'            " start latex-suite for empty .tex files 
+
+" bashsupport mappings
+let g:BASH_MapLeader  = ','         " set the leader used by bash-vim plugin
+
+"=================
+" builtin plugins:
+"=================
+
+runtime macros/matchit.vim	" matchit plugin finds matching if/endif, etc.
 
 "==========================================
 " Put your non-Plugin stuff after this line
@@ -170,10 +176,9 @@ nnoremap <Leader>cs :source ~/code/vim-keymaps/keymap/czech_utf-8.vim<CR>
 nnoremap <Leader>cz :setlocal keymap=czech<CR>
 nnoremap <Leader>ip :setlocal keymap=ipa<CR>
 nnoremap <Leader>en :setlocal keymap=<CR>
-nnoremap <Leader>ss :setlocal spell!<CR>
-nnoremap <Leader>sc :setlocal spelllang=cs<CR>
-nnoremap <Leader>sp :setlocal spelllang=pl<CR>
-nnoremap <Leader>se :setlocal spelllang=en_us<CR>
+nnoremap <Leader>scs :setlocal spelllang=cs<CR>
+nnoremap <Leader>spl :setlocal spelllang=pl<CR>
+nnoremap <Leader>sen :setlocal spelllang=en_us<CR>
 nnoremap <Leader>sl :setlocal spelllang?<CR>
 
 " set keymap to Czech in insert mode by pressing CRTL-^
@@ -195,7 +200,7 @@ nnoremap <Leader>t4 :setlocal tabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>t8 :setlocal tabstop=8 shiftwidth=8<CR>
 
 " turn off highlighting for search resutls
-nnoremap <Leader>h :nohlsearch<CR>
+nnoremap <Leader>nh :nohlsearch<CR>
 nnoremap <Leader>w :set wrap!<CR>:echo "wrap ="&wrap<CR>
 nnoremap <Leader>cl :set cursorline!<CR>
 
@@ -250,4 +255,4 @@ cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 
 " abbreviations
-ab h tab h
+ab th tab h
