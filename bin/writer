@@ -1,12 +1,22 @@
 #!/bin/bash
-# open all files that match a parameter in lowriter:
+# Open all files that match a parameter in LibreOffice Writer.
+# If no file names are given, open a new file.
 
-for var in "$@"
-do
-	if [ $var ]
-	then
-		lowriter "$var" &> /dev/null &
-	else
-		echo "No filename."
-	fi
-done
+if [ "$@" ]
+then
+
+	for var in "$@"
+	do
+		if [ -e "$var" ]
+		then
+			lowriter "$var" &> /dev/null &
+		else
+			echo "File \"$var\" does not exist."
+		fi
+	done
+
+else
+	lowriter &> /dev/null &
+fi
+
+exit
