@@ -1,0 +1,53 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: rose
+# 
+#         USAGE: ./rose
+# 
+#   DESCRIPTION: start Rosegarden with timidity running in the background
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: Jakub Bortlík jakub.bortlik(a)gmail.com 
+#  ORGANIZATION: 
+#       CREATED: 05/16/2016 15:32
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+
+#-------------------------------------------------------------------------------
+# check whether timidity is installed on the system
+#-------------------------------------------------------------------------------
+COMMAND="timidity"
+command -v $COMMAND >/dev/null 2>&1 || {
+    echo >&2 "Error: this script requires '$COMMAND' to be available"
+    exit 1
+}
+
+timidity -iA &>/dev/null &                      # start timidity as a deamon
+
+
+#-------------------------------------------------------------------------------
+# check whether fiel names are given and open the first one
+#-------------------------------------------------------------------------------
+if [ "$#" -eq "0" ] ; then
+	rosegarden &>/dev/null &
+else
+	if [ -e "$1" ]
+	then
+		rosegarden "$1" &> /dev/null &
+	else
+		echo "File \"$1\" does not exist."
+	fi
+
+	if [ "$#" -gt "1" ]; then
+		echo "Only one file can be opened at the same time."
+	fi
+fi
+
+exit
