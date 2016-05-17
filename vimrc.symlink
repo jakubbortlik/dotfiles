@@ -129,7 +129,7 @@ set backspace=indent,eol,start	" what can you delete with backspace
 set completeopt=menuone,longest,preview " list of options for i_mode completion
 set hlsearch					" Use highlighting with search:
 set cursorline					" the line with the cursor is underlined
-set timeoutlen=2000				" time out for leader mappings
+set timeoutlen=1500				" time out for leader mappings
 set ttimeoutlen=50				" ttime out to avoid pause when leaving i_mode
 set splitbelow
 set splitright
@@ -216,11 +216,11 @@ nnoremap <C-S> :w<CR>
 inoremap <C-S> <Esc>:w<CR>
 
 " remap Enter to refresh underlining in split windows with aligned lines
-inoremap <Enter> <CR><C-O><C-W>p<C-O><C-W>p
+" inoremap <Enter> <CR><C-O><C-W>p<C-O><C-W>p
 
 " remap j and k to refresh underlining in split windows with aligned lines
-"nnoremap j j<C-W>p<C-W>p
-"nnoremap k k<C-W>p<C-W>p
+" nnoremap j j<C-W>p<C-W>p
+" nnoremap k k<C-W>p<C-W>p
 
 " For Emacs-style moving in Insert mode:
 " to beginning of line
