@@ -3,3 +3,4 @@ install.sh:
 - only remove .symlink as an extension, not in file names! change:
 		base="${fullbase/\.symlink/}"
 		to ${fullbase##.symlink} or something
+- add execution report and a maybe a logfile
