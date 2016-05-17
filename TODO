@@ -1,0 +1,11 @@
+install.sh:
+- change ".symlink" into a variable, e.g., ${ext}
+- only remove .symlink as an extension, not in file names! change:
+		base="${fullbase/\.symlink/}"
+		to ${fullbase##.symlink} or something
+
+vim:
+Mapping already in use: "<LocalLeader>sc", mode "n"
+Mapping already in use: "<LocalLeader>ss", mode "n"
+Mapping already in use: "<LocalLeader>se", mode "n"
+Mapping already in use: "<LocalLeader>sp", mode "n"
