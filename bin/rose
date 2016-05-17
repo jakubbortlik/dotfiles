@@ -3,7 +3,7 @@
 #
 #          FILE: rose
 # 
-#         USAGE: ./rose
+#         USAGE: ./rose [filename.rg]
 # 
 #   DESCRIPTION: start Rosegarden with timidity running in the background
 # 
