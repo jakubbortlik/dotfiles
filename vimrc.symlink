@@ -200,9 +200,7 @@ nnoremap <Leader>t4 :setlocal tabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>t8 :setlocal tabstop=8 shiftwidth=8<CR>
 
 " turn off highlighting for search resutls
-nnoremap <Leader>nh :nohlsearch<CR>
-nnoremap <Leader>w :set wrap!<CR>:echo "wrap ="&wrap<CR>
-nnoremap <Leader>cl :set cursorline!<CR>
+nnoremap coh :nohlsearch<CR>
 
 " remap Space to toggle folds
 nnoremap <Space> za
