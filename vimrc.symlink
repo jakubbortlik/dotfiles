@@ -169,8 +169,8 @@ nnoremap <Leader>vt :tabedit ~/dotfiles/vimrc.symlink<CR>
 nnoremap <Leader>vs :source ~/.vimrc<CR>
 
 " edit and source the keymap file for Czech
-nnoremap <Leader>cc :tabedit ~/code/vim-keymaps/keymap/czech_utf-8.vim<CR>
-nnoremap <Leader>cs :source ~/code/vim-keymaps/keymap/czech_utf-8.vim<CR>
+nnoremap <Leader>cc :tabedit ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
+nnoremap <Leader>cs :source ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
 
 " language settings
 nnoremap <Leader>cz :setlocal keymap=czech<CR>

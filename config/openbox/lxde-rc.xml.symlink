@@ -182,7 +182,7 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-h">
+    <keybind key="W-n">
       <action name="DesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
@@ -194,7 +194,7 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-l">
+    <keybind key="W-p">
       <action name="DesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
@@ -219,7 +219,7 @@
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-S-h">
+    <keybind key="W-S-n">
       <action name="SendToDesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
@@ -233,21 +233,21 @@
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-S-l">
+    <keybind key="W-S-p">
       <action name="SendToDesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-C-h">
+    <keybind key="W-C-n">
       <action name="SendToDesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>yes</follow>
       </action>
     </keybind>
-    <keybind key="W-C-l">
+    <keybind key="W-C-p">
       <action name="SendToDesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
@@ -288,12 +288,10 @@
         <desktop>4</desktop>
       </action>
     </keybind>
-    <keybind key="W-d">
-      <action name="ToggleShowDesktop"/>
-    </keybind>
     <keybind key="C-A-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
+
     <!-- Keybindings for windows -->
     <keybind key="A-F4">
       <action name="Close"/>
@@ -308,6 +306,7 @@
         <menu>client-menu</menu>
       </action>
     </keybind>
+
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -319,41 +318,122 @@
         <dialog>icons</dialog>
       </action>
     </keybind>
+
+    <!-- Keybindings for moving focus to windows without raising them -->
     <keybind key="C-A-Tab">
       <action name="NextWindow">
-        <panels>yes</panels>
-        <desktop>yes</desktop>
+        <dialog>icons</dialog>
+        <finalactions>
+            <action name="Focus"/>
+        </finalactions>
       </action>
     </keybind>
+    <keybind key="C-A-S-Tab">
+      <action name="PreviousWindow">
+        <dialog>icons</dialog>
+        <finalactions>
+            <action name="Focus"/>
+        </finalactions>
+      </action>
+    </keybind>
+
+    <!-- Focus and Raise a window -->
+    <keybind key="W-u">
+        <action name="Focus"/>
+        <action name="Raise"/>
+    </keybind>
+    <!-- Focus and Raise a window -->
+    <keybind key="W-d">
+        <action name="Unfocus"/>
+        <action name="Lower"/>
+    </keybind>
+
     <!-- Keybindings for window tiling -->
-    <keybind key="W-Left">        # HalfLeftScreen
-	    <action name="UnmaximizeFull"/>
-	    <action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action>
+    <keybind key="W-h">        # Maximize or move to left half
+    <action name="If">
+      <query target="default">
+        <maximizedhorizontal>yes</maximizedhorizontal>
+      </query>
+      <then>
+        <action name="Unmaximize"><direction>horizontal</direction></action>
+        <action name="MoveResizeTo"><x>0</x><width>50%</width></action>
+      </then>
+      <else>
+        <action name="Maximize"><direction>horizontal</direction></action>
+      </else>
+      </action>
     </keybind>
-    <keybind key="W-Right">        # HalfRightScreen
-	    <action name="UnmaximizeFull"/>
-	    <action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action>
+    <keybind key="W-S-h">        # HalfLeftScreen
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width></action>
+      <action name="Maximize"><direction>vertical</direction></action>
     </keybind>
-    <keybind key="W-Up">        # HalfUpperScreen
-	    <action name="UnmaximizeFull"/>
-	    <action name="MoveResizeTo"><x>0</x><y>0</y><width>100%</width><height>50%</height></action>
+
+    <keybind key="W-l">        # Maximize or move to right half
+    <action name="If">
+      <query target="default">
+        <maximizedhorizontal>yes</maximizedhorizontal>
+      </query>
+      <then>
+        <action name="Unmaximize"><direction>horizontal</direction></action>
+        <action name="MoveResizeTo"><x>-0</x><width>50%</width></action>
+      </then>
+      <else>
+        <action name="Maximize"><direction>horizontal</direction></action>
+      </else>
+      </action>
     </keybind>
-    <keybind key="W-k">        # HalfUpperScreen
-	    <action name="UnmaximizeFull"/>
-	    <action name="MoveResizeTo"><x>0</x><y>0</y><width>100%</width><height>50%</height></action>
+    <keybind key="W-S-l">        # HalfRightScreen
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>-0</x><y>0</y><width>50%</width></action>
+      <action name="Maximize"><direction>vertical</direction></action>
     </keybind>
-    <keybind key="W-Down">        # HalfLowerScreen
-	    <action name="UnmaximizeFull"/>
-	    <action name="MoveResizeTo"><x>0</x><y>-0</y><width>100%</width><height>50%</height></action>
+
+    <keybind key="W-j">        # Maximize or move to lower half
+    <action name="If">
+      <query target="default">
+        <maximizedvertical>yes</maximizedvertical>
+      </query>
+      <then>
+        <action name="Unmaximize"><direction>vertical</direction></action>
+        <action name="MoveResizeTo"><y>-0</y><height>50%</height></action>
+      </then>
+      <else>
+        <action name="Maximize"><direction>vertical</direction></action>
+      </else>
+      </action>
     </keybind>
-    <keybind key="W-j">        # HalfLowerScreen
-	    <action name="UnmaximizeFull"/>
-	    <action name="MoveResizeTo"><x>0</x><y>-0</y><width>100%</width><height>50%</height></action>
+    <keybind key="W-S-j">        # HalfLowerScreen
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height></action>
+      <action name="Maximize"><direction>horizontal</direction></action>
     </keybind>
+
+    <keybind key="W-k">        # Maximize or move to upper half
+    <action name="If">
+      <query target="default">
+        <maximizedvertical>yes</maximizedvertical>
+      </query>
+      <then>
+        <action name="Unmaximize"><direction>vertical</direction></action>
+        <action name="MoveResizeTo"><y>0</y><height>50%</height></action>
+      </then>
+      <else>
+        <action name="Maximize"><direction>vertical</direction></action>
+      </else>
+      </action>
+    </keybind>
+    <keybind key="W-S-k">        # HalfUpperScreen
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height></action>
+      <action name="Maximize"><direction>horizontal</direction></action>
+    </keybind>
+
     <!-- Keybindings for sending windows to monitors -->
-    <keybind key="W-n">        # move to next monitor
-	    <action name="MoveResizeTo"><monitor>next</monitor></action>
+    <keybind key="W-m">        # move to next monitor
+      <action name="MoveResizeTo"><monitor>next</monitor></action>
     </keybind>
+
     <!-- Keybindings for monitors -->
     <keybind key="W-1">
       <action name="Execute">
@@ -375,6 +455,7 @@
         <command>xrandr --output VGA-1 --mode 1360x1024 --pos 0x0 --rate 60.0 --output LVDS-1 --mode 1024x768 --pos 0x1024 --rate 50.0</command>
       </action>
     </keybind>
+
     <!-- Keybindings for the volume buttons -->
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
@@ -406,6 +487,7 @@
         <command>amixer sset Headphone toggle</command>
       </action>
     </keybind>
+
     <!-- Keybindings for running applications -->
     <keybind key="C-XF86AudioLowerVolume">
       <action name="Execute">
@@ -422,6 +504,17 @@
         <command>~/.bin/praat</command>
       </action>
     </keybind>
+    <keybind key="W-f">
+      <action name="Execute">
+        <command>firefox</command>
+      </action>
+    </keybind>
+    <keybind key="W-c">
+      <action name="Execute">
+        <command>galculator</command>
+      </action>
+    </keybind>
+    <!--
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
@@ -430,7 +523,7 @@
         </startupnotify>
         <command>pcmanfm</command>
       </action>
-    </keybind>
+    </keybind> -->
     <!--keybindings for LXPanel -->
     <keybind key="W-r">
       <action name="Execute">
@@ -455,24 +548,28 @@
     <keybind key="A-F11">
       <action name="ToggleFullscreen"/>
     </keybind>
+
     <!-- Launch Task Manager with Ctrl+Alt+Del -->
     <keybind key="A-C-Delete">
       <action name="Execute">
         <command>lxtask</command>
       </action>
     </keybind>
+
     <!-- Launch Terminator with Ctrl-Alt-T -->
     <keybind key="C-A-t">
       <action name="Execute">
         <command>terminator -m -x tmux -2</command>
       </action>
     </keybind>
+
     <!-- Launch slock with Ctrl-Alt-L -->
     <keybind key="C-A-l">
       <action name="Execute">
         <command>slock</command>
       </action>
     </keybind>
+
     <!-- Launch slock and systemctl suspend with Ctrl-Alt-S -->
     <keybind key="C-A-s">
       <action name="Execute">
@@ -482,12 +579,14 @@
         <command>systemctl suspend</command>
       </action>
     </keybind>
+
     <!-- Launch scrot to take a screenshot when PrintScreen is pressed -->
     <keybind key="Print">
       <action name="Execute">
         <command>scrot</command>
       </action>
     </keybind>
+
     <!-- Launch scrot to take a screenshot of the currently focused window
     when Alt + PrintScreen is pressed -->
     <keybind key="A-Print">
@@ -495,10 +594,36 @@
         <command>scrot -u</command>
       </action>
     </keybind>
+
     <!-- Launch LXRandR when Fn+Screen is pressed -->
     <keybind key="XF86Display">
       <action name="Execute">
         <command>lxrandr</command>
+      </action>
+    </keybind>
+
+    <!-- Reconfigure Openbox -->
+    <keybind key="W-F10">
+      <action name="Reconfigure"/>
+    </keybind>
+    <!-- exit Openbox -->
+    <keybind key="C-A-S-F12">
+      <action name="Exit">
+        <prompt>yes</prompt>
+      </action>
+    </keybind>
+
+    <!-- toggle decoration in the current window -->
+    <keybind key="W-0">
+      <action name="ToggleDecorations"/>
+    </keybind>
+
+    <!-- toggle decoration in all windows -->
+    <keybind key="W-S-0">
+      <action name="ForEach">
+        <then>
+          <action name="ToggleDecorations"/>
+        </then>
       </action>
     </keybind>
   </keyboard>
@@ -574,7 +699,7 @@
         <action name="Shade"/>
         <action name="FocusToBottom"/>
         <action name="Unfocus"/>
-        <!--		<action name="Lower"/>		-->
+        <!--        <action name="Lower"/>        -->
       </mousebind>
       <mousebind button="Down" action="Click">
         <action name="Unshade"/>
@@ -686,7 +811,7 @@
     <context name="Client">
       <mousebind button="Left" action="Press">
         <action name="Focus"/>
-        <!--        <action name="Raise"/>		-->
+        <!--        <action name="Raise"/>        -->
       </mousebind>
       <mousebind button="Middle" action="Press">
         <action name="Focus"/>
@@ -853,7 +978,13 @@
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
-    <application type="normal">
+    <application class="?*">
+      <position force="no">
+        <x>center</x>
+        <y>center</y>
+        <monitor>2</monitor>
+      </position>
+    </application> <application type="normal">
       <decor>no</decor>
     </application>
     <application name="lowriter">
