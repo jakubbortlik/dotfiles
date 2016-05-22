@@ -10,14 +10,14 @@
     <focusNew>yes</focusNew>
     <!-- always try to focus new windows when they appear. other rules do
        apply -->
-    <followMouse>no</followMouse>
+    <followMouse>yes</followMouse>
     <!-- move focus to a window when you move the mouse into it -->
     <focusLast>yes</focusLast>
     <!-- focus the last used window when changing desktops, instead of the one
        under the mouse pointer. when followMouse is enabled -->
     <underMouse>no</underMouse>
     <!-- move focus under the mouse, even when the mouse is not moving -->
-    <focusDelay>200</focusDelay>
+    <focusDelay>50</focusDelay>
     <!-- when followMouse is enabled, the mouse must be inside the window for
        this many milliseconds (1000 = 1 sec) before moving focus to it -->
     <raiseOnFocus>no</raiseOnFocus>
@@ -27,13 +27,19 @@
   <placement>
     <policy>Smart</policy>
     <!-- 'Smart' or 'UnderMouse' -->
-    <center>yes</center>
+    <center>no</center>
     <!-- whether to place windows in the center of the free area found or
        the top left corner -->
-    <monitor>Any</monitor>
+    <monitor>active</monitor>
     <!-- with Smart placement on a multi-monitor system, try to place new windows
        on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where
        the active window is -->
+    <primaryMonitor>2</primaryMonitor>
+    <!-- The monitor where Openbox should place popup dialogs such as the
+       focus cycling popup, or the desktop switch popup.  It can be an index
+       from 1, specifying a particular monitor.  Or it can be one of the
+       following: 'Mouse' - where the mouse is, or
+                  'Active' - where the active window is -->
   </placement>
   <theme>
     <name>Onyx</name>
@@ -175,152 +181,154 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
+
     <!-- Keybindings for desktop switching -->
-    <keybind key="C-A-Left">
+    <keybind key="C-A-Left">           # move to desktop left
       <action name="DesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-p">
+    <keybind key="W-p">                # move to desktop left (previous)
       <action name="DesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="C-A-Right">
+    <keybind key="C-A-Right">          # move to desktop right
       <action name="DesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-n">
+    <keybind key="W-n">                # move to desktop right (next)
       <action name="DesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="C-A-Up">
+    <keybind key="C-A-Up">             # move to desktop above
       <action name="DesktopUp">
         <dialog>no</dialog>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="C-A-Down">
+    <keybind key="C-A-Down">           # move to desktop below
       <action name="DesktopDown">
         <dialog>no</dialog>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-A-Left">
+    <keybind key="S-A-Left">           # send window to desktop left
       <action name="SendToDesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-S-p">
+    <keybind key="W-S-p">              # send window to desktop left
       <action name="SendToDesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="S-A-Right">
+    <keybind key="S-A-Right">          # send window to desktop right
       <action name="SendToDesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-S-n">
+    <keybind key="W-S-n">              # send window to desktop right
       <action name="SendToDesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-C-p">
+    <keybind key="W-C-p">              # send window to desktop left and move there
       <action name="SendToDesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>yes</follow>
       </action>
     </keybind>
-    <keybind key="W-C-n">
+    <keybind key="W-C-n">              # send window to desktop right and move there
       <action name="SendToDesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>yes</follow>
       </action>
     </keybind>
-    <keybind key="S-A-Up">
+    <keybind key="S-A-Up">             # send window to desktop up
       <action name="SendToDesktopUp">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="S-A-Down">
+    <keybind key="S-A-Down">           # send window to desktop down
       <action name="SendToDesktopDown">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-F1">
+
+    <keybind key="W-F1">               # move to desktop 1
       <action name="Desktop">
         <desktop>1</desktop>
       </action>
     </keybind>
-    <keybind key="W-F2">
+    <keybind key="W-F2">               # move to desktop 2
       <action name="Desktop">
         <desktop>2</desktop>
       </action>
     </keybind>
-    <keybind key="W-F3">
+    <keybind key="W-F3">               # move to desktop 3
       <action name="Desktop">
         <desktop>3</desktop>
       </action>
     </keybind>
-    <keybind key="W-F4">
+    <keybind key="W-F4">               # move to desktop 4
       <action name="Desktop">
         <desktop>4</desktop>
       </action>
     </keybind>
-    <keybind key="C-A-d">
+    <keybind key="C-A-d">              # show/hide desktop
       <action name="ToggleShowDesktop"/>
     </keybind>
 
     <!-- Keybindings for windows -->
-    <keybind key="A-F4">
+    <keybind key="A-F4">               # close active window
       <action name="Close"/>
     </keybind>
-    <keybind key="A-Escape">
+    <keybind key="A-Escape">           # lower current window and focus to bottom
       <action name="Lower"/>
       <action name="FocusToBottom"/>
       <action name="Unfocus"/>
     </keybind>
-    <keybind key="A-space">
+    <keybind key="A-space">            # show the window menu
       <action name="ShowMenu">
         <menu>client-menu</menu>
       </action>
     </keybind>
 
     <!-- Keybindings for window switching -->
-    <keybind key="A-Tab">
+    <keybind key="A-Tab">              # activate the next window
       <action name="NextWindow">
         <dialog>icons</dialog>
       </action>
     </keybind>
-    <keybind key="A-S-Tab">
+    <keybind key="A-S-Tab">            # activate the previous window
       <action name="PreviousWindow">
         <dialog>icons</dialog>
       </action>
     </keybind>
 
     <!-- Keybindings for moving focus to windows without raising them -->
-    <keybind key="C-A-Tab">
+    <keybind key="C-A-Tab">            # send focus to the next window
       <action name="NextWindow">
         <dialog>icons</dialog>
         <finalactions>
@@ -328,7 +336,7 @@
         </finalactions>
       </action>
     </keybind>
-    <keybind key="C-A-S-Tab">
+    <keybind key="C-A-S-Tab">          # send focus to the previous window
       <action name="PreviousWindow">
         <dialog>icons</dialog>
         <finalactions>
@@ -337,19 +345,25 @@
       </action>
     </keybind>
 
-    <!-- Focus and Raise a window -->
-    <keybind key="W-u">
-        <action name="Focus"/>
-        <action name="Raise"/>
-    </keybind>
-    <!-- Focus and Raise a window -->
-    <keybind key="W-d">
-        <action name="Unfocus"/>
+    <!-- Focusing and Raising windows -->
+    <keybind key="W-u">                # lower and unfocus current window
         <action name="Lower"/>
+        <action name="Unfocus"/>
+    </keybind>
+    <keybind key="W-S-u">              # lower current window without unfocusing
+        <action name="Lower"/>
+    </keybind>
+    <keybind key="W-C-u">              #  lower current window focus to bottom
+        <action name="Lower"/>
+        <action name="Unfocus"/>
+        <action name="FocusToBottom"/>
+    </keybind>
+    <keybind key="W-i">                # raise the focused window
+        <action name="Raise"/>
     </keybind>
 
     <!-- Keybindings for window tiling -->
-    <keybind key="W-h">        # Maximize or move to left half
+    <keybind key="W-h">                # Maximize horizontally or move to left half
     <action name="If">
       <query target="default">
         <maximizedhorizontal>yes</maximizedhorizontal>
@@ -363,13 +377,13 @@
       </else>
       </action>
     </keybind>
-    <keybind key="W-S-h">        # HalfLeftScreen
+    <keybind key="W-S-h">              # HalfLeftScreen
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width></action>
       <action name="Maximize"><direction>vertical</direction></action>
     </keybind>
 
-    <keybind key="W-l">        # Maximize or move to right half
+    <keybind key="W-l">                # Maximize horizontally or move to right half
     <action name="If">
       <query target="default">
         <maximizedhorizontal>yes</maximizedhorizontal>
@@ -383,13 +397,13 @@
       </else>
       </action>
     </keybind>
-    <keybind key="W-S-l">        # HalfRightScreen
+    <keybind key="W-S-l">              # HalfRightScreen
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo"><x>-0</x><y>0</y><width>50%</width></action>
       <action name="Maximize"><direction>vertical</direction></action>
     </keybind>
 
-    <keybind key="W-j">        # Maximize or move to lower half
+    <keybind key="W-j">                # Maximize vertically or move to lower half
     <action name="If">
       <query target="default">
         <maximizedvertical>yes</maximizedvertical>
@@ -403,13 +417,13 @@
       </else>
       </action>
     </keybind>
-    <keybind key="W-S-j">        # HalfLowerScreen
+    <keybind key="W-S-j">              # HalfLowerScreen
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height></action>
       <action name="Maximize"><direction>horizontal</direction></action>
     </keybind>
 
-    <keybind key="W-k">        # Maximize or move to upper half
+    <keybind key="W-k">                # Maximize vertically or move to upper half
     <action name="If">
       <query target="default">
         <maximizedvertical>yes</maximizedvertical>
@@ -423,155 +437,162 @@
       </else>
       </action>
     </keybind>
-    <keybind key="W-S-k">        # HalfUpperScreen
+    <keybind key="W-S-k">              # HalfUpperScreen
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height></action>
       <action name="Maximize"><direction>horizontal</direction></action>
     </keybind>
 
     <!-- Keybindings for sending windows to monitors -->
-    <keybind key="W-m">        # move to next monitor
+    <keybind key="W-m">                # move to next monitor
       <action name="MoveResizeTo"><monitor>next</monitor></action>
     </keybind>
 
     <!-- Keybindings for monitors -->
-    <keybind key="W-1">
+    <keybind key="W-1">                # turn off external monitor, keep the primary
       <action name="Execute">
         <command>xrandr --output VGA-1 --off --output LVDS-1 --mode 1280x800 --rate 60.05</command>
       </action>
     </keybind>
-    <keybind key="W-2">
+    <keybind key="W-2">                # turn on 1920x1080 monitor
       <action name="Execute">
         <command>xrandr --output VGA-1 --mode 1920x1080 --pos 0x0 --rate 60.0 --output LVDS-1 --mode 1280x800 --pos 0x1080 --rate 60.05</command>
       </action>
     </keybind>
-    <keybind key="W-3">
+    <keybind key="W-3">                # turn on 1280x960 monitor
       <action name="Execute">
         <command>xrandr --output VGA-1 --mode 1280x960 --pos 0x0 --rate 80.0 --output LVDS-1 --mode 1280x800 --pos 0x960 --rate 60.05</command>
       </action>
     </keybind>
-    <keybind key="W-4">
+    <keybind key="W-4">                # turn on 1360x1024 monitor
       <action name="Execute">
         <command>xrandr --output VGA-1 --mode 1360x1024 --pos 0x0 --rate 60.0 --output LVDS-1 --mode 1024x768 --pos 0x1024 --rate 50.0</command>
       </action>
     </keybind>
 
     <!-- Keybindings for the volume buttons -->
-    <keybind key="XF86AudioLowerVolume">
+    <keybind key="XF86AudioLowerVolume"> # lower volume
       <action name="Execute">
         <command>amixer sset Master 5000-</command>
       </action>
     </keybind>
-    <keybind key="XF86AudioLowerVolume">
+    <keybind key="XF86AudioLowerVolume"> # lower volume
       <action name="Execute">
         <command>amixer sset Headphone 5000-</command>
       </action>
     </keybind>
-    <keybind key="XF86AudioRaiseVolume">
+    <keybind key="XF86AudioRaiseVolume"> # raise volume
       <action name="Execute">
         <command>amixer sset Master 5000+</command>
       </action>
     </keybind>
-    <keybind key="XF86AudioRaiseVolume">
+    <keybind key="XF86AudioRaiseVolume"> # raise volume
       <action name="Execute">
         <command>amixer sset Headphone 5000+</command>
       </action>
     </keybind>
-    <keybind key="XF86AudioMute">
+    <keybind key="XF86AudioMute">      # toggle sound
       <action name="Execute">
         <command>amixer sset Master toggle</command>
       </action>
     </keybind>
-    <keybind key="XF86AudioMute">
+    <keybind key="XF86AudioMute">      # toggle sound
       <action name="Execute">
         <command>amixer sset Headphone toggle</command>
       </action>
     </keybind>
 
     <!-- Keybindings for running applications -->
-    <keybind key="C-XF86AudioLowerVolume">
-      <action name="Execute">
-        <command>audacious</command>
-      </action>
-    </keybind>
-    <keybind key="C-XF86AudioRaiseVolume">
-      <action name="Execute">
-        <command>firefox</command>
-      </action>
-    </keybind>
-    <keybind key="C-XF86AudioMute">
+    <!-- <keybind key="C-XF86AudioLowerVolume"> -->
+    <!--   <action name="Execute"> -->
+    <!--     <command>audacious</command> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="C-XF86AudioRaiseVolume"> -->
+    <!--   <action name="Execute"> -->
+    <!--     <command>firefox</command> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="C-XF86AudioMute"> -->
+    <!--   <action name="Execute"> -->
+    <!--     <command>~/.bin/praat</command> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    <keybind key="W-a">                # launch Praat
       <action name="Execute">
         <command>~/.bin/praat</command>
       </action>
     </keybind>
-    <keybind key="W-f">
+    <keybind key="W-f">                # launch Firefox
       <action name="Execute">
         <command>firefox</command>
       </action>
     </keybind>
-    <keybind key="W-c">
+    <keybind key="W-c">                # launch galculator
       <action name="Execute">
         <command>galculator</command>
       </action>
     </keybind>
-    <!--
-    <keybind key="W-e">
+    <keybind key="W-t">                # Launch Terminator with tmux
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>PCManFM</name>
-        </startupnotify>
-        <command>pcmanfm</command>
-      </action>
-    </keybind> -->
-    <!--keybindings for LXPanel -->
-    <keybind key="W-r">
-      <action name="Execute">
-        <command>gmrun</command>
+        <command>terminator -m -x tmux -2</command>
       </action>
     </keybind>
-    <keybind key="A-F2">
+    <keybind key="W-s">                # Launch Skype
       <action name="Execute">
-        <command>gmrun</command>
+        <command>skype</command>
       </action>
-    </keybind>
-    <keybind key="C-Escape">
-      <action name="Execute">
-        <command>lxpanelctl menu</command>
-      </action>
-    </keybind>
-    <keybind key="A-F1">
-      <action name="Execute">
-        <command>lxpanelctl menu</command>
-      </action>
-    </keybind>
-    <keybind key="A-F11">
-      <action name="ToggleFullscreen"/>
     </keybind>
 
-    <!-- Launch Task Manager with Ctrl+Alt+Del -->
-    <keybind key="A-C-Delete">
+	<!-- undefined -->
+    <keybind key="W-b">                # launch
+      <action name="Execute">
+        <command></command>
+      </action>
+    </keybind>
+    <keybind key="W-b">                # launch
+      <action name="Execute">
+        <command></command>
+      </action>
+    </keybind>
+
+    <!--keybindings for LXPanel -->
+    <keybind key="W-r">                # launch the application launcher
+      <action name="Execute">
+        <command>gmrun</command>
+      </action>
+    </keybind>
+    <keybind key="A-F2">               # launch the application launcher
+      <action name="Execute">
+        <command>gmrun</command>
+      </action>
+    </keybind>
+    <keybind key="C-Escape">           # launch the lxpanel menu
+      <action name="Execute">
+        <command>lxpanelctl menu</command>
+      </action>
+    </keybind>
+    <keybind key="A-F1">               # launch the lxpanel menu
+      <action name="Execute">
+        <command>lxpanelctl menu</command>
+      </action>
+    </keybind>
+    <keybind key="A-F11">              # toggle active window fullscreen
+      <action name="ToggleFullscreen"/>
+    </keybind>
+    <keybind key="A-C-Delete">         # Launch Task Manager with Ctrl+Alt+Del
       <action name="Execute">
         <command>lxtask</command>
       </action>
     </keybind>
 
-    <!-- Launch Terminator with Ctrl-Alt-T -->
-    <keybind key="C-A-t">
-      <action name="Execute">
-        <command>terminator -m -x tmux -2</command>
-      </action>
-    </keybind>
-
-    <!-- Launch slock with Ctrl-Alt-L -->
-    <keybind key="C-A-l">
+    <keybind key="C-A-l">              # Launch slock with Ctrl-Alt-L
       <action name="Execute">
         <command>slock</command>
       </action>
     </keybind>
 
-    <!-- Launch slock and systemctl suspend with Ctrl-Alt-S -->
-    <keybind key="C-A-s">
+    <keybind key="C-A-s">              # (s)lock the screen and systemctl suspend
       <action name="Execute">
         <command>slock</command>
       </action>
@@ -580,46 +601,45 @@
       </action>
     </keybind>
 
-    <!-- Launch scrot to take a screenshot when PrintScreen is pressed -->
-    <keybind key="Print">
+    <keybind key="Print">              # take a screenshot with PrintScreen
       <action name="Execute">
         <command>scrot</command>
       </action>
     </keybind>
 
-    <!-- Launch scrot to take a screenshot of the currently focused window
-    when Alt + PrintScreen is pressed -->
-    <keybind key="A-Print">
+    <keybind key="A-Print">            # take a screenshot of the focused window
       <action name="Execute">
         <command>scrot -u</command>
       </action>
     </keybind>
 
-    <!-- Launch LXRandR when Fn+Screen is pressed -->
-    <keybind key="XF86Display">
+    <keybind key="XF86Display">        # Launch LXRandR with Fn+Screen
       <action name="Execute">
         <command>lxrandr</command>
       </action>
     </keybind>
 
-    <!-- Reconfigure Openbox -->
-    <keybind key="W-F10">
+    <keybind key="W-o">                # edit Openbox config file in vim
+      <action name="Execute">
+        <command>terminator -m -x tmux -2 -c 'vim ~/dotfiles/config/openbox/lxde-rc.xml.symlink'</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-S-o">                # Reconfigure Openbox
       <action name="Reconfigure"/>
     </keybind>
-    <!-- exit Openbox -->
-    <keybind key="C-A-S-F12">
+
+    <keybind key="A-S-F4">             # exit Openbox
       <action name="Exit">
         <prompt>yes</prompt>
       </action>
     </keybind>
 
-    <!-- toggle decoration in the current window -->
-    <keybind key="W-0">
+    <keybind key="W-d">                # toggle decoration in the current window
       <action name="ToggleDecorations"/>
     </keybind>
 
-    <!-- toggle decoration in all windows -->
-    <keybind key="W-S-0">
+    <keybind key="W-S-d">              # toggle decoration in all windows
       <action name="ForEach">
         <then>
           <action name="ToggleDecorations"/>
@@ -978,13 +998,7 @@
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
-    <application class="?*">
-      <position force="no">
-        <x>center</x>
-        <y>center</y>
-        <monitor>2</monitor>
-      </position>
-    </application> <application type="normal">
+    <application type="normal">
       <decor>no</decor>
     </application>
     <application name="lowriter">
