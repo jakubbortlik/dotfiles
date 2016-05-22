@@ -182,7 +182,7 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-n">
+    <keybind key="W-p">
       <action name="DesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
@@ -194,7 +194,7 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-p">
+    <keybind key="W-n">
       <action name="DesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
@@ -219,7 +219,7 @@
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-S-n">
+    <keybind key="W-S-p">
       <action name="SendToDesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
@@ -233,21 +233,21 @@
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-S-p">
+    <keybind key="W-S-n">
       <action name="SendToDesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-C-n">
+    <keybind key="W-C-p">
       <action name="SendToDesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
         <follow>yes</follow>
       </action>
     </keybind>
-    <keybind key="W-C-p">
+    <keybind key="W-C-n">
       <action name="SendToDesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
