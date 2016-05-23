@@ -40,6 +40,7 @@ call vundle#begin()
 	"Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
 	"Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 	Plugin 'vim-scripts/bash-support.vim' " selfexplanatory
+	Plugin 'vim-scripts/VisIncr'		" in/decreasing columns of Ns and dates
 	Plugin 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
 	Plugin 'jakubbortlik/vim-praat'		" syntax highlighting for praat
 
