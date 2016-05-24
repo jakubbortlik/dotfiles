@@ -523,19 +523,37 @@
         <command>~/.bin/praat</command>
       </action>
     </keybind>
+    <keybind key="W-b">                # launch Bibletime
+      <action name="Execute">
+        <command>bibletime</command>
+      </action>
+    </keybind>
+    <keybind key="W-c">                # launch the Character map
+      <action name="Execute">
+        <command>charmap</command>
+      </action>
+    </keybind>
+    <keybind key="W-e">                # launch Rosegarden with timidity
+      <action name="Execute">
+        <command>timidity -iA</command>
+      </action>
+      <action name="Execute">
+        <command>rosegarden</command>
+      </action>
+    </keybind>
     <keybind key="W-f">                # launch Firefox
       <action name="Execute">
         <command>firefox</command>
       </action>
     </keybind>
-    <keybind key="W-c">                # launch galculator
+    <keybind key="W-g">                # launch galculator
       <action name="Execute">
         <command>galculator</command>
       </action>
     </keybind>
-    <keybind key="W-t">                # Launch Terminator with tmux
+    <keybind key="W-r">                # launch the application launcher
       <action name="Execute">
-        <command>terminator -m -x tmux -2</command>
+        <command>gmrun</command>
       </action>
     </keybind>
     <keybind key="W-s">                # Launch Skype
@@ -543,25 +561,30 @@
         <command>skype</command>
       </action>
     </keybind>
-
-	<!-- undefined -->
-    <keybind key="W-b">                # launch
+    <keybind key="W-t">                # Launch Terminator with tmux
       <action name="Execute">
-        <command></command>
+        <command>terminator -m -x tmux -2</command>
       </action>
     </keybind>
-    <keybind key="W-b">                # launch
+    <keybind key="W-z">                # launch zathura
+      <action name="Execute">
+        <command>zathura</command>
+      </action>
+    </keybind>
+    <keybind key="W-w">                # launch LibreOffice Writer
+      <action name="Execute">
+        <command>lowriter</command>
+      </action>
+    </keybind>
+
+    <!-- undefined W-[qvxy] -->
+    <keybind key="W-q">                # launch
       <action name="Execute">
         <command></command>
       </action>
     </keybind>
 
     <!--keybindings for LXPanel -->
-    <keybind key="W-r">                # launch the application launcher
-      <action name="Execute">
-        <command>gmrun</command>
-      </action>
-    </keybind>
     <keybind key="A-F2">               # launch the application launcher
       <action name="Execute">
         <command>gmrun</command>
@@ -621,7 +644,7 @@
 
     <keybind key="W-o">                # edit Openbox config file in vim
       <action name="Execute">
-        <command>terminator -m -x tmux -2 -c 'vim ~/dotfiles/config/openbox/lxde-rc.xml.symlink'</command>
+        <command>terminator -m -x vim ~/dotfiles/config/openbox/lxde-rc.xml.symlink</command>
       </action>
     </keybind>
 
@@ -665,6 +688,14 @@
         <action name="Unshade"/>
       </mousebind>
       <mousebind button="A-Left" action="Drag">
+        <action name="If">
+          <query target="default">
+            <maximized>yes</maximized>
+          </query>
+          <then>
+            <action name="Unmaximize"/>
+          </then>
+        </action>
         <action name="Move"/>
       </mousebind>
       <mousebind button="A-Right" action="Press">
@@ -705,6 +736,14 @@
         <action name="Raise"/>
       </mousebind>
       <mousebind button="Left" action="Drag">
+        <action name="If">
+          <query target="default">
+            <maximized>yes</maximized>
+          </query>
+          <then>
+            <action name="Unmaximize"/>
+          </then>
+        </action>
         <action name="Move"/>
       </mousebind>
       <mousebind button="Left" action="DoubleClick">
