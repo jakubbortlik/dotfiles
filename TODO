@@ -4,3 +4,22 @@ install.sh:
 		base="${fullbase/\.symlink/}"
 		to ${fullbase##.symlink} or something
 - add execution report and a maybe a logfile
+
+vimrc
+:set expandtab
+
+• ftplugins:
+- let b:did_ftplugin = 1
+
+- ftplugin - xml.vim: :set tabstop=2 shiftwidth=2
+
+- adjust "define" in praat.vim
+
+airline
+- show the keymap on the statusline
+
+ipa_utf-8.vim:
+v > ʑ!
+
+GTK3
+- firefox scroll bar, radio buttons, fields, etc.
