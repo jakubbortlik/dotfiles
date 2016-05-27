@@ -281,38 +281,142 @@
     <keybind key="W-i">               # raise the focused window
         <action name="Raise"/>
     </keybind>
+
     <!-- Keybindings for window tiling -->
     <keybind key="W-h">               # Maximize horizontally or move to left half
-    <action name="If"><query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query><then><action name="Unmaximize"><direction>horizontal</direction></action><action name="MoveResizeTo"><x>0</x><width>50%</width></action></then><else><action name="Maximize"><direction>horizontal</direction></action></else></action>
+      <action name="If">
+        <query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query>
+        <then>
+          <action name="Unmaximize"><direction>horizontal</direction></action>
+          <action name="MoveResizeTo"><x>0</x><width>50%</width></action>
+        </then>
+        <else>
+          <action name="Maximize"><direction>horizontal</direction></action>
+        </else>
+      </action>
+
     </keybind>
     <keybind key="W-S-h">             # HalfLeftScreen
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width></action>
+      <action name="If">
+        <query><monitor>1</monitor></query>
+        <then>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>1</monitor></action>
+        </then>
+        <else>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>2</monitor></action>
+        </else>
+      </action>
       <action name="Maximize"><direction>vertical</direction></action>
     </keybind>
+
     <keybind key="W-l">               # Maximize horizontally or move to right half
-    <action name="If"><query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query><then><action name="Unmaximize"><direction>horizontal</direction></action><action name="MoveResizeTo"><x>-0</x><width>50%</width></action></then><else><action name="Maximize"><direction>horizontal</direction></action></else></action>
+      <action name="If">
+        <query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query>
+        <then>
+          <action name="Unmaximize"><direction>horizontal</direction></action>
+          <action name="MoveResizeTo"><x>-0</x><width>50%</width></action>
+        </then>
+        <else>
+          <action name="Maximize"><direction>horizontal</direction></action>
+        </else>
+      </action>
     </keybind>
     <keybind key="W-S-l">             # HalfRightScreen
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>-0</x><y>0</y><width>50%</width></action>
+      <action name="If">
+        <query><monitor>1</monitor></query>
+        <then>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><x>-0</x><y>0</y><width>50%</width><monitor>1</monitor></action>
+        </then>
+        <else>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><x>-0</x><y>0</y><width>50%</width><monitor>2</monitor></action>
+        </else>
+      </action>
       <action name="Maximize"><direction>vertical</direction></action>
     </keybind>
+
     <keybind key="W-j">               # Maximize vertically or move to lower half
-    <action name="If"><query target="default"><maximizedvertical>yes</maximizedvertical></query><then><action name="Unmaximize"><direction>vertical</direction></action><action name="MoveResizeTo"><y>-0</y><height>50%</height></action></then><else><action name="Maximize"><direction>vertical</direction></action></else></action>
+      <action name="If">
+        <query target="default"><maximizedvertical>yes</maximizedvertical></query>
+        <then>
+          <action name="If">
+            <query><monitor>1</monitor></query>
+            <then>
+              <action name="Unmaximize"><direction>vertical</direction></action>
+              <action name="MoveResizeTo"><y>-0</y><height>50%</height><monitor>1</monitor></action>
+            </then>
+            <else>
+              <action name="Unmaximize"><direction>vertical</direction></action>
+              <action name="MoveResizeTo"><y>-0</y><height>50%</height><monitor>2</monitor></action>
+            </else>
+          </action>
+        </then>
+        <else>
+          <action name="Maximize"><direction>vertical</direction></action>
+        </else>
+      </action>
     </keybind>
     <keybind key="W-S-j">             # HalfLowerScreen
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height></action>
+      <action name="If">
+        <query><monitor>1</monitor></query>
+        <then>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><x>0</x><y>-0</y><width>50%</width><monitor>1</monitor></action>
+        </then>
+        <else>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><x>0</x><y>-0</y><width>50%</width><monitor>2</monitor></action>
+        </else>
+      </action>
       <action name="Maximize"><direction>horizontal</direction></action>
     </keybind>
+
     <keybind key="W-k">               # Maximize vertically or move to upper half
-    <action name="If"><query target="default"><maximizedvertical>yes</maximizedvertical></query><then><action name="Unmaximize"><direction>vertical</direction></action><action name="MoveResizeTo"><y>0</y><height>50%</height></action></then><else><action name="Maximize"><direction>vertical</direction></action></else></action>
+      <action name="If">
+        <query target="default"><maximizedvertical>yes</maximizedvertical></query>
+        <then>
+          <action name="If">
+            <query><monitor>1</monitor></query>
+            <then>
+              <action name="Unmaximize"><direction>vertical</direction></action>
+              <action name="MoveResizeTo"><y>0</y><height>50%</height><monitor>1</monitor></action>
+            </then>
+            <else>
+              <action name="Unmaximize"><direction>vertical</direction></action>
+              <action name="MoveResizeTo"><y>0</y><height>50%</height><monitor>2</monitor></action>
+            </else>
+          </action>
+        </then>
+        <else>
+          <action name="Maximize"><direction>vertical</direction></action>
+        </else>
+      </action>
     </keybind>
+
     <keybind key="W-S-k">             # HalfUpperScreen
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height></action>
+      <action name="If">
+        <query><monitor>1</monitor></query>
+        <then>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>1</monitor></action>
+        </then>
+        <else>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>2</monitor></action>
+        </else>
+      </action>
       <action name="Maximize"><direction>horizontal</direction></action>
+    </keybind>
+
+    <keybind key="W-S-m">             # UnmaximizeFull
+      <action name="If">
+        <query><monitor>1</monitor></query>
+        <then><action name="Unmaximize"/><action name="MoveResizeTo"><monitor>1</monitor></action></then>
+        <else><action name="Unmaximize"/><action name="MoveResizeTo"><monitor>2</monitor></action></else>
+      </action>
     </keybind>
 
     <!-- Keybindings for sending windows to monitors -->
