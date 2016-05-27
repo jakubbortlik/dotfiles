@@ -12,14 +12,14 @@ nnoremap <leader>sh :Tshortcuts<CR>
 " change the Tex_Leader from ` to + to enable writing single quotes within `'
 let g:Tex_Leader = "+"
 
-" Format lines to be up to 78 characters long
-setlocal tw=78
+" Format lines to be up to 80 characters long
+setlocal textwidth=80
 
 " Set shiftwidth to 2
-setlocal sw=2
+setlocal shiftwidth=2
 
 " Set the tabstop to 2
-setlocal ts=2
+setlocal tabstop=2
 
 " in visual mode put \url{} around the selected text
 vmap <leader>ur `>a}`<i\url{
