@@ -22,3 +22,12 @@ map <leader>sa :stopall<CR>
 
 " Remove search highlighting
 map <leader>h :noh<CR>
+
+" Map Ctrl-ú to Esc to use on the Czech keyboard
+map <C-ú> <C-[>
+imap <C-ú> <C-[>
+cmap <C-ú> <C-[>
+
+" Map Ctrl-M to Enter
+imap <C-m> <Enter>
+cmap <C-m> <Enter>
