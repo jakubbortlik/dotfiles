@@ -116,7 +116,7 @@ colorscheme jellybeans
 "colorscheme default
 
 set linebreak		" define where the lines break on the screen if wrap is set
-"set textwidth=80				" Set the textwidth
+set textwidth=80				" Set the textwidth
 "set nowrap						" turn off wrapping of displayed text
 set colorcolumn=81				" Display a line at the N column:
 highlight ColorColumn ctermbg=52	" Set the color of the ColorColumn to "brown"
@@ -195,8 +195,8 @@ endfunction
 inoremap <C-^> <Esc>:call KeymapWithCtrl6()<CR>a
 
 " appearance settings
-nnoremap <Leader>tw :setlocal tw=79<CR>
-nnoremap <Leader>t0 :setlocal tw=0<CR>
+nnoremap <Leader>tw :setlocal textwidth=80<CR>
+nnoremap <Leader>t0 :setlocal textwidth=0<CR>
 nnoremap <Leader>t4 :setlocal tabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>t8 :setlocal tabstop=8 shiftwidth=8<CR>
 
