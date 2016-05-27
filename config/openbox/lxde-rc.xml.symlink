@@ -181,6 +181,7 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
+
     <!-- Keybindings for desktop switching -->
     <keybind key="C-A-Left">          # move to desktop left
       <action name="DesktopLeft"><dialog>no</dialog><wrap>no</wrap></action>
@@ -239,6 +240,7 @@
     <keybind key="C-A-d">             # show/hide desktop
       <action name="ToggleShowDesktop"/>
     </keybind>
+
     <!-- Keybindings for windows -->
     <keybind key="A-F4">              # close active window
       <action name="Close"/>
@@ -251,6 +253,7 @@
     <keybind key="A-space">           # show the window menu
       <action name="ShowMenu"><menu>client-menu</menu></action>
     </keybind>
+
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">             # activate the next window
       <action name="NextWindow"><dialog>icons</dialog></action>
@@ -294,7 +297,6 @@
           <action name="Maximize"><direction>horizontal</direction></action>
         </else>
       </action>
-
     </keybind>
     <keybind key="W-S-h">             # HalfLeftScreen
       <action name="If">
@@ -411,12 +413,44 @@
       <action name="Maximize"><direction>horizontal</direction></action>
     </keybind>
 
-    <keybind key="W-S-m">             # UnmaximizeFull
+    <!-- Keybindings for resizing windows -->
+    <keybind key="W-w">
+      <keybind key="h">               # Grow to edge west W-w-h
+        <action name="If">
+          <query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query>
+          <then>
+            <action name="Unmaximize"><direction>horizontal</direction></action>
+            <action name="MoveResizeTo"><width>100%</width></action>
+          </then>
+        </action>
+        <action name="GrowToEdge"><direction>west</direction></action>
+      </keybind>
+      <keybind key="l">               # Grow to edge east W-w-l
+        <action name="If">
+          <query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query>
+          <then>
+            <action name="Unmaximize"><direction>horizontal</direction></action>
+            <action name="MoveResizeTo"><width>100%</width></action>
+          </then>
+        </action>
+        <action name="GrowToEdge"><direction>east</direction>
+        </action>
+      </keybind>
+    </keybind>
+
+    <keybind key="W-e">             # UnmaximizeFull in the same Monitor
       <action name="If">
         <query><monitor>1</monitor></query>
-        <then><action name="Unmaximize"/><action name="MoveResizeTo"><monitor>1</monitor></action></then>
-        <else><action name="Unmaximize"/><action name="MoveResizeTo"><monitor>2</monitor></action></else>
+        <then>
+          <action name="Unmaximize"/><action name="MoveResizeTo"><monitor>1</monitor></action>
+        </then>
+        <else>
+          <action name="Unmaximize"/><action name="MoveResizeTo"><monitor>2</monitor></action>
+        </else>
       </action>
+    </keybind>
+    <keybind key="W-space">             # MaximizeFull
+          <action name="Maximize"/>
     </keybind>
 
     <!-- Keybindings for sending windows to monitors -->
@@ -444,50 +478,23 @@
     <!-- Keybindings for the volume buttons -->
     <keybind key="XF86AudioLowerVolume"> # lower volume
       <action name="Execute"><command>amixer sset Master 5000-</command></action>
-    </keybind>
-    <keybind key="XF86AudioLowerVolume"> # lower volume
       <action name="Execute"><command>amixer sset Headphone 5000-</command></action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume"> # raise volume
       <action name="Execute"><command>amixer sset Master 5000+</command></action>
-    </keybind>
-    <keybind key="XF86AudioRaiseVolume"> # raise volume
       <action name="Execute"><command>amixer sset Headphone 5000+</command></action>
     </keybind>
     <keybind key="XF86AudioMute">     # toggle sound
       <action name="Execute"><command>amixer sset Master toggle</command></action>
-    </keybind>
-    <keybind key="XF86AudioMute">     # toggle sound
       <action name="Execute"><command>amixer sset Headphone toggle</command></action>
     </keybind>
+
     <!-- Keybindings for running applications -->
-    <!-- <keybind key="C-XF86AudioLowerVolume"> -->
-    <!--   <action name="Execute"> -->
-    <!--     <command>audacious</command> -->
-    <!--   </action> -->
-    <!-- </keybind> -->
-    <!-- <keybind key="C-XF86AudioRaiseVolume"> -->
-    <!--   <action name="Execute"> -->
-    <!--     <command>firefox</command> -->
-    <!--   </action> -->
-    <!-- </keybind> -->
-    <!-- <keybind key="C-XF86AudioMute"> -->
-    <!--   <action name="Execute"> -->
-    <!--     <command>~/.bin/praat</command> -->
-    <!--   </action> -->
-    <!-- </keybind> -->
-    <keybind key="W-a">               # launch Praat
-      <action name="Execute"><command>~/.bin/praat</command></action>
-    </keybind>
     <keybind key="W-b">               # launch Bibletime
       <action name="Execute"><command>bibletime</command></action>
     </keybind>
     <keybind key="W-c">               # launch the Character map
       <action name="Execute"><command>charmap</command></action>
-    </keybind>
-    <keybind key="W-e">               # launch Rosegarden with timidity
-      <action name="Execute"><command>timidity -iA</command></action>
-      <action name="Execute"><command>rosegarden</command></action>
     </keybind>
     <keybind key="W-f">               # launch Firefox
       <action name="Execute"><command>firefox</command></action>
@@ -509,19 +516,36 @@
     <keybind key="W-t">               # Launch Terminator with tmux
       <action name="Execute"><command>terminator -m -x tmux -2</command></action>
     </keybind>
-    <keybind key="W-v">               # launch
+    <keybind key="W-v">               # launch VLC
       <action name="Execute"><command>vlc</command></action>
     </keybind>
-    <keybind key="W-w">               # launch LibreOffice Writer
-      <action name="Execute"><command>lowriter</command></action>
+    <keybind key="W-x">
+      <keybind key="a">               # launch Audacity W-x-a
+        <action name="Execute"><command>audacity</command></action>
+      </keybind>
+      <keybind key="p">               # launch Praat W-x-p
+        <action name="Execute"><command>praat</command></action>
+      </keybind>
+      <keybind key="r">               # launch Rosegarden with timidity W-x-r
+        <action name="Execute"><command>timidity -iA</command></action>
+        <action name="Execute"><command>rosegarden</command></action>
+      </keybind>
+      <keybind key="w">               # launch LibreOffice Writer W-x-w
+        <action name="Execute"><command>lowriter</command></action>
+      </keybind>
+      <keybind key="c">               # launch LibreOffice Calc W-x-c
+        <action name="Execute"><command>localc</command></action>
+      </keybind>
     </keybind>
     <keybind key="W-z">               # launch zathura
       <action name="Execute"><command>zathura</command></action>
     </keybind>
-    <!-- undefined W-[qvxy] -->
+
+    <!-- undefined W-[qy] -->
     <keybind key="W-q">               # launch
       <action name="Execute"><command></command></action>
     </keybind>
+
     <!--keybindings for LXPanel -->
     <keybind key="A-F2">              # launch the application launcher
       <action name="Execute"><command>gmrun</command></action>
