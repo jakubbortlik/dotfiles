@@ -25,8 +25,8 @@ setlocal ts=2
 vmap <leader>ur `>a}`<i\url{
 
 " map <leader>cit to paste \autocite[<++>]{<++>}<++> and go inside the []
-call IMAP('CIT', '\autocite[<++>]{<++>}<++>', 'tex')
-nmap <leader>cit aCIT
+call IMAP('CIP', '\autocite[<++>]{<++>}<++>', 'tex')
+nmap <leader>cip aCIP
 
 " define expansion rule for autocite
 let g:Tex_Com_autocite = "\\autocite[<++>]{<++>}<++>"
