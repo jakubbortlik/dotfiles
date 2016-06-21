@@ -104,6 +104,7 @@ set incsearch				" Incremental search
 set autoindent				" Turn autoindenting on
 "set cindent				" enable C style indentation
 set history=500
+set hidden					" leave a buffer with unsaved changes
 
 set wildmenu				" File name completion in command mode
 set wildmode=longest,full	" What to do when I press 'wildchar'. Worth tweaking.
