@@ -138,8 +138,8 @@ Plugin {
   type=xkb
   Config {
     Model=pc105
-    LayoutsList=us,cz,epo
-    VariantsList=intl,,
+    LayoutsList=us_jb,cz_jb,ipa
+    VariantsList=,,
     ToggleOpt=grp:shift_caps_toggle
     FlagSize=5
     PerWinLayout=1
