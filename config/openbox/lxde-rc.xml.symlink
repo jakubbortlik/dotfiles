@@ -181,7 +181,6 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-
     <!-- Keybindings for desktop switching -->
     <keybind key="C-A-Left">          # move to desktop left
       <action name="DesktopLeft"><dialog>no</dialog><wrap>no</wrap></action>
@@ -240,7 +239,6 @@
     <keybind key="C-A-d">             # show/hide desktop
       <action name="ToggleShowDesktop"/>
     </keybind>
-
     <!-- Keybindings for windows -->
     <keybind key="A-F4">              # close active window
       <action name="Close"/>
@@ -253,7 +251,6 @@
     <keybind key="A-space">           # show the window menu
       <action name="ShowMenu"><menu>client-menu</menu></action>
     </keybind>
-
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">             # activate the next window
       <action name="NextWindow"><dialog>icons</dialog></action>
@@ -284,180 +281,56 @@
     <keybind key="W-i">               # raise the focused window
         <action name="Raise"/>
     </keybind>
-
     <!-- Keybindings for window tiling -->
     <keybind key="W-h">               # Maximize horizontally or move to left half
-      <action name="If">
-        <query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query>
-        <then>
-          <action name="Unmaximize"><direction>horizontal</direction></action>
-          <action name="MoveResizeTo"><x>0</x><width>50%</width></action>
-        </then>
-        <else>
-          <action name="Maximize"><direction>horizontal</direction></action>
-        </else>
-      </action>
+      <action name="If"><query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query><then><action name="Unmaximize"><direction>horizontal</direction></action><action name="MoveResizeTo"><x>0</x><width>50%</width></action></then><else><action name="Maximize"><direction>horizontal</direction></action></else></action>
     </keybind>
     <keybind key="W-S-h">             # HalfLeftScreen
-      <action name="If">
-        <query><monitor>1</monitor></query>
-        <then>
-          <action name="UnmaximizeFull"/>
-          <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>1</monitor></action>
-        </then>
-        <else>
-          <action name="UnmaximizeFull"/>
-          <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>2</monitor></action>
-        </else>
-      </action>
+      <action name="If"><query><monitor>1</monitor></query><then><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>1</monitor></action></then><else><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>2</monitor></action></else></action>
       <action name="Maximize"><direction>vertical</direction></action>
     </keybind>
-
     <keybind key="W-l">               # Maximize horizontally or move to right half
-      <action name="If">
-        <query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query>
-        <then>
-          <action name="Unmaximize"><direction>horizontal</direction></action>
-          <action name="MoveResizeTo"><x>-0</x><width>50%</width></action>
-        </then>
-        <else>
-          <action name="Maximize"><direction>horizontal</direction></action>
-        </else>
-      </action>
+      <action name="If"><query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query><then><action name="Unmaximize"><direction>horizontal</direction></action><action name="MoveResizeTo"><x>-0</x><width>50%</width></action></then><else><action name="Maximize"><direction>horizontal</direction></action></else></action>
     </keybind>
     <keybind key="W-S-l">             # HalfRightScreen
-      <action name="If">
-        <query><monitor>1</monitor></query>
-        <then>
-          <action name="UnmaximizeFull"/>
-          <action name="MoveResizeTo"><x>-0</x><y>0</y><width>50%</width><monitor>1</monitor></action>
-        </then>
-        <else>
-          <action name="UnmaximizeFull"/>
-          <action name="MoveResizeTo"><x>-0</x><y>0</y><width>50%</width><monitor>2</monitor></action>
-        </else>
-      </action>
+      <action name="If"><query><monitor>1</monitor></query><then><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><width>50%</width><monitor>1</monitor></action></then><else><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><width>50%</width><monitor>2</monitor></action></else></action>
       <action name="Maximize"><direction>vertical</direction></action>
     </keybind>
-
     <keybind key="W-j">               # Maximize vertically or move to lower half
-      <action name="If">
-        <query target="default"><maximizedvertical>yes</maximizedvertical></query>
-        <then>
-          <action name="If">
-            <query><monitor>1</monitor></query>
-            <then>
-              <action name="Unmaximize"><direction>vertical</direction></action>
-              <action name="MoveResizeTo"><y>-0</y><height>50%</height><monitor>1</monitor></action>
-            </then>
-            <else>
-              <action name="Unmaximize"><direction>vertical</direction></action>
-              <action name="MoveResizeTo"><y>-0</y><height>50%</height><monitor>2</monitor></action>
-            </else>
-          </action>
-        </then>
-        <else>
-          <action name="Maximize"><direction>vertical</direction></action>
-        </else>
-      </action>
+      <action name="If"><query target="default"><maximizedvertical>yes</maximizedvertical></query><then><action name="If"><query><monitor>1</monitor></query><then><action name="Unmaximize"><direction>vertical</direction></action><action name="MoveResizeTo"><y>-0</y><height>50%</height><monitor>1</monitor></action></then><else><action name="Unmaximize"><direction>vertical</direction></action><action name="MoveResizeTo"><y>-0</y><height>50%</height><monitor>2</monitor></action></else></action></then><else><action name="Maximize"><direction>vertical</direction></action></else></action>
     </keybind>
     <keybind key="W-S-j">             # HalfLowerScreen
-      <action name="If">
-        <query><monitor>1</monitor></query>
-        <then>
-          <action name="UnmaximizeFull"/>
-          <action name="MoveResizeTo"><x>0</x><y>-0</y><width>50%</width><monitor>1</monitor></action>
-        </then>
-        <else>
-          <action name="UnmaximizeFull"/>
-          <action name="MoveResizeTo"><x>0</x><y>-0</y><width>50%</width><monitor>2</monitor></action>
-        </else>
-      </action>
+      <action name="If"><query><monitor>1</monitor></query><then><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>-0</y><width>50%</width><monitor>1</monitor></action></then><else><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>-0</y><width>50%</width><monitor>2</monitor></action></else></action>
       <action name="Maximize"><direction>horizontal</direction></action>
     </keybind>
-
     <keybind key="W-k">               # Maximize vertically or move to upper half
-      <action name="If">
-        <query target="default"><maximizedvertical>yes</maximizedvertical></query>
-        <then>
-          <action name="If">
-            <query><monitor>1</monitor></query>
-            <then>
-              <action name="Unmaximize"><direction>vertical</direction></action>
-              <action name="MoveResizeTo"><y>0</y><height>50%</height><monitor>1</monitor></action>
-            </then>
-            <else>
-              <action name="Unmaximize"><direction>vertical</direction></action>
-              <action name="MoveResizeTo"><y>0</y><height>50%</height><monitor>2</monitor></action>
-            </else>
-          </action>
-        </then>
-        <else>
-          <action name="Maximize"><direction>vertical</direction></action>
-        </else>
-      </action>
+      <action name="If"><query target="default"><maximizedvertical>yes</maximizedvertical></query><then><action name="If"><query><monitor>1</monitor></query><then><action name="Unmaximize"><direction>vertical</direction></action><action name="MoveResizeTo"><y>0</y><height>50%</height><monitor>1</monitor></action></then><else><action name="Unmaximize"><direction>vertical</direction></action><action name="MoveResizeTo"><y>0</y><height>50%</height><monitor>2</monitor></action></else></action></then><else><action name="Maximize"><direction>vertical</direction></action></else></action>
     </keybind>
-
     <keybind key="W-S-k">             # HalfUpperScreen
-      <action name="If">
-        <query><monitor>1</monitor></query>
-        <then>
-          <action name="UnmaximizeFull"/>
-          <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>1</monitor></action>
-        </then>
-        <else>
-          <action name="UnmaximizeFull"/>
-          <action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>2</monitor></action>
-        </else>
-      </action>
+      <action name="If"><query><monitor>1</monitor></query><then><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>1</monitor></action></then><else><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><monitor>2</monitor></action></else></action>
       <action name="Maximize"><direction>horizontal</direction></action>
     </keybind>
-
     <!-- Keybindings for resizing windows -->
     <keybind key="W-w">
       <keybind key="h">               # Grow to edge west W-w-h
-        <action name="If">
-          <query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query>
-          <then>
-            <action name="Unmaximize"><direction>horizontal</direction></action>
-            <action name="MoveResizeTo"><width>100%</width></action>
-          </then>
-        </action>
+        <action name="If"><query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query><then><action name="Unmaximize"><direction>horizontal</direction></action><action name="MoveResizeTo"><width>100%</width></action></then></action>
         <action name="GrowToEdge"><direction>west</direction></action>
       </keybind>
       <keybind key="l">               # Grow to edge east W-w-l
-        <action name="If">
-          <query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query>
-          <then>
-            <action name="Unmaximize"><direction>horizontal</direction></action>
-            <action name="MoveResizeTo"><width>100%</width></action>
-          </then>
-        </action>
-        <action name="GrowToEdge"><direction>east</direction>
-        </action>
+        <action name="If"><query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query><then><action name="Unmaximize"><direction>horizontal</direction></action><action name="MoveResizeTo"><width>100%</width></action></then></action>
+        <action name="GrowToEdge"><direction>east</direction></action>
       </keybind>
     </keybind>
-
     <keybind key="W-e">             # UnmaximizeFull in the same Monitor
-      <action name="If">
-        <query><monitor>1</monitor></query>
-        <then>
-          <action name="Unmaximize"/><action name="MoveResizeTo"><monitor>1</monitor></action>
-        </then>
-        <else>
-          <action name="Unmaximize"/><action name="MoveResizeTo"><monitor>2</monitor></action>
-        </else>
-      </action>
+      <action name="If"><query><monitor>1</monitor></query><then><action name="Unmaximize"/><action name="MoveResizeTo"><monitor>1</monitor></action></then><else><action name="Unmaximize"/><action name="MoveResizeTo"><monitor>2</monitor></action></else></action>
     </keybind>
     <keybind key="W-space">             # MaximizeFull
           <action name="Maximize"/>
     </keybind>
-
     <!-- Keybindings for sending windows to monitors -->
     <keybind key="W-m">               # move to next monitor
       <action name="MoveResizeTo"><monitor>next</monitor></action>
     </keybind>
-
     <!-- Keybindings for monitors -->
     <keybind key="W-1">               # turn off external monitor, keep the primary
       <action name="Execute"><command>xrandr --output VGA-1 --off --output LVDS-1 --mode 1280x800 --rate 60.05</command></action>
@@ -469,12 +342,11 @@
       <action name="Execute"><command>xrandr --output VGA-1 --mode 1920x1080 --pos 0x0 --rate 60.0 --output LVDS-1 --off</command></action>
     </keybind>
     <keybind key="W-3">               # turn on 1280x960 monitor
-      <action name="Execute"><command>xrandr --output VGA-1 --mode 1280x960 --pos 0x0 --output LVDS-1 --mode 1280x800 --pos 0x960 --rate 60.05</command></action>
+      <action name="Execute"><command>xrandr --output VGA-1 --mode 1280x1024 --pos 0x0 --output LVDS-1 --mode 1280x800 --pos 0x1024 --rate 60.05</command></action>
     </keybind>
     <keybind key="W-S-3">             # 1280x960 monitor on, LVDS off
-      <action name="Execute"><command>xrandr --output VGA-1 --mode 1280x960 --pos 0x0 --output LVDS-1 --off</command></action>
+      <action name="Execute"><command>xrandr --output VGA-1 --mode 1280x1024 --pos 0x0 --output LVDS-1 --off</command></action>
     </keybind>
-
     <!-- Keybindings for the volume buttons -->
     <keybind key="XF86AudioLowerVolume"> # lower volume
       <action name="Execute"><command>amixer sset Master 5000-</command></action>
@@ -488,7 +360,6 @@
       <action name="Execute"><command>amixer sset Master toggle</command></action>
       <action name="Execute"><command>amixer sset Headphone toggle</command></action>
     </keybind>
-
     <!-- Keybindings for running applications -->
     <keybind key="W-b">               # launch Bibletime
       <action name="Execute"><command>bibletime</command></action>
@@ -523,6 +394,18 @@
       <keybind key="a">               # launch Audacity W-x-a
         <action name="Execute"><command>audacity</command></action>
       </keybind>
+      <keybind key="c">               # launch LibreOffice Calc W-x-c
+        <action name="Execute"><command>localc</command></action>
+      </keybind>
+      <keybind key="h">               # launch harmonogram.xls in Calc W-x-h
+        <action name="Execute"><command>localc ~/harmonogram.xls</command></action>
+      </keybind>
+      <keybind key="i">               # launch inkscape W-x-i
+        <action name="Execute"><command>inkscape</command></action>
+      </keybind>
+      <keybind key="l">               # launch Leafpad W-x-l
+        <action name="Execute"><command>leafpad</command></action>
+      </keybind>
       <keybind key="p">               # launch Praat W-x-p
         <action name="Execute"><command>praat</command></action>
       </keybind>
@@ -533,19 +416,14 @@
       <keybind key="w">               # launch LibreOffice Writer W-x-w
         <action name="Execute"><command>lowriter</command></action>
       </keybind>
-      <keybind key="c">               # launch LibreOffice Calc W-x-c
-        <action name="Execute"><command>localc</command></action>
-      </keybind>
     </keybind>
     <keybind key="W-z">               # launch zathura
       <action name="Execute"><command>zathura</command></action>
     </keybind>
-
     <!-- undefined W-[qy] -->
     <keybind key="W-q">               # launch
-      <action name="Execute"><command></command></action>
+      <action name="Execute"><command/></action>
     </keybind>
-
     <!--keybindings for LXPanel -->
     <keybind key="A-F2">              # launch the application launcher
       <action name="Execute"><command>gmrun</command></action>
@@ -574,6 +452,9 @@
     </keybind>
     <keybind key="A-Print">           # take a screenshot of the focused window
       <action name="Execute"><command>scrot -u</command></action>
+    </keybind>
+    <keybind key="S-Print">             # take a screenshot with PrintScreen
+      <action name="Execute"><command>scrot -s</command></action>
     </keybind>
     <keybind key="XF86Display">       # Launch LXRandR with Fn+Screen
       <action name="Execute"><command>lxrandr</command></action>
