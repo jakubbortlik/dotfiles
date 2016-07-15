@@ -1,0 +1,30 @@
+[global_config]
+  borderless = True
+  inactive_color_offset = 0.65
+[keybindings]
+  broadcast_off = <Shift><Alt>a
+  layout_launcher = <Alt>F12
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 0e15cff2-1db4-4c3b-912d-60cd7b2e8452
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:26
+      size = 1280, 773
+      title = mc [jakub@dell]:~
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      type = Terminal
+      uuid = 0e15cff2-1db4-4c3b-912d-60cd7b2e8452
+[plugins]
+[profiles]
+  [[default]]
+    background_image = None
+    scrollbar_position = hidden
