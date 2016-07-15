@@ -253,10 +253,10 @@
     </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">             # activate the next window
-      <action name="NextWindow"><dialog>icons</dialog></action>
+      <action name="NextWindow"><dialog>icons</dialog><raise>yes</raise></action>
     </keybind>
     <keybind key="A-S-Tab">           # activate the previous window
-      <action name="PreviousWindow"><dialog>icons</dialog></action>
+      <action name="PreviousWindow"><dialog>icons</dialog><raise>yes</raise></action>
     </keybind>
     <!-- Keybindings for moving focus to windows without raising them -->
     <keybind key="C-A-Tab">           # send focus to the next window
