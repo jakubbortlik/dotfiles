@@ -18,7 +18,7 @@ pdf_reader/command=zathura
 audio_player/command=lxmusic
 
 [GTK]
-sNet/ThemeName=Raleigh
+sNet/ThemeName=Numix
 sNet/IconThemeName=nuoveXT2
 sGtk/FontName=Sans 10
 iGtk/ToolbarStyle=3
