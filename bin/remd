@@ -19,7 +19,6 @@ do
 		then
 			mv $file $final
 			echo "Renamed '$file' as '$final'"
-
 		else
 			echo "No diacritics to be removed from file name '$file'!"
 		fi
@@ -29,6 +28,7 @@ do
 		if [ "$file" != "$final" ]
 		then
 			mv $file $final
+			echo "Renamed '$file' as '$final'"
 		else
 			echo "No diacritics to be removed from file name '$file'!"
 		fi
