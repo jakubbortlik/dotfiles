@@ -60,8 +60,8 @@ else
 	export BROWSER=w3m
 fi
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # twm &
 # xclock -geometry 50x50-1+1 &

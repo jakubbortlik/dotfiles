@@ -295,7 +295,7 @@ regex/i/\.(s|asm)$
 	Include=editor
 
 include/editor
-	Open=%var{EDITOR:vim} %f
+	Open=%var{EDITOR:nvim} %f
 
 # .so libraries
 regex/\.(so|so\.[0-9\.]*)$
@@ -748,8 +748,8 @@ type/^Parity\ Archive\ Volume\ Set
 
 # Default target for anything not described above
 default/*
-	Open=%var{EDITOR:vim} %f
-	View=%var{EDITOR:vim} %f
+	Open=%var{EDITOR:nvim} %f
+	View=%var{EDITOR:nvim} %f
 
 
 ### EOF ###

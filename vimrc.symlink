@@ -44,6 +44,9 @@ call vundle#begin()
 	Plugin 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
 	Plugin 'jakubbortlik/vim-praat'		" syntax highlighting for praat
 
+	if has('nvim')
+		Plugin 'gerw/vim-latex-suite'	" an alternative to the official vim latex-suite used in nvim
+	endif
 	" Colors
 	Plugin 'nanotech/jellybeans.vim'
 call vundle#end()
@@ -60,7 +63,7 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='durant'
 let g:airline_powerline_fonts = 1
-set laststatus=2
+set laststatus=2					" always show the status line
 set noshowmode " do not show mode I am currently in. HOWTO show language or insert-mode suspended through ^o?!
 
 " Brief help for Vundle:
@@ -103,7 +106,10 @@ set smartcase				" Do smart case matching
 set incsearch				" Incremental search
 set autoindent				" Turn autoindenting on
 "set cindent				" enable C style indentation
-set history=500
+if !has('nvim')				" in neovim this is done by default
+	set display=lastline	" show as much as possible of the last line in a window
+	set history=10000
+endif
 set hidden					" leave a buffer with unsaved changes
 
 set wildmenu				" File name completion in command mode
@@ -163,12 +169,23 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+if has('nvim')
+	tnoremap <C-J> <C-\><C-n><C-W><C-J>
+	tnoremap <C-K> <C-\><C-n><C-W><C-K>
+	tnoremap <C-L> <C-\><C-n><C-W><C-L>
+	tnoremap <C-H> <C-\><C-n><C-W><C-H>
+	nnoremap <BS> <C-W>h
+endif
 
 " edit vimrc in the ~/dotfiles/
 nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.symlink \| setlocal nowrap<CR>
 nnoremap <Leader>vt :tabedit ~/dotfiles/vimrc.symlink<CR>
 " source the linked .vimrc from ~/
-nnoremap <Leader>vs :source ~/.vimrc<CR>
+if has('nvim')
+	nnoremap <Leader>vs :source ~/.config/nvim/init.vim<CR>
+else
+	nnoremap <Leader>vs :source ~/.vimrc<CR>
+endif
 
 " edit and source the keymap file for Czech
 nnoremap <Leader>cc :tabedit ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
@@ -243,12 +260,23 @@ cnoremap <C-D> <Del>
 cnoremap <C-E> <End>
 " forward one character
 cnoremap <C-F> <Right>
-" back one word
-cnoremap <ESC>b <S-Left>
-" forward one word
-cnoremap <ESC>f <S-Right>
-" delete word under cursor
-cnoremap <ESC>d <S-Right><C-W>
+if !has('nvim')
+	" back one word
+	cnoremap <ESC>b <S-Left>
+	" forward one word
+	cnoremap <ESC>f <S-Right>
+	" delete word under cursor
+	cnoremap <ESC>d <S-Right><C-W>
+else
+	" back one word
+	cnoremap <A-b> <S-Left>
+	" forward one word
+	cnoremap <A-f> <S-Right>
+	" delete word under cursor
+	cnoremap <A-d> <S-Right><C-W>
+endif
+" delete from cursor position to end of line
+cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
 " recall newer command-line
 cnoremap <C-N> <Down>
 " recall previous (older) command-line
