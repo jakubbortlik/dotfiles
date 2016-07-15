@@ -31,3 +31,38 @@ cmap <C-ú> <C-[>
 " Map Ctrl-M to Enter
 imap <C-m> <Enter>
 cmap <C-m> <Enter>
+
+" <C-p> in Insert and Command-line mode to Previous Tab
+imap <C-p> <C-[><C-p>
+cmap <C-p> <up>
+" <C-p> in Insert and Command-line mode to Next Tab
+imap <C-n> <C-[><C-n>
+cmap <C-n> <down>
+
+" Command-line mode:
+" Move one characted right
+cmap <C-f> <right>
+" Move one characted left
+cmap <C-b> <left>
+" Move one word right
+cmap <A-f> <c-right>
+" Move one word left
+cmap <A-b> <c-left>
+" Delete one character
+cmap <A-d> <Del>
+" Move one characted right
+imap <C-f> <right>
+
+" Insert mode:
+" Move one characted left
+imap <C-b> <left>
+" Move one word right
+imap <A-f> <c-right>
+" Move one word left
+imap <A-b> <c-left>
+" Delete one character
+imap <A-d> <Del>
+" Move half screen down
+imap <C-d> <C-[><C-d>
+" Exit Insert mode
+imap <C-c> <Esc>
