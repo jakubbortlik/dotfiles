@@ -3,6 +3,7 @@
   inactive_color_offset = 0.65
 [keybindings]
   broadcast_off = <Shift><Alt>a
+  edit_window_title = <Alt>F11
   layout_launcher = <Alt>F12
 [layouts]
   [[default]]
