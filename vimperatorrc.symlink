@@ -13,7 +13,7 @@ map <leader>gr :ignorekeys remove mail.google.com<CR>
 map <leader>ga :ignorekeys add mail.google.com<CR>
 
 " vimperatorrc management
-map <leader>vv :!gvim ~/.vimperatorrc<CR>
+map <leader>ve :!gvim ~/.vimperatorrc<CR>
 map <leader>vs :source ~/.vimperatorrc<CR>
 
 " stop loading pages
