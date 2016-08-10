@@ -20,9 +20,12 @@ then
 		echo "Ranking mirrors..."
 		sed 's/#Server/Server/' <mirrorlist >uncommented
 		rankmirrors -n 10 uncommented > mirrorlist
-		S=$(grep -i 'generated on' mirrorlist | grep -oE '[-0-9]+')
-		mv mirrorlist mirrorlist_$S
-		echo "New mirrorlist created: mirrorlist_$S."
+		DATE=$(grep -i 'generated on' mirrorlist | grep -oE '[-0-9]+')
+		mv mirrorlist mirrorlist_${DATE}
+		echo "New mirrorlist created: ${DIR}/mirrorlist_${DATE}."
+		echo ""
+		echo "For the list to be used by the system do:"
+		echo "sudo cp ${DIR}/mirrolist_${DATE} /etc/pacman.d/mirrorlist"
 		if [[ -e "uncommented" ]]
 		then
 			rm uncommented
