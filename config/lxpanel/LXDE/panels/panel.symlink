@@ -17,6 +17,7 @@ Global {
   fontcolor=#ffffff
   background=1
   backgroundfile=/usr/share/lxpanel/images/background.png
+  autohide=0
 }
 Plugin {
   type=space
@@ -96,9 +97,12 @@ Plugin {
     ShowAllDesks=0
     UseMouseWheel=1
     UseUrgencyHint=1
-    FlatButton=0
+    FlatButton=1
     MaxTaskWidth=150
     spacing=1
+    SameMonitorOnly=0
+    GroupedTasks=0
+    DisableUpscale=0
   }
 }
 Plugin {
