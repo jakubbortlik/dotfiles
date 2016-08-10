@@ -253,10 +253,10 @@
     </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">             # activate the next window
-      <action name="NextWindow"><dialog>icons</dialog><raise>yes</raise></action>
+      <action name="NextWindow"><dialog>list</dialog></action>
     </keybind>
     <keybind key="A-S-Tab">           # activate the previous window
-      <action name="PreviousWindow"><dialog>icons</dialog><raise>yes</raise></action>
+      <action name="PreviousWindow"><dialog>list</dialog></action>
     </keybind>
     <!-- Keybindings for moving focus to windows without raising them -->
     <keybind key="C-A-Tab">           # send focus to the next window
@@ -319,6 +319,30 @@
       <keybind key="l">               # Grow to edge east W-w-l
         <action name="If"><query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query><then><action name="Unmaximize"><direction>horizontal</direction></action><action name="MoveResizeTo"><width>100%</width></action></then></action>
         <action name="GrowToEdge"><direction>east</direction></action>
+      </keybind>
+      <keybind key="j">               # Grow to edge south W-w-j
+        <action name="If"><query target="default"><maximizedvertical>yes</maximizedvertical></query><then><action name="Unmaximize"><direction>vertical</direction></action><action name="MoveResizeTo"><width>100%</width></action></then></action>
+        <action name="GrowToEdge"><direction>south</direction></action>
+      </keybind>
+      <keybind key="k">               # Grow to edge north W-w-k
+        <action name="If"><query target="default"><maximizedvertical>yes</maximizedvertical></query><then><action name="Unmaximize"><direction>vertical</direction></action><action name="MoveResizeTo"><width>100%</width></action></then></action>
+        <action name="GrowToEdge"><direction>north</direction></action>
+      </keybind>
+      <keybind key="S-h">               # Shrink to edge west W-w-h
+        <action name="If"><query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query><then><action name="Unmaximize"><direction>horizontal</direction></action><action name="MoveResizeTo"><width>100%</width></action></then></action>
+        <action name="ShrinkToEdge"><direction>west</direction></action>
+      </keybind>
+      <keybind key="S-l">               # Shrink to edge east W-w-l
+        <action name="If"><query target="default"><maximizedhorizontal>yes</maximizedhorizontal></query><then><action name="Unmaximize"><direction>horizontal</direction></action><action name="MoveResizeTo"><width>100%</width></action></then></action>
+        <action name="ShrinkToEdge"><direction>east</direction></action>
+      </keybind>
+      <keybind key="S-j">               # Shrink to edge south W-w-j
+        <action name="If"><query target="default"><maximizedvertical>yes</maximizedvertical></query><then><action name="Unmaximize"><direction>vertical</direction></action><action name="MoveResizeTo"><width>100%</width></action></then></action>
+        <action name="ShrinkToEdge"><direction>south</direction></action>
+      </keybind>
+      <keybind key="S-k">               # Shrink to edge north W-w-k
+        <action name="If"><query target="default"><maximizedvertical>yes</maximizedvertical></query><then><action name="Unmaximize"><direction>vertical</direction></action><action name="MoveResizeTo"><width>100%</width></action></then></action>
+        <action name="ShrinkToEdge"><direction>north</direction></action>
       </keybind>
     </keybind>
     <keybind key="W-e">             # UnmaximizeFull in the same Monitor
@@ -385,7 +409,7 @@
       <action name="Execute"><command>skype</command></action>
     </keybind>
     <keybind key="W-t">               # Launch Terminator with tmux
-      <action name="Execute"><command>terminator -m -x tmux -2</command></action>
+      <action name="Execute"><command>terminator -m -x tmux -2 new-session -s NEW</command></action>
     </keybind>
     <keybind key="W-v">               # launch VLC
       <action name="Execute"><command>vlc</command></action>
