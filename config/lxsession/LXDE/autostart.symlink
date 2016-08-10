@@ -1,5 +1,5 @@
 @lxpanel --profile LXDE
 @pcmanfm --desktop --profile LXDE
 @xscreensaver -no-splash
-@terminator -m -x tmux -2
+@terminator -m -x tmux -2 new-session -s MAIN
 @redshift
