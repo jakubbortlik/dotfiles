@@ -1,0 +1,16 @@
+" LaTeX specific settings
+
+" map the localleader to use it in vimtex
+let maplocalleader = ","
+
+" Do not limit length of lines
+setlocal textwidth=0
+
+" Set shiftwidth to 2
+setlocal shiftwidth=2
+
+" Set the tabstop to 2
+setlocal tabstop=2
+
+" make using the Alt+Key macros possible
+setlocal winaltkeys=no
