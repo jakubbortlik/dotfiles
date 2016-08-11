@@ -1,5 +1,8 @@
 " LaTeX specific settings
 
+" map the localleader to use it in vimtex
+let maplocalleader = ","
+
 " mapping for opening this file in a new window
 nnoremap <leader>tt :vne ~/dotfiles/vim/ftplugin/tex.vim.symlink \| setlocal nowrap<CR>
 
@@ -11,6 +14,14 @@ nnoremap <leader>sh :Tshortcuts<CR>
 
 " change the Tex_Leader from ` to + to enable writing single quotes within `'
 let g:Tex_Leader = "+"
+
+""""""""""""""
+" Appearance
+""""""""""""""
+" for faster scrolling:
+setlocal lazyredraw
+setlocal synmaxcol=128
+syntax sync minlines=256
 
 " Format lines to be up to 80 characters long
 setlocal textwidth=80
@@ -24,18 +35,47 @@ setlocal tabstop=2
 " in visual mode put \url{} around the selected text
 vmap <leader>ur `>a}`<i\url{
 
-" map <leader>cit to paste \autocite[<++>]{<++>}<++> and go inside the []
-call IMAP('CIP', '\autocite[<++>]{<++>}<++>', 'tex')
-nmap <leader>cip aCIP
+if has("vim-latex-suite")
+	" map <leader>cit to paste \autocite[<++>]{<++>}<++> and go inside the []
+	call IMAP('CIP', '\autocite[<++>]{<++>}<++>', 'tex')
+	nmap <leader>cip aCIP
 
-" define expansion rule for autocite
+	" map <leader>cip to paste \autocite[<++>]{<++>}<++> and go inside the []
+	call IMAP('CIT', '\textcite[<++>]{<++>}<++>', 'tex')
+	nmap <leader>cit aCIT
+endif
+
+" define expansion rule for autocite (expand "autocite" after pressing F7)
 let g:Tex_Com_autocite = "\\autocite[<++>]{<++>}<++>"
+
+" define expansion rule for autocite (expand "textcite" after pressing F7)
+let g:Tex_Com_textcite = "\\textcite[<++>]{<++>}<++>"
 
 "map <leader>cc to close the Errorwindow
 nnoremap <leader>cc :ccl<CR>
 
+" map dai to delete from the \item just before the cursor to the line just
+" before the next \item
+function! DeleteAnItem()
+	:execute "normal! /\\($\\n\\s*\\|\\(^\\s*\\)\@<!\\\\item\\|^\\s*\\\\item\\)
+				\\<CR>"
+	:execute "normal! ?\\\\item\<CR>"
+	:execute "normal! d/\\(^\\s*\\(\\\\end\\|\\\\begin\\){\\(enumerate\\|itemize\\|description\\|list\\|theindex\\|thebibliography\\|example\\)}\\|\\\\item\\|^?\\s*\\\\item\\)\<CR>"
+endfunction
+nnoremap dai :call DeleteAnItem()<CR>
+
+" map vai to visually select from the \item just before the cursor to the line just
+" before the next \item
+function! SelectAnItem()
+	:execute "normal! /\\($\\n\\s*\\|\\(^\\s*\\)\@<!\\\\item\\|^\\s*\\\\item\\)
+				\\<CR>"
+	:execute "normal! ?\\\\item\<CR>"
+	:execute "normal! v/\\n\\(\\s*\\\\item\\|\\s*\\(\\\\end\\|\\\\begin\\){\\(enumerate\\|itemize\\|description\\|list\\|theindex\\|thebibliography\\|example\\)}\\)\<CR>"
+endfunction
+nnoremap vai :call SelectAnItem()<CR>
+
 " make using the Alt+Key macros possible
-set winaltkeys=no
+setlocal winaltkeys=no
 
 " ways to generate pdf files. there are soo many...
 " NOTE: pdflatex generates the same output as latex. therefore quickfix is
