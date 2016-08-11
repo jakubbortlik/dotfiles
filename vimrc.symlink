@@ -31,21 +31,25 @@ call vundle#begin()
 	Plugin 'tommcdo/vim-exchange'		" easy exange of two portions of text
 	Plugin 'vim-airline/vim-airline'	" activate the vim-airline
 	Plugin 'vim-airline/vim-airline-themes'	" themse for the vim-airline
-	"Plugin 'unblevable/quick-scope'	" show hints for f, F, t and T commands
+	" Plugin 'unblevable/quick-scope'	" show hints for f, F, t and T commands
 	Plugin 'tpope/vim-unimpaired'		" pairs of handy bracket mappings
 	Plugin 'tpope/vim-fugitive'			" git wrapper
 	Plugin 'tpope/vim-commentary'		" toggle comments
+	Plugin 'tpope/vim-repeat'			" repeat other plugins with the . command
 	Plugin 'tpope/vim-surround'			" parentheses, brackets, quotes, and more 
 	Plugin 'tpope/vim-speeddating'		" let <C-A>, <C-X> work on dates properly
-	"Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
-	"Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
+	" Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
+	" Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 	Plugin 'vim-scripts/bash-support.vim' " selfexplanatory
 	Plugin 'vim-scripts/VisIncr'		" in/decreasing columns of Ns and dates
 	Plugin 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
 	Plugin 'jakubbortlik/vim-praat'		" syntax highlighting for praat
+	Plugin 'scrooloose/nerdtree'		" navigate through the filesystem
+	Plugin 'Xuyuanp/nerdtree-git-plugin' " git status flags for NERDtree
 
 	if has('nvim')
-		Plugin 'gerw/vim-latex-suite'	" an alternative to the official vim latex-suite used in nvim
+		" Plugin 'gerw/vim-latex-suite'	" an alternative to the official vim latex-suite used in nvim
+		Plugin 'lervag/vimtex'
 	endif
 	" Colors
 	Plugin 'nanotech/jellybeans.vim'
@@ -148,7 +152,10 @@ set splitright
 set spelllang=en_us				" The default language for spell-checking
 set thesaurus+=~/.vim/mthesaur.txt
 set fileformat=unix				" in case I use this vimrc on a Windows machine
-set encoding=utf8
+if !exists("g:vim_has_started")
+	set encoding=utf8
+endif
+let g:vim_has_started = 1
 
 "===============
 " Some mappings:
@@ -158,11 +165,30 @@ let mapleader = ","
 " remap two commas to perform Next search in opposite direction
 nnoremap ,,	,
 
-" These two mappings only work in gvim, not in a terminal
-" insert an empty line above the current one
-nnoremap <C-CR> O<Esc>
-" insert an empty line below the current one
-nnoremap <S-CR> o<Esc>
+" toggle NERDTree
+nnoremap cot :NERDTreeToggle<CR>
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('praat', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+" call NERDTreeHighlightFile('csv', 'cyan', 'none', 'cyan', '#151515')
+" call NERDTreeHighlightFile('xlsx', 'cyan', 'none', 'cyan', '#151515')
+" call NERDTreeHighlightFile('xls', 'cyan', 'none', 'cyan', '#151515')
+" call NERDTreeHighlightFile('txt', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+" call NERDTreeHighlightFile('pdf', 'Magenta', 'none', '#ff00ff', '#151515')
+
+" switch between current and last buffer
+nnoremap <leader>. <c-^>
+
+" enable . command in visual mode
+vnoremap . :normal .<cr>
 
 " keybindings for moving between split windows:
 nnoremap <C-J> <C-W><C-J>
@@ -176,6 +202,9 @@ if has('nvim')
 	tnoremap <C-H> <C-\><C-n><C-W><C-H>
 	nnoremap <BS> <C-W>h
 endif
+
+nnoremap <C-E> 3<C-E>
+nnoremap <C-Y> 3<C-Y>
 
 " edit vimrc in the ~/dotfiles/
 nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.symlink \| setlocal nowrap<CR>
@@ -284,3 +313,24 @@ cnoremap <C-P> <Up>
 
 " abbreviations
 ab th tab h
+
+" change the last word in a line from "false" to "true" and vicer versa
+function! ToggleTrueFalse()
+	:let column = virtcol(".")
+	:let linenumber = line(".")
+	:let line = getline(".")
+	:let value = strpart(line , strridx(line, " ") + 1)
+	if value == "false"
+		:execute "normal! $ciwtrue"
+	elseif value == "true"
+		:execute "normal! $ciwfalse"
+	endif
+	:call cursor(linenumber, column)
+endfunction
+nnoremap cv :call ToggleTrueFalse()<CR>
+
+" some settings for easy SMS wriging
+function! ComposeSMS()
+	:setlocal textwidth=160
+	:setlocal cc=161
+endfunction
