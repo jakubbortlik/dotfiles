@@ -36,6 +36,9 @@ shopt -s checkwinsize
 # enable 256 colors in the terminal
 export TERM=xterm-256color
 
+# do not load rc.config - ranger configuration twice
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -102,7 +105,16 @@ alias s="(skype &> /dev/null &)"
 alias bh="($EDITOR ~/.bash_history)"
 alias bs="(. ~/.bashrc)"
 alias or="(openbox --reconfigure)"
+ra() {
+    if [ -z "$RANGER_LEVEL" ]
+    then
+        ranger
+    else
+        exit
+    fi
+}
 alias sd="systemctl poweroff"
+alias st='st -t "Suckless Terminal" -f "Source Code Pro:pixelsize=13" -g "100x44" -e "tmux"'
 alias wm="(sudo wifi-menu)"
 
 alias cbh="(sed -ir '/^.[ ]*$/d' ~/.bash_history; echo 'removed single character lines from .bash_history')"
