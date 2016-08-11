@@ -2,6 +2,7 @@
 
 " map the localleader to use it in vimtex
 let maplocalleader = ","
+let g:vimtex_fold_enabled = 1
 
 " mapping for opening this file in a new window
 nnoremap <leader>tt :vne ~/dotfiles/vim/ftplugin/tex.vim.symlink \| setlocal nowrap<CR>
