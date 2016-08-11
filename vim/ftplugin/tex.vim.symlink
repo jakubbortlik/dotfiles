@@ -10,7 +10,7 @@ nnoremap <leader>tt :vne ~/dotfiles/vim/ftplugin/tex.vim.symlink \| setlocal now
 nnoremap <leader>ts :source ~/.vim/ftplugin/tex.vim<CR>
 
 " map <leader>sh to show :Tshortcuts
-nnoremap <leader>sh :Tshortcuts<CR>
+" nnoremap <leader>sh :Tshortcuts<CR>
 
 " change the Tex_Leader from ` to + to enable writing single quotes within `'
 let g:Tex_Leader = "+"
