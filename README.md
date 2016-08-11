@@ -4,10 +4,10 @@ I am running Arch Linux with LXDE on a Dell Latitude E6400
 
 How it works
 ------------
-The script install.sh looks for files with the extension .symlink and
-creates links in $HOME with the same directory structure as is found in
-the dotfiles/ directory, except it prepends all paths with a "." and cuts
-off the .symlink suffix.
+The script ~/dotfiles/bin/symstall looks for files with the extension .symlink
+and creates links in $HOME with the same directory structure as is found in the
+dotfiles/ directory, except it prepends all paths with a "." and cuts off the
+.symlink suffix.
 
 E.g. for the file ~/dotfiles/vim/ftplugin/tex.vim.symlink there will be
 created the link in ~/.vim/ftplugin/tex.vim
@@ -23,7 +23,14 @@ Installing on a new machine:
 git clone git@github.com:jakubbortlik/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 # edit/add/remove files to and from ~/dotfiles
-bash install.sh
+bash ~/dotfiles/bin/symstall
+```
+
+Reinstalling symlinks (when "symstall" is in the $PATH):
+--------------------------------------------------------
+
+```bash
+symstall
 ```
 
 Resources:
