@@ -1,20 +1,41 @@
 " LaTeX specific settings
 
-" map the localleader to use it in vimtex
-let maplocalleader = ","
-let g:vimtex_fold_enabled = 1
-
 " mapping for opening this file in a new window
-nnoremap <leader>tt :vne ~/dotfiles/vim/ftplugin/tex.vim.symlink \| setlocal nowrap<CR>
+nnoremap <leader>te :vsplit ~/dotfiles/vim/ftplugin/tex.vim.symlink \| setlocal nowrap<CR>
 
 " mapping for sourcing this file
 nnoremap <leader>ts :source ~/.vim/ftplugin/tex.vim<CR>
 
 " map <leader>sh to show :Tshortcuts
-" nnoremap <leader>sh :Tshortcuts<CR>
+nnoremap <leader>sh :Tshortcuts<CR>
 
-" change the Tex_Leader from ` to + to enable writing single quotes within `'
+""""""""""""""""""""""""""""""""""""""""""""""
+" some settings for vim-latex-suite and vimtex
+""""""""""""""""""""""""""""""""""""""""""""""
+" change vim-latex-suite's Tex_Leader from "`" to "+" to enable writing single
+" quotes easyly in insertmode
 let g:Tex_Leader = "+"
+
+" disable vimtex imaps with "`"
+let g:vimtex_imaps_enabled = 0
+
+" map the vimtex localleader
+let maplocalleader = ","
+
+" map <leader>cit to paste \autocite[<++>]{<++>}<++> and go inside the []
+call IMAP('CIP', '\autocite[<++>]{<++>}<++>', 'tex')
+nmap <leader>cip aCIP
+
+" map <leader>cip to paste \autocite[<++>]{<++>}<++> and go inside the []
+call IMAP('CIT', '\textcite[<++>]{<++>}<++>', 'tex')
+nmap <leader>cit aCIT
+
+" define expansion rule for autocite (expand "autocite" after pressing F7)
+let g:Tex_Com_autocite = "\\autocite[<++>]{<++>}<++>"
+
+" define expansion rule for autocite (expand "textcite" after pressing F7)
+let g:Tex_Com_textcite = "\\textcite[<++>]{<++>}<++>"
+
 
 """"""""""""""
 " Appearance
@@ -36,44 +57,28 @@ setlocal tabstop=2
 " in visual mode put \url{} around the selected text
 vmap <leader>ur `>a}`<i\url{
 
-if has("vim-latex-suite")
-	" map <leader>cit to paste \autocite[<++>]{<++>}<++> and go inside the []
-	call IMAP('CIP', '\autocite[<++>]{<++>}<++>', 'tex')
-	nmap <leader>cip aCIP
-
-	" map <leader>cip to paste \autocite[<++>]{<++>}<++> and go inside the []
-	call IMAP('CIT', '\textcite[<++>]{<++>}<++>', 'tex')
-	nmap <leader>cit aCIT
-endif
-
-" define expansion rule for autocite (expand "autocite" after pressing F7)
-let g:Tex_Com_autocite = "\\autocite[<++>]{<++>}<++>"
-
-" define expansion rule for autocite (expand "textcite" after pressing F7)
-let g:Tex_Com_textcite = "\\textcite[<++>]{<++>}<++>"
-
 "map <leader>cc to close the Errorwindow
 nnoremap <leader>cc :ccl<CR>
 
 " map dai to delete from the \item just before the cursor to the line just
 " before the next \item
-function! DeleteAnItem()
+function! DeleteAllItem()
 	:execute "normal! /\\($\\n\\s*\\|\\(^\\s*\\)\@<!\\\\item\\|^\\s*\\\\item\\)
 				\\<CR>"
 	:execute "normal! ?\\\\item\<CR>"
 	:execute "normal! d/\\(^\\s*\\(\\\\end\\|\\\\begin\\){\\(enumerate\\|itemize\\|description\\|list\\|theindex\\|thebibliography\\|example\\)}\\|\\\\item\\|^?\\s*\\\\item\\)\<CR>"
 endfunction
-nnoremap dai :call DeleteAnItem()<CR>
+nnoremap dai :call DeleteAllItem()<CR>
 
 " map vai to visually select from the \item just before the cursor to the line just
 " before the next \item
-function! SelectAnItem()
+function! SelectAllItem()
 	:execute "normal! /\\($\\n\\s*\\|\\(^\\s*\\)\@<!\\\\item\\|^\\s*\\\\item\\)
 				\\<CR>"
 	:execute "normal! ?\\\\item\<CR>"
 	:execute "normal! v/\\n\\(\\s*\\\\item\\|\\s*\\(\\\\end\\|\\\\begin\\){\\(enumerate\\|itemize\\|description\\|list\\|theindex\\|thebibliography\\|example\\)}\\)\<CR>"
 endfunction
-nnoremap vai :call SelectAnItem()<CR>
+nnoremap vai :call SelectAllItem()<CR>
 
 " make using the Alt+Key macros possible
 setlocal winaltkeys=no

@@ -5,6 +5,7 @@ let maplocalleader = ","
 
 " Do not limit length of lines
 setlocal textwidth=0
+setlocal nowrap
 
 " Set shiftwidth to 2
 setlocal shiftwidth=2

@@ -893,7 +893,7 @@ function! <SID>SetTeXOptions()
 	" This line seems to be necessary to source our compiler/tex.vim file.
 	" The docs are unclear why this needs to be done even though this file is
 	" the first compiler plugin in 'runtimepath'.
-	runtime compiler/tex.vim
+	" runtime compiler/tex.vim
 
 endfunction
 

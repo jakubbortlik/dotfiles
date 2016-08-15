@@ -31,26 +31,29 @@ call vundle#begin()
 	Plugin 'tommcdo/vim-exchange'		" easy exange of two portions of text
 	Plugin 'vim-airline/vim-airline'	" activate the vim-airline
 	Plugin 'vim-airline/vim-airline-themes'	" themse for the vim-airline
-	" Plugin 'unblevable/quick-scope'	" show hints for f, F, t and T commands
 	Plugin 'tpope/vim-unimpaired'		" pairs of handy bracket mappings
 	Plugin 'tpope/vim-fugitive'			" git wrapper
 	Plugin 'tpope/vim-commentary'		" toggle comments
 	Plugin 'tpope/vim-repeat'			" repeat other plugins with the . command
 	Plugin 'tpope/vim-surround'			" parentheses, brackets, quotes, and more 
 	Plugin 'tpope/vim-speeddating'		" let <C-A>, <C-X> work on dates properly
-	" Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
-	" Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 	Plugin 'vim-scripts/bash-support.vim' " selfexplanatory
 	Plugin 'vim-scripts/VisIncr'		" in/decreasing columns of Ns and dates
 	Plugin 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
 	Plugin 'jakubbortlik/vim-praat'		" syntax highlighting for praat
 	Plugin 'scrooloose/nerdtree'		" navigate through the filesystem
 	Plugin 'Xuyuanp/nerdtree-git-plugin' " git status flags for NERDtree
-
+	Plugin 'lervag/vimtex'				" latex plugin with background compilation
 	if has('nvim')
-		" Plugin 'gerw/vim-latex-suite'	" an alternative to the official vim latex-suite used in nvim
-		Plugin 'lervag/vimtex'
+		Plugin 'gerw/vim-latex-suite'	" an nvim alternative to the official vim latex-suite
 	endif
+	"
+	" Consider these plugins:
+	" Plugin 'mattduck/splitscreen'			" manage windows in vim and tmux
+	" Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
+	" Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
+	" Plugin 'unblevable/quick-scope'	" show hints for f, F, t and T commands
+
 	" Colors
 	Plugin 'nanotech/jellybeans.vim'
 call vundle#end()
@@ -83,6 +86,8 @@ set noshowmode " do not show mode I am currently in. HOWTO show language or inse
 imap <C-@> <Plug>IMAP_JumpForward
 nmap <C-@> <Plug>IMAP_JumpForward
 vmap <C-@> <Plug>IMAP_JumpForward
+" disable the vim-latex-suite compiler
+let g:doneTexCompiler = 1
 
 let g:tex_flavor='latex'            " start latex-suite for empty .tex files 
 
@@ -122,9 +127,9 @@ set wildmode=longest,full	" What to do when I press 'wildchar'. Worth tweaking.
 "==========================
 " some appearance settings:
 "==========================
-"colorscheme desert
+" colorscheme desert
 colorscheme jellybeans
-"colorscheme default
+" colorscheme default
 
 set linebreak		" define where the lines break on the screen if wrap is set
 set textwidth=80				" Set the textwidth
@@ -220,6 +225,9 @@ endif
 nnoremap <Leader>cc :tabedit ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
 nnoremap <Leader>cs :source ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
 
+" open a Git status window
+nnoremap gs :Gstatus<CR>
+
 " language settings
 nnoremap <Leader>cz :setlocal keymap=czech<CR>
 nnoremap <Leader>ip :setlocal keymap=ipa<CR>
@@ -312,9 +320,10 @@ cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 
 " abbreviations
-ab th tab h
+" cab th tab h
 
 " change the last word in a line from "false" to "true" and vicer versa
+" Mnemonic: cv - Change Value
 function! ToggleTrueFalse()
 	:let column = virtcol(".")
 	:let linenumber = line(".")
