@@ -29,6 +29,11 @@ vimtex:
 -------
 - enable keybindings like in vim-latex-suite: Alt-i = \item, :: = \dots,...
 
+vim-latex-suite:
+----------------
+- compiler/tex.vim problem when opening an included bibliography file from a toc
+  file
+
 GTK3:
 -----
 - firefox scroll bar, radio buttons, fields, etc.
@@ -41,6 +46,7 @@ tmux:
 -----
 - if on a large monitor, open two panes on startup the right one with ranger
   opened, else open just one pane with ranger
+- airline - lines between >< and the color box...
 
 ranger:
 -------
@@ -53,3 +59,4 @@ vimperator:
 
 openbox:
 - choose custom titles of windows in title bar instead of full path
+- keep only CS and US in the keyboard layout handler, have a xkbmap shortcut for IPA
