@@ -25,7 +25,7 @@ then
 		echo "New mirrorlist created: ${DIR}/mirrorlist_${DATE}."
 		echo ""
 		echo "For the list to be used by the system do:"
-		echo "sudo cp ${DIR}/mirrolist_${DATE} /etc/pacman.d/mirrorlist"
+		echo "sudo cp ${DIR}/mirrorlist_${DATE} /etc/pacman.d/mirrorlist"
 		if [[ -e "uncommented" ]]
 		then
 			rm uncommented
