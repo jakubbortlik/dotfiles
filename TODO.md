@@ -23,7 +23,13 @@ nVim:
 
 - airline: show the keymap and suspended imode (Ctrl-o) on the statusline
 
+- show the alternate buffer name somewhere
+
 - ipa_utf-8.vim: v > ʑ!
+
+- ftplugin/praat.vim - automatic indentation in loops,...
+
+- find out where <del> is mapped to <F1>
 
 vimtex:
 -------

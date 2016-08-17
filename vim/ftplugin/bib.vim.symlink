@@ -15,3 +15,6 @@ setlocal tabstop=2
 
 " make using the Alt+Key macros possible
 setlocal winaltkeys=no
+
+" search for ends of lines that do not have a comma:
+nnoremap <leader>nc /\(,\)\@<!\n\($\\|@\)\@!<CR>

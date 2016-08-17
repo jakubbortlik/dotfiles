@@ -22,6 +22,9 @@ let g:vimtex_imaps_enabled = 0
 " map the vimtex localleader
 let maplocalleader = ","
 
+" map <leader>lb to "!biber filenameWithoutExtension"
+nnoremap <leader>lb :!biber "%:t:r"<CR>
+
 " map <leader>cit to paste \autocite[<++>]{<++>}<++> and go inside the []
 call IMAP('CIP', '\autocite[<++>]{<++>}<++>', 'tex')
 nmap <leader>cip aCIP
@@ -36,6 +39,13 @@ let g:Tex_Com_autocite = "\\autocite[<++>]{<++>}<++>"
 " define expansion rule for autocite (expand "textcite" after pressing F7)
 let g:Tex_Com_textcite = "\\textcite[<++>]{<++>}<++>"
 
+" insert \textsuperscript{}<++>
+call IMAP('TS^', '\textsuperscript{<++>}<++>', 'tex')
+nmap <leader>t^ aTS^
+
+" insert \textsubscript{}<++>
+call IMAP('TSV', '\textsubscript{<++>}<++>', 'tex')
+nmap <leader>tv aTS^
 
 """"""""""""""
 " Appearance
