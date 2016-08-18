@@ -409,7 +409,7 @@
       <action name="Execute"><command>skype</command></action>
     </keybind>
     <keybind key="W-t">               # Launch Terminator with tmux
-      <action name="Execute"><command>st -e tmux</command></action>
+      <action name="Execute"><command>lxterminal -e tmux -2</command></action>
     </keybind>
     <keybind key="W-v">               # launch VLC
       <action name="Execute"><command>vlc</command></action>
