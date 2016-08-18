@@ -127,9 +127,10 @@ set wildmode=longest,full	" What to do when I press 'wildchar'. Worth tweaking.
 "==========================
 " some appearance settings:
 "==========================
+set t_Co=256
 " colorscheme default
-colorscheme desert
-" colorscheme jellybeans
+" colorscheme desert
+colorscheme jellybeans
 " colorscheme slate
 
 set linebreak		" define where the lines break on the screen if wrap is set
@@ -329,11 +330,13 @@ function! ToggleTrueFalse()
 	:let column = virtcol(".")
 	:let linenumber = line(".")
 	:let line = getline(".")
-	:let value = strpart(line , strridx(line, " ") + 1)
+	:let value = strpart(line , match(line, '\( \|=\)\@<=\(false\|true\)'))
 	if value == "false"
 		:execute "normal! $ciwtrue"
 	elseif value == "true"
 		:execute "normal! $ciwfalse"
+	else
+		:echo value
 	endif
 	:call cursor(linenumber, column)
 endfunction

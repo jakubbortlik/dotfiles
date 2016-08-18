@@ -8,16 +8,13 @@ symstall:
 
 nVim:
 -----
-```bash
+```
 :set expandtab
 ```
-- repair vim colorscheme + tmux + st
+- repair vim colorscheme + tmux + st - is it broken? jellybeans has got a
+  strange combination of default background and hlserach
 
-- asynchronous (e.g. plugin install?)
-
-- ftplugins: let b:did_ftplugin = 1
-
-- ftplugin - xml.vim: :set tabstop=2 shiftwidth=2
+- italics in latex (as in \textit{} or \emph{})
 
 - adjust "define" in praat.vim
 
@@ -25,33 +22,12 @@ nVim:
 
 - show the alternate buffer name somewhere
 
-- ipa_utf-8.vim: v > ʑ!
-
-- ftplugin/praat.vim - automatic indentation in loops,...
-
-- find out where <del> is mapped to <F1>
-
-vimtex:
--------
-- enable keybindings like in vim-latex-suite: Alt-i = \item, :: = \dots,...
-
-vim-latex-suite:
-----------------
-- compiler/tex.vim problem when opening an included bibliography file from a toc
-  file
-
 GTK3:
 -----
 - firefox scroll bar, radio buttons, fields, etc.
 
-simple terminal:
-----------------
-- enable ctrl-shift-u to insert unicode
-
 tmux:
 -----
-- if on a large monitor, open two panes on startup the right one with ranger
-  opened, else open just one pane with ranger
 - airline - lines between >< and the color box...
 
 ranger:
@@ -64,5 +40,6 @@ vimperator:
 - make iabbreviate work, e.g. for a phone number
 
 openbox:
+--------
 - choose custom titles of windows in title bar instead of full path
 - keep only CS and US in the keyboard layout handler, have a xkbmap shortcut for IPA
