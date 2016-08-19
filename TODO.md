@@ -11,10 +11,6 @@ nVim:
 ```
 :set expandtab
 ```
-- repair vim colorscheme + tmux + st - is it broken? jellybeans has got a
-  strange combination of default background and hlserach
-
-- italics in latex (as in \textit{} or \emph{})
 
 - adjust "define" in praat.vim
 
@@ -26,14 +22,9 @@ GTK3:
 -----
 - firefox scroll bar, radio buttons, fields, etc.
 
-tmux:
------
-- airline - lines between >< and the color box...
-
 ranger:
 -------
 - let the :console source .bashrc
-- when entering SHELL, stay in the directory you are leaving
 
 vimperator:
 -----------

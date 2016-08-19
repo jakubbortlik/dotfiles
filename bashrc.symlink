@@ -58,6 +58,8 @@ fi
 
 # do not load rc.config - ranger configuration twice
 export RANGER_LOAD_DEFAULT_RC=FALSE
+source /usr/share/doc/ranger/examples/bash_automatic_cd.sh
+alias ranger='ranger-cd'
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
