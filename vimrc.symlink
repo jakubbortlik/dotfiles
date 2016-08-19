@@ -127,11 +127,11 @@ set wildmode=longest,full	" What to do when I press 'wildchar'. Worth tweaking.
 "==========================
 " some appearance settings:
 "==========================
-set t_Co=256
-" colorscheme default
-" colorscheme desert
+let g:jellybeans_use_term_italics = 1
+let g:jellybeans_overrides = {
+\    'background': { 'guibg': '000000' },
+\}
 colorscheme jellybeans
-" colorscheme slate
 
 set linebreak		" define where the lines break on the screen if wrap is set
 set textwidth=80				" Set the textwidth
