@@ -82,7 +82,7 @@ set show_hidden_bookmarks true
 
 # Which colorscheme to use?  These colorschemes are available by default:
 # default, jungle, snow, solarized
-set colorscheme default
+set colorscheme solarized
 
 # Preview files on the rightmost column?
 # And collapse (shrink) the last column if there is nothing to preview?
@@ -506,6 +506,9 @@ copycmap <home>      <C-a>
 copycmap <end>       <C-e>
 copycmap <delete>    <C-d>
 copycmap <backspace> <C-h>
+
+copycmap <A-left>      <A-b>
+copycmap <A-right>     <A-f>
 
 # Note: There are multiple ways to express backspaces.  <backspace> (code 263)
 # and <backspace2> (code 127).  To be sure, use both.
