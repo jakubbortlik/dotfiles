@@ -19,11 +19,22 @@ let g:Tex_Leader = "+"
 " disable vimtex imaps with "`"
 let g:vimtex_imaps_enabled = 0
 
+" less free space in toc:
+let g:vimtex_toc_secnumdepth = 1
+
 " map the vimtex localleader
 let maplocalleader = ","
 
 " map <leader>lb to "!biber filenameWithoutExtension"
 nnoremap <leader>lb :!biber "%:t:r"<CR>
+
+" map <leader>T-> to paste \textrightarrow
+call IMAP('T->', '\textrightarrow<++>', 'tex')
+nmap <leader>-> aT->
+
+" map <leader>T<- to paste \textrightarrow
+call IMAP('T<-', '\textleftarrow<++>', 'tex')
+nmap <leader><- aT<-
 
 " map <leader>cit to paste \autocite[<++>]{<++>}<++> and go inside the []
 call IMAP('CIP', '\autocite[<++>]{<++>}<++>', 'tex')
