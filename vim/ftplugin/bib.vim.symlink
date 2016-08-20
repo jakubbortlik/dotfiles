@@ -18,3 +18,6 @@ setlocal winaltkeys=no
 
 " search for ends of lines that do not have a comma:
 nnoremap <leader>nc /\(,\)\@<!\n\($\\|@\)\@!<CR>
+
+" Comments start with two percent signs
+setlocal commentstring=%%%s
