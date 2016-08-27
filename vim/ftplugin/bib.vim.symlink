@@ -20,4 +20,4 @@ setlocal winaltkeys=no
 nnoremap <leader>nc /\(,\)\@<!\n\($\\|@\)\@!<CR>
 
 " Comments start with two percent signs
-setlocal commentstring=%%%s
+setlocal commentstring=%%s
