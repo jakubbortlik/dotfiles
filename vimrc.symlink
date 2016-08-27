@@ -44,6 +44,7 @@ call vundle#begin()
 	Plugin 'scrooloose/nerdtree'		" navigate through the filesystem
 	Plugin 'Xuyuanp/nerdtree-git-plugin' " git status flags for NERDtree
 	Plugin 'lervag/vimtex'				" latex plugin with background compilation
+	Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 	if has('nvim')
 		Plugin 'gerw/vim-latex-suite'	" an nvim alternative to the official vim latex-suite
 	endif
@@ -51,8 +52,7 @@ call vundle#begin()
 	" Consider these plugins:
 	" Plugin 'mattduck/splitscreen'			" manage windows in vim and tmux
 	" Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
-	" Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
-	" Plugin 'unblevable/quick-scope'	" show hints for f, F, t and T commands
+	" Plugin 'justinmk/vim-sneak'				" versatile motion specified by two characters.
 
 	" Colors
 	Plugin 'nanotech/jellybeans.vim'
@@ -201,16 +201,18 @@ nnoremap <leader>. <c-^>
 vnoremap . :normal .<cr>
 
 " keybindings for moving between split windows:
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-J> <C-W>j
+" nnoremap <C-K> <C-W>k
+" nnoremap <C-L> <C-W>l
+" nnoremap <C-H> <C-W>h
+ " nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 if has('nvim')
-	tnoremap <C-J> <C-\><C-n><C-W><C-J>
-	tnoremap <C-K> <C-\><C-n><C-W><C-K>
-	tnoremap <C-L> <C-\><C-n><C-W><C-L>
-	tnoremap <C-H> <C-\><C-n><C-W><C-H>
-	nnoremap <BS> <C-W>h
+	tnoremap <C-J> <C-\><C-n><C-W>j
+	tnoremap <C-K> <C-\><C-n><C-W>k
+	tnoremap <C-L> <C-\><C-n><C-W>l
+	tnoremap <C-H> <C-\><C-n><C-W>h
+	" nnoremap <BS> <C-W>h
+	nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 endif
 
 nnoremap <C-E> 3<C-E>
@@ -347,6 +349,8 @@ nnoremap cv :call ToggleTrueFalse()<CR>
 
 " some settings for easy SMS wriging
 function! ComposeSMS()
-	:setlocal textwidth=160
-	:setlocal cc=161
+	:setlocal textwidth=156
+	:setlocal cc=157
 endfunction
+
+" EXPERIMENTAL SETTINGS:
