@@ -17,16 +17,22 @@ map <leader>ve :!gvim ~/.vimperatorrc<CR>
 map <leader>vs :source ~/.vimperatorrc<CR>
 
 " stop loading pages
-map sto :stop<CR>
-map sta :stopall<CR>
+nmap st :stop<CR>
+nmap sa :stopall<CR>
 
 " Remove search highlighting (mnemonic: Sot Option Highlighting)
 nnoremap soh :noh<CR>
 
-" Map Ctrl-ú to Esc to use on the Czech keyboard
+" Map Ctrl-ú to Esc to use for escaping on the Czech keyboard
 map <C-ú> <C-[>
 imap <C-ú> <C-[>
 cmap <C-ú> <C-[>
+" Map - to / to use for searching on the Czech keybord
+map \- /
+" Map _ to ? to use for backward searching on the Czech keybord
+map \_ ?
+" Map " to : to use for entering Command-line mode on the Czech keybord
+map \" :
 
 " Map Ctrl-M to Enter
 imap <C-m> <Enter>
@@ -50,10 +56,17 @@ cmap <A-f> <c-right>
 cmap <A-b> <c-left>
 " Delete one character
 cmap <A-d> <Del>
-" Move one characted right
-imap <C-f> <right>
+" Map Ctrl-Shift-v to paste from "primary selection"
+cmap <C-S-v> <S-Insert>
+" Disable some mappings on the commandline, otherwise they are passed to Firefox
+cmap <C-j> <Enter>
+cmap <C-k> <Nop>
+cmap <C-r> <Nop>
+cmap <C-t> <Nop>
 
 " Insert mode:
+" Move one characted right
+imap <C-f> <right>
 " Move one characted left
 imap <C-b> <left>
 " Move one word right
