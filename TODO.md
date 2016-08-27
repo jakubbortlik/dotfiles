@@ -31,6 +31,7 @@ GTK3:
 ranger:
 -------
 - let the :console source .bashrc
+- find a way to sync bookmarks with the dotfiles .symlink version
 
 vimperator:
 -----------
