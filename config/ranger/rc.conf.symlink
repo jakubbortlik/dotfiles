@@ -127,7 +127,7 @@ set update_tmux_title true
 set shorten_title 3
 
 # Abbreviate $HOME with ~ in the titlebar (first line) of ranger?
-set tilde_in_titlebar false
+set tilde_in_titlebar true
 
 # How many directory-changes or console-commands should be kept in history?
 set max_history_size 20
@@ -507,8 +507,10 @@ copycmap <end>       <C-e>
 copycmap <delete>    <C-d>
 copycmap <backspace> <C-h>
 
-copycmap <A-left>      <A-b>
-copycmap <A-right>     <A-f>
+cmap <A-b>  eval fm.ui.console.move(left=5)
+cmap <A-f> eval fm.ui.console.move(right=5)
+# copycmap <A-left>      <A-b>
+# copycmap <A-right>     <A-f>
 
 # Note: There are multiple ways to express backspaces.  <backspace> (code 263)
 # and <backspace2> (code 127).  To be sure, use both.
