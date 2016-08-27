@@ -142,7 +142,7 @@ Plugin {
     Model=pc105
     LayoutsList=us_jb,cz_jb,ipa
     VariantsList=,,
-    ToggleOpt=grp:shift_caps_toggle
+    ToggleOpt=grp:shift_caps_toggle,grp:shifts_toggle,grp_led:num
     FlagSize=5
     PerWinLayout=1
     KeepSysLayouts=0
