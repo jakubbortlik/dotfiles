@@ -23,8 +23,8 @@ export HISTCONTROL=ignoreboth #:erasedups
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=5000
-HISTFILESIZE=10000
+HISTSIZE=50000
+HISTFILESIZE=100000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -60,6 +60,15 @@ fi
 export RANGER_LOAD_DEFAULT_RC=FALSE
 source /usr/share/doc/ranger/examples/bash_automatic_cd.sh
 alias ranger='ranger-cd'
+# alias "ra" to start ranger or return to the already started version
+ra() {
+    if [ -z "$RANGER_LEVEL" ]
+    then
+        ranger
+    else
+        exit
+    fi
+}
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -127,14 +136,6 @@ alias s="(skype &> /dev/null &)"
 alias bh="($EDITOR ~/.bash_history)"
 alias bs="(. ~/.bashrc)"
 alias or="(openbox --reconfigure)"
-ra() {
-    if [ -z "$RANGER_LEVEL" ]
-    then
-        ranger
-    else
-        exit
-    fi
-}
 alias sd="systemctl poweroff"
 alias st='st -t "Suckless Terminal" -f "Source Code Pro:pixelsize=13" -g "100x44" -e "tmux"'
 alias wm="(sudo wifi-menu)"
@@ -188,3 +189,8 @@ alias us="cd ~; sudo umount /dev/mmcblk0p1"
 #alias here="find . -type f -print0 | xargs -0"
 
 PS1='[\u@\h \W]\$ '
+# if entered shell from ranger, show it in the prompt:
+[ -n "$RANGER_LEVEL" ] && PS1="$PS1"'(in RA) '
+
+# added by Anaconda3 4.1.1 installer
+export PATH="/home/jakub/.anaconda3/bin:$PATH"
