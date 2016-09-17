@@ -1,5 +1,6 @@
 symstall:
 -----------
+- correct the argument reference "$@" and variable quoting!
 - change ".symlink" into a variable, e.g., ${ext}
 - only remove .symlink as an extension, not in file names! change:
 		base="${fullbase/\.symlink/}"
@@ -14,7 +15,7 @@ nVim:
 
 - adjust "define" in praat.vim
 
-- airline: show the keymap and suspended imode (Ctrl-o) on the statusline
+- airline: show suspended imode (Ctrl-o) on the statusline
 
 - show the alternate buffer name somewhere
 
