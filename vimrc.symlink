@@ -50,9 +50,13 @@ call vundle#begin()
 	endif
 	"
 	" Consider these plugins:
+	Plugin 'jalvesaq/Nvim-R'			" improved support for R code
 	" Plugin 'mattduck/splitscreen'			" manage windows in vim and tmux
 	" Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
 	" Plugin 'justinmk/vim-sneak'				" versatile motion specified by two characters.
+	" Plugin 'tpope/vim-obsession'			" Found in airline help file
+	" Plugin 'scrooloose/syntastic'			" syntax checking
+
 
 	" Colors
 	Plugin 'nanotech/jellybeans.vim'
@@ -70,8 +74,11 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='durant'
 let g:airline_powerline_fonts = 1
+" show whether a keymap is used:
+let g:airline_detect_iminsert=1
+	let g:airline#extensions#tabline#show_tabs = 1
 set laststatus=2					" always show the status line
-set noshowmode " do not show mode I am currently in. HOWTO show language or insert-mode suspended through ^o?!
+set noshowmode " do not show mode I am currently in. HOWTO show insert-mode suspended through ^o?!
 
 " Brief help for Vundle:
 " :PluginList       - lists configured plugins
@@ -213,6 +220,9 @@ if has('nvim')
 	tnoremap <C-H> <C-\><C-n><C-W>h
 	" nnoremap <BS> <C-W>h
 	nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+
+	" always enter instert mode when switching to a terminal window
+	autocmd BufWinEnter,WinEnter term://* startinsert
 endif
 
 nnoremap <C-E> 3<C-E>
@@ -351,6 +361,7 @@ nnoremap cv :call ToggleTrueFalse()<CR>
 function! ComposeSMS()
 	:setlocal textwidth=156
 	:setlocal cc=157
+	:setlocal nonumber
 endfunction
 
 " EXPERIMENTAL SETTINGS:
