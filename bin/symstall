@@ -6,7 +6,7 @@
 # Further, it makes a link for ~/dotfiles/bin if the folder exists
 
 if [ -d "${HOME}/dotfiles" ]; then
-	cd ${HOME}/dotfiles
+	cd "${HOME}"/dotfiles
 else
 	echo "The directory ~/dotfiles does not exist."
 	exit
@@ -15,20 +15,20 @@ fi
 if [ "${PWD}" = "${HOME}/dotfiles" ]; then
 	echo "Installing symlinks"
 	link_file() {
-		target="${PWD}/${@}"
+		target="${PWD}/${1}"
 
 		# get the relative path to the directory with the file to be linked
-		dn=$(dirname ${@})
+		dn=$(dirname "${1}")
 		if [ "${dn}" = "." ]; then
 			# if the file is in ~/dotfiles, do not use any subdirectories
 			dir=""
 		else
 			# if the file is in a subdirectory, make the path complete
-			dir="${@%/*}/"
+			dir="${1%/*}/"
 		fi
 
 		# get the full name of the file
-		fullbase="${@##*/}"
+		fullbase="${1##*/}"
 
 		# strip the filename of ".symlink"
 		base="${fullbase/\.symlink/}"
@@ -40,7 +40,7 @@ if [ "${PWD}" = "${HOME}/dotfiles" ]; then
 		# create missing subdirectories if necessary
 		if [ ! -d "${linkdir}" ]; then
 			echo "Creating directory ${linkdir}"
-			mkdir -p ${linkdir}
+			mkdir -p "${linkdir}"
 		fi
 
 		# Create the symbolic link if it does not exist yet. If there is a file
