@@ -5,10 +5,10 @@
 
 for var in "$@"
 do
-	s=${var##*/}
-	base=${s%.svg}
-	echo 'converting' $var
-	inkscape -f $var -A $base.pdf
+	s="${var##*/}"
+	base="${s%.svg}"
+	echo 'converting' "$var"
+	inkscape -f "$var" -A "$base".pdf
 	echo 'done!'
 	echo '*****'
 done

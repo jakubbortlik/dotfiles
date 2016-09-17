@@ -3,9 +3,9 @@
 
 for file in "$@"
 do
-	if [[ -e $file ]]
+	if [[ -e "$file" ]]
 	then
-		e=${file##*.}
+		e="${file##*.}"
 		if [ "$e" = "pdf" ] || [ "$e" = "dvi" ] || [ "$e" = "djvu" ]
 		then
 			zathura "$file" &> /dev/null &

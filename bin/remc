@@ -3,8 +3,8 @@
 
 for var in "$@"
 do
-	new=$(echo $var | tr '[:upper:]' '[:lower:]')
-	if [ $var != $new ]
+	new=$(echo "$var" | tr '[:upper:]' '[:lower:]')
+	if [ "$var" != "$new" ]
 	then
 		mv -i "$var" "$new"
 		echo "Renamed '$var' as '$new'"

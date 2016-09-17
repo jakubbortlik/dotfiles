@@ -4,13 +4,13 @@
 
 if [ "$@" ]
 then
-	for var in "$@"
+	for file in "$@"
 	do
-		if [ -e "$var" ]
+		if [ -e "$file" ]
 		then
-			lowriter "$var" &> /dev/null &
+			lowriter "$file" &> /dev/null &
 		else
-			echo "File \"$var\" does not exist."
+			echo "File \"$file\" does not exist."
 		fi
 	done
 else

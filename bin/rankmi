@@ -5,8 +5,8 @@ E_XCD=86							# Can't change directory?
 DIR=~/comp/arch
 cd "$DIR"
 
-# Doublecheck if in right directory
-if [ `pwd` != "$DIR" ]				# Not in ~/comp/arch?
+# Doublecheck if in the right directory
+if [ "$(pwd)" != "$DIR" ]				# Not in ~/comp/arch?
 then
   echo "Can't change to $DIR."
   exit $E_XCD
@@ -21,7 +21,7 @@ then
 		sed 's/#Server/Server/' <mirrorlist >uncommented
 		rankmirrors -n 10 uncommented > mirrorlist
 		DATE=$(grep -i 'generated on' mirrorlist | grep -oE '[-0-9]+')
-		mv mirrorlist mirrorlist_${DATE}
+		mv mirrorlist mirrorlist_"${DATE}"
 		echo "New mirrorlist created: ${DIR}/mirrorlist_${DATE}."
 		echo ""
 		echo "For the list to be used by the system do:"

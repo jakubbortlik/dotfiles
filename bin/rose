@@ -24,7 +24,7 @@ set -o nounset                              # Treat unset variables as an error
 # check whether timidity is installed on the system
 #-------------------------------------------------------------------------------
 COMMAND="timidity"
-command -v $COMMAND >/dev/null 2>&1 || {
+command -v "$COMMAND" >/dev/null 2>&1 || {
     echo >&2 "Error: this script requires '$COMMAND' to be available"
     exit 1
 }
@@ -33,7 +33,7 @@ timidity -iA &>/dev/null &                      # start timidity as a deamon
 
 
 #-------------------------------------------------------------------------------
-# check whether fiel names are given and open the first one
+# check whether file names are given and open the first one
 #-------------------------------------------------------------------------------
 if [ "$#" -eq "0" ] ; then
 	rosegarden &>/dev/null &
