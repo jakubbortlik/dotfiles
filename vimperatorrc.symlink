@@ -11,6 +11,10 @@ map <leader>n :set gui+=nonavigation<CR>
 map <leader>t :tabduplicate<CR>
 map <leader>gr :ignorekeys remove mail.google.com<CR>
 map <leader>ga :ignorekeys add mail.google.com<CR>
+map <leader>ma :tabmove 0<CR>
+map <leader>me :tabmove<CR>
+map <leader>mf :tabmove +1<CR>
+map <leader>mb :tabmove -1<CR>
 
 " vimperatorrc management
 map <leader>ve :!gvim ~/.vimperatorrc<CR>
