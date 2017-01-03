@@ -55,7 +55,7 @@ call vundle#begin()
 	" Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
 	" Plugin 'justinmk/vim-sneak'				" versatile motion specified by two characters.
 	" Plugin 'tpope/vim-obsession'			" Found in airline help file
-	" Plugin 'scrooloose/syntastic'			" syntax checking
+	Plugin 'scrooloose/syntastic'			" syntax checking
 
 
 	" Colors
@@ -221,8 +221,10 @@ if has('nvim')
 	" nnoremap <BS> <C-W>h
 	nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 
-	" always enter instert mode when switching to a terminal window
+	" always enter insert mode when switching to a terminal window
 	autocmd BufWinEnter,WinEnter term://* startinsert
+	" always leave insert mode when switching from a terminal window
+	autocmd BufWinLeave,WinLeave term://* stopinsert
 endif
 
 nnoremap <C-E> 3<C-E>
