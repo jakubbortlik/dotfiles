@@ -1,0 +1,43 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: hotpot
+# 
+#         USAGE: ./hotpot
+# 
+#   DESCRIPTION: start HotPot with wine
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: Jakub Bortlík jakub.bortlik(a)gmail.com 
+#  ORGANIZATION: 
+#       CREATED: 2016-11-04 17:17
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+echo "all fine 1"
+#-------------------------------------------------------------------------------
+# check whether wine is installed on the system
+#-------------------------------------------------------------------------------
+COMMAND="wine"
+command -v "$COMMAND" >/dev/null 2>&1 || {
+    echo >&2 "Error: this script requires '$COMMAND' to be available"
+    exit 1
+}
+
+EXECUTABLE="/home/jakub/builds/hotpotatoes6/HotPot.exe"
+#-------------------------------------------------------------------------------
+# check whether file names are given and open the first one
+#-------------------------------------------------------------------------------
+if [ -e "$EXECUTABLE" ] ; then
+	wine "$EXECUTABLE" &>/dev/null &                # start HotPot with wine
+else
+	echo >&2 "Error: /home/jakub/builds/hotpotatoes6/HotPot.exe not found"
+	exit 1
+fi
+
+exit
