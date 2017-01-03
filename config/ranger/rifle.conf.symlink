@@ -151,7 +151,7 @@ ext pdf, has qpdfview, X, flag f = qpdfview "$@"
 
 ext docx?, has catdoc,       terminal = catdoc -- "$@" | "$PAGER"
 
-ext                            sxc|xlsx?|xlt|xlw|gnm|gnumeric, has gnumeric,    X, flag f = gnumeric -- "$@"
+# ext                            sxc|xlsx?|xlt|xlw|gnm|gnumeric, has gnumeric,    X, flag f = gnumeric -- "$@"
 ext                            sxc|xlsx?|xlt|xlw|gnm|gnumeric, has kspread,     X, flag f = kspread -- "$@"
 ext pptx?|od[dfgpst]|docx?|rtf|sxc|xlsx?|xlt|xlw|gnm|gnumeric, has libreoffice, X, flag f = libreoffice "$@"
 ext pptx?|od[dfgpst]|docx?|rtf|sxc|xlsx?|xlt|xlw|gnm|gnumeric, has soffice,     X, flag f = soffice "$@"
