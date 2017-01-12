@@ -51,6 +51,7 @@ call vundle#begin()
 	"
 	" Consider these plugins:
 	Plugin 'jalvesaq/Nvim-R'			" improved support for R code
+	Plugin 'vim-scripts/UniCycle'		" replace --, ..., ', and \"
 	" Plugin 'mattduck/splitscreen'			" manage windows in vim and tmux
 	" Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
 	" Plugin 'justinmk/vim-sneak'				" versatile motion specified by two characters.
