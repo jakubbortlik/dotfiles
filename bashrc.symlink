@@ -58,7 +58,7 @@ fi
 
 # do not load rc.config - ranger configuration twice
 export RANGER_LOAD_DEFAULT_RC=FALSE
-source /usr/share/doc/ranger/examples/bash_automatic_cd.sh
+source /usr/share/doc/packages/ranger/examples/bash_automatic_cd.sh
 alias ranger='ranger-cd'
 # alias "ra" to start ranger or return to the already started version
 ra() {
