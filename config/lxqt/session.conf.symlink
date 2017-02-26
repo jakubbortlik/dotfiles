@@ -1,0 +1,20 @@
+[General]
+__userfile__=true
+leave_confirmation=false
+lock_screen_before_power_actions=false
+
+[Environment]
+GTK_CSD=0
+GTK_OVERLAY_SCROLLING=0
+
+[Keyboard]
+layout="us_jb,ipa,cz_jb"
+model=latitude
+options=grp:shifts_toggle, grp:shift_caps_toggle
+variant=",,"
+
+[Mouse]
+accel_factor=21
+accel_threshold=50
+cursor_theme=DMZ
+left_handed=false
