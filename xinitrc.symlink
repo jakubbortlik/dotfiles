@@ -8,15 +8,7 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
-
-
-
-
-
-
-
     xrdb -merge $sysresources
-
 fi
 
 if [ -f $sysmodmap ]; then
@@ -24,15 +16,7 @@ if [ -f $sysmodmap ]; then
 fi
 
 if [ -f "$userresources" ]; then
-
-
-
-
-
-
-
     xrdb -merge "$userresources"
-
 fi
 
 if [ -f "$usermodmap" ]; then
@@ -68,6 +52,22 @@ export VISUAL=nvim
 # xterm -geometry 80x50+494+51 &
 # xterm -geometry 80x20+494-0 &
 # exec xterm -geometry 80x66+0+0 -name login
+
+# # enable scrolling set in ~/.xsessionrc
+# if [ -f "~/.xsessionrc" ]; then
+# 	bash .xsessionrc
+# fi
+# check if the xinput command is available
+if command -v xinput >/dev/null 2>&1
+then
+	# to enable vertical scrolling
+	xinput set-prop "AlpsPS/2 ALPS DualPoint Stick" "Evdev Wheel Emulation" 1
+	xinput set-prop "AlpsPS/2 ALPS DualPoint Stick" "Evdev Wheel Emulation Button" 2
+	xinput set-prop "AlpsPS/2 ALPS DualPoint Stick" "Evdev Wheel Emulation Timeout" 200
+
+	# to enable horizontal scrolling
+	xinput set-prop "AlpsPS/2 ALPS DualPoint Stick" "Evdev Wheel Emulation Axes" 6 7 4 5
+fi
 
 # exec startlxde
 exec startlxqt

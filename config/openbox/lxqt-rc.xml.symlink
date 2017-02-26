@@ -183,66 +183,66 @@
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
     <keybind key="C-A-Left">          # move to desktop left
-      <action name="DesktopLeft"><dialog>no</dialog><wrap>no</wrap></action>
-    </keybind>
+    <action name="DesktopLeft"><dialog>no</dialog><wrap>no</wrap></action>
+  </keybind>
     <keybind key="W-p">               # move to desktop left (previous)
-      <action name="DesktopLeft"><dialog>no</dialog><wrap>no</wrap></action>
-    </keybind>
+    <action name="DesktopLeft"><dialog>no</dialog><wrap>no</wrap></action>
+  </keybind>
     <keybind key="C-A-Right">         # move to desktop right
-      <action name="DesktopRight"><dialog>no</dialog><wrap>no</wrap></action>
-    </keybind>
+    <action name="DesktopRight"><dialog>no</dialog><wrap>no</wrap></action>
+  </keybind>
     <keybind key="W-n">               # move to desktop right (next)
-      <action name="DesktopRight"><dialog>no</dialog><wrap>no</wrap></action>
-    </keybind>
+    <action name="DesktopRight"><dialog>no</dialog><wrap>no</wrap></action>
+  </keybind>
     <keybind key="C-A-Up">            # move to desktop above
-      <action name="DesktopUp"><dialog>no</dialog><wrap>no</wrap></action>
-    </keybind>
+    <action name="DesktopUp"><dialog>no</dialog><wrap>no</wrap></action>
+  </keybind>
     <keybind key="C-A-Down">          # move to desktop below
-      <action name="DesktopDown"><dialog>no</dialog><wrap>no</wrap></action>
-    </keybind>
+    <action name="DesktopDown"><dialog>no</dialog><wrap>no</wrap></action>
+  </keybind>
     <keybind key="S-A-Left">          # send window to desktop left
-      <action name="SendToDesktopLeft"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
-    </keybind>
+    <action name="SendToDesktopLeft"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
+  </keybind>
     <keybind key="W-S-p">             # send window to desktop left
-      <action name="SendToDesktopLeft"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
-    </keybind>
+    <action name="SendToDesktopLeft"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
+  </keybind>
     <keybind key="S-A-Right">         # send window to desktop right
-      <action name="SendToDesktopRight"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
-    </keybind>
+    <action name="SendToDesktopRight"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
+  </keybind>
     <keybind key="W-S-n">             # send window to desktop right
-      <action name="SendToDesktopRight"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
-    </keybind>
+    <action name="SendToDesktopRight"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
+  </keybind>
     <keybind key="W-C-p">             # send window to desktop left and move there
-      <action name="SendToDesktopLeft"><dialog>no</dialog><wrap>no</wrap><follow>yes</follow></action>
-    </keybind>
+    <action name="SendToDesktopLeft"><dialog>no</dialog><wrap>no</wrap><follow>yes</follow></action>
+  </keybind>
     <keybind key="W-C-n">             # send window to desktop right and move there
-      <action name="SendToDesktopRight"><dialog>no</dialog><wrap>no</wrap><follow>yes</follow></action>
-    </keybind>
+    <action name="SendToDesktopRight"><dialog>no</dialog><wrap>no</wrap><follow>yes</follow></action>
+  </keybind>
     <keybind key="S-A-Up">            # send window to desktop up
-      <action name="SendToDesktopUp"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
-    </keybind>
+    <action name="SendToDesktopUp"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
+  </keybind>
     <keybind key="S-A-Down">          # send window to desktop down
-      <action name="SendToDesktopDown"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
-    </keybind>
+    <action name="SendToDesktopDown"><dialog>no</dialog><wrap>no</wrap><follow>no</follow></action>
+  </keybind>
     <keybind key="W-F1">              # move to desktop 1
-      <action name="Desktop"><desktop>1</desktop></action>
-    </keybind>
+    <action name="Desktop"><desktop>1</desktop></action>
+  </keybind>
     <keybind key="W-F2">              # move to desktop 2
-      <action name="Desktop"><desktop>2</desktop></action>
-    </keybind>
+    <action name="Desktop"><desktop>2</desktop></action>
+  </keybind>
     <keybind key="W-F3">              # move to desktop 3
-      <action name="Desktop"><desktop>3</desktop></action>
-    </keybind>
+    <action name="Desktop"><desktop>3</desktop></action>
+  </keybind>
     <keybind key="W-F4">              # move to desktop 4
-      <action name="Desktop"><desktop>4</desktop></action>
-    </keybind>
+    <action name="Desktop"><desktop>4</desktop></action>
+  </keybind>
     <keybind key="C-A-d">             # show/hide desktop
-      <action name="ToggleShowDesktop"/>
-    </keybind>
+    <action name="ToggleShowDesktop"/>
+  </keybind>
     <!-- Keybindings for windows -->
     <keybind key="A-F4">              # close active window
-      <action name="Close"/>
-    </keybind>
+    <action name="Close"/>
+  </keybind>
     <keybind key="A-Escape">          # lower current window and focus to bottom
       <action name="Lower"/>
       <action name="FocusToBottom"/>
@@ -389,7 +389,7 @@
       <action name="Execute"><command>bibletime</command></action>
     </keybind>
     <keybind key="W-c">               # launch the Character map
-      <action name="Execute"><command>charmap</command></action>
+      <action name="Execute"><command>gucharmap</command></action>
     </keybind>
     <keybind key="W-f">               # launch Firefox
       <action name="Execute"><command>firefox</command></action>
@@ -408,7 +408,10 @@
     <keybind key="W-s">               # Launch Skype
       <action name="Execute"><command>skype</command></action>
     </keybind>
-    <keybind key="W-t">               # Launch Terminator with tmux
+    <keybind key="W-t">               # attach to last tmux session in terminal
+      <action name="Execute"><command>lxterminal -e tmux -2 new-session -A -s MAIN</command></action>
+    </keybind>
+    <keybind key="W-S-t">             # Launch Terminal with tmux
       <action name="Execute"><command>lxterminal -e tmux -2</command></action>
     </keybind>
     <keybind key="W-v">               # launch VLC
@@ -464,20 +467,22 @@
     <keybind key="A-C-Delete">        # Launch Task Manager with Ctrl+Alt+Del
       <action name="Execute"><command>lxtask</command></action>
     </keybind>
-    <keybind key="C-A-l">             # Launch slock with Ctrl-Alt-L
+    <keybind key="C-A-l">             # slock the screen with Ctrl-Alt-L
       <action name="Execute"><command>slock</command></action>
     </keybind>
     <keybind key="C-A-s">             # (s)lock the screen and systemctl suspend
-      <!-- <action name="Execute"><command>slock</command></action> -->
+      <action name="Execute"><command>slock</command></action>
       <action name="Execute"><command>systemctl suspend</command></action>
     </keybind>
     <keybind key="Print">             # take a screenshot with PrintScreen
       <action name="Execute"><command>scrot</command></action>
     </keybind>
-    <keybind key="A-Print">           # take a screenshot of the focused window
-      <action name="Execute"><command>scrot -u</command></action>
-    </keybind>
-    <keybind key="S-Print">             # take a screenshot with PrintScreen
+    <!-- <keybind key="A-Print">           # take a screenshot of the focused window -->
+      <!-- <action name="Execute"><command>mate-screenshot -w</command></action> -->
+      <!-- <action name="Execute"><command>scrot -u</command></action> -->
+    <!-- </keybind> -->
+    <keybind key="S-Print">             # select a screenshot with PrintScreen
+      <!-- <action name="Execute"><command>mate-screenshot -i</command></action> -->
       <action name="Execute"><command>scrot -s</command></action>
     </keybind>
     <keybind key="XF86Display">       # Launch LXRandR with Fn+Screen
@@ -851,28 +856,32 @@
     <!-- You can specify more than one menu file in here and they are all loaded,
        just don't make menu ids clash or, well, it'll be kind of pointless -->
     <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
-    <file>/usr/share/lxde/openbox/menu.xml</file>
+    <file>@LXQT_SHARE_DIR@/openbox/menu.xml</file>
     <hideDelay>200</hideDelay>
     <!-- if a press-release lasts longer than this setting (in milliseconds), the
-       menu is hidden again -->
+     menu is hidden again -->
     <middle>no</middle>
     <!-- center submenus vertically about the parent entry -->
     <submenuShowDelay>25</submenuShowDelay>
     <!-- this one is easy, time to delay before showing a submenu after hovering
-       over the parent entry -->
+     over the parent entry -->
     <applicationIcons>yes</applicationIcons>
     <!-- controls if icons appear in the client-list-(combined-)menu -->
     <manageDesktops>yes</manageDesktops>
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
-    <application type="normal">
-      <decor>no</decor>
-    </application>
+    <!-- <application type="normal"> -->
+    <!--   <decor>no</decor> -->
+    <!-- </application> -->
     <application name="lowriter">
       <maximized>true</maximized>
     </application>
     <application name="zathura">
+      <maximized>true</maximized>
+      <focus>true</focus>
+    </application>
+    <application name="mupdf">
       <maximized>true</maximized>
       <focus>true</focus>
     </application>
