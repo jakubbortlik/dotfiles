@@ -126,18 +126,16 @@ alias ..2="cd ../.."
 alias ..3="cd ../../.."
 
 alias b="($EDITOR ~/dotfiles/bashrc.symlink)"
-alias q="exit"
 alias f="(firefox &> /dev/null &)"
 alias h="(localc ~/harmonogram.xls &> /dev/null &)"
 alias m="(mocp)"
-alias p="(/home/jakub/praat/versions/praat6005 &> /dev/null &)"
+alias p="(/home/jakub/dotfiles/bin/praat &> /dev/null &)"
 alias s="(skype &> /dev/null &)"
 
 alias bh="($EDITOR ~/.bash_history)"
 alias bs="(. ~/.bashrc)"
 alias or="(openbox --reconfigure)"
 alias sd="systemctl poweroff"
-alias st='st -t "Suckless Terminal" -f "Source Code Pro:pixelsize=13" -g "100x44" -e "tmux"'
 alias wm="(sudo wifi-menu)"
 
 alias cbh="(sed -ir '/^.[ ]*$/d' ~/.bash_history; echo 'removed single character lines from .bash_history')"
