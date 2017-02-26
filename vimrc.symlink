@@ -19,6 +19,9 @@ set iskeyword+=$			" not sure why this is here...
 "		\ endif
 "endif
 
+" prepend (^=) the ftplugins directory
+set runtimepath^=~/.vim/ftplugin/
+
 "========================================
 " Settings for the Vundle plugin manager:
 "========================================
@@ -34,7 +37,7 @@ call vundle#begin()
 	Plugin 'tpope/vim-unimpaired'		" pairs of handy bracket mappings
 	Plugin 'tpope/vim-fugitive'			" git wrapper
 	Plugin 'tpope/vim-commentary'		" toggle comments
-	Plugin 'tpope/vim-repeat'			" repeat other plugins with the . command
+	Plugin 'tpope/vim-repeat'			" repeat other plugins with . command
 	Plugin 'tpope/vim-surround'			" parentheses, brackets, quotes, and more 
 	Plugin 'tpope/vim-speeddating'		" let <C-A>, <C-X> work on dates properly
 	Plugin 'vim-scripts/bash-support.vim' " selfexplanatory
@@ -43,18 +46,19 @@ call vundle#begin()
 	Plugin 'jakubbortlik/vim-praat'		" syntax highlighting for praat
 	Plugin 'scrooloose/nerdtree'		" navigate through the filesystem
 	Plugin 'Xuyuanp/nerdtree-git-plugin' " git status flags for NERDtree
-	Plugin 'lervag/vimtex'				" latex plugin with background compilation
-	Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 	if has('nvim')
-		Plugin 'gerw/vim-latex-suite'	" an nvim alternative to the official vim latex-suite
+		Plugin 'gerw/vim-latex-suite'	" nvim alternative to official latex-suite
 	endif
+	Plugin 'lervag/vimtex'				" latex plugin with background
+										" compilation, recquires texlive-latexmk
+	Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 	"
 	" Consider these plugins:
 	Plugin 'jalvesaq/Nvim-R'			" improved support for R code
 	Plugin 'vim-scripts/UniCycle'		" replace --, ..., ', and \"
 	" Plugin 'mattduck/splitscreen'			" manage windows in vim and tmux
 	" Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
-	" Plugin 'justinmk/vim-sneak'				" versatile motion specified by two characters.
+	" Plugin 'justinmk/vim-sneak'			" versatile motion done by 2 characters
 	" Plugin 'tpope/vim-obsession'			" Found in airline help file
 	Plugin 'scrooloose/syntastic'			" syntax checking
 
@@ -78,8 +82,9 @@ let g:airline_powerline_fonts = 1
 " show whether a keymap is used:
 let g:airline_detect_iminsert=1
 	let g:airline#extensions#tabline#show_tabs = 1
-set laststatus=2					" always show the status line
-set noshowmode " do not show mode I am currently in. HOWTO show insert-mode suspended through ^o?!
+set laststatus=2				" always show the status line
+set noshowmode 					" don't show mode I am in.
+								" HOWTO show insert-mode suspended through ^o?!
 
 " Brief help for Vundle:
 " :PluginList       - lists configured plugins
@@ -107,6 +112,9 @@ let g:BASH_MapLeader  = ','         " set the leader used by bash-vim plugin
 "=================
 
 runtime macros/matchit.vim	" matchit plugin finds matching if/endif, etc.
+
+" prepend (^=) the ftplugins directory
+set runtimepath^=~/.vim/ftplugin/
 
 "==========================================
 " Put your non-Plugin stuff after this line
@@ -348,7 +356,7 @@ function! ToggleTrueFalse()
 	:let column = virtcol(".")
 	:let linenumber = line(".")
 	:let line = getline(".")
-	:let value = strpart(line , match(line, '\( \|=\)\@<=\(false\|true\)'))
+	:let value = strpart(line , match(line, '\( \|=\|:\)\@<=\(false\|true\)'))
 	if value == "false"
 		:execute "normal! $ciwtrue"
 	elseif value == "true"
@@ -359,6 +367,11 @@ function! ToggleTrueFalse()
 	:call cursor(linenumber, column)
 endfunction
 nnoremap cv :call ToggleTrueFalse()<CR>
+
+" insert current time at cursor position
+" nnoremap <leader>ct :put! =strftime('%H:%M')<CR>
+nnoremap <F5> "=strftime('%H:%M')<CR>p
+inoremap <F5> <C-R>=strftime('%H:%M')<CR>
 
 " some settings for easy SMS wriging
 function! ComposeSMS()
