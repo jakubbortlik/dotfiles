@@ -16,7 +16,7 @@ set -g renumber-windows on
 set -s escape-time 1
  
 # Silence bell
-set-option -g visual-bell on
+set-option -g visual-bell off
  
 # Shortcut to reload config
 # Keeps me from having to exit and restart whenever I make a config change.
@@ -96,7 +96,7 @@ setw -g window-status-current-fg red
 #setw -g window-status-alert-fg yellow
  
 # Here's where we set the actual display of the various regions
-set -g status-left '#[bg=colour100]#[fg=black]#H:#[fg=blue]#S#[fg=colour100] #[bg=black]#[default]'
+set -g status-left '#[bg=colour100]#[fg=black]#H: #[fg=blue]#S#[fg=colour100] #[bg=black]#[default]'
 set -g status-right-length 100
 set -g status-right '#[fg=colour100]#[bg=colour100] #[fg=black]%Y-%m-%d #[fg=blue]#[bg=blue]#[fg=black] %H:%M #[default]'
 
@@ -109,3 +109,6 @@ bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
 bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
 bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
 bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+
+# don't rename windows automatically
+set-option -g allow-rename off
