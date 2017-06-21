@@ -845,6 +845,7 @@ else
 	exe 'source '.fnameescape(s:path.'/mathmacros.vim')
 endif
 
+" disable the compiler, use vimtex's compiler instead:
 " exe 'source '.fnameescape(s:path.'/multicompile.vim')
 " exe 'source '.fnameescape(s:path.'/compiler.vim')
 exe 'source '.fnameescape(s:path.'/folding.vim')
