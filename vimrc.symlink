@@ -28,7 +28,7 @@ set runtimepath^=~/.vim/ftplugin/
 filetype off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 	Plugin 'VundleVim/Vundle.vim'		" let Vundle manage Vundle
 	Plugin 'tommcdo/vim-exchange'		" easy exange of two portions of text
@@ -46,11 +46,6 @@ call vundle#begin()
 	Plugin 'jakubbortlik/vim-praat'		" syntax highlighting for praat
 	Plugin 'scrooloose/nerdtree'		" navigate through the filesystem
 	Plugin 'Xuyuanp/nerdtree-git-plugin' " git status flags for NERDtree
-	if has('nvim')
-		Plugin 'gerw/vim-latex-suite'	" nvim alternative to official latex-suite
-	endif
-	Plugin 'lervag/vimtex'				" latex plugin with background
-										" compilation, recquires texlive-latexmk
 	Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 	"
 	" Consider these plugins:
@@ -65,6 +60,12 @@ call vundle#begin()
 
 	" Colors
 	Plugin 'nanotech/jellybeans.vim'
+
+	" latex plugins
+	if has('nvim')
+		Plugin 'gerw/vim-latex-suite'	" nvim alternative to official latex-suite
+	endif
+	Plugin 'lervag/vimtex'				" latex plugin with background
 call vundle#end()
 
 if has("autocmd")
@@ -319,8 +320,8 @@ inoremap <C-F> <Right>
 cnoremap <C-A> <Home>
 " back one character
 cnoremap <C-B> <Left>
-" delete character under cursor
-cnoremap <C-D> <Del>
+" delete character under cursor - this overrides command line completion
+" cnoremap <C-D> <Del>
 " to end of line
 cnoremap <C-E> <End>
 " forward one character
@@ -375,9 +376,32 @@ inoremap <F5> <C-R>=strftime('%H:%M')<CR>
 
 " some settings for easy SMS wriging
 function! ComposeSMS()
-	:setlocal textwidth=156
-	:setlocal cc=157
-	:setlocal nonumber
+	function! ComposeSMS_startComposing()
+		:echo "You are composing an SMS. tw=156 and cc=157."
+		:echo "You can write just before the colour column."
+		:echo "When you are finished, insert \"1/4 \", etc. in front of the text."
+		:let b:ComposeSMS_old_textwidth = &l:textwidth
+		:let b:ComposeSMS_old_cc = &l:colorcolumn
+		:let b:ComposeSMS_old_number = &l:number
+		:setlocal textwidth=156
+		:setlocal cc=157
+		:setlocal nonumber
+		:let b:ComposeSMS_composing = 1
+	endfunction
+	if exists("b:ComposeSMS_composing")
+		if b:ComposeSMS_composing == 1
+			:echo "You have stopped composing an SMS."
+			:let &l:textwidth=b:ComposeSMS_old_textwidth
+			:let &l:cc=b:ComposeSMS_old_cc
+			:let &l:number=b:ComposeSMS_old_number
+			:let b:ComposeSMS_composing = 0
+		else
+			:call ComposeSMS_startComposing()
+		endif
+	else
+		:let b:ComposeSMS_composing = 0
+		:call ComposeSMS_startComposing()
+	endif
 endfunction
 
 " EXPERIMENTAL SETTINGS:
