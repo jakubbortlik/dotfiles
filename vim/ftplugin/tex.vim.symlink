@@ -107,7 +107,7 @@ function! DeleteAllItem()
 	:execute "normal! ?\\\\item\<CR>"
 	:execute "normal! d/\\(^\\s*\\(\\\\end\\|\\\\begin\\){\\(enumerate\\|itemize\\|description\\|list\\|theindex\\|thebibliography\\|example\\)}\\|\\\\item\\|^?\\s*\\\\item\\)\<CR>"
 endfunction
-nnoremap dai :call DeleteAllItem()<CR>
+nnoremap dai :silent call DeleteAllItem()<CR><CR>
 
 " map vai to visually select from the \item just before the cursor to the line just
 " before the next \item
@@ -117,7 +117,7 @@ function! SelectAllItem()
 	:execute "normal! ?\\\\item\<CR>"
 	:execute "normal! v/\\n\\(\\s*\\\\item\\|\\s*\\(\\\\end\\|\\\\begin\\){\\(enumerate\\|itemize\\|description\\|list\\|theindex\\|thebibliography\\|example\\)}\\)\<CR>"
 endfunction
-nnoremap vai :call SelectAllItem()<CR>
+nnoremap vai :silent call SelectAllItem()<CR><CR>
 
 " make using the Alt+Key macros possible
 let g:Tex_AdvancedMath = 1
