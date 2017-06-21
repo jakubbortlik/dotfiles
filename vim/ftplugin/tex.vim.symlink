@@ -9,6 +9,14 @@ nnoremap <leader>ts :source ~/.vim/ftplugin/tex.vim<CR>
 " map <leader>sh to show :Tshortcuts
 nnoremap <leader>sh :Tshortcuts<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""
+" Ignore some error messages from Syntastic
+"""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_quiet_messages = { "regex": [
+        \ '\mpossible unwanted space at "{"',
+        \ '\mmissing .... before ... in ".*"',
+        \ ] }
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " some settings for vim-latex-suite and vimtex
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -16,7 +24,7 @@ nnoremap <leader>sh :Tshortcuts<CR>
 " quotes easyly in insertmode
 let g:Tex_Leader = "+"
 
-" disable vimtex imaps with "`"
+" disable vimtex imaps with "`" (mostly math symbols)
 let g:vimtex_imaps_enabled = 0
 
 " less free space in toc:
@@ -24,6 +32,12 @@ let g:vimtex_toc_secnumdepth = 1
 
 " map the vimtex localleader
 let maplocalleader = ","
+
+" set zathura as the vimtex_view_method
+let g:vimtex_view_method="mupdf"
+
+" workaround for viewer
+nnoremap <leader>lv :silent !mupdf "%:r.pdf" &>/dev/null &<CR>
 
 " map <leader>lb to "!biber filenameWithoutExtension"
 nnoremap <leader>lb :!biber "%:t:r"<CR>
@@ -57,6 +71,10 @@ nmap <leader>t^ aTS^
 " insert \textsubscript{}<++>
 call IMAP('TSV', '\textsubscript{<++>}<++>', 'tex')
 nmap <leader>tv aTS^
+
+" insert \textsuperscript{}<++>
+call IMAP('EFE', '\begin{frame}<++>\end{frame}<++>', 'tex')
+nmap <leader>fe aEFE
 
 """"""""""""""
 " Appearance
@@ -102,6 +120,7 @@ endfunction
 nnoremap vai :call SelectAllItem()<CR>
 
 " make using the Alt+Key macros possible
+let g:Tex_AdvancedMath = 1
 setlocal winaltkeys=no
 
 " ways to generate pdf files. there are soo many...
