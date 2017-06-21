@@ -2,10 +2,10 @@
 __userfile__=true
 enableBatteryWatcher=true
 enableExtMonLidClosedActions=false
-enableIdlenessWatcher=false
+enableIdlenessWatcher=true
 enableLidWatcher=true
 idlenessAction=4
-idlenessTimeSecs=900
+idlenessTimeSecs=3600
 lidClosedAcAction=4
 lidClosedAction=4
 lidClosedExtMonAcAction=4

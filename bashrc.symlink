@@ -168,6 +168,12 @@ alias hrad="(sudo systemctl stop netctl-auto@wlp12s0.service; sudo netctl stop-a
 alias wired="(sudo systemctl stop netctl-auto@wlp12s0.service; sudo netctl stop-all; sudo netctl start ethernet-dhcp)"
 alias tether="(f=`ip link | grep -oE "enp0s29f[0-9]+u[0-9]+c[0-9]+"`; sudo dhcpcd "$f")"
 
+# temporary aliases:
+alias bau='rsync -rptgoDv --delete --exclude=".*" ~/skola/1_phd/01_state_exam/ /run/media/jakub/BORTLIK/skola/1_phd/01_state_exam'
+alias baun='rsync -rptgoDvn --delete --exclude=".*" ~/skola/1_phd/01_state_exam/ /run/media/jakub/BORTLIK/skola/1_phd/01_state_exam'
+alias bad='rsync -rptgoDv --delete --exclude=".*" ~/skola/1_phd/01_state_exam/ /run/media/jakub/backup/jakub/skola/1_phd/01_state_exam'
+alias badn='rsync -rptgoDvn --delete --exclude=".*" ~/skola/1_phd/01_state_exam/ /run/media/jakub/backup/jakub/skola/1_phd/01_state_exam'
+
 # (mount automatically and) cd to the the first connected USB
 alias cu1="cd /mnt/usb1"
 # unmount the first connected USB

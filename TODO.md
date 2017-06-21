@@ -51,6 +51,12 @@ latex:
 - harmonize vimtex and vim-latex-suite: autoindent after \footnote{}
 - VimtexView - select the right file after another .tex file has been opened
 
+libreoffice:
+------------
+- shortcuts for:
+	- opening the menu at cursor
+	- close find bar with <c-[>
+
 Other:
 ------
 - find out how not to start X but login as a user who has got "startx" in the
@@ -58,3 +64,5 @@ Other:
 - post a bug report on christoomey/vim-tmux-navigator:
 	does not work when "nVim" is started from ranger or Midnight Commander
 	(current_command = python/mc)
+- write script for toggling settings for a night/day shift
+- record video of screen to find out addresses to block on sms.t-mobile.cz

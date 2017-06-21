@@ -18,6 +18,7 @@ type=cpuload
 
 [desktopswitch]
 alignment=Left
+labelType=1
 type=desktopswitch
 
 [kbindicator2]

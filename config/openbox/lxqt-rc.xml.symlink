@@ -126,10 +126,9 @@
     <number>2</number>
     <firstdesk>1</firstdesk>
     <names>
-      <!-- set names up here if you want to, like this:
-    <name>desktop 1</name>
-    <name>desktop 2</name>
-    -->
+      <!-- set names up here if you want to, like this: -->
+    <name>work</name>
+    <name>browse</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -266,17 +265,17 @@
       <action name="PreviousWindow"><dialog>icons</dialog><finalactions><action name="Focus"/></finalactions></action>
     </keybind>
     <!-- Focusing and Raising windows -->
-    <keybind key="W-u">               # lower and unfocus current window
+    <keybind key="W-u">               #  lower current window focus to bottom
         <action name="Lower"/>
         <action name="Unfocus"/>
+        <action name="FocusToBottom"/>
     </keybind>
     <keybind key="W-S-u">             # lower current window without unfocusing
         <action name="Lower"/>
     </keybind>
-    <keybind key="W-C-u">             #  lower current window focus to bottom
+    <keybind key="W-C-u">             # lower and unfocus current window
         <action name="Lower"/>
         <action name="Unfocus"/>
-        <action name="FocusToBottom"/>
     </keybind>
     <keybind key="W-i">               # raise the focused window
         <action name="Raise"/>
@@ -396,7 +395,7 @@
     <keybind key="C-S-XF86AudioLowerVolume"> # mocp - seek back 5sec
       <action name="Execute"><command>mocp --seek -5</command></action>
     </keybind>
-    <keybind key="C-S-XF86AudioRaiseVolume"> # mocp - toggle PAUSE
+    <keybind key="C-S-XF86AudioRaiseVolume"> # mocp - PLAY
       <action name="Execute"><command>mocp --play</command></action>
     </keybind>
     <keybind key="C-S-XF86AudioMute">     # mocp - seek forward 5sec
@@ -976,3 +975,4 @@
 -->
   </applications>
 </openbox_config>
+
