@@ -1,0 +1,46 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: lateck
+# 
+#         USAGE: ./lateck
+# 
+#   DESCRIPTION: check whether xelatex is running
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: Jakub Bortlik, jakub.bortlik@gmail.com
+#  ORGANIZATION: 
+#       CREATED: 06/21/2017 11:55
+#      REVISION: 06/27/2017 11:33
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+APP="xelatex"
+
+STATE=0
+
+echo "Started checking..."
+while true
+do
+	APPID=`pgrep "$APP"`
+
+	if [[ "$APPID" != "" ]] && [[ $STATE == 0 ]] ; then
+		STATE=1
+		echo "$APP" running...
+	elif [[ "$APPID" != "" ]] ; then
+		:
+	elif [[ "$APPID" == "" ]] && [[ $STATE == 1 ]] ; then
+		STATE=0
+		echo ""
+		echo "$APP" stopped.
+	else
+		:
+	fi
+	sleep 0.1
+done
+
+exit

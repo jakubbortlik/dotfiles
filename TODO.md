@@ -66,3 +66,4 @@ Other:
 	(current_command = python/mc)
 - write script for toggling settings for a night/day shift
 - record video of screen to find out addresses to block on sms.t-mobile.cz
+- remdi doesn't work when there are spaces in the file name
