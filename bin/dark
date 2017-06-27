@@ -1,0 +1,40 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: dark
+# 
+#         USAGE: ./dark
+# 
+#   DESCRIPTION: change some settings to a dark theme
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: Jakub Bortlík jakub.bortlik(a)gmail.com 
+#  ORGANIZATION: 
+#       CREATED: 01/06/2017 9:31
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+PATH_ZATHURA="/home/jakub/dotfiles/config/zathura/zathurarc.symlink"
+PATH_LO="/home/jakub/.config/libreoffice/4-suse/user/registrymodifications.xcu"
+
+#-------------------------------------------------------------------------------
+# check whether files exist
+#-------------------------------------------------------------------------------
+if [[ -e $PATH_ZATHURA ]] ; then
+	sed  --in-place=.tmp '/set recolor/ s/false/true/' "$PATH_ZATHURA"
+else
+	echo "$PATH_ZATHURA does not exist"
+fi
+
+if [[ -e $PATH_LO ]] ; then
+	sed  --in-place=.tmp '/CurrentColorScheme/ s/LibreOffice/nightshift/' "$PATH_LO"
+else
+	echo "$PATH_LO does not exist"
+fi
+
+exit
