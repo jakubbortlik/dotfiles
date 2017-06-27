@@ -1,0 +1,27 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: gi
+# 
+#         USAGE: ./gi
+# 
+#   DESCRIPTION: use grep (case sensitive) to find some text and sed to
+# 			     abreviate the file name
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: Jakub Bortlik (jakub.bortlik@gmail.com), 
+#  ORGANIZATION: 
+#       CREATED: 05/26/2017 14:32
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+string="$@"
+grep "$string" ./*txt | sed -r 's/(^.{25}).*(txt:)/\1...\2 /' \
+	| grep -i --color=auto "$string"
+
+exit
