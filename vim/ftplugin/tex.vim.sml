@@ -39,6 +39,9 @@ let g:vimtex_view_method="mupdf"
 " workaround for viewer
 nnoremap <leader>lv :silent !mupdf "%:r.pdf" &>/dev/null &<CR>
 
+" see whether latex is working:
+nnoremap <leader>la :!modcheck<CR>
+
 " map <leader>lb to "!biber filenameWithoutExtension"
 nnoremap <leader>lb :!biber "%:t:r"<CR>
 
@@ -76,6 +79,16 @@ nmap <leader>tv aTS^
 call IMAP('EFE', '\begin{frame}<++>\end{frame}<++>', 'tex')
 nmap <leader>fe aEFE
 
+" insert \textsuperscript{}<++>
+call IMAP('EMF', '{\myfont<++>}<++>', 'tex')
+nmap <leader>mf aEMF
+
+" enclose one word in \alert{}
+nmap <leader>al viw+al
+
+" enclose one word in \emph{}
+nmap <leader>em viw+em
+
 """"""""""""""
 " Appearance
 """"""""""""""
@@ -94,7 +107,16 @@ setlocal shiftwidth=2
 setlocal tabstop=2
 
 " in visual mode put \url{} around the selected text
-vmap <leader>ur `>a}`<i\url{
+vmap +ur `>a}`<i\url{
+
+" in visual mode put \alert{} around the selected text
+vmap +al `>a}`<i\alert{
+
+" in visual mode put \uncover<++>{} around the selected text
+vmap +un `>a}`<i\uncover<->{hhi
+
+" in visual mode put \alert{} around the selected text
+vmap +mf `>a}`<i{\myfont
 
 "map <leader>cc to close the Errorwindow
 nnoremap <leader>cc :ccl<CR>

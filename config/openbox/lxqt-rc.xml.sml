@@ -127,7 +127,7 @@
     <firstdesk>1</firstdesk>
     <names>
       <!-- set names up here if you want to, like this: -->
-    <name>work</name>
+    <name>write</name>
     <name>browse</name>
     </names>
     <popupTime>875</popupTime>
