@@ -1205,3 +1205,46 @@ rsync -avn ~/harmonogram.xls /run/media/jakub/backup/jakub/harmonogram.xls
 rsync -avn ~/rsync_exclude_dotfiles.txt /run/media/jakub/backup/jakub/
 rsync -av ~/rsync_exclude_dotfiles.txt /run/media/jakub/backup/jakub/
 rsync -av ~/harmonogram.xls /run/media/jakub/backup/jakub/harmonogram.xls
+git add bash_history.sml 
+gs
+git commit -m 'add bash_history.sml'
+git add vimperator
+git commit -m 'remove vimperator files'
+git push
+sd
+ping -c3 8.8.8.8
+ra
+sd
+ra
+sd
+ra
+uu1
+rsync -av --exclude=.* ~/Documents/domaci/svatba /run/media/jakub/BORTLIK/
+ra
+sd
+vim
+rsync -avn --exclude=.* /run/media/jakub/BORTLIK/svatba/ ~/Documents/domaci/svatba/
+rsync -avn --exclude=.* /run/media/jakub/BORTLIK/svatba/ ~/Documents/domaci/svatba
+rsync -avn --exclude=.* ~/Documents/domaci/svatba /run/media/jakub/BORTLIK/
+rsync -avn --exclude=.* ~/Documents/domaci/svatba/ /run/media/jakub/BORTLIK/svatba
+rsync -av --exclude=.* ~/Documents/domaci/svatba/ /run/media/jakub/BORTLIK/svatba
+rsync -avn --exclude=.* ~/Documents/domaci/svatba/ /run/media/jakub/BORTLIK/svatba
+rsync -avn --exclude=.* ~/Documents/ /run/media/jakub/backup/jakub/Documents
+rsync -av --exclude=.* ~/Documents/ /run/media/jakub/backup/jakub/Documents
+ra
+bh
+cp ~/.bash_history ~/.bash_history_rsync; nvim ~/.bash_history_rsync
+ll
+rsync -av --delete --exclude-from=exclude.txt ~/Audio/ /run/media/jakub/backup/jakub/Audio
+rsync -av --delete --exclude-from=exclude.txt ~/konference/ /run/media/jakub/backup/jakub/konference
+rsync -av --delete --exclude-from=exclude.txt ~/maus/ /run/media/jakub/backup/jakub/maus
+rsync -av --delete --exclude-from=exclude.txt ~/Music/ /run/media/jakub/backup/jakub/Music
+rsync -av --delete --exclude-from=exclude.txt ~/Pictures/ /run/media/jakub/backup/jakub/Pictures
+rsync -av --delete --exclude-from=exclude.txt ~/praat/ /run/media/jakub/backup/jakub/praat
+rsync -av --delete --exclude-from=exclude.txt ~/preklady/ /run/media/jakub/backup/jakub/preklady
+rsync -av --delete --exclude-from=exclude.txt ~/skola/ /run/media/jakub/backup/jakub/skola
+rsync -av --exclude-from=exclude.txt ~/Videos/ /run/media/jakub/backup/jakub/Videos
+rsync -av --delete --exclude-from=exclude.txt ~/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -avn --delete ~/comp/backups/ /run/media/jakub/backup/jakub/comp/backups
+rsync -avn --delete ~/comp/ /run/media/jakub/backup/jakub/comp
+rsync -av --delete ~/comp/ /run/media/jakub/backup/jakub/comp
