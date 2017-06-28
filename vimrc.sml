@@ -241,8 +241,8 @@ nnoremap <C-E> 3<C-E>
 nnoremap <C-Y> 3<C-Y>
 
 " edit vimrc in the ~/dotfiles/
-nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.symlink \| setlocal nowrap<CR>
-nnoremap <Leader>vt :tabedit ~/dotfiles/vimrc.symlink<CR>
+nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.sml \| setlocal nowrap<CR>
+nnoremap <Leader>vt :tabedit ~/dotfiles/vimrc.sml<CR>
 " source the linked .vimrc from ~/
 if has('nvim')
 	nnoremap <Leader>vs :source ~/.config/nvim/init.vim<CR>

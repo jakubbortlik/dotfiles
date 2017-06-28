@@ -101,7 +101,7 @@ if [[ "${PWD}" = "${DOTFILES_DIR}" ]]; then
 	NVIM_INIT="${NVIM_DIR}/init.vim"
 	NI_TARGET="${HOME}/.vimrc"
 	OLD_NF_TARGET=$(readlink -f "$NVIM_FTPLUGIN")
-	OLD_NI_TARGET=$(readlink -f "$NVIM_INIT")
+	OLD_NI_TARGET=$(readlink "$NVIM_INIT")
 
 	if [[ ! -e "$NVIM_FTPLUGIN" ]] || [[ "$OLD_NF_TARGET" != "$NF_TARGET" ]]; then
 		ln --no-dereference --symbolic --backup=numbered --interactive "$NF_TARGET" "$NVIM_FTPLUGIN"
