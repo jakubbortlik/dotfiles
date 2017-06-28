@@ -1,11 +1,8 @@
 symstall:
 -----------
-- correct the argument reference "$@" and variable quoting!
-- change ".symlink" into a variable, e.g., ${ext}
-- only remove .symlink as an extension, not in file names! change:
-		base="${fullbase/\.symlink/}"
-		to ${fullbase##.symlink} or something
 - add execution report and a logfile
+- install packages
+- add "vim +PluginInstall +qall"
 
 nVim:
 -----
@@ -15,7 +12,7 @@ nVim:
 
 - adjust "define" in praat.vim
 
-- airline: show suspended imode (Ctrl-o) on the statusline
+- airline: show suspended imode, e.g. -- (insert) -- (Ctrl-o) on the statusline
 
 - show the alternate buffer name somewhere
 
@@ -24,6 +21,12 @@ nVim:
   vimtex-delim-close() or 50_LookupCharacter()
 
 - unimpaired: keep cursor position after ]<Space>
+
+
+python:
+-------
+- python-mode in vim
+
 
 GTK3:
 -----
@@ -44,18 +47,27 @@ openbox:
   set for LXTerminal?
 - keep only CS and US in the keyboard layout handler, have a xkbmap shortcut for IPA
 - remap CapsLock to Ctrl (and possibly Escape)
+- highlight the active window's icon on the panel
+- show focused window
+- show preview when cycling windows with Alt-Tab
 
 latex:
 ------
 - include audio
 - harmonize vimtex and vim-latex-suite: autoindent after \footnote{}
 - VimtexView - select the right file after another .tex file has been opened
+- biblatex - multiple works in one parenthesis, \autocite[15]{lass}[16]{brown}
+- replace tabs with spaces (expandtab?)
 
 libreoffice:
 ------------
 - shortcuts for:
 	- opening the menu at cursor
 	- close find bar with <c-[>
+
+debugger:
+---------
+GDB - the GNU Project Debugger
 
 Other:
 ------
@@ -67,3 +79,91 @@ Other:
 - write script for toggling settings for a night/day shift
 - record video of screen to find out addresses to block on sms.t-mobile.cz
 - remdi doesn't work when there are spaces in the file name
+
+Packages to install:
+--------------------
+airline
+audacity
+baobab - disk management
+biber
+bibletime 1
+caca-utils
+ctl 	# for the visualalisation in git
+firefox
+*flashplugin
+flash-player-properties???
+*fluidsynth
+galculator 1
+gimp
+gmrun	# application starter (Ctrl-R)
+gucharmap 1
+inkscape
+klavaro
+lame
+leafpad 1
+libreoffice
+*lilypond
+man-db
+man-pages
+mlocate
+moc
+mtpaint
+mupdf
+*neovim
+noto-fonts?
+noto-fonts-cjk?
+*nvidia
+noto-fonts-emoji?
+*pdfgrep
+obconf - openbox configuration manager??
+perl-biber
+perl-rename
+powerline-fonts
+praat
+*python-neovim
+r-core
+ranger + libcaca (Color AsCii Art library) + highlight
+*redshift
+rosegarden
+rstudio??
+rsync
+rxvt-unicode??
+scrot
+skype
+slock
+smplayer
+sox
+system-config-printer???
+texlive
+texlive-latexmk
+texlive-beamer
+texlive-biber
+texlive-bibtex
+texlive-nag
+texlive-pdfjam
+*tcl??
+*timidity++
+tk		# for the visualalisation in git
+*tmux
+ttf-bitstream-vera
+ttf-dejavu
+ttf-droid
+ttf-liberation
+tuxguitar??
+*unetbootin
+unrar
+unzip
+*vim-latexsuite
+xfce4-power-manager-settings??
+xpad
+w3m
+w3m-inline-image
+*wine
+xorg-xev?
+*zathura
+*zathura-pdf-mupdf
+*zathura-plugin-djvu
+
+podofo - pdf manipulation
+pdftk?
+tox - aur?
