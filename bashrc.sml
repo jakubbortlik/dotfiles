@@ -125,7 +125,7 @@ alias ..="cd .."
 alias ..2="cd ../.."
 alias ..3="cd ../../.."
 
-alias b="($EDITOR ~/dotfiles/bashrc.symlink)"
+alias b="($EDITOR ~/dotfiles/bashrc.sml)"
 alias f="(firefox &> /dev/null &)"
 alias h="(localc ~/harmonogram.xls &> /dev/null &)"
 alias m="(mocp)"

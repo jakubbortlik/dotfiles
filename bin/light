@@ -19,7 +19,7 @@
 
 set -o nounset                              # Treat unset variables as an error
 
-PATH_ZATHURA="/home/jakub/dotfiles/config/zathura/zathurarc.symlink"
+PATH_ZATHURA="/home/jakub/dotfiles/config/zathura/zathurarc.sml"
 PATH_LO="/home/jakub/.config/libreoffice/4-suse/user/registrymodifications.xcu"
 
 #-------------------------------------------------------------------------------

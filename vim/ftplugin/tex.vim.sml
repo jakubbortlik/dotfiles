@@ -1,7 +1,7 @@
 " LaTeX specific settings
 
 " mapping for opening this file in a new window
-nnoremap <leader>te :vsplit ~/dotfiles/vim/ftplugin/tex.vim.symlink \| setlocal nowrap<CR>
+nnoremap <leader>te :vsplit ~/dotfiles/vim/ftplugin/tex.vim.sml \| setlocal nowrap<CR>
 
 " mapping for sourcing this file
 nnoremap <leader>ts :source ~/.vim/ftplugin/tex.vim<CR>

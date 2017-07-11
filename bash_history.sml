@@ -737,8 +737,6 @@ rsync -av --delete --exclude=.* ~/skola/1_phd/01_state_exam/ /run/media/jakub/BO
 openbox --reconfigure
 openbox reconfigure
 rsync -av --delete --exclude=.* ~/skola/1_phd/01_state_exam/ /run/media/jakub/BORTLIK/skola/1_phd/01_state_exam
-chmod a+xw dotfiles/vim/ftplugin/symlink.vim 
-chmod a+xw dotfiles/vim/ftplugin/symlink.vim.symlink 
 find . -type f -exec grep -i "commentstring" {} \;
 find . -type f -exec grep -i "commentstring" {} \;
 find . -type f -exec grep -i "commentstring" {} \;
@@ -1248,3 +1246,12 @@ rsync -av --delete --exclude-from=exclude.txt ~/zdroje/ /run/media/jakub/backup/
 rsync -avn --delete ~/comp/backups/ /run/media/jakub/backup/jakub/comp/backups
 rsync -avn --delete ~/comp/ /run/media/jakub/backup/jakub/comp
 rsync -av --delete ~/comp/ /run/media/jakub/backup/jakub/comp
+git push 
+cd /run/media/jakub/backup/jakub/dotfiles/
+git pull
+pwd
+gl
+ping -c3 8.8.8.8
+bh
+gs
+b

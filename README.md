@@ -1,20 +1,19 @@
-#Jakub's Dotfiles
+Jakub's Dotfiles
+----------------
 
-I am running Arch Linux with LXDE on a Dell Latitude E6400
+I am running openSUSE Linux with LXDE on a Dell Latitude E6400
 
 How it works
 ------------
-The script ~/dotfiles/bin/symstall looks for files with the extension .symlink
+The script ~/dotfiles/bin/symstall looks for files with the extension .sml
 and creates links in $HOME with the same directory structure as is found in the
 dotfiles/ directory, except it prepends all paths with a "." and cuts off the
-.symlink suffix.
+.sml suffix.
 
-E.g. for the file ~/dotfiles/vim/ftplugin/tex.vim.symlink there will be
+E.g. for the file ~/dotfiles/vim/ftplugin/tex.vim.sml there will be
 created the link in ~/.vim/ftplugin/tex.vim
 
-The scripts makes backup copies of files in $HOME, however, these will be
-rewritten by further backup copies, if you run the script several times,
-so you better be sure you want to use the files in ~/dotfiles.
+The script makes numbered backup copies of files in $HOME.
 
 Installing on a new machine:
 ----------------------------
