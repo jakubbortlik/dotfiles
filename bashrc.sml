@@ -58,7 +58,16 @@ fi
 
 # do not load rc.config - ranger configuration twice
 export RANGER_LOAD_DEFAULT_RC=FALSE
-source /usr/share/doc/packages/ranger/examples/bash_automatic_cd.sh
+# source /usr/share/doc/packages/ranger/examples/bash_automatic_cd.sh
+function ranger-cd {
+	tempfile="$(mktemp -t tmp.XXXXXX)"
+	/usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+	test -f "$tempfile" &&
+	if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+		cd -- "$(cat "$tempfile")"
+	fi
+	rm -f -- "$tempfile"
+}
 alias ranger='ranger-cd'
 # alias "ra" to start ranger or return to the already started version
 ra() {
@@ -69,6 +78,7 @@ ra() {
         exit
     fi
 }
+bind '"\C-o":"ra\C-m"'
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
