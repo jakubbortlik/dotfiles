@@ -132,11 +132,6 @@ Plugin {
   }
 }
 Plugin {
-  type=volumealsa
-  Config {
-  }
-}
-Plugin {
   type=xkb
   Config {
     Model=pc105
