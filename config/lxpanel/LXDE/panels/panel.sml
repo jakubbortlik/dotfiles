@@ -111,6 +111,17 @@ Plugin {
   }
 }
 Plugin {
+  type=xkb
+  Config {
+    Model=pc105
+    LayoutsList=us_jb,ipa,cz_jb
+    VariantsList=,,
+    ToggleOpt=grp:shifts_toggle,grp:shift_caps_toggle,grp_led:scroll
+    KeepSysLayouts=0
+    FlagSize=5
+  }
+}
+Plugin {
   type=batt
   Config {
     BackgroundColor=black
@@ -124,25 +135,12 @@ Plugin {
     BorderWidth=1
     Size=10
     ShowExtendedInformation=0
+    BatteryNumber=0
   }
 }
 Plugin {
   type=tray
   Config {
-  }
-}
-Plugin {
-  type=xkb
-  Config {
-    Model=pc105
-    LayoutsList=us_jb,cz_jb,ipa
-    VariantsList=,,
-    ToggleOpt=grp:shift_caps_toggle,grp:shifts_toggle,grp_led:num
-    FlagSize=5
-    PerWinLayout=1
-    KeepSysLayouts=0
-    NoResetOpt=0
-    DisplayType=0
   }
 }
 Plugin {
