@@ -1,326 +1,3 @@
-rsync -av ~/jobs/uplift/ /run/media/jakub/Sony_16GR/jobs/uplift
-sox silence.wav znelka.mp3 znelka_s_tichem.wav
-lame znelka_s_tichem.wav znelka_s_tichem.mp3
-play znelka_s_tichem.mp3 
-sudo updatedb
-rsync -avn ~/skola/1_phd/01_state_exam/ /run/media/jakub/Sony_16GR/skola/1_phd/01_state_exam
-rsync -avn --delete ~/skola/1_phd/01_state_exam/ /run/media/jakub/Sony_16GR/skola/1_phd/01_state_exam
-rsync -av --delete ~/skola/1_phd/01_state_exam/ /run/media/jakub/Sony_16GR/skola/1_phd/01_state_exam
-rsync -avn /run/media/jakub/Sony_16GR/skola/formality/diplomy ~/skola/formality/
-rsync -av /run/media/jakub/Sony_16GR/skola/formality/diplomy ~/skola/formality/
-find . -type f -iname "compile"
-find . -type f -iname "*c*"
-find . -type f -iname "*compile*"
-find . -type f -iname "*compile"
-find . -type f -iname "*com*"
-sudo updatedb
-pdftk Vstup_dotaznik-snoub_2017.pdf cat 1 dotaznik_snoubenci.pdf output s_podpisem.pdf
-pdftk A=Vstup_dotaznik-snoub_2017.pdf B=dotaznik_snoubenci.pdf cat A1 B output s_podpisem.pdf
-gymp 1.jpg 
-w3m ./html
-w3m ./Course\:\ 91ADS\ -\ Doctoral\ State\ Exam.html 
-mocp s
-mocp -s
-display 1564-bruegel_christ-carrying-the-cross.jpg 
-free
-which rename
-rename 6 6_voice_quality ./*
-rsync -avn --delete ~/skola/7_recenze/ /run/media/jakub/Sony_16GR/skola/7_recenze
-rsync -av --delete ~/skola/7_recenze/ /run/media/jakub/Sony_16GR/skola/7_recenze
-rsync -av --delete ~/skola/7_recenze/ /run/media/jakub/Sony_16GR/skola/7_recenze
-rems ./*rar
-unrar x ./*1.rar
-xetex article.tex
-rems ./*
-remd ./*
-xetex article.tex 
-Lutz, Angelika. 2009. “Celtic Inﬂuence on Old English and West Germanic.” English Language and Linguistics 13 (2): 227–249.
-scrot 
-xetex article
-otfinfo
-mkdir pdfs
-find . -type -f -iname "*.pdf"
-find . -type f -iname "*.pdf"
-find . -type f -iname "*.pdf" | grep hw
-find . -type f -iname "*.pdf" -exec echo {} ;
-find . -type f -iname "*.pdf" -exec echo '{}' \;
-find . -type f -iname "*.pdf" -exec base '{}' \;
-find . -type f -iname "*.pdf" -exec file '{}' \;
-find . -type f -iname "*.pdf" -exec basename '{}' \;
-find . -type f -iname "*.pdf" -exec cp '{}' pdfs/`basename '{}'` \;
-find . -type f -iname "*.pdf" -exec cp '{}' pdfs/`basename "{}"` \;
-find . -type f -iname "*.pdf" -exec cp '{}' pdfs/`basename {}` \;
-find . -type f -iname "*.pdf" -exec echo '{}' \;
-find . -type f -iname "*.pdf" -exec basename '{}' \;
-find . -type f -iname "*.pdf" -exec basename '{}' \;
-find . -type f -iname "*.pdf" -exec basename '{}' -exec echo `basename '{}'`\;
-find . -type f -iname "*.pdf" -exec basename '{}' ; -exec echo `basename '{}'`\;
-find . -type f -iname "*.pdf" -exec basename '{}' 
-find . -type f -iname "*.pdf" -exec basename '{}' \;
-find . -type f -iname "*.pdf" -exec basename '{}' \;
-find . -type f -iname "*.pdf" -exec cp '{}' (basename '{}') \;
-find . -type f -iname "*.pdf" -exec cp '{}' `basename '{}'` \;
-find . -type f -iname "*.pdf" -exec f=(basename '{}') \;
-find . -type f -iname "*.pdf" -exec f="(basename '{}')" \;
-find . -type f -iname "*.pdf" -execdir echo '{}' \;
-find . -type f -iname "*.pdf" -execdir cp '{}' ../pdfs/'{}' \;
-find . -type f -iname "*.pdf" -execdir cp '{}' ../../pdfs/'{}' \;
-find . -type f -iname "*.pdf" -execdir cp '{}' ../pdfs/'{}' \;
-pdftk ./*pdf outpu homework_all.pdf
-pdftk ./*pdf output homework_all.pdf
-loffice --export-to pdf sylabus.odt
-loffice --convert-to pdf sylabus.odt 
-display articles.tif 
-exit 0
-sudo -e /etc/udev/rules.d/51-android.rules
-heimdall
-heimdall help
-heimdall help help
-heimdall-frontend 
-mocp 
-rsync -avn /run/media/jakub/42CB-F2FD/DCIM ~/Pictures/mobil/
-rsync -avn --exclude=thumbnails /run/media/jakub/42CB-F2FD/DCIM ~/Pictures/mobil/
-rsync -avn --exclude=.thumbnails /run/media/jakub/42CB-F2FD/DCIM ~/Pictures/mobil/
-rsync -av --exclude=.thumbnails /run/media/jakub/42CB-F2FD/DCIM ~/Pictures/mobil/
-cal -y
-unzip Reading_package_-_password_required.zip 
-sudo updatedb
-history
-cal -y
-cal -3m
-cal -m3
-cal -m
-cal -m3
-write AUC_review_form_auc6_voice_quality.doc_ 
-writer AUC_review_form_auc6_voice_quality.doc_ 
-whatis write
-w3m www.anglistika.upol.cz
-hotpot 
-rsync -avn --delete ~/skola/7_recenze/ /run/media/jakub/BORTLIK/skola
-rsync -avn ~/skola/7_recenze/ /run/media/jakub/BORTLIK/skola
-rsync -avn ~/skola/7_recenze /run/media/jakub/BORTLIK/skola/
-rsync -av ~/skola/7_recenze /run/media/jakub/BORTLIK/skola/
-time
-find . -type f -iname "*.jpg" -exec basename '{}' \;
-find . -type f -iname "*.jpg" -exec bn=`basename '{}'` ; echo "$bn" \;
-find . -type f -iname "*.jpg" -exec bn=`basename '{}'` ; -exec echo "$bn" \;
-cal -m3
-cal -m4
-cal -y
-cal -ym
-rsync -avn ~/comp/colours /run/media/jakub/Sony_16GR/comp/
-rsync -av ~/comp/colours /run/media/jakub/Sony_16GR/comp/
-rsync -av ~/comp/gecko/ /run/media/jakub/Sony_16GR/comp/
-rsync -av ~/comp/gecko /run/media/jakub/Sony_16GR/comp/
-rsync -avn ~/skola/3_stipendia /run/media/jakub/Sony_16GR/skola/
-rsync -av ~/skola/3_stipendia /run/media/jakub/Sony_16GR/skola/
-rsync -avn ~/skola/3_stipendia /run/media/jakub/Sony_16GR/skola/
-rsync -avn ~/skola/3_stipendia/ /run/media/jakub/Sony_16GR/skola/3_stipendia
-rsync -av ~/skola/3_stipendia/ /run/media/jakub/Sony_16GR/skola/3_stipendia
-rsync -avn ~/jobs/cjv/az2 /run/media/jakub/Sony_16GR/cjv/
-rsync -av ~/jobs/cjv/az2 /run/media/jakub/Sony_16GR/cjv/
-rsync -av ~/jobs/cjv/az4 /run/media/jakub/Sony_16GR/cjv/
-rsync -av ~/jobs/cjv/az4/ /run/media/jakub/Sony_16GR/cjv/az4
-rsync -avn ~/jobs/cjv/az4/ /run/media/jakub/Sony_16GR/cjv/az4
-rsync -av ~/jobs/cjv/az4/ /run/media/jakub/Sony_16GR/cjv/az4
-file car
-rsync -avn --delete ~/jobs/cjv/az2/ /run/media/jakub/Sony_16GR/cjv/az2
-rsync - --delete ~/jobs/cjv/az2/ /run/media/jakub/Sony_16GR/cjv/az2
-rsync -av --delete ~/jobs/cjv/az2/ /run/media/jakub/Sony_16GR/cjv/az2
-rsync -avn ~/jobs/cjv/az2/ /run/media/jakub/Sony_16GR/cjv/az2
-rsync -av ~/jobs/cjv/az2/ /run/media/jakub/Sony_16GR/cjv/az2
-sudo userdel guest
-sudo userdel -r guest
-sudo userdel -r guest
-users
-libreoffice ./*docx &>/dev/null &
-libreoffice ./feedback_az4_01.docx &>/dev/null &
-libreoffice ./*docx &>/dev/null &
-pavucontrol 
-wifi of
-wifi off
-wifi
-wifi on
-wifi toggle
-sudo wifi toggle
-pdftk 24021700.PDF rotate odd output navigate_wh_questions.pdf 
-pdftk 24021700.PDF cat 1south 2 3south output navigate_wh_questions.pdf
-sudo wifi-menu
-wifi 
-rsync -avn --delete ~/praat/ /run/media/jakub/backup/jakub/praat
-rsync -avn --exclude=git --delete ~/praat/ /run/media/jakub/backup/jakub/praat
-rsync -avn --exclude=gi.t --delete ~/praat/ /run/media/jakub/backup/jakub/praat
-rsync -avn --exclude=.git --delete ~/praat/ /run/media/jakub/backup/jakub/praat
-rsync -av --exclude=.git --delete ~/praat/ /run/media/jakub/backup/jakub/praat
-rsync -avn ~/Audio/ /run/media/jakub/backup/jakub/Audio/
-rsync -av ~/Audio/ /run/media/jakub/backup/jakub/Audio/
-rsync -avn builds/ /run/media/jakub/backup/jakub/arch_backup/builds
-rsync -av builds/ /run/media/jakub/backup/jakub/arch_backup/builds
-sudo umount /dev/sdc2
-sudo umount /dev/sdd1
-sudo mkdir /usr/share/fonts/silipa
-sudo 1!
-sudo mkdir /usr/share/fonts/silipa93
-sudo mkdir /usr/share/fonts/sil
-fonts-config
-rsync -avn ~/skola/2_teaching/AFO2-FO02 /run/media/jakub/Sony_16GR/
-rsync -av ~/skola/2_teaching/AFO2-FO02 /run/media/jakub/Sony_16GR/
-xetex CV_Jakub_Bortlik.tex
-kpsewhich --progname=xetex xetex.fmt
-sudo fmtutil-sys --byfmt=xetex
-kpsewhich --format='web2c files' fmtutil.cnf
-which xetex.def
-kpsewhich xetex.def
-fc-list
-fc-list | grep sans
-fc-list -f
-fc-list -f "Latin"
-fc-list
-fc-list | grep Times
-fc-list > ~/comp/latex/available_fonts.txt
-fc-cache -fv
-calc
-rsync -avn --delete ~/skola/7_recenze/auc_phonetica_pragensia/ /run/media/jakub/BORTLIK/skola/7_recenze/auc_phonetica_pragensia
-rsync -av --delete ~/skola/7_recenze/auc_phonetica_pragensia/ /run/media/jakub/BORTLIK/skola/7_recenze/auc_phonetica_pragensia
-fc-list : family
-fc-list : family > ~/comp/latex/available_fonts.txt
-sudo updatedb
-gymp places_of_articulation.pdf 
-gymp palato-alveolar.png 
-uu12
-mkdir test
-lynx -dump -listonly http://www.ieas.unideb.hu/admin/ | grep http | grep pdf
-lynx -dump -listonly http://www.ieas.unideb.hu/admin/
-lynx -dump -listonly http://www.ieas.unideb.hu/
-lynx -dump -listonly http://www.ieas.unideb.hu/ | grep http | grep pdf
-lynx -dump -listonly http://www.ieas.unideb.hu/ | grep http | grep index
-wget http://www.ieas.unideb.hu
-w3m index.html 
-cancel
-lprm
-lprm
-rsync -avn --delete ~/skola/3_stipendia/ /run/media/jakub/Sony_16GR/skola/3_stipendia
-rsync -av --delete ~/skola/3_stipendia/ /run/media/jakub/Sony_16GR/skola/3_stipendia
-compare ~/Pictures/mobil/DCIM/100ANDRO/list_comp.txt /run/media/jakub/42CB-F2FD/DCIM/100ANDRO/list_mobil.txt 
-comm ~/Pictures/mobil/DCIM/100ANDRO/list_comp.txt /run/media/jakub/42CB-F2FD/DCIM/100ANDRO/list_mobil.txt 
-rsync -avn --delete ~/Pictures/mobil/DCIM/100ANDRO/ /run/media/jakub/42CB-F2FD/DCIM/100ANDRO
-rsync -av --delete ~/Pictures/mobil/DCIM/100ANDRO/ /run/media/jakub/42CB-F2FD/DCIM/100ANDRO
-rsync -avn ~/Videos/ /run/media/jakub/backup/jakub/Videos
-rsync -av ~/Videos/ /run/media/jakub/backup/jakub/Videos
-rsync -avn --delete ~/Pictures/ /run/media/jakub/backup/jakub/Pictures
-rsync -av --delete ~/Pictures/ /run/media/jakub/backup/jakub/Pictures
-bash --version
-cronie
-cron
-find . -type f -size +10M
-find . -type f -size +50M
-find . -type f -size +30M
-rsync -avn ~/skola/ /run/media/jakub/backup/jakub/skola
-rsync -avn --exclude="*.git*" ~/skola/ /run/media/jakub/backup/jakub/skola
-rsync -avn --delete --exclude="*.git*" ~/skola/ /run/media/jakub/backup/jakub/skola
-rsync -av --delete --exclude="*.git*" ~/skola/ /run/media/jakub/backup/jakub/skola
-find . -type f -iname "*.pdf"
-pdftk katamba_and_stonham_morphology_0* output katamba_and_stonham_morphology.pdf
-pdftk Croft_Typology.pdf cat 2-end output croft_typology.pdf
-pkill redshift
-redshift
-lame ./3_5_video.wav 3_5_video.mp3
-convert print_quantifiers.png print_quantifiers.pdf
-loffice
-rsync -avn --delete ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing
-rsync -avn --exclude=".*" --delete ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing
-rsync -av --exclude=".*" --delete ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing
-pkill jackd
-rsync -avn --delete /run/media/jakub/Sony_16GR/cjv/az1/navigate_elementary/audio/ ~/zdroje/practical_english/navigate_a2_dvd/RESOURCES/Audio
-rsync -av /run/media/jakub/Sony_16GR/cjv/az1/navigate_elementary/audio/ ~/zdroje/practical_english/navigate_a2_dvd/RESOURCES/Audio
-rsync -avn --delete ~/jobs/cjv/ /run/media/jakub/Sony_16GR/cjv
-rsync -avn ~/jobs/cjv/ /run/media/jakub/Sony_16GR/cjv
-ra\
-rsync -avn ~/jobs/cjv/ /run/media/jakub/Sony_16GR/cjv
-rsync -av ~/jobs/cjv/ /run/media/jakub/Sony_16GR/cjv
-lowriter 
-rsync -avn ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing/
-rsync -av ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing/
-rename 's/.jpg//' ./*pdf
-which rename
-usr/bin/rename 's/.jpg//' ./*pdf
-rsync -avn ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing/
-rsync -av ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing/
-rsync -avn ~/polski/clanek /run/media/jakub/Sony_16GR/polski/
-rsync -av ~/polski/clanek /run/media/jakub/Sony_16GR/polski/
-whatis df
-rsync -av ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing
-pdftk A=recom_letter_jeemonds.pdf B=recommendation_letter_jeedmonds.pdf cat A1 B output full.pdf
-pdftk A=04_Language_Files-5.7_Morphological_types_of_languages.pdf B=StudyQs3.pdf cat A5 B output print_st_questions3.pdf
-rsync -avn --delete ~/skola/3_stipendia/ /run/media/jakub/Sony_16GR/skola/3_stipendia
-rsync -av --delete ~/skola/3_stipendia/ /run/media/jakub/Sony_16GR/skola/3_stipendia
-pdftk stempel.pdf cat 4 3 output recommendation_letter_s.simackova.pdf 
-pdftk A=recommendation_letter_jeemonds.pdf B=stempel.pdf cat A1 B1 output recommendation_letter_jeemonds2.pdf 
-convert bc_diploma_supplement.pdf bc_diploma_supplement2.pdf 
-rsync -avn --delete ~/skola/3_stipendia/ /run/media/jakub/Sony_16GR/skola/3_stipendia
-rsync - --delete ~/skola/3_stipendia/ /run/media/jakub/Sony_16GR/skola/3_stipendia
-rsync -av --delete ~/skola/3_stipendia/ /run/media/jakub/Sony_16GR/skola/3_stipendia
-file aktion_bortlik.pdf 
-pdftk A=navigate_elementary_lesson4.1.pdf B=navigate_elementary_teachers_lesson4.2-4.4.pdf cat A1-8 B5-end output navigate_teachers_lesson4.pdf 
-rsync -avn ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing
-rsync -av ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing
-rsync -av ~/skola/2_teaching/AFO2-FO02/testing/ /run/media/jakub/Sony_16GR/AFO2-FO02/testing
-startx
-pkillx
-pkill x
-rsync -avn --delete ~/skola/1_phd/01_state_exam/ /run/media/jakub/Sony_16GR/skola/1_phd/01_state_exam
-rsync -av --delete ~/skola/1_phd/01_state_exam/ /run/media/jakub/Sony_16GR/skola/1_phd/01_state_exam
-rsync -avn --delete ~/skola/1_phd/01_state_exam/ /run/media/jakub/Sony_16GR/skola/1_phd/01_state_exam
-rsync -av --delete ~/skola/1_phd/01_state_exam/ /run/media/jakub/Sony_16GR/skola/1_phd/01_state_exam
-rsync -avn ~/jobs/cjv/ /run/media/jakub/Sony_16GR/cjv
-rsync -av ~/jobs/cjv/ /run/media/jakub/Sony_16GR/cjv
-rsync -avn --delete ~/jobs/lanquest/ /run/media/jakub/Sony_16GR/jobs/lanquest
-rsync -av --delete ~/jobs/lanquest/ /run/media/jakub/Sony_16GR/jobs/lanquest
-rsync -avn --delete ~/jobs/cjv/az2/ /run/media/jakub/Sony_16GR/cjv/az2
-rsync -av --delete ~/jobs/cjv/az2/ /run/media/jakub/Sony_16GR/cjv/az2
-rsync -avn --delete ~/jobs/cjv/az2/ /run/media/jakub/Sony_16GR/cjv/az2
-rsync -av --delete ~/jobs/cjv/az2/ /run/media/jakub/Sony_16GR/cjv/az2
-rsync -av --delete ~/jobs/cjv/az2/ /run/media/jakub/Sony_16GR/cjv/az2
-sudo updatedb
-rsync -avn --delete ~/jobs/lanquest/ /run/media/jakub/Sony_16GR/jobs/lanquest
-rsync -av --delete ~/jobs/lanquest/ /run/media/jakub/Sony_16GR/jobs/lanquest
-sudo updatedb
-gymp baker_2006_glossary.pdf 
-pkill gimp
-gymp baker*
-pdfinfo baker_2006_glossary.pdf 
-pdftk A=baker-first.pdf B=baker_hardie_mcenery_2006_A_Glossary_of_Corpus_Linguistics_Glossaries_in_Linguistics.pdf  C=baker_2006_glossary.pdf cat A B2-3 C output baker_full.pdf
-pdfinfo dotaznik_bortlik_pilarova.pdf 
-pdfinfo Vstup_dotaznik-snoub_2017.pdf 
-rsync -avn --delete ~/skola/1_phd/01_state_exam/ /run/media/jakub/Sony_16GR/skola/1_phd/01_state_exam
-rsync -av --delete ~/skola/1_phd/01_state_exam/ /run/media/jakub/Sony_16GR/skola/1_phd/01_state_exam
-which pdf
-which pdfcrop
-clear
-clear
-pkill x
-lxqt-leave
-sudo lxqt-leave
-sudo systemctl reboot
-midori 
-texlive-pdfcrop usedto2.pdf 
-gymp usedto.pdf 
-skype info
-w3m gmail.com
-find . -type f -iname "feedback*.pdf"
-find . -type f -iname "feedback*.pdf"
-find . -type f -iname "feedback*.pdf" -execdir zathura {} ;
-find . -type f -iname "feedback*.pdf" -execdir zathura {} \;
-mkdir ../feedback
-find . -type f -iname "feedback*.pdf" -execdir cp {} ../feedback/{} \;
-find . -type f -iname "feedback*.pdf" -execdir cp {} ../feedback_az4/{} \;
-find . -type f -iname "feedback*.pdf" -exec cp {} ../feedback_az4/{} \;
-find .
-find . -iname "feedback"
-find . -iname "feedback*"
-find . -iname "feedback*pdf"
-files=`find . -type f -iname "feedback*.pdf"`; for f in "$files"; do echo "$f"; done
-files=`find . -type f -iname "feedback*.pdf"`; for f in "$files"; do echo $f; done
 files=`find . -type f -iname "feedback*.pdf"`; for f in "$files"; do echo "\$f"; done
 files=`find . -type f -iname "feedback*.pdf"`; for f in "$files"; do echo "cp $f"; done
 files=`find . -type f -iname "feedback*.pdf"`; for f in "$files"; do echo "cp \$f"; done
@@ -1255,3 +932,105 @@ ping -c3 8.8.8.8
 bh
 gs
 b
+symstall 
+ra
+ranger
+ra
+pkill firefox
+cd ..
+bash ~/dotfiles/symstall 
+git clone https://github.com/jakubbortlik/dotfiles
+mkdir code
+cd code
+git clone https://github.com/jakubbortlik/xkb
+random
+git clone https://github.com/jakubbortlik/vowel-formants
+ll
+git clone https://github.com/jakubbortlik/pcb
+git clone https://github.com/jakubbortlik/popa
+sudo dnf install tmux ranger
+tmux
+git clone https://github.com/VundleVim/Vundle.vim
+vi TODO.md 
+ra
+locate password
+sudo updatedb
+locate password
+locate password | grep jakub
+locate -i password | grep jakub
+locate -i random | grep jakub
+locate -i random | grep jakub | grep random
+i="random"; locate -i "$i" | grep jakub | grep "$i"
+i="password"; locate -i "$i" | grep jakub | grep "$i"
+i="genera"; locate -i "$i" | grep jakub | grep "$i"
+i="generate"; locate -i "$i" | grep jakub | grep "$i"
+dnf install airline caca-utils ctl mupdf neovim pdfgrep powerline-fonts redshift slock sox tk zathura
+sudo dnf install airline caca-utils ctl mupdf neovim pdfgrep powerline-fonts redshift slock sox tk zathura
+sudo dnf install airline caca-utils CTL mupdf neovim pdfgrep powerline-fonts redshift slock sox tk zathura
+ra
+ranger
+tmux
+dnf install praat
+sudo dnf install praat
+mv ~/Downloads/praat6029_linux64.tar.gz ~/praat/versions/
+cd ~/praat/versions/
+ll
+tar -xzvf praat6029_linux64.tar.gz 
+ll
+cp praat ~/dotfiles/bin/
+praat
+ls -l --color=auto /run/media/jakub/backup/jakub/
+rsync -av /run/media/jakub/backup/jakub/Audio ~/
+rsync -av /run/media/jakub/backup/jakub/comp ~/
+ls -l --color=auto /run/media/jakub/backup/jakub/
+rsync -av /run/media/jakub/backup/jakub/Documents ~/
+ls -l --color=auto /run/media/jakub/backup/jakub/
+ls -l --color=auto /run/media/jakub/backup/jakub/Downloads/
+ls -l --color=auto /run/media/jakub/backup/jakub/Downloads/sd_mobil/
+rsync -av /run/media/jakub/backup/jakub/Downloads/sd_mobil /home/jakub/Downloads/
+ls -l --color=auto /run/media/jakub/backup/jakub
+rsync -av /run/media/jakub/backup/jakub/exclude.txt /home/jakub/
+rsync -av /run/media/jakub/backup/jakub/harmonogram.xls /home/jakub/
+rsync -av /run/media/jakub/backup/jakub/kytka.png  /home/jakub/Documents/domaci/svatba/oznameni/
+rsync -av /run/media/jakub/backup/jakub/jobs  /home/jakub/
+ls -l --color=auto /run/media/jakub/backup/jakub
+rsync -av /run/media/jakub/backup/jakub/konference  /home/jakub/; rsync -av /run/media/jakub/backup/jakub/Music ~/; rsync -av /run/media/jakub/backup/jakub/Pictures ~/; rsync -av /run/media/jakub/backup/jakub/praat ~/; rsync -av /run/media/jakub/backup/jakub/preklady ~/; rsync -av /run/media/jakub/backup/jakub/skola ~/; rsync -av /run/media/jakub/backup/jakub/zdroje ~/
+rsync -avn -exclude="practical_english" /run/media/jakub/backup/jakub/zdroje ~/
+rsync -avn --exclude="practical_english" /run/media/jakub/backup/jakub/zdroje ~/
+rsync -av --exclude="practical_english" /run/media/jakub/backup/jakub/zdroje ~/
+du -sh english_file_*
+rm -r english_file_*
+ra
+openbox --reconfigure
+vimdiff ~/.config/openbox/lx*
+echo $EDITOR
+vimdiff ~/.config/openbox/lx*
+symstall 
+find . -type f
+find . -type f -exec mv {} {}_ignore \;
+ls
+ll
+find . -type f -exec mv {} {}_ignore \;
+find . -type d
+find . -type d -iname "*sml"
+cat `find . -type d -iname "*sml"`
+cd `find . -type d -iname "*sml"`
+ll
+..
+man bash
+symstall
+mkdir ~/.vim/ftplugin
+symstall 
+find . .gitconfig
+find . -iname .gitconfig
+find . -iname tex.vim.sml
+symstall 
+ra
+ra
+ra
+tmux
+openbox --reconfigure
+cd `find . -type d -iname "*sml"`
+cd `find . -type f -iname "*sml"`
+find . -type d -iname "*sml"
+find . -type f -iname "*sml"
