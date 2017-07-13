@@ -39,19 +39,20 @@ if [[ "${PWD}" = "${DOTFILES_DIR}" ]]; then
 		echo No files with the .sml extension in the directory $DOTFILES_DIR
 	fi
 
-	for FILE in $(find . -readable -type f -iname "*.sml") ; do
-		FILE_NOPREFIX="${FILE##./}"
-		TARGET="${DOTFILES_DIR}/${FILE_NOPREFIX}"
+	for FILE_PATH in $(find . -readable -type f -iname "*.sml") ; do
+		FILE_NAME="${FILE_PATH##*/}"
+		FILE_PATH_NOPREFIX="${FILE_PATH##./}"
+		TARGET="${DOTFILES_DIR}/${FILE_PATH_NOPREFIX}"
 
 		# if the .sml file is in the ~/dotfiles directory make the right
 		# LINK_DIR:
-		if [[ "./$FILE_NOPREFIX" == "$FILE" ]] ; then
+		if [[ "./$FILE_NAME" == "$FILE_PATH" ]] ; then
 			LINK_DIR="${HOME}/"
 		else
-			LINK_DIR="${HOME}/.${FILE_NOPREFIX%%/*}"
+			LINK_DIR="${HOME}/.${FILE_PATH_NOPREFIX%/*}"
 		fi
 
-		LINK_NAME="${HOME}/.${FILE_NOPREFIX%%.sml}"
+		LINK_NAME="${HOME}/.${FILE_PATH_NOPREFIX%%.sml}"
 
 		# create missing subdirectories if necessary
 		if [[ ! -d "${LINK_DIR}" ]]; then
