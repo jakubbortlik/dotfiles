@@ -522,7 +522,7 @@
       <action name="Reconfigure"/>
     </keybind>
     <keybind key="W-S-o">             # Edit openbox config file in Gvim
-    <action name="Execute"><command>lxterminal -e nvim ~/dotfiles/config/openbox/lxqt-rc.xml.sml</command></action>
+    <action name="Execute"><command>lxterminal -e nvim ~/dotfiles/config/openbox/lxde-rc.xml.sml</command></action>
     </keybind>
     <keybind key="A-S-F4">            # exit Openbox
       <action name="Exit"><prompt>yes</prompt></action>
