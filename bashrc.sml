@@ -12,6 +12,7 @@ case ":${PATH}:" in
 esac
 
 export PATH
+export EDITOR=nvim
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -207,4 +208,4 @@ PS1='[\u@\h \W]\$ '
 [ -n "$RANGER_LEVEL" ] && PS1="$PS1"'(in RA) '
 
 # added by Anaconda3 4.1.1 installer
-export PATH="/home/jakub/.anaconda3/bin:$PATH"
+# export PATH="/home/jakub/.anaconda3/bin:$PATH"
