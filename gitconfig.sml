@@ -4,7 +4,7 @@
 [color]
 	ui = true
 [core]
-	editor = vim
+	editor = nvim
 [diff "praat"]
 	lextconv = base64
 [alias]

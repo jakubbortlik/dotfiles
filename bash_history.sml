@@ -1034,3 +1034,36 @@ cd `find . -type d -iname "*sml"`
 cd `find . -type f -iname "*sml"`
 find . -type d -iname "*sml"
 find . -type f -iname "*sml"
+gs
+git commit -am 'ignore unnecessary files'
+gs
+cd config/lxpanel/
+gs
+ll
+..
+gs
+git add config/lxpanel/ config/lxqt/ config/lxsession/ config/openbox/ moc/
+gs
+git commit --amend
+git commit -amend
+git commit --amend
+b
+vim ~/dotfiles/gitconfig.sml 
+git commit --amend
+. ~/.gitconfig
+git commit --amend
+man git-amend
+man git
+man giteveryday
+git commit -a --amend
+which vim
+b
+ra
+echo "$EDITOR"
+echo $EDITOR
+. ~/.bashrc
+echo $EDITOR
+gs
+git commit --amend
+gs
+vim bashrc.sml 
