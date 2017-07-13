@@ -369,19 +369,19 @@
     </keybind>
     <!-- Keybindings for monitors -->
     <keybind key="W-1">               # turn off external monitor, keep the primary
-      <action name="Execute"><command>xrandr --output VGA1 --off --output LVDS1 --mode 1280x800 --rate 60.05</command></action>
+      <action name="Execute"><command>xrandr --output VGA-1 --off --output LVDS-1 --mode 1280x800 --rate 60.05</command></action>
     </keybind>
     <keybind key="W-2">               # turn on 1920x1080 monitor
-      <action name="Execute"><command>xrandr --output VGA1 --mode 1920x1080 --pos 0x0 --rate 60.0 --output LVDS1 --mode 1280x800 --pos 0x1080 --rate 60.05</command></action>
+      <action name="Execute"><command>xrandr --output VGA-1 --mode 1920x1080 --pos 0x0 --rate 60.0 --output LVDS-1 --mode 1280x800 --pos 0x1080 --rate 60.05</command></action>
     </keybind>
     <keybind key="W-S-2">             # 1920x1080 monitor on, LVDS off
-      <action name="Execute"><command>xrandr --output VGA1 --mode 1920x1080 --pos 0x0 --rate 60.0 --output LVDS1 --off</command></action>
+      <action name="Execute"><command>xrandr --output VGA-1 --mode 1920x1080 --pos 0x0 --rate 60.0 --output LVDS-1 --off</command></action>
     </keybind>
     <keybind key="W-3">               # turn on 1280x960 monitor
-      <action name="Execute"><command>xrandr --output VGA1 --mode 1280x1024 --pos 0x0 --output LVDS1 --mode 1280x800 --pos 0x1024 --rate 60.05</command></action>
+      <action name="Execute"><command>xrandr --output VGA-1 --mode 1280x1024 --pos 0x0 --output LVDS-1 --mode 1280x800 --pos 0x1024 --rate 60.05</command></action>
     </keybind>
     <keybind key="W-S-3">             # 1280x960 monitor on, LVDS off
-      <action name="Execute"><command>xrandr --output VGA1 --mode 1280x1024 --pos 0x0 --output LVDS1 --off</command></action>
+      <action name="Execute"><command>xrandr --output VGA-1 --mode 1280x1024 --pos 0x0 --output LVDS-1 --off</command></action>
     </keybind>
     <!-- Keybindings for the volume buttons -->
     <keybind key="XF86AudioLowerVolume"> # lower volume

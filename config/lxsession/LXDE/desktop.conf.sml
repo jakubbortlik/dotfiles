@@ -9,17 +9,14 @@ xsettings_manager/command=build-in
 proxy_manager/command=build-in
 keyring/command=ssh-agent
 quit_manager/command=lxsession-logout
-quit_manager/image=/usr/share/lxde/images/logout-banner.png
-quit_manager/layout=top
 lock_manager/command=lxlock
 terminal_manager/command=lxterminal
-launcher_manager/command=lxpanelctl
 pdf_reader/command=zathura
 audio_player/command=lxmusic
 
 [GTK]
-sNet/ThemeName=Numix
-sNet/IconThemeName=nuoveXT2
+sNet/ThemeName=Adwaita
+sNet/IconThemeName=Fedora
 sGtk/FontName=Sans 10
 iGtk/ToolbarStyle=3
 iGtk/ButtonImages=1
@@ -33,7 +30,7 @@ iNet/EnableEventSounds=1
 iNet/EnableInputFeedbackSounds=1
 sGtk/ColorScheme=
 iGtk/ToolbarIconSize=3
-sGtk/CursorThemeName=Adwaita
+sGtk/CursorThemeName=DMZ-White
 
 [Mouse]
 AccFactor=20
