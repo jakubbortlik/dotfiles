@@ -43,6 +43,8 @@ function! s:init_options() " {{{1
   call s:init_option('vimtex_complete_close_braces', 0)
   call s:init_option('vimtex_complete_recursive_bib', 0)
 
+  call s:init_option('vimtex_doc_enabled', 1)
+
   call s:init_option('vimtex_echo_ignore_wait', 0)
 
   call s:init_option('vimtex_fold_enabled', 0)
@@ -423,6 +425,10 @@ function! s:init_default_mappings() " {{{1
 
   if get(g:, 'vimtex_imaps_enabled', 0)
     call s:map('n', '<localleader>lm', '<plug>(vimtex-imaps-list)')
+  endif
+
+  if get(g:, 'vimtex_doc_enabled', 0)
+    call s:map('n', 'K', '<plug>(vimtex-doc-package)')
   endif
 endfunction
 
