@@ -266,17 +266,40 @@ nnoremap <Leader>spl :setlocal spelllang=pl<CR>
 nnoremap <Leader>sen :setlocal spelllang=en_us<CR>
 nnoremap <Leader>sl :setlocal spelllang?<CR>
 
-" set keymap to Czech in insert mode by pressing CRTL-^
-function! KeymapWithCtrl6()
-	if &iminsert == 2 || &iminsert == 0
+" cycle through keymaps: English -> Czech -> IPA in insert mode by pressing
+" <C-K><C-J> and <C-K><C-K>
+function! CycleKeymapsDown()
+	if &keymap == ""
 		:setlocal keymap=czech
-		:iunmap <C-^>
-	else
-		:iunmap <C-^>
-		:let &iminsert = 0
+	elseif &keymap == "czech"
+        :setlocal keymap=ipa
+	elseif &keymap == "ipa"
+        :setlocal keymap=
 	endif
 endfunction
-inoremap <C-^> <Esc>:call KeymapWithCtrl6()<CR>a
+inoremap <silent> <C-K><C-J> <Esc>:call CycleKeymapsDown()<CR>a
+function! CycleKeymapsUp()
+	if &keymap == ""
+		:setlocal keymap=ipa
+	elseif &keymap == "ipa"
+        :setlocal keymap=czech
+	elseif &keymap == "czech"
+        :setlocal keymap=
+	endif
+endfunction
+inoremap <silent> <C-K><C-K> <Esc>:call CycleKeymapsUp()<CR>a
+
+" " set keymap to Czech in insert mode by pressing CRTL-^
+" function! KeymapWithCtrl6()
+" 	if &iminsert == 2 || &iminsert == 0
+" 		:setlocal keymap=czech
+" 		:iunmap <C-^>
+" 	else
+" 		:iunmap <C-^>
+" 		:let &iminsert = 0
+" 	endif
+" endfunction
+" inoremap <C-^> <Esc>:call KeymapWithCtrl6()<CR>a
 
 " appearance settings
 nnoremap <Leader>tw :setlocal textwidth=80<CR>
