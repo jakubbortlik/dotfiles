@@ -461,7 +461,7 @@
         <action name="Execute"><command>inkscape</command></action>
       </keybind>
       <keybind key="l">               # launch Pluma W-x-l
-        <action name="Execute"><command>pluma</command></action>
+        <action name="Execute"><command>leafpad</command></action>
       </keybind>
       <keybind key="p">               # launch Praat W-x-p
         <action name="Execute"><command>praat</command></action>
@@ -914,6 +914,14 @@
       <focus>true</focus>
     </application>
     <application name="mupdf">
+      <maximized>true</maximized>
+      <focus>true</focus>
+    </application>
+    <application name="lxterminal">
+      <position>
+        <x>0</x>
+        <y>0</y>
+      </position>
       <maximized>true</maximized>
       <focus>true</focus>
     </application>
