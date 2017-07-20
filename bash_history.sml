@@ -1067,3 +1067,425 @@ gs
 git commit --amend
 gs
 vim bashrc.sml 
+gs
+cd dotfiles/
+gs
+git add bash_history.sml 
+git commit --amend
+git push
+find . -type f -iname "*~1~"
+rm .bash_history.~1~ 
+vimdiff desktop.conf*
+type slock
+locate logout-banner
+gpicview `locate logout-banner`
+find . -type f -iname "*~1~"
+..
+find . -type f -iname "*~1~"
+vimdiff ~/.vim/bundle/bash-support.vim/plugin/bash-support.vim*
+rm ~/.vim/bundle/bash-support.vim/plugin/bash-support.vim.~1~ 
+vimdiff ./.vim/bundle/vimtex/autoload/vimtex*
+vimdiff ./.vim/bundle/vimtex/autoload/vimtex.vim*
+find . -type f -iname "*~1~"
+vimdiff ./.vim/bundle/vim-unimpaired/plugin/unimpaired.vim*
+find . -type f -iname "*~1~"
+..
+cd jakub/
+find . -type f -iname "*~1~"
+vimdiff ./.vim/bundle/vim-unimpaired/plugin/unimpaired.vim*
+rm ./.vim/bundle/vim-unimpaired/plugin/unimpaired.vim.~1~ 
+find . -type f -iname "*~1~"
+vimdiff ./.vim/bundle/vimtex/autoload/vimtex.vim*
+rm ./.vim/bundle/vimtex/autoload/vimtex.vim.~1~ 
+ra
+type lxpanelctl 
+find . -type f -exec grep -iH "volume"
+find . -type f -exec grep -iH "volume" {} \;
+find . -type f -exec grep -iH "v" {} \;
+..
+find . -type f -exec grep -iH "v" {} \;
+find . -type f -exec grep -iH "volume" {} \;
+cd .config/
+ra
+cd code/xkb/
+ls
+cd symbols/
+ll
+ls /usr/share/X11/xkb/symbols/
+sudo cp cz_jb /usr/share/X11/xkb/symbols/
+sudo cp us_jb /usr/share/X11/xkb/symbols/
+sudo cp ipa /usr/share/X11/xkb/symbols/
+ls /usr/share/X11/xkb/symbols/
+..
+ll
+cd lxpanel/
+ll
+cd images/
+ll
+ls /usr/share/lxpanel/images/xkb-flags/
+cp cz_jb.png /usr/share/lxpanel/images/xkb-flags/
+sudo cp cz_jb.png /usr/share/lxpanel/images/xkb-flags/
+sudo cp us_jb.png /usr/share/lxpanel/images/xkb-flags/
+sudo cp ipa.png /usr/share/lxpanel/images/xkb-flags/
+locate layouts.cfg
+..
+cd xkeyboardconfig/
+ll
+vimdiff layouts.cfg /usr/share/lxpanel/xkeyboardconfig/layouts.cfg 
+sudo cp layouts.cfg /usr/share/lxpanel/xkeyboardconfig/layouts.cfg 
+ra
+reb
+f
+ra
+gs
+git add panel.sml 
+vim panel.sml
+sudo dnf install gmrun
+ra
+man dnf
+sudo updatedb
+locate detoxrc
+vim /etc/detoxrc 
+cd comp/testing/
+ll
+cd GitPrimer/
+ll
+..
+touch "Thohleaa-890-.asdf"
+detox Thohleaa-890-.asdf 
+ll
+detox --help
+detox -L
+detox lower Thohleaa-890-.asdf 
+detox lower
+detox --lower Thohleaa-890-.asdf 
+detox -s -n lower Thohleaa-890-.asdf 
+detox -s lower -n Thohleaa-890-.asdf 
+ll
+mv Thohleaa-890-.asdf "Thohle __-_aa-890-.asdf"
+ll
+detox -s lower -n Thohleaa-890-.asdf 
+detox -s lower -n Thohle\ __-_aa-890-.asdf 
+mv Thohle\ __-_aa-890-.asdf "Th_o_h---__l_e\ __-_aa-890-.asdf"
+detox -s lower -n Th_o_h---__l_e\\\ __-_aa-890-.asdf 
+man dnf
+dnf info skype
+sudo dnf install skype
+sudo dnf install tox
+sudo dnf install toxique
+sudo dnf install utox
+sudo dnf install qtox
+sudo dnf install qTox
+sudo dnf install tox
+sudo dnf install detox
+detox --help
+detox -L
+man detox
+vim /usr/share/lxpanel/xkeyboardconfig/layouts.cfg 
+sudo setupcon
+ls /var/lib/xkb/
+sudo mv cz cz~
+sudo mv cz_jb cz
+vimdiff /usr/share/X11/xkb/symbols/cz*
+vimdiff /usr/share/X11/xkb/symbols/us*
+ra
+lxsession-logout 
+cp /usr/share/X11/xkb/rules/base.xml ./
+ll
+cp /usr/share/X11/xkb/rules/base.lst ./
+cd /usr/share/X11/xkb/symbols/
+ll
+ls
+ls c
+ls c*
+sudo mv cz cz_jb
+ls
+mv cz~ cz
+sudo mv cz~ cz
+cd -
+pwd
+ll
+vim base.lst 
+cd /usr/share/X11/xkb/rules/
+ll
+less README 
+less base.xml 
+sudo mv base.xml base.xml~
+sudo mv base.lst base.lst~
+sudo cp ~/code/xkb/rules/base.lst ./
+sudo cp ~/code/xkb/rules/base.xml ./
+vimdiff /usr/share/X11/xkb/symbols/us*
+cp /usr/share/X11/xkb/symbols/us ~/code/xkb/symbols/
+vimdiff ~/code/xkb/symbols/us*
+ls /usr/share/X11/xkb/symbols/us*
+sudo cp /usr/share/X11/xkb/symbols/us /usr/share/X11/xkb/symbols/us~
+sudo cp ~/code/xkb/symbols/us /usr/share/X11/xkb/symbols/us
+ra
+ranger -V
+ranger -v
+ranger --help
+ranger --version
+dnf search ranger
+dnf upgrade ranger
+sudo dnf upgrade ranger
+man dnf
+locate rc.conf
+vimdiff /usr/share/doc/ranger/config/rc.conf /home/jakub/dotfiles/config/ranger/rc.conf.sml 
+sudo dnf --best install ranger
+man ranger
+man ranger
+vim -O us*
+sudo -e us
+ll
+sudo cp us us~
+sudo -e us
+vim ~/code/xkb/symbols/us_jb 
+sudo -e us
+ll
+sudo cp us us~
+sudo -e us
+sudo -e us_jb 
+sp us_jb ~/code/xkb/symbols/us_jb~~
+cp us_jb ~/code/xkb/symbols/us_jb~~
+vim -O us_jb*
+git status
+git add ../rules/
+gs
+git push
+2..
+..2
+ll
+git clone https://github.com/jakubbortlik/vim-keymaps
+git clone https://github.com/jakubbortlik/vim-praat
+vimdiff ~/code/xkb/symbols/us_jb ~/code/vim-keymaps/us_jb 
+cd ~/code/vim-keymaps/
+gs
+git commit -am 'repair AltGr-h'
+git push
+lsblk
+cd ~; sudo umount /dev/sdb1
+f
+ra
+type zathura
+sudo dnf install zathura-pdf-mupdf
+ra
+cd /usr/share/X11/xkb/rules/
+cd /usr/share/X11/xkb/symbols/
+ll
+vimdiff us us~
+sudo -e us_jb 
+ll
+sudo mv us~ us
+ll
+diff us_jb ~/code/xkb/symbols/us_jb 
+diff -s us_jb ~/code/xkb/symbols/us_jb 
+glog
+git push
+glog
+dnf config-manager --add-repo http://download.opensuse.org/repositories/home:antonbatenev:tox/Fedora_26/home:antonbatenev:tox.repo
+sudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:antonbatenev:tox/Fedora_26/home:antonbatenev:tox.repo
+sudo dnf install qtox
+dnf config-manager --add-repo http://download.opensuse.org/repositories/home:antonbatenev:tox/Fedora_25/home:antonbatenev:tox.repo
+sudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:antonbatenev:tox/Fedora_25/home:antonbatenev:tox.repo
+sudo dnf install qtox
+man mupdf
+dnf search pdf
+dnf search pdf | grep modify
+find . -iname "pass"
+find . -iname "p"
+find . -iname "*pass*"
+find . -iname "*random*"
+dnf search airline
+dnf search --installed airline
+dnf --installed search airline
+ra
+dnf search qpdf
+type qpdf
+type pdfinfo
+type qpdf
+dnf search qpdf
+sudo dnf install qpdf
+qpdf --help
+man qpdf
+qpdf --help
+qpdf --help | less
+ra
+sd
+f
+find . -type f -exec grep -iH "lock" {} \;
+lxlock 
+type lxlock
+xscreensaver
+slock
+vim ~/dotfiles/config/lxsession/LXDE/desktop.conf.sml 
+find . -type f -exec grep -iH "lock" {} \;
+vimdiff desktop.conf ~/dotfiles/config/lxsession/LXDE/desktop.conf.sml 
+symstall 
+ra
+type light-locker
+apropos locker
+apropos lock
+apropos lxlock
+ra
+sd
+ranger --version
+apropos convert
+man tolower
+toupper (c)
+int toupper (int c)
+man toupper
+int toupper(int c)
+dnf search convert
+dnf search convert | vim -
+locate gpicview
+locate -i gpicview
+man gpicview
+man gpicview 
+gpicview --help
+locate w3m
+cd ~/.config/
+cd ranger/
+ll
+man ranger
+vim rc.conf 
+cd -
+cd
+cd -
+cd ~/.config/ranger/
+ll
+vim rc.conf 
+lsblk
+lsblk | grep 42CB
+man tr
+man truncate
+man trunc
+man awk
+echo ahoj
+echo ahoj | awk '/a/'
+man awk
+apropos text
+uu1
+visudo
+sudo visudo
+lsblk
+ra
+which umount
+apropos wifi
+apropos internet
+ra
+lsblk
+uu1
+lsblk
+ra
+man bash
+dnf search convert
+man dnf
+dnf provides convert
+dnf search imagemagick
+which imagemagick
+type imagemagick
+sudo dnf install imagemagick
+sudo dnf install ImageMagick
+sudo dnf install gimp inkscape libreoffice
+cd ~/jobs/cjv/az2/credit_test/
+ll
+find . -type f -iname "*jpg" -execdir bash -c 'BARE="${0%%jpg}"; convert "$0" "$BARE"pdf' {} \;
+ll
+zat credit_test_maly_01.pdf 
+qpdf 
+qpdf --help
+qpdf --help | less
+gymp *jpg
+zat *pdf
+xarchiver --help
+xarchiver -e kuba+lucka.rar 
+ll
+xarchiver -e kuba+lucka.rar -x here
+xarchiver --help
+man xarchiver 
+curl dict://dict.org/m:curl
+curl dict://dict.org/m:cur
+curl dict://dict.org/m:cul
+curl dict://dict.org/m:cull
+curl dict://dict.org/m:Cull
+which writer
+writer
+type lowriter
+type localc
+type oocalc
+type oowriter
+ra
+echo $HOSTNAME
+man tmux
+man bash
+f
+vim
+ra
+sd
+ra
+w3m
+ra
+tmux
+file pohankove_placky_se_zeleninou_a_tempehem.png 
+file jahodovy_koktejl_z_makoveho_mleka.png 
+uu1
+lsblk
+vim
+fg
+f
+ra
+uu1
+sd
+apropos detox
+detox
+man dinf
+man find
+detox --help
+man detox
+man detoxrc
+man find
+ll
+rm -r .git
+dnf search charmap
+sudo dnf install charmap
+sudo dnf install gucharmap
+ra
+apropos convert
+apropos converter
+apropos convert | grep unit
+vim plevele
+moc
+mocp
+m
+dnf search mocp
+rpm -E
+rpm -E %fedora
+S
+man dnf
+dnf remove libreoffice
+sudo dnf remove libreoffice
+sudo dnf install libreoffice
+lsblk
+man mount
+ls /mnt/
+ll
+ls /mnt/
+ls /mnt
+ls /
+ls /media/
+ls /home
+sudo mount -f /sr0 /media
+cd /media/
+ll
+ra
+sudo mount /sr0 /media
+sudo mount /dev/sr0 /media
+lsblk
+lsblk
+rsync -av --delete ~/comp/ /run/media/jakub/backup/jakub/comp
+rsync -av --delete --exclude-from=exclude.txt ~/Pictures/ /run/media/jakub/backup/jakub/Pictures
+ra
+rsync -av --exclude=.* ~/Documents/ /run/media/jakub/backup/jakub/Documents
+rsync -av --delete --exclude=.* ~/Documents/ /run/media/jakub/backup/jakub/Documents
+f
+ra

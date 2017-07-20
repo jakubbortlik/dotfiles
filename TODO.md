@@ -86,21 +86,21 @@ airline
 audacity
 baobab - disk management
 biber
-bibletime 1
+bibletime
 caca-utils
 ctl 	# for the visualalisation in git
 firefox
 *flashplugin
 flash-player-properties???
 *fluidsynth
-galculator 1
+galculator
 gimp
 gmrun	# application starter (Ctrl-R)
-gucharmap 1
+gucharmap
 inkscape
 klavaro
 lame
-leafpad 1
+leafpad
 libreoffice
 *lilypond
 man-db
@@ -165,5 +165,5 @@ xorg-xev?
 *zathura-plugin-djvu
 
 podofo - pdf manipulation
-pdftk?
+pdftk? - not in Fedora
 tox - aur?
