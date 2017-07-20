@@ -9,10 +9,12 @@ xsettings_manager/command=build-in
 proxy_manager/command=build-in
 keyring/command=ssh-agent
 quit_manager/command=lxsession-logout
-lock_manager/command=lxlock
+lock_manager/command=slock
 terminal_manager/command=lxterminal
 pdf_reader/command=zathura
 audio_player/command=lxmusic
+quit_manager/image=/usr/share/lxde/images/logout-banner.png
+quit_manager/layout=top
 
 [GTK]
 sNet/ThemeName=Adwaita
