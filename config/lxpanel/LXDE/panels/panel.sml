@@ -116,7 +116,7 @@ Plugin {
     Model=pc105
     LayoutsList=us_jb,ipa,cz_jb
     VariantsList=,,
-    ToggleOpt=grp:shifts_toggle,grp:shift_caps_toggle,grp_led:scroll
+    ToggleOpt=grp:shift_caps_toggle,grp:shifts_toggle,grp_led:num
     KeepSysLayouts=0
     FlagSize=5
   }
