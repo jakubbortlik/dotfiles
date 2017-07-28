@@ -433,7 +433,7 @@
       <action name="Execute"><command>gmrun</command></action>
     </keybind>
     <keybind key="W-s">               # Launch Skype
-      <action name="Execute"><command>skype</command></action>
+      <action name="Execute"><command>skypeforlinux</command></action>
     </keybind>
     <keybind key="W-t">               # attach to last tmux session in terminal
       <action name="Execute"><command>lxterminal -e tmux -2 new-session -A -s MAIN</command></action>
