@@ -119,6 +119,7 @@ Plugin {
     ToggleOpt=grp:shift_caps_toggle,grp:shifts_toggle,grp_led:num
     KeepSysLayouts=0
     FlagSize=5
+    PerWinLayout=1
   }
 }
 Plugin {
