@@ -237,6 +237,11 @@ endfunction
 call s:map('n', '[ob', ':set background=light<CR>')
 call s:map('n', ']ob', ':set background=dark<CR>')
 call s:map('n', '=ob', ':set background=<C-R>=&background == "dark" ? "light" : "dark"<CR><CR>')
+
+call s:map('n', '[oy', ':UniCycleOn<CR>')
+call s:map('n', ']oy', ':UniCycleOff<CR>')
+call s:map('n', '=oy', ':UniCycleToggle<CR>')
+
 call s:option_map('c', 'cursorline', 'setlocal')
 call s:option_map('u', 'cursorcolumn', 'setlocal')
 call s:map('n', '[od', ':diffthis<CR>')
