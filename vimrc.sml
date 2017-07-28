@@ -97,9 +97,9 @@ set noshowmode 					" don't show mode I am in.
 
 " jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (<C-@>).
 " Default <c-j> conflicts with custom mapping to move between split windows.
-imap <C-@> <Plug>IMAP_JumpForward
-nmap <C-@> <Plug>IMAP_JumpForward
-vmap <C-@> <Plug>IMAP_JumpForward
+imap <C-Space> <Plug>IMAP_JumpForward
+nmap <C-Space> <Plug>IMAP_JumpForward
+vmap <C-Space> <Plug>IMAP_JumpForward
 " disable the vim-latex-suite compiler
 let g:doneTexCompiler = 1
 
