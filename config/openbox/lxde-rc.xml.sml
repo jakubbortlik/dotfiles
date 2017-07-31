@@ -449,13 +449,13 @@
         <action name="Execute"><command>audacity</command></action>
       </keybind>
       <keybind key="c">               # launch LibreOffice Calc W-x-c
-        <action name="Execute"><command>localc</command></action>
+        <action name="Execute"><command>oocalc</command></action>
       </keybind>
       <keybind key="g">               # launch gymp W-x-g
         <action name="Execute"><command>gimp</command></action>
       </keybind>
       <keybind key="h">               # launch harmonogram.xls in Calc W-x-h
-        <action name="Execute"><command>localc ~/harmonogram.xls</command></action>
+        <action name="Execute"><command>oocalc ~/harmonogram.xls</command></action>
       </keybind>
       <keybind key="i">               # launch inkscape W-x-i
         <action name="Execute"><command>inkscape</command></action>
@@ -471,7 +471,7 @@
         <action name="Execute"><command>rosegarden</command></action>
       </keybind>
       <keybind key="w">               # launch LibreOffice Writer W-x-w
-        <action name="Execute"><command>lowriter</command></action>
+        <action name="Execute"><command>oowriter</command></action>
       </keybind>
     </keybind>
     <keybind key="W-z">               # launch zathura
