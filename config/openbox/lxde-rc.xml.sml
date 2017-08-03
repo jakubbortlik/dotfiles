@@ -477,9 +477,11 @@
     <keybind key="W-z">               # launch zathura
       <action name="Execute"><command>zathura</command></action>
     </keybind>
-    <!-- undefined W-[qy] -->
-    <keybind key="W-q">               # launch
-      <action name="Execute"><command/></action>
+    <keybind key="W-y">               # launch
+      <action name="Execute"><command>lxterminal -e ping -c3 8.8.8.8</command></action>
+    </keybind>
+    <keybind key="W-q">               # launch qtox
+      <action name="Execute"><command>qtox</command></action>
     </keybind>
     <!--keybindings for LXPanel -->
     <keybind key="A-F2">              # launch the application launcher
