@@ -156,9 +156,9 @@ alias low="(lowriter &> /dev/null &)"
 alias loc="(localc &> /dev/null &)"
 alias reb="systemctl reboot"
 alias sus="systemctl suspend"
-alias vim="nvim"
+# alias vim="nvim"
 alias vimdiff="nvim -d"
-alias rename="perl-rename"
+# alias rename="perl-rename"
 
 # git aliases
 alias gs="(git status)"
