@@ -1,0 +1,22 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: viff
+# 
+#         USAGE: ./viff
+# 
+#   DESCRIPTION: open files in nvim in diff mode
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: Jakub Bortlík (jakub.bortlik@gmail.com), 
+#  ORGANIZATION: 
+#       CREATED: 08/04/2017 21:23
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+nvim -d "$@"
+
