@@ -455,7 +455,7 @@
         <action name="Execute"><command>gimp</command></action>
       </keybind>
       <keybind key="h">               # launch harmonogram.xls in Calc W-x-h
-        <action name="Execute"><command>oocalc ~/harmonogram.xls</command></action>
+        <action name="Execute"><command>oocalc ~/Documents/domaci/svatba/seznam_rozpocet_organizace.xls</command></action>
       </keybind>
       <keybind key="i">               # launch inkscape W-x-i
         <action name="Execute"><command>inkscape</command></action>
@@ -511,12 +511,12 @@
     </keybind>
     <keybind key="A-Print">           # take a screenshot of the focused window
       <!-- <action name="Execute"><command>mate-screenshot -w</command></action> -->
-      <action name="Execute"><command>scrot -u</command></action>
-    </keybind>
-    <keybind key="S-Print">             # select a screenshot with PrintScreen
-      <!-- <action name="Execute"><command>mate-screenshot -i</command></action> -->
       <action name="Execute"><command>scrot -s</command></action>
     </keybind>
+    # <keybind key="S-Print">             # select a screenshot with PrintScreen
+      # <!-- <action name="Execute"><command>mate-screenshot -i</command></action> -->
+      # <action name="Execute"><command>scrot -s</command></action>
+    # </keybind>
     <keybind key="XF86Display">       # Launch LXRandR with Fn+Screen
       <action name="Execute"><command>lxrandr</command></action>
     </keybind>
