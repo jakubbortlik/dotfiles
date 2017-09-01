@@ -344,7 +344,7 @@ cnoremap <C-A> <Home>
 " back one character
 cnoremap <C-B> <Left>
 " delete character under cursor - this overrides command line completion
-" cnoremap <C-D> <Del>
+cnoremap <C-D> <Del>
 " to end of line
 cnoremap <C-E> <End>
 " forward one character
@@ -377,20 +377,51 @@ cnoremap <C-P> <Up>
 " change the last word in a line from "false" to "true" and vicer versa
 " Mnemonic: cv - Change Value
 function! ToggleTrueFalse()
-	:let column = virtcol(".")
-	:let linenumber = line(".")
-	:let line = getline(".")
-	:let value = strpart(line , match(line, '\( \|=\|:\)\@<=\(false\|true\)'))
-	if value == "false"
-		:execute "normal! $ciwtrue"
-	elseif value == "true"
-		:execute "normal! $ciwfalse"
+	let column = virtcol(".")
+	let linenumber = line(".")
+	let line = getline(".")
+    let value_bytes = match(line, '\c\<\(false\|true\)\>')
+	let value = strpart(line , value_bytes, 4)
+	if value ==# "fals"
+        echo "false -> true"
+		silent execute "normal! :.s/\\Cfalse/true/"
+	elseif value ==# "Fals"
+        echo "False -> True"
+		silent execute "normal! :.s/\\CFalse/True/"
+	elseif value ==# "FALS"
+        echo "FALSE -> TRUE"
+		silent execute "normal! :.s/\\CFALSE/TRUE/"
+	elseif value ==# "true"
+        echo "true -> false"
+		silent execute "normal! :.s/\\Ctrue/false/"
+	elseif value ==# "True"
+        echo "True -> False"
+		silent execute "normal! :.s/\\CTrue/False/"
+	elseif value ==# "TRUE"
+        echo "TRUE -> FALSE"
+		silent execute "normal! :.s/\\CTRUE/FALSE/"
 	else
-		:echo value
+        echo "No false/true value on line"
 	endif
-	:call cursor(linenumber, column)
+    let value_end = value_bytes + 4
+    if value == "true"
+        if value_end >= column
+            let offset = 0
+        else
+            let offset = 1
+        endif
+    elseif value == "fals"
+        if value_end >= column
+            let offset = 0
+        else
+            let offset = -1
+        endif
+    else
+        let offset = 0
+    endif
+	call cursor(linenumber, column + offset)
 endfunction
-nnoremap cv :call ToggleTrueFalse()<CR>
+nnoremap <silent> cv :call ToggleTrueFalse()<CR>
 
 " insert current time at cursor position
 " nnoremap <leader>ct :put! =strftime('%H:%M')<CR>
@@ -428,3 +459,5 @@ function! ComposeSMS()
 endfunction
 
 " EXPERIMENTAL SETTINGS:
+
+" vim:set commentstring="%s:
