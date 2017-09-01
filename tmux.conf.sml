@@ -1,7 +1,7 @@
 # use some vim-like keybindings
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
-bind-key -t vi-copy 'C-v' rectangle-toggle
+bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
+bind-key -T copy-mode-vi 'y' send-keys -X copy-selection
+bind-key -T copy-mode-vi 'C-v' send-keys -X rectangle-toggle
 
 # the following configuration comes mostly from:
 # http://technopoetic.com/2014/05/emulating-powerline-with-just-vim-and-tmux/
