@@ -37,7 +37,7 @@ let maplocalleader = ","
 let g:vimtex_view_method="mupdf"
 
 " workaround for viewer
-nnoremap <leader>lv :silent !mupdf "%:r.pdf" &>/dev/null &<CR>
+" nnoremap <leader>lv :silent !mupdf "%:r.pdf" &>/dev/null &<CR>
 
 " see whether latex is working:
 nnoremap <leader>la :!modcheck<CR>

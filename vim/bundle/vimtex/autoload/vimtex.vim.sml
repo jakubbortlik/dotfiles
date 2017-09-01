@@ -416,12 +416,12 @@ function! s:init_default_mappings() " {{{1
     call s:map('n', '<localleader>lY', '<plug>(vimtex-labels-toggle)')
   endif
 
-  " if has_key(b:vimtex, 'viewer')
-  "   call s:map('n', '<localleader>lv', '<plug>(vimtex-view)')
-  "   if has_key(b:vimtex.viewer, 'reverse_search')
-  "     call s:map('n', '<localleader>lr', '<plug>(vimtex-reverse-search)')
-  "   endif
-  " endif
+  if has_key(b:vimtex, 'viewer')
+    call s:map('n', '<localleader>lv', '<plug>(vimtex-view)')
+    if has_key(b:vimtex.viewer, 'reverse_search')
+      call s:map('n', '<localleader>lr', '<plug>(vimtex-reverse-search)')
+    endif
+  endif
 
   if get(g:, 'vimtex_imaps_enabled', 0)
     call s:map('n', '<localleader>lm', '<plug>(vimtex-imaps-list)')
