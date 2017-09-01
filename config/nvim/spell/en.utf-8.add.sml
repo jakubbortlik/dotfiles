@@ -92,3 +92,10 @@ Rusou
 multiword
 derivational
 SAMPA
+Pompidou
+Picasso
+Margravial
+Bayreuth
+margrave
+Prussia
+epenthesis
