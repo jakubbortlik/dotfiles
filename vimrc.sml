@@ -56,7 +56,8 @@ call vundle#begin()
 	" Plugin 'justinmk/vim-sneak'			" versatile motion done by 2 characters
 	" Plugin 'tpope/vim-obsession'			" Found in airline help file
 	Plugin 'scrooloose/syntastic'			" syntax checking
-
+    Plugin 'vim-scripts/ReplaceWithRegister' " Replace text with contents of a register
+    Plugin 'christoomey/vim-titlecase'      " Make First Letters Uppercase
 
 	" Colors
 	Plugin 'nanotech/jellybeans.vim'
@@ -459,5 +460,11 @@ function! ComposeSMS()
 endfunction
 
 " EXPERIMENTAL SETTINGS:
+" show the output of nwr (diff of nwords.txt)
+nnoremap <leader>wt :!nwr<cr>
+" write the diff of nwords.txt
+nnoremap <leader>ww :!nwr -w<cr>
+" edit the nwords.txt file
+nnoremap <leader>we :e ~/skola/01_phd/02_dissertation/thesis/nwords.txt<cr>
 
 " vim:set commentstring="%s:
