@@ -62,7 +62,8 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # source /usr/share/doc/packages/ranger/examples/bash_automatic_cd.sh
 function ranger-cd {
 	tempfile="$(mktemp -t tmp.XXXXXX)"
-	/usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+	# /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    ~/comp/testing/ranger/ranger.py --choosedir="$tempfile" "${@:-$(pwd)}"
 	test -f "$tempfile" &&
 	if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
 		cd -- "$(cat "$tempfile")"
@@ -154,6 +155,7 @@ alias cbh="(sed -ir '/^.[ ]*$/d' ~/.bash_history; echo 'removed single character
 alias edu="(sudo systemctl stop netctl-auto@wlp12s0.service; sudo netctl stop-all; sudo netctl start eduroam)"
 alias low="(lowriter &> /dev/null &)"
 alias loc="(localc &> /dev/null &)"
+alias qep="qpdf --empty --pages"
 alias reb="systemctl reboot"
 alias sus="systemctl suspend"
 # alias vim="nvim"
@@ -181,10 +183,10 @@ alias wired="(sudo systemctl stop netctl-auto@wlp12s0.service; sudo netctl stop-
 alias tether="(f=`ip link | grep -oE "enp0s29f[0-9]+u[0-9]+c[0-9]+"`; sudo dhcpcd "$f")"
 
 # temporary aliases:
-alias bau='rsync -rptgoDv --delete --exclude=".*" ~/skola/1_phd/01_state_exam/ /run/media/jakub/BORTLIK/skola/1_phd/01_state_exam'
-alias baun='rsync -rptgoDvn --delete --exclude=".*" ~/skola/1_phd/01_state_exam/ /run/media/jakub/BORTLIK/skola/1_phd/01_state_exam'
-alias bad='rsync -rptgoDv --delete --exclude=".*" ~/skola/1_phd/01_state_exam/ /run/media/jakub/backup/jakub/skola/1_phd/01_state_exam'
-alias badn='rsync -rptgoDvn --delete --exclude=".*" ~/skola/1_phd/01_state_exam/ /run/media/jakub/backup/jakub/skola/1_phd/01_state_exam'
+alias bau='rsync -rptgoDv --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/Sony_16GR/skola/01_phd/02_dissertation'
+alias baun='rsync -rptgoDvn --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/Sony_16GR/skola/01_phd/02_dissertation'
+alias bad='rsync -rptgoDv --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation'
+alias badn='rsync -rptgoDvn --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation'
 
 # (mount automatically and) cd to the the first connected USB
 alias cu1="cd /mnt/usb1"
