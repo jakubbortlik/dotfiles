@@ -22,6 +22,8 @@ nVim:
 
 - unimpaired: keep cursor position after ]<Space>
 
+- ToggleTrueFalse - use cursor column to change a particular value when there
+  are more on one line
 
 python:
 -------
@@ -53,10 +55,17 @@ openbox:
 
 latex:
 ------
+install latexmk, xelatex, bibtex
 - include audio
 - harmonize vimtex and vim-latex-suite: autoindent after \footnote{}
 - VimtexView - select the right file after another .tex file has been opened
 - biblatex - multiple works in one parenthesis, \autocite[15]{lass}[16]{brown}
+		   - main.tex|| Package biblatex Warning: 'labeldate' option used to
+			 determine whether to provide label date fields and extrayear field
+			 is renamed to 'labeldateparts', setting this instead. This option
+			 is now used to set the format of the labeldate.
+		   - main.tex|| Package biblatex Warning: '\name' is deprecated in
+			 sorting specifications, please use '\field'.
 - replace tabs with spaces (expandtab?)
 
 libreoffice:
@@ -69,15 +78,25 @@ debugger:
 ---------
 GDB - the GNU Project Debugger
 
+Tmux:
+-----
+unbind C-b
+set -g prefix `
+bind-key ` send-prefix
+
+In .tmux.conf I also have bind-key C-a set-option -g prefix C-a. Whenever I need
+to use backticks I hit `-Ctrl-a which sets my prefix to C-a. And I have bind-key
+C-b set-option -g prefix ` so I can hit C-a-C-b to go back
+
 Other:
 ------
+- disable graphical login to Fedora
 - find out how not to start X but login as a user who has got "startx" in the
   .xinit file
 - post a bug report on christoomey/vim-tmux-navigator:
 	does not work when "nVim" is started from ranger or Midnight Commander
 	(current_command = python/mc)
 - write script for toggling settings for a night/day shift
-- record video of screen to find out addresses to block on sms.t-mobile.cz
 - remdi doesn't work when there are spaces in the file name
 
 Packages to install:
