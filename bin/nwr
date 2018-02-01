@@ -1,0 +1,98 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: nwr
+# 
+#         USAGE: ./nwr
+# 
+#   DESCRIPTION: this script counts the words in my disertation files and tells
+#                me how much has changed
+# 
+#       OPTIONS: -e change the logfile manually
+#                -w write differences to the log file
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: Jakub Bortlik, jakub.bortlik@gmail.com
+#  ORGANIZATION: 
+#       CREATED: 11/07/2017 11:28
+#      REVISION: 01/02/2018 10:42
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+E_XCD=86							# Can't change directory?
+DIR="/home/jakub/skola/01_phd/02_dissertation/thesis"
+LOGFILE="nwords.txt"
+cd "$DIR"
+WRITE_DIFF="false"
+EDIT="false"
+
+# Doublecheck if in the right directory
+if [ "$(pwd)" != "$DIR" ]		# Not in ~/skola/01_phd/02_dissertation/thesis?
+then
+  echo "Can't change to $DIR."
+  exit $E_XCD
+fi
+
+while getopts "hwe" OPTION; do
+        case $OPTION in
+
+				e)
+						EDIT="true"
+						;;
+
+                w)
+                        WRITE_DIFF="true"
+                        ;;
+
+                h)
+                        echo "Usage:"
+						echo "  nwr        Print the diff of the log file and the current state of the tex files"
+						echo "  nwr -e     Edit the log file manually"
+						echo "  nwr -h     Print help (this output)"
+                        echo "  nwr -w     Write the differences to the log file"
+                        exit 0
+                        ;;
+
+        esac
+done
+
+if [[ $EDIT = "true" ]]; then
+	vim $LOGFILE
+	exit
+fi
+
+
+# check if the wc command is available
+if command -v wc >/dev/null 2>&1
+then
+	FILELIST=$(find . -type f -iname "*tex" | sort -d)
+	# the temporary count of words
+	wc -w $FILELIST > /tmp/NWORDS
+
+	tail --lines=8 $LOGFILE > /tmp/TEMPOLD
+	tail --lines=8 /tmp/NWORDS > /tmp/TEMPNEW
+
+	diff /tmp/TEMPOLD /tmp/TEMPNEW > /dev/null
+	comp_value=$?
+	if [ $comp_value -eq 1 ]
+	then
+		echo "Some .tex files have been changed:"
+		diff -s /tmp/TEMPOLD /tmp/TEMPNEW
+		# if the -t option hasn't been passed write wc to file
+		if [[ $WRITE_DIFF = "true" ]]
+		then
+			echo "" >> $LOGFILE
+			date >> $LOGFILE
+			cat /tmp/NWORDS >> $LOGFILE
+		fi
+	else
+		echo "No changes in .tex files."
+	fi
+else
+	echo "I require \"wc\" but it's not installed.  Aborting."
+	exit 1
+fi
+
+exit
