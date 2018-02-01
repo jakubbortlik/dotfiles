@@ -510,8 +510,8 @@ copycmap <end>       <C-e>
 copycmap <delete>    <C-d>
 copycmap <backspace> <C-h>
 
-cmap <A-b>  eval fm.ui.console.move(left=5)
-cmap <A-f> eval fm.ui.console.move(right=5)
+# cmap <A-b>  eval fm.ui.console.move(left=5)
+# cmap <A-f> eval fm.ui.console.move(right=5)
 # copycmap <A-left>      <A-b>
 # copycmap <A-right>     <A-f>
 
@@ -589,3 +589,5 @@ tmap <delete>   eval -q fm.ui.taskview.task_remove()
 tmap <C-l> redraw_window
 tmap <ESC> taskview_close
 copytmap <ESC> q Q w <C-c>
+
+set line_numbers true
