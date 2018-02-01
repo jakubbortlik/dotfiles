@@ -5434,3 +5434,71 @@ nwr -h
 vim nwr
 nwr -h
 vim nwr
+rsync -rptgoDvn --delete --exclude=.* ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation
+rsync -rptgoDv --delete --exclude=.* ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation
+locate nvim
+locate nvim | grep jakub
+ls .local/share/nvim/swap/
+ll
+ls .local/share/nvim/swap/
+vim -O $(ls .local/share/nvim/swap/)
+cd ls .local/share/nvim/swap/
+cd ~/.local/share/nvim/swap/
+ll
+vim %home%jakub%skola%01_phd%02_dissertation%german_overview.txt.swp 
+ra
+rsync -rptgoDvn --delete --exclude=.* /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -rptgoDvn --delete --exclude=.* --excluce="practical_english" /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+ -rptgoDvn --delete --exclude=.* --excluce='practical_english' /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -rptgoDvn --delete --exclude=.* --excluce=practical_english /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -rptgoDvn --delete --exclude=.* --exclude='practical_english' /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -rptgoDv --delete --exclude=.* --exclude='practical_english' /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+ra
+rsync -avn --delete /home/jakub/Videos/svatba_bortlikovi_2017/ /run/media/jakub/backup/jakub/Videos/svatba_bortlikovi_2017
+rsync -av --delete /home/jakub/Videos/svatba_bortlikovi_2017/ /run/media/jakub/backup/jakub/Videos/svatba_bortlikovi_2017
+gs
+git push
+git pull
+vim bash_history.sml 
+git pull
+gs
+git add bash_history.sml 
+gs
+git pull
+git commit -am 'merged'
+git pul
+git pull
+git push
+git log
+glog
+git push
+gs
+cd moc/
+gs
+cd ../bundle/
+ll
+gs
+cd vim-latex-suite/
+gs
+cd ftplugin/
+gs
+git add ./
+..
+gs
+cd ../moc/
+gs
+git add ./
+gs
+ls
+cd themes/
+gs
+..
+gs
+git add themes/
+ll
+cd themes/
+gs
+git add *
+gs
+..
+gs
