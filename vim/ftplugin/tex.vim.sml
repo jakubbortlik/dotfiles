@@ -73,13 +73,13 @@ nmap <leader>t^ aTS^
 
 " insert \textsubscript{}<++>
 call IMAP('TSV', '\textsubscript{<++>}<++>', 'tex')
-nmap <leader>tv aTS^
+nmap <leader>tv aTSV
 
-" insert \textsuperscript{}<++>
+" insert \begin{frame}<++>\end{frame}<++>
 call IMAP('EFE', '\begin{frame}<++>\end{frame}<++>', 'tex')
 nmap <leader>fe aEFE
 
-" insert \textsuperscript{}<++>
+" insert {\myfont<++>}<++>
 call IMAP('EMF', '{\myfont<++>}<++>', 'tex')
 nmap <leader>mf aEMF
 
