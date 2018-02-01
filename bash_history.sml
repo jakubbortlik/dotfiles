@@ -994,7 +994,6 @@ rsync -av /run/media/jakub/backup/jakub/harmonogram.xls /home/jakub/
 rsync -av /run/media/jakub/backup/jakub/kytka.png  /home/jakub/Documents/domaci/svatba/oznameni/
 rsync -av /run/media/jakub/backup/jakub/jobs  /home/jakub/
 ls -l --color=auto /run/media/jakub/backup/jakub
-rsync -av /run/media/jakub/backup/jakub/konference  /home/jakub/; rsync -av /run/media/jakub/backup/jakub/Music ~/; rsync -av /run/media/jakub/backup/jakub/Pictures ~/; rsync -av /run/media/jakub/backup/jakub/praat ~/; rsync -av /run/media/jakub/backup/jakub/preklady ~/; rsync -av /run/media/jakub/backup/jakub/skola ~/; rsync -av /run/media/jakub/backup/jakub/zdroje ~/
 rsync -avn -exclude="practical_english" /run/media/jakub/backup/jakub/zdroje ~/
 rsync -avn --exclude="practical_english" /run/media/jakub/backup/jakub/zdroje ~/
 rsync -av --exclude="practical_english" /run/media/jakub/backup/jakub/zdroje ~/
@@ -1489,3 +1488,3949 @@ rsync -av --exclude=.* ~/Documents/ /run/media/jakub/backup/jakub/Documents
 rsync -av --delete --exclude=.* ~/Documents/ /run/media/jakub/backup/jakub/Documents
 f
 ra
+git push
+cd /run/media/jakub/backup/jakub/dotfiles/
+git pull
+glog
+git pull
+gs
+git add config/openbox/lxde-rc.xml.sml bash_history.sml symstall 
+pwd
+git pull
+git commit -am 'this sucks'
+git pull
+glog
+uu1
+lsblk
+uu1
+sd
+find . -type f -iname "*jpg" -execdir bash -c 'BARE="${0%%jpb}"; convert "$0" "$BARE"png' {} \;
+find . -type f -iname "*jpg" -execdir bash -c 'BARE="${0%%jpg}"; convert "$0" "$BARE"png' {} \;
+cd ~/Pictures/ruzne/
+cd ~/Pictures/ruzne/kombo/
+ll
+gs
+ra
+find . -type f -iname "*verb*"
+find . -type f -iname "*txt"
+find . -type f -iname "*txt" -execdir vim {} \;
+find . -type f -iname "*txt" -execdir nvim {} \;
+find . -type f -iname "*txt" -execdir less {} \;
+symstall
+f
+ra
+find -type f -execdir chmod a-x {} \;
+man find
+find -executable
+find -executable -execdir chmod a-x {} \;
+find . -executable -execdir chmod a-x {} \;
+find . -type f -executable -execdir chmod a-x {} \;
+ra
+fg
+ra
+sd
+f
+ping -c3 8.8.8.8
+f
+ra
+sd
+uu1
+lsblk
+ping -c3 8.8.8.8
+ra
+uu1
+ping -c3 8.8.8.8
+w3m
+emacs
+dnf search emacs
+nvim -O Koloseum*
+ra
+ping -c3 8.8.8.8
+'
+ping -c3 8.8.8.8
+clear
+ping -c3 8.8.8.8
+\
+less .bash_history
+ping -c3 8.8.8.8
+ra
+ra
+reb
+ping -c3 8.8.8.8
+ping -c3 8.8.8.8
+vim ~/dotfiles/TODO.md 
+find . -type f -execdir grep -H LookupCharacter {} \;
+ping -c3 8.8.8.8
+find . -type f -execdir grep -H 65_LookupCharacter {} \;
+..
+find . -type f -execdir grep -H 65_LookupCharacter {} \;
+..
+cd jakub/
+find . -type f -execdir grep -H 65_LookupCharacter {} \;
+cd ~/.vim/bundle/
+find . -type f -exec grep -H 65_LookupCharacter {} \;
+find . -type f -exec grep -H LookupCharacter {} \;
+find . -type f -exec grep -iH <C-Space> {} \;
+find . -type f -exec grep -iH "<C-Space>" {} \;
+symlinks 
+symstall 
+gs
+symstall 
+vimdiff autostart ~/dotfiles/config/lxsession/LXDE/autostart.sml 
+vimdiff desktop.conf desktop.conf.~1~ 
+ra
+vimdiff desktop.conf ~/dotfiles/config/lxsession/LXDE/desktop.conf.sml 
+symstall 
+ra
+ping -c3 8.8.8.8
+clear
+ping -c3 8.8.8.8
+ping -c3 google.com
+ping -c3 8.8.8.8
+ra
+ping -c3 8.8.8.8
+cd ~/comp/latex/
+mkdir egg2017
+cd egg2017
+vim examples.tex
+dnf search latex
+dnf search xelatex
+vim examples.tex 
+vim trees.tex 
+sudo dnf install scrot
+man bind
+man ranger
+ra
+sudo dnf install latexmk
+sudo dnf install texlive
+sudo dnf install latexmk
+sudo dnf install bibtex
+find . -type f -exec grep -iH "TexView" {} \;
+symstall 
+vimdiff main.vim main.vim.~1~
+ls
+ra
+vimdiff main.vim.sml ~/.vim/bundle/vim-latex-suite/ftplugin/latex-suite/main.vim 
+symstall
+..
+cd plugin/
+ra
+ra
+dnf search expex
+sudo dnf install expex
+sudo dnf install texlive-expex.noarch
+sudo dnf install texlive-newtx.noarch
+sudo dnf install texlive-gb4e-doc.noarch
+sudo dnf install texlive-*
+sudo dnf install texlive
+sudo dnf install texlive-g*
+sudo dnf search texlive-gb4e
+sudo dnf install texlive-gb4e.noarch
+sudo dnf install texlive-ulem.noarch
+sudo dnf install texlive-fullpage
+sudo dnf search fullpage
+sudo dnf install texlive-context-fullpage
+dnf search newtxtext
+dnf search gb4e
+ra
+sd
+f
+ra
+type m
+ra
+ping -c3 8.8.8.8
+dnf seach moc
+dnf search moc
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+dnf search moc
+gpg --keyserver pgp.mit.edu --recv-keys 9690E4AF
+sudo dnf install moc
+m
+ls /etc/popt.d/
+ls /etc/polkit-1/
+ls /etc/popt.d/
+touch /etc/popt.d/empty_file
+sudo touch /etc/popt.d/empty_file
+m
+ls /etc/popt.d/empty_file
+sudo rm /etc/popt.d/empty_file
+sudo touch /etc/popt.d/mocp
+ls ~/.moc/
+ra
+m
+vimdiff config.sml /usr/share/doc/moc/config.example 
+cp /usr/share/doc/moc/config.example ~/dotfiles/moc/config.example
+vimdiff config.sml config.example 
+m
+vim config.sml 
+sudo updatedb 
+locate config.example
+m
+ll ~/dotfiles/moc/config.sml
+chmod 755 ~/dotfiles/moc/config.sml
+ll ~/dotfiles/moc/config.sml
+ll ~/dotfiles/moc/config
+ll ~/dotfiles/moc/config*
+rm ~/dotfiles/moc/config.example 
+m
+man mocp
+m
+symstall 
+ll
+rm config.~1~ 
+vim config 
+vim keymap 
+m
+ra
+man mocp
+man moc
+vim ~/dotfiles/moc/config.sml 
+m
+ls /usr/share/moc/themes/
+cd /usr/share/moc/themes/
+less black_theme 
+vim black_theme
+vim example_theme 
+mkdir ~/dotfiles/moc/themes
+cp yellow_red_theme ~/dotfiles/moc/themes/ghana
+cd ~/dotfiles/moc/themes
+pwd
+vim ghana 
+symstall 
+mv ghana ghana_theme.sml
+symstall 
+m
+mocp
+m
+;
+m
+git clone http://github.com/wimstefan/mocp-themes
+cd ~/dotfiles/moc/themes/
+..
+vim config.sml 
+ping -c3 8.8.8.8
+vim -O Kulturni_centrum_Pompidou_*
+ping -c3 8.8.8.8
+man rename
+vim -O Machi_Pichu_cz.txt Machi_Pichu_en.txt
+type rename
+which rename
+b
+. ~/.bashrc 
+type ren
+type rename
+unalias rename 
+type rename
+find . -iname "Machi*"
+find . -iname "Machi*" -execdir rename Machi_Pichu Machu_Picchu {} \;
+man tail
+ra
+m
+fg
+m
+ping -c3 8.8.8.8
+ping -c3 8.8.8.8
+ra
+ping -c3 8.8.8.8
+ra
+ping -c3 8.8.8.8
+man lxterminal
+ping -c3 8.8.8.8
+qtox 
+man dnf
+dnf list --installed tox
+dnf list --installed
+dnf list --installed *tox
+dnf list --installed *tox*
+dnf list --installed tox*
+dnf list --installed toxcore
+dnf list search toxcore
+dnf search toxcore
+dnf search utox
+dnf search toxic
+sudo dnf install toxic
+toxic 
+vim -N -u NONE
+locate move.c
+locate neovim
+vim Machu_Picchu*txt
+vim -O Machu_Picchu*txt
+ra
+bh
+f
+dnf search android
+ra
+ping -c3 8.8.8.8
+ra
+rsync -avn --delete --exclude-from=exclude.txt ~/preklady/ /run/media/jakub/backup/jakub/preklady
+rsync -av --delete --exclude-from=exclude.txt ~/preklady/ /run/media/jakub/backup/jakub/preklady
+find . -type f -executable -execdir chmod a-x {} \;
+ra
+man rsync
+cd ~/zdroje/; rsync -avn --exclude="practical_english" ~/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -avn --exclude="practical_english" ~/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -av --exclude="practical_english" ~/zdroje/ /run/media/jakub/backup/jakub/zdroje
+man rsync
+rsync -rlEtgoDn --exclude="practical_english" ~/zdroje/ /run/media/jakub/backup/jakub/zdroje
+man rsync
+rsync -rlEtgoD --exclude="practical_english" ~/zdroje/ /run/media/jakub/backup/jakub/zdroje
+ra
+rsync -rlEtgoDvn --exclude="practical_english" ~/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -rlEtgoDv --exclude="practical_english" ~/zdroje/ /run/media/jakub/backup/jakub/zdroje
+lsblk
+lshw
+fdisk -l
+sudo fdisk -l
+ra
+rsync -av --delete --exclude-from=exclude.txt ~/preklady/ /run/media/jakub/backup/jakub/preklady
+uu1
+less ~/dotfiles/config/ranger/rc.conf.sml 
+less ~/dotfiles/config/ranger/rifle.conf.sml 
+less ~/dotfiles/config/ranger/rc.conf.sml 
+ll
+antiword Koloseum.doc > kol.txt
+ll
+less kol
+less kol.txt 
+locate scope.sh
+less /usr/share/doc/ranger/config/scope.sh 
+cp /usr/share/doc/ranger/config/scope.sh .
+symstall 
+dnf list pdft
+dnf list pdft*
+dnf list pdftotext
+dnf list pdftotext*
+pdftoppm ulicny-k-moravskym-aspektum-soucasne-cestiny.pdf 
+locate w3mim
+locate w3m
+locate w3mimg
+locate w3m
+locate man
+dnf list w3m
+sudo dnf install w3m
+ra
+uu1
+ra
+locate w3m
+sudo updatedb 
+locate w3m
+locate w3mim
+locate w3mimg
+locate w3mh
+locate w3mi
+dnf search w3m
+sudo dnf install w3m-img
+sudo updatedb 
+locate w3mi
+ra
+man xterm
+man X
+man X(7)
+man xterm
+apropos X
+man xterm
+vim phonological_space.txt
+ra
+curl https://img.odkulinare.cz/commodityDetailZoom/images/%c3%baklid/leifheit/osobn%c3%ad%20v%c3%a1ha%20soehnle%20..jpg
+man curl
+curl -O https://img.odkulinare.cz/commodityDetailZoom/images/%c3%baklid/leifheit/osobn%c3%ad%20v%c3%a1ha%20soehnle%20..jpg
+curl -o vaha.jpg https://img.odkulinare.cz/commodityDetailZoom/images/%c3%baklid/leifheit/osobn%c3%ad%20v%c3%a1ha%20soehnle%20..jpg
+file vaha.jpg 
+curl -o stolek https://www.cistedrevo.cz/image/cache/data/CZ179-L/dreveny-servirovaci-stolek-do-postele-50x30-cm-1000x665.jpg
+file stolek 
+mv stolek stolek.jpg
+file sterka.jpg 
+man scrot
+man wait
+man gmrun
+apropos gmrun
+type gmrun
+ra
+vim -O Markrabeci_operni_dum-baroko*txt
+cd
+rsync -avn --delete --exclude-from=exclude.txt ~/preklady /run/media/jakub/BORTLIK/
+rsync -av --delete --exclude-from=exclude.txt ~/preklady /run/media/jakub/BORTLIK/
+h
+type h
+bh
+fdisk
+fdisk -l
+sudo fdisk -l
+man find
+find . -size -1M
+find . -size -0.5M
+find . -size -1M
+man find
+find . -size +1M
+find . -size +100M
+find . -size +200M
+find . -size +1G
+find . -size +1G -exec file {} \;
+find . -size +1G -exec du -sh {} \;
+dnf search doc2txt
+dnf search doc2
+dnf search docto
+type make
+type make man
+type make perl unzip
+dnf search antiword
+sudo dnf install antiword
+dnf list pdftotext
+dnf list pdf
+dnf list pdf*
+sudo dnf install pdftotext
+dnf search pdftotext
+dnf search pdft
+dnf list pdftotext
+ra
+dnf search poppler-utils
+dnf list poppler-utils
+dnf list --installed poppler-utils
+ra
+rsync -av --delete --exclude-from=exclude.txt ~/preklady/ /run/media/jakub/BORTLIK/preklady
+man vim
+ra
+rsync -av --delete --exclude-from=exclude.txt ~/preklady/ /run/media/jakub/BORTLIK/preklady
+cd 
+cd -
+cp ~/exclude.txt ./
+rsync -av --delete --exclude-from=exclude.txt ~/preklady/ /run/media/jakub/BORTLIK/preklady
+uu1
+cd ~/Documents/sport/
+unzip xbx.zip 
+zat xbx.pdf 
+ll
+rm xbx.*
+ll
+vim
+man ranger
+ra
+man gvim
+nvim --help
+man nvim
+nvim nvim.sh
+ra
+e .
+e
+type vim
+b
+type viff
+dnf search viff
+b
+vim ~/dotfiles/bin/viff.sh
+mv ~/dotfiles/bin/viff.sh ~/dotfiles/bin/viff
+chmod a+x ~/dotfiles/bin/viff
+viff exclude.txt exclude.txt 
+viff exclude.txt .gitconfig 
+man dnf
+find . -type f -size +2G
+find . -type f -size +100M
+find . -type f -size +1G -exec du -sh {} \;
+find . -type d
+find . -type d -execdir detox {} \;
+locate vratne
+find . -type f -executable
+find . -type f --executable
+find . -type f -executable
+find . -type f -iname '*sh'
+find . -type f -executable
+rsync -av /home/jakub/dotfiles /run/media/jakub/BORTLIK/
+rsync -rlEtgoDv /home/jakub/dotfiles/bin /run/media/jakub/BORTLIK/comp/testing/
+ra
+pwd
+2..
+..2
+ll
+..
+ls
+pwd
+..
+pwd
+ra
+ra
+dnf check-update ranger
+sd
+f
+m
+cd Music/
+cd ~/Music/
+cd ~/Music/faith_no_more/
+ll
+apropos rar
+dnf list unrar
+dnf search unrar
+man xarchiver 
+xarchiver --help
+man dnf
+dnf repoquery unrar
+dnf search unrar
+sudo dnf install unar
+unar --help
+unar Faith-No-More-1998-Who-Cares-a-Lot-Disc-2-\(128\).rar 
+ra
+m
+ll
+ra
+man tmux
+vim
+vim ~/dotfiles/TODO.md 
+ra
+b
+hostname
+hostname dell
+sudo hostname dell
+hostname
+cat /etc/sysconfig/network
+cat /etc/sysconfig/network-scripts/
+cd /etc/sysconfig/network-scripts/
+ll
+..
+ll
+cat network
+vim network
+sudo hostname fedora
+sudo hostname fedora.dell
+hostnamectl
+sudo hostname dell.fedora
+sudo hostname fedora.dell
+hostnamectl set-hostname fedora.dell
+cat /etc/sysconfig/network
+cat /etc/hostname 
+cat /etc/hosts
+cat /etc/hostname 
+cal
+man cal
+cal -3
+b
+less /etc/host
+less /etc/hosts
+hostnamectl status
+ra
+cat ~/dotfiles/bin/dark 
+less /home/jakub/.config/libreoffice/4/user/registrymodifications.xcu 
+vim ~/dotfiles/bin/dark
+vim /home/jakub/.config/libreoffice/4/user/registrymodifications.xcu
+dark 
+cd /home/jakub/.config/libreoffice/
+ra
+rsync -av --delete --exclude-from=exclude.txt /run/medi/jakub/backup/jakub/preklady/ ~/preklady
+rsync -avn --delete --exclude-from='exclude.txt' /run/media/jakub/backup/jakub/preklady/ ~/preklady
+rsync -av --delete --exclude-from='exclude.txt' /run/media/jakub/backup/jakub/preklady/ ~/preklady
+find . -type f -executable -execdir chmod a-x {} \;
+rsync -av --delete --exclude-from=exclude.txt ~/preklady/ /run/media/jakub/backup/jakub/preklady
+ra
+m
+uu1
+sd
+f
+w3m
+w3m duckduck.go
+w3m duckduckgo.com
+w3m -o auto_image=TRUE http://sms.t-mobile.cz
+man w3m
+vim ~/.w3m
+man w3m
+gpicview captcha.jpg 
+w3m duckduckgo.com
+w3m gmail.com
+f
+light
+vim ~/dotfiles/bin/light 
+light
+dark
+light
+vim
+vim ~/Documents/domaci/jidlo_recepty/kimchi.txt
+w3m sms.1188.cz
+dark
+ra
+m
+man mocp
+m
+light
+sd
+man ranger
+vim ~/dotfiles/config/ranger/rc.conf.sml 
+man ranger
+ra
+find /home/jakub/preklady/david/sites/
+find /home/jakub/preklady/david/sites/ -type f
+find /home/jakub/preklady/david/sites/ -type f -execdir detox {} \;
+find /home/jakub/preklady/david/sites/ -type f
+w3m ~/preklady/david/sites/Sydney_Opera_House-Wikipedia.html 
+ra
+rsync -av --delete --exclude-from=exclude.txt ~/preklady/ /run/media/jakub/backup/jakub/preklady
+ra
+uu1
+man vim
+ra
+w3m ~/preklady/david/sites/Sydney_Opera_House-Wikipedia.html 
+uu1
+ra
+sd
+f
+man vim
+vim
+dnf upgrade ranger
+sudo dnf upgrade ranger
+ranger -v
+ranger -version
+ranger --version
+m
+ra
+cd ~/Music/janacek/
+ll
+unar Leoš_Janáček_-_Glagolská_mše_\(Tilson_Thomas\,_LSO\,_256\).rar 
+ll
+rm ./*rar
+mv Leoš\ Janáček\ -\ Glagolská\ mše\ \(Tilson\ Thomas\,\ LSO\,\ 256\)/ janacek_glagolska_mse_tilson_thomas
+ll
+cd janacek_glagolska_mse_tilson_thomas/
+ll
+ra
+sd
+f
+vim
+vim ~/Documents/posta/mamce-2017-08-10.txt
+detox Bed.*/
+detox Bed*/
+ll
+ll
+cd ~/Documents/posta/
+ll
+ra
+f
+sd
+find . "*itemized"
+find . -iname "*itemized"
+find . -iname "*itemized*"
+diff -s $(find . -iname "*itemized*"
+)
+diff -s $(find . -iname "*itemized*")
+man bash
+diff -s `find . -iname "*itemized*"`
+diff -s $(find . -iname *itemized*')
+diff -s $(find . -iname '*itemized*')
+diff -s $(find . -iname *itemized*)
+diff -s $(find . -iname "*itemized*")
+find . -iname "*itemized*"
+diff new_ENGLISH\ -\ itemized\ one-year\ STUDY\ PLAN.doc 03_ENGLISH_itemized_one-year_STUDY_PLAN.doc 
+diff -s new_ENGLISH\ -\ itemized\ one-year\ STUDY\ PLAN.doc 03_ENGLISH_itemized_one-year_STUDY_PLAN.doc 
+diff -s new_ENGLISH\ -\ REPORT\ of\ student’s\ academic\ achievements.doc 04_ENGLISH_REPORT_of_students_academic_achievements.doc 
+vim
+f
+ra
+sd
+f
+sd
+ra
+locate en-US.aff
+locate en-US.dic
+locate -i en-US.dic
+locate -i en-US.aff
+locate -i firefox | grep -i "dictiona"
+ls /usr/lib64/firefox/dictionaries/
+ll /usr/lib64/firefox/dictionaries/
+cd /usr/lib64/firefox/dictionaries/
+ll
+ls
+rm en_A*
+sudo rm en_A*
+find . -type l
+find . -type l | sort
+ll
+find . -type l | sort
+find . -type l -execdir sudo rm {} \;
+ll
+diff -s CV_Jakub_Bortlik.pdf test/CV_Jakub_Bortlik.pdf 
+lateck
+dnf search fullpage
+sudo dnf install texlive-context-fullpage
+locate fullpage
+dnf search fullpage
+man unar
+unar -p BIGBOSS Jak_na_to_-_Ford_Galaxy_VW_SHARAN_SEAT_ALHAMBRA.rar 
+unar -p BIGBOSSS Jak_na_to_-_Ford_Galaxy_VW_SHARAN_SEAT_ALHAMBRA.rar 
+zat Jak\ na\ to\ Ford\ galaxy\ vw\ sharan\ seat\ alhambra/jak-na-to-galaxy-sharan.pdf 
+man nightshift
+man redshift
+f
+ra
+ra
+reb
+ra
+s
+ra
+find . -iname "*reading*"
+uu1
+lsblk
+b
+vim
+ra
+sd
+locate -i "*vegetarian*myth*"
+find . -type f
+find . -type f -execdir detox {} \;
+cd
+rsync -avn --delete --exclude-from=exclude.txt ~/skola/ /run/media/jakub/BORTLIK/skola
+rsync -av --delete --exclude-from=exclude.txt ~/skola/ /run/media/jakub/BORTLIK/skola
+rsync -av --delete --exclude-from=exclude.txt /home/jakub/skola/1_phd/ /run/media/jakub/BORTLIK/skola/1_phd
+ra
+uu1
+f
+ra
+lsblk
+sd
+zat ~/Documents/cestovani/taize2017/FLIX-Ticket-8043940004.pdf 
+sd
+gs
+glog
+git pull
+git clone http://github.com/jakubbortlik/pcb
+glog
+cd pcb/
+glog
+vim README.md 
+gs
+ra
+vim
+diff -s ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks 
+cp ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks 
+diff -s ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks 
+uu1
+f
+ra
+lsblk
+ra
+sd
+f
+pgrep firefo
+f
+pgrep firefo
+pkill firefo
+sd
+f
+pkill firefox
+pgrep fire
+pgrep firefo
+sd
+uu1
+type mogrify 
+man mogrify
+man convert
+f
+dnf search powerline-fonts
+sudo dnf install powerline-fonts
+man fc-cache
+fc-cache -f -v
+incon
+h
+type h
+(nvim ~/.bash_history)
+tmux
+stellarium 
+bg
+man dnf
+sudo dnf autoremove tilix
+find . -type f -size +1G -exec du -sh {} \;
+..
+find . -type f -size +50M -exec du -sh {} \;
+find . -type f -size +500M -exec du -sh {} \;
+find . -type f -size +100M -exec du -sh {} \;
+dnf search bibletime
+sudo dnf install bibletime
+b
+find . -type f -size +100M -exec du -sh {} \;
+find . -type f -size +200M -exec du -sh {} \;
+f
+locate fontconfig
+locate fontconfig | grep conf.d
+locate fontconfig | grep -i terminess
+dnf search font-manager
+sudo dnf install font-manager
+font-manager &>/dev/null &
+dnf search tilix
+sudo dnf install tilix
+ra
+dnf search video
+dnf search video | grep -i player
+sudo dnf install mplayer
+uu1
+sd
+ra
+s
+f
+man sox
+ffprobe u_babicky_nemeckove_v_nemocnici.mp3 
+dnf search mid3v2
+ra
+apropos pdf
+qpdf --help
+man qpdf
+qpdf --help
+qpdf --help | less
+dnf search pdftk
+qpdf buzer-listek_2017-09_a_10.pdf --pages buzer-listek_2017-09_a_10.pdf 4 -- bl_2017-09.pdf
+qpdf bl_2017.pdf --pages bl_2017.pdf 4 -- bl_2017-09.pdf 
+find . -type f -iname "*tex"
+sudo dnf update ranger
+sudo dnf upgrade ranger
+sudo dnf install ranger
+sudo dnf info ranger
+ra
+vim dis.tex
+sudo dnf info ranger
+dnf info ranger
+dnf search ranger
+man dnf
+sudo dnf upgrade
+dnf search xpatch
+sudo dnf install texlive-xpatch
+ranger --help
+ranger --version
+ra
+python --help
+python -V
+python3 -V
+dnf search st
+dnf search siiunitx
+dnf search siunitx
+dnf install texlive-siunitx
+sudo dnf install texlive-siunitx
+dnf search biblatex
+sudo dnf install texlive-biblatex
+dnf search biblatex-chicago
+sudo dnf install texlive-biblatex-chicago
+ranger --version
+sudo updatedb 
+locate biblatex-chicago
+m3w 
+f
+w3m https://www.t-mobile.cz/sms/open.jsp
+ra
+file French_I-Lesson_01.mp3 
+dnf search mid3v2
+dnf search id3v2
+sudo dnf install id3v2
+id3v2 French_I*01.mp3
+French_I*01.mp3
+id3v2 French_I*01.mp3
+id3v2 -h
+id3v2 -l French_I-Lesson_01.mp3 
+id3v2 -l French_I-Lesson_*mp3
+id3v2 -l French_I-Lesson_*mp3 | vim -
+pgrep firefo
+ra
+ra
+cd ~/zdroje/jazyky/french/pimsleur_french_I/
+ll
+ls
+pdftotext -l 10 -nopgbrk -q ebook_pimsleur_french_1.pdf -
+pdftotext -l 10 -nopgbrk -q ebook_pimsleur_french_1.pdf - && { dump | trip | fmt -s -w 50 }
+pdftotext -l 10 -nopgbrk -q ebook_pimsleur_french_1.pdf - && { dump | trip | fmt -s -w 50; }
+pdftotext -l 10 -nopgbrk -q ebook_pimsleur_french_1.pdf - && { dump | trim | fmt -s -w 50; }
+id3v2 -l French_I-Lesson_01.mp3 
+map eval
+man eval
+eval man
+eval less
+eval ls
+id3v2 -h
+id3v2 -f
+id3v2 -h
+man id3v2
+id3v2 -L French_I-Lesson_0*
+id3v2 -L
+id3v2 -h
+id3v2 -f
+man id3v2
+ra
+ll
+man awk
+ls French_I-Lesson_* > list.txt
+vim list.txt 
+awk '{system("id3v2 -t "$1" -T "$2)}' list.txt 
+vim list.txt 
+awk '{system("id3v2 -t "$1" -T "$3 $2)}' list.txt 
+vim list.txt 
+awk '{system("id3v2 -t "$1" -T "$3" "$2)}' list.txt 
+vim list.txt 
+awk '{system("id3v2 -t "$1" -T "$3" "$2)}' list.txt 
+ra
+id3v2 -h
+ra
+id3v2 -h
+man id3v2
+ra
+uu1
+pgrep firefox
+f
+pgrep firefox
+f
+pgrep firefox
+vim ~/.tmux.conf 
+man tmux
+vim ~/.tmux.conf 
+ranger -v
+ranger -V
+ranger -h
+ranger --version
+ra
+sd
+f
+sd
+ll
+man qpdf
+qpdf charakteristika_Bartl.pdf doporučení_Nejeschleba.pdf doporučující_dopis_Tvrdy.pdf -- doporuceni.pdf
+qpdf charakteristika_Bartl.pdf 1-z doporučení_Nejeschleba.pdf 1-z doporučující_dopis_Tvrdy.pdf 1-z -- doporuceni.pdf
+qpdf --empty --pages charakteristika_Bartl.pdf 1-z doporučení_Nejeschleba.pdf 1-z doporučující_dopis_Tvrdy.pdf 1-z -- doporuceni.pdf
+zat doporuceni.pdf 
+qpdf --empty --pages CV_plany_rozklad_Kucsa.pdf 1-z publikace_konference_granty_pobyty_Kucsa.pdf 1-z -- CV_a_publikace.pdf
+qpdf --empty --pages CV_plany_rozklad_Kucsa.pdf 1-z publikace_konference_granty_pobyty_Kucsa.pdf 1-z -- CV_a_info.pdf
+qpdf --empty --pages clanek_Aither_2016.pdf 1-z clanek_ArtHist_2015.pdf 1-z -- publikace.pdf
+qpdf --empty --pages anotace_prispevku_OMK_Kucsa.pdf 1-z prispevek_Materie_KTF_2017.pdf 1-z -- nepublikovane.pdf
+qpdf --empty --pages clanek_Aither_2016.pdf 94-109 clanek_ArtHist_2015.pdf 1-z -- publikace.pdf
+ra
+ra
+dnf search audacity
+sudo dnf install audacity
+dnf search nag
+dnf search nag | grep texlive
+sudo dnf install texlive-nag
+dnf search fullpage
+mocp 
+cd ~/Documents/domaci/svatba/
+ll
+mkdir pruvodce
+cd pruvodce
+cp ~/skola/papers/ahi/article.tex ./
+ll
+vim article.tex 
+ll
+rm article.aux 
+rm article.bcf 
+rm article.f*
+rm article.log 
+rm article.out 
+rm article.pdf 
+ll
+rm article.run.xml 
+rm article.synctex.gz 
+rm article.toc 
+vim article.tex
+pavucontrol &>/dev/null &
+pgrep pulseaudio 
+man sox
+sox kanon_v_D_katarina.wav kanon_v_D_katarina.mp3
+ll
+du -sh kanon_v_D_katarina.*
+play kanon_v_D_katarina.mp3 
+find . -type f -iname "*doc"
+find . -type f -iname "*doc*"
+locate -i bellota
+cd ~/comp/fonts/
+ll
+mkdir bellota
+mv bellota.zip bellota/
+cd bellota/
+ll
+unzip bellota.zip 
+apropos fonts
+ra
+ra
+audacity &>/dev/null &
+ra
+pgrep firefox
+ra
+less ~/Documents/domaci/svatba/oznameni/adresati.txt 
+cat ~/Documents/domaci/svatba/oznameni/adresati.txt
+echo ~/Documents/domaci/svatba/oznameni/adresati.txt
+sd
+f
+sd
+ping -c3 8.8.8.8
+locate -i bellota
+locate fonts
+locate monospace
+locate -i monospace
+locate -i truetype
+locate -i truetype | grep -v texlive
+ra
+locate -i fullpage
+ra
+ra
+sd
+f
+ra
+sd
+f
+ra
+ra
+sd
+dnf search ulem
+ra
+ra
+ra
+sd
+find . -type f -iname "*.tex"
+ra
+ra
+dnf search babel
+sudo dnf install texlive-babel-czech
+sudo dnf install texlive-babel
+f
+ra
+sd
+f
+sd
+vim
+dnf search texlive | grep -i european
+dnf search texlive-lang
+ra
+cd ~/Documents/domaci/svatba/pruvodce/
+mplayer -ao pcm:file=Svatební.wma Svatební.wav
+mplayer -ao pcm:file=Svat.wav Svatební.wma 
+file Svatební.wma 
+dnf search mplayer
+dnf search -i mplayer
+sudo dnf install mplayer
+mplayer 
+man mplayer
+mplayer Svatební.wma -ao pcm -aofile svateni.wav
+mplayer Svatební.wma -ao pcm -ao pcm:svateni.wav
+mplayer Svatební.wma -ao pcm -ao pcm:svatebni.wav
+mplayer Svatební.wma -ao pcm -ao:svatebni.wav
+man mplayer 
+mplayer Svatební.wma -ao pcm:svatebni.wav
+man mplayer 
+play ~/Documents/domaci/svatba/pruvodce/Svatební.wma 
+sox ~/Documents/domaci/svatba/pruvodce/Svatební.wma ~/Documents/domaci/svatba/pruvodce/Svatební.mp3
+f
+ra
+fg
+ra
+ra
+sd
+qpdf --empty --pages aktion_bortlik.pdf 9,11 aktion_research_proposal_bortlik.pdf 1-z -- tisk.pdf
+mupdf tisk.pdf 
+lsblk
+qpdf --empty --pages aktion_bortlik.pdf 9,11 ~/skola/1_phd/02_dissertation/aktion_research_proposal_dissertation_seminars.pdf 1-z -- tisk.pdf
+rsync -avn --exclude-from=exclude.txt /home/jakub/skola/ /run/media/jakub/BORTLIK
+du -sh ~/skola/
+du -sh
+du -h
+find -type d
+man find
+find -type d -size +100M
+find -type d -size +10M
+find -type d -size 100M
+man find
+find -type d -size +1M
+find -type d
+find -type f -size +100M
+du -h | grep "G"
+du -h | grep -E "G"
+du -h | grep -E "[0-9]G"
+du -h | grep -E "[0-9]M"
+find . -type d -size +1M
+find . -size +1M
+find . -size +100M
+find . -size +10M
+find . -size +10M -execdir du -sh {} \;
+find . -size +10M -exec du -sh {} \;
+rsync -avn --exclude-from=exclude.txt --exclude=2_teaching /home/jakub/skola/ /run/media/jakub/BORTLIK
+rsync -avn --exclude-from=~/exclude.txt --exclude=2_teaching /home/jakub/skola/ /run/media/jakub/BORTLIK
+rsync -avn --exclude-from=exclude.txt --exclude=2_teaching /home/jakub/skola/ /run/media/jakub/BORTLIK
+rsync -avn --exclude-from=exclude.txt /home/jakub/skola/ /run/media/jakub/BORTLIK
+rsync -avn --exclude-from=exclude.txt --exclude=2_teaching /home/jakub/skola/ /run/media/jakub/BORTLIK
+rsync -av --exclude-from=exclude.txt --exclude=2_teaching /home/jakub/skola/ /run/media/jakub/BORTLIK
+ra
+ra
+uu1
+ra
+ra
+sd
+man dnf
+dnf check-update ranger
+sudo dnf update ranger
+sudo dnf upgrade ranger
+dnf search VPN
+man dnf
+sudo dnf install NetworkManager-openvpn
+sudo dnf info NetworkManager-openvpn-gnome
+sudo dnf info NetworkManager-openvpn
+f
+ra
+vim
+sudo dnf install NetworkManager-openvpn-gnome
+ra
+ls /etc/openvpn/
+ls -al /etc/openvpn/
+ls -al /etc/openvpn/client/
+cd /etc/openvpn/client/
+sudo cd /etc/openvpn/client/
+ll
+pwd
+cd /etc/openvpn/client/
+sudo cd /etc/openvpn/client/
+pwd
+sudo cd /etc/openvpn/
+pwd
+sudo updatedb 
+locate -i .ovpn
+less $(locate -i .ovpn)
+locate .crt
+less $(locate -i .ovpn)
+locate .crt
+touch .crt
+ll
+ls -a .crt
+file .crt
+mv .crt fakecertificate.crt
+pwd
+mkdir myovpncertificates
+mv fakecertificate.crt myovpncertificates/
+pwd
+ll
+cd myovpncertificates/
+ls
+mv fakecertificate.crt fakecertificate.cer
+..
+rm myovpncertificates/
+rm -r myovpncertificates/
+man openvpn
+dnf search PPTP
+sudo dnf remove network-manager-openvpn-gnome
+sudo dnf remove NetworkManager-openvpn-gnome
+sudo dnf remove NetworkManager-openvpn
+dnf search PPTP
+sudo dnf install NetworkManager-pptp NetworkManager-pptp-gnome
+locate -i colanto
+locate -i "col"
+locate -i "second_l"
+locate -i "second_language"
+locate -i "second_language" | less
+locate -i "second_language" | vim -
+ra
+f
+ra
+sd
+lsblk
+jobs
+top
+pgrep dd
+pgrep "dd"
+pgrep "<dd>"
+type gparted
+gparted &>/dev/null &
+sudo gparted &>/dev/null &
+jobs
+fg
+ra
+dnf search baobab
+dnf search gparted
+sudo dnf install gparted
+pgrep gparted
+lsblk
+lsblk
+man dd
+lsblk
+dd if=/dev/zero of=/dev/sdb bs=4096
+sudo dd if=/dev/zero of=/dev/sdb bs=4096
+uu1
+lsblk
+cd ~; sudo umount /dev/sdb2
+lsblk
+ra
+rsync -avn --exclude-from=exclude.txt --exclude=2_teaching /home/jakub/skola/ /run/media/jakub/BORTLIK
+rsync -avn --exclude-from=exclude.txt /home/jakub/skola /run/media/jakub/BORTLIK/
+ra
+rsync -avn --exclude-from=exclude.txt /home/jakub/skola /run/media/jakub/BORTLIK/
+ra
+ls skola
+ll skola
+cd skola
+cd papers/
+ll
+du -sh parametry_textovosti/
+du -sh olinco2013/
+ll skola/papers/
+ll skola/papers/olinco2013/
+ll skola/papers/olinco2013/paper/
+du -sh skola/papers/olinco2013/paper/
+du -sh skola/papers/olinco2013/
+du -sh skola
+ll skola/
+ll skola/papers/
+du -sh skola/papers/ponaszymu/
+ll -sh skola/papers/ponaszymu/
+ll -sh skola/papers/ponaszymu/wav/
+su -sh skola/papers/ponaszymu/wav/roz..wav 
+du -sh skola/papers/ponaszymu/wav/roz..wav 
+ls ~/skola/
+ll ~/skola/
+cd skola/
+rsync -avn --exclude-from=exclude.txt /home/jakub/skola /run/media/jakub/BORTLIK/
+rsync -av --exclude-from=exclude.txt /home/jakub/skola /run/media/jakub/BORTLIK/
+uu1
+sd
+f
+ra
+ra
+sd
+ra
+rsync -avn --exclude-from=exclude.txt /home/jakub/Documents/domaci /run/media/jakub/BORTLIK/
+cd
+rsync -avn --exclude-from=exclude.txt /home/jakub/Documents/domaci /run/media/jakub/BORTLIK/
+rsync -av --exclude-from=exclude.txt /home/jakub/Documents/domaci /run/media/jakub/BORTLIK/
+uu1
+ra
+sd
+uu1
+ra
+sd
+qpdf --empty --pages menouky_pidilidi.pdf 1-z menouky_rodina.pdf 1-z menouky_hoste.pdf 1-z -- menouky_komplet.pdf
+pgrep fire
+pgrep firef
+dnf search dictionary
+dnf search dictionary | grep -i engliish
+dnf search dictionary | grep -i english
+ra
+sd
+find . -iname "*png"
+find . -iname "*png" -exec cp {} test/ \;
+f
+ra
+fg
+qpdf --empty --pages menouky_pidilidi.pdf 1-z menouky_rodina.pdf 1-z menouky_hoste.pdf 1-z -- menouky_komplet2.pdf
+vim
+lsblk
+cd ~/Documents/domaci/svatba/pruvodce/
+ll
+dnf search rosegarden
+sudo dnf install rosegarden4
+sudo dnf search timidity
+sudo dnf install timidity++
+timidity all_20_e.mid 
+ra
+uu1
+ra
+sudo updatedb 
+locate -i zdroj
+locate -i kudow
+locate -i kudowa
+locate -i klod
+locate -i kł
+sudo updatedb 
+locate Vegan_
+locate vegan
+locate -i vegan | grep "heart"
+ra
+sd
+ra
+moc
+mocp
+pgrep mplayer
+pgrep -i mplayer
+sd
+f
+ra
+sd
+ra
+pgrep firefox
+sd
+qpdf --empty --pages bl_2017-10.pdf 5 -- bl_2017-10.pdf_1
+zat bl_2017-10.pdf_1
+locate baayen
+f
+ping -c3 8.8.8.8
+ra
+dnf search bluetooth
+sd
+vim
+dnf search rar
+dnf search rar | grep -i instal
+dnf search unrar
+unar Bortlik_song.rar 
+dnf search blender
+dnf search shortcut
+dnf search pitivi
+dnf search flowblade
+sudo dnf search kdenlive
+sudo dnf upgrade
+f
+ra
+f
+sd
+zat ~/Documents/domaci/svatba/oslava/Bortlik_song/KBB-text.pdf 
+ra
+uu1
+lsblk
+sd
+diff -s ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks 
+cp ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks 
+cp ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks ra
+diff -s ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks 
+cp ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks ra
+cp ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks
+dnf search R
+dnf search R | statistics
+dnf search R | grep -i statistics
+f
+w3m kdovolal.cz
+w3m http://kdovolal.cz
+w3m http://www.kdovolal.cz
+ping -c3 8.8.8.8
+w3m http://www.kdovolal.cz
+ra
+ping -c3 8.8.8.8
+f
+ping -c3 8.8.8.8
+type wm
+wm
+ping -c3 8.8.8.8
+apropos wifi
+apropos internet
+apropos net
+ping -c3 8.8.8.8
+ra
+sd
+dnf search R | grep -i statistics
+dnf search R-studio
+dnf search Rstudio
+dnf search R-core
+sudo dnf install R-core
+man qpdf
+qpdf --help
+qpdf --help | less
+qpdf --empty --pages jessen_01.pdf 1-z jessen_02.pdf 1-z jessen_03.pdf 1-z jessen_04.pdf 1-z jessen_05 1-z jessen_06.pdf 1-z -- jessen_complete.pdf
+qpdf --empty --pages jessen_01.pdf 1-z jessen_02.pdf 1-z jessen_03.pdf 1-z jessen_04.pdf 1-z jessen_05.pdf 1-z jessen_06.pdf 1-z -- jessen_complete.pdf
+qpdf --help
+qpdf --help | less
+mocp
+cd ~/Music/morcheeba/
+ll
+mv ../Morcheeba_Head_Up_High_2013.zip ./
+ll
+unzip Morcheeba_Head_Up_High_2013.zip 
+mocp
+ll
+mocp
+ll
+unar morcheeba-who-can-you-trust.rar 
+ll
+mv MORCHEEBA\ -\ Who\ Can\ You\ Trust who_can_you_trust
+ll
+cd ll
+cd who_can_you_trust
+ll
+ra
+mocp
+dnf search R-devel
+dnf search R-core
+dnf search R-core-devel
+sudo dnf install R-core-devel
+mosp
+mocp
+cd ~/Music/morcheeba/
+ll
+unar Morcheeba\ -\ 1998\ -\ Big\ Calm.rar 
+cd Morcheeba\ -\ 1998\ -\ Big\ Calm
+..
+mv Morcheeba\ -\ 1998\ -\ Big\ Calm Morcheeba_1998_Big_Calm
+ll
+rm Morcheeba\ -\ 1998\ -\ Big\ Calm.rar 
+mv Morcheeba_1998_Big_Calm/ morcheeba_1998_big_calm/
+cd morcheeba_1998_big_calm/
+ll
+find . -type f -execdir echo detox {} \;
+find . -type f -execdir detox {} \;
+ll
+man deto
+man detox
+apropos lowercase
+man tolower
+tolower --help
+tolower("A")
+man tolower
+detox --help
+detox -L
+find . -type f -execdir detox -n {} \;
+find . -type f -execdir detox -n -s lower-only {} \;
+man mocp
+mocp -F
+mocp
+mocp --help
+mocp -i
+ll
+find . -type f -execdir detox -s lower-only {} \;
+ll
+..
+ll
+cd head_up_high_2013/
+ll
+detox Head_Up_High_\[2013\].jpg 
+ll
+mv Head_Up_High-2013-.jpg Head_Up_High-2013.jpg 
+m
+vim
+rsync -avn ./ /home/jakub/Pictures/mobil
+rsync -av ./ /home/jakub/Pictures/mobil
+top
+pgrep mplayer 
+kill 4990
+pgrep mplayer 
+kill 5014
+pgrep mplayer 
+pkill mplayer 
+pgrep mplayer
+pkill mplayer 
+rsync -av /run/media/jakub/42CB-F2FD/Sound\ Recorder/ /home/jakub/Audio
+pgrep mplayer
+pkill mplayer 
+mocp
+pkill mplayer 
+mocp
+ra
+dnf search languageR
+ra
+locate ohen
+locate ohen | grep mp4
+locate mp4
+locate mp4 | grep mp4
+rsync -avn --exclude-from=exclude.txt /home/jakub/Audio/ /run/media/jakub/backup/jakub/Audio
+rsync -av --exclude-from=exclude.txt /home/jakub/Audio/ /run/media/jakub/backup/jakub/Audio
+rsync -av --exclude-from=exclude.txt /home/jakub/comp/ /run/media/jakub/backup/jakub/comp
+rsync -av --exclude-from=exclude.txt --delete /home/jakub/comp/ /run/media/jakub/backup/jakub/comp
+rsync -av --exclude-from=exclude.txt --delete /home/jakub/Documents/ /run/media/jakub/backup/jakub/Documents
+rsync -av --exclude-from=exclude.txt --delete /home/jakub/jobs/ /run/media/jakub/backup/jakub/jobs
+rsync -avn --exclude-from=exclude.txt --delete /home/jakub/Music/ /run/media/jakub/backup/jakub/Music
+rsync -av --exclude-from=exclude.txt --delete /home/jakub/Music/ /run/media/jakub/backup/jakub/Music
+rsync -avn --exclude-from=exclude.txt --delete /home/jakub/Pictures/ /run/media/jakub/backup/jakub/Pictures
+rsync -av --exclude-from=exclude.txt --delete /home/jakub/Pictures/ /run/media/jakub/backup/jakub/Pictures
+rsync -avn --exclude-from=exclude.txt --delete /home/jakub/skola/ /run/media/jakub/backup/jakub/skola
+rsync -avn --exclude-from=exclude.txt --delete /home/jakub/skola/ /run/media/jakub/backup/jakub/skola | grep deleting
+rsync -av --exclude-from=exclude.txt --delete /home/jakub/skola/ /run/media/jakub/backup/jakub/skola | grep deleting
+rsync -avn --exclude-from=exclude.txt --delete /home/jakub/skola/ /run/media/jakub/backup/jakub/skola
+rsync -avn --exclude-from=exclude.txt --delete /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -avn --exclude-from=exclude.txt --exclude=practical_english --delete /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -av --exclude-from=exclude.txt --exclude=practical_english --delete /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -avn --exclude-from=exclude.txt /home/jakub/Videos/ /run/media/jakub/backup/jakub/Videos
+rsync -av --exclude-from=exclude.txt /home/jakub/Videos/ /run/media/jakub/backup/jakub/Videos
+locate franta
+locate uzel
+locate rete
+locate retez
+locate remenu
+locate mp4 | grep mp4
+locate mp4 | grep ohen
+locate mp4 | grep mp4
+locate kudlan
+locate min
+locate zvol
+locate -i jachym
+locate -i kudlanka
+locate -i mp4
+find ~/ -type f -iname "*mp4"
+man locate
+find ~/ -type f -iname "*mp4" | grep mp4
+..
+cd
+rsync -av --exclude-from=exclude.txt --delete /home/jakub/Pictures/ /run/media/jakub/backup/jakub/Pictures
+rsync -av --exclude-from=exclude.txt /home/jakub/Videos/ /run/media/jakub/backup/jakub/Videos
+find . -iname "*using"
+find . -iname "*using*"
+find . -iname "*us*"
+lsblk
+uu1
+type uu2
+find . -type f -execdir ls {} \;
+find . -type f -execdir grep toi {} \;
+find . -type f -execdir grep unmount {} \;
+find . -type f -execdir grep using {} \;
+find . -type f -execdir grep program {} \;
+locate useful
+fuser 
+fuser /run/media/jakub/42CB-F2FD/
+lsblk
+uu1
+fuser /run/media/jakub/42CB-F2FD
+man fuser
+fuser -v /run/media/jakub/42CB-F2FD/
+f
+ra
+fuser -v /run/media/jakub/42CB-F2FD/
+uu1
+mocp
+fuser -v /run/media/jakub/42CB-F2FD/
+ra
+sd
+f
+sd
+ls
+find . -type f
+find . -type f > list.txt
+less find_command.html 
+firefox find_command.html &>dev/null &
+firefox find_command.html &>/dev/null &
+locate ranger
+locate ranger | grep cache
+ra
+pdfinfo onysko_2012_anglicisms_in_german_01_Frontmatter.pdf 
+pdfinfo *pdf
+pdfinfo onysko_2012_anglicisms_in_german_08_Part_I.pdf 
+vim
+nvim
+vim ~/dotfiles/config/ranger/rc.conf.sml 
+vim ~/dotfiles/config/ranger/rc.conf.sml
+ra
+echo -{ahoj,nic}-
+echo "{01,02,03} 1-z"
+echo {01,02,03} 1-z
+echo {01,02,03}1-z
+echo {01,02,03}\ 1-z
+echo {01,02,03}\ 1-z -- output
+find . -type f -iname "*.pdf"
+files=$(find . -type f -iname "*.pdf"; echo files
+files=$(find . -type f -iname "*.pdf"); echo files
+files=$(find . -type f -iname "*.pdf"); echo $files
+man find
+man sort
+man find
+files=$(find . -type f -iname -ls "*.pdf"); echo files
+find -l
+files=$(find . -type f -iname "*.pdf" | sort); echo files
+files=$(find . -type f -iname "*.pdf" | sort); echo $files
+files=$(find . -type f -iname "*.pdf" | sort); echo {$files}\ 1-z -- final.pdf
+detox *.pdf
+man find
+files=$(find . -type f -iname -print0 "*.pdf" | sort); echo {$files}\ 1-z -- final.pdf
+files=$(find . -type f -iname -print0 "*.pdf" | sort); echo $files
+files=$(find . -type f -iname -print0 "*.pdf"); echo $files
+find . -type f -iname "*.pdf"
+find . -type f -print0 -iname "*.pdf"
+find . -type f -print0 -iname "*.pdf" | sort
+clear
+find . -type f -print0 -iname "*.pdf" | sort
+find . -type f -iname "*.pdf" | sort
+find . -type f -iname "*.pdf" | sort | sed 's/\n/,/'
+find . -type f -iname "*.pdf" | sort | sed 's/i/,/'
+find . -type f -iname "*.pdf" | sort | sed '/i/,/g'
+man sed
+find . -type f -iname "*.pdf" | sort | sed '/m/,/g'
+find . -type f -iname "*.pdf" | sort | sed
+find . -type f -iname "*.pdf" | sort | sed 's/i/a'
+find . -type f -iname "*.pdf" | sort | sed 's/i/a/'
+find . -type f -iname "*.pdf" | sort | sed 's/i/a/g'
+find . -type f -iname "*.pdf" | sort | sed 's/\n/,/g'
+find . -type f -iname "*.pdf" | sort | sed 's/\n/ /g'
+find . -type f -print0 -iname "*.pdf" | sort | sed 's/ /,/g'
+find . -type f -print -iname "*.pdf" | sort | sed 's/ /,/g'
+files=$(find . -type f -iname -print0 "*.pdf" | sort); echo {$files}\ 1-z -- final.pdf
+find . -type f -iname "*.pdf"
+files=$(find . -type f -iname "*.pdf" | sort); echo $files
+find . -type f -iname "*.pdf" | sort
+files=$(find . -type f -iname "*.pdf" | sort); echo $files
+files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed '/s/ /,/g'
+files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed '/s/ /,/g/'
+files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g/'
+files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g'
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g'); echo $list
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g'); echo {$list}
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g'); echo {list}
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g'); echo {$(list)}
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g'); echo {${list}}
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g'); echo {${list}}\ 1-z
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g'); echo ${list}
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g'); echo {${list}}\ 1-z
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ /,/g'); echo {list,nic}\ 1-z
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z/g'); echo ${list}
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z /g'); echo ${list}
+clear
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z /g'); echo ${list}
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete
+locate -i deutsches
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+locate -i handbook
+locate -i handbook | grep -i ipa
+locate -i handbook | grep -i international
+locate -i handbook | grep -i inter
+R
+man zip
+ra
+find . -iname "*rar"
+lsar jablkon-1988-devata-vlna-igalerie-cz.rar 
+man unar
+dnf search unrar
+type lsar
+man lsar
+ra
+vim ~/dotfiles/config/ranger/rc.conf.sml 
+locate rc.conf
+viff ~/dotfiles/config/ranger/rc.conf.sml /usr/share/doc/ranger/config/rc.conf 
+vim ~/dotfiles/config/ranger/rc.conf.sml 
+ra
+vim ~/dotfiles/config/ranger/rc.conf.sml 
+dnf search ranger
+type ranger
+ranger --help
+ranger --version
+sudo dnf upgrade ranger
+dnf repograph
+cat /etc/dnf/dnf.conf 
+cat /etc/yum.repos.d/
+cat /etc/yum.repos.d/fedora-cisco-openh264.repo 
+less /etc/yum.repos.d/fedora-cisco-openh264.repo
+cd /etc/yum.repos.d/
+ll
+find . -type f -execdir less {} \;
+dnf config-manager --set-enabled --dump
+sudo dnf config-manager --set-enabled --dump
+cd
+vim ~/dotfiles/config/ranger/rifle.conf.sml 
+cd ~/Music/jablkon/
+ll
+lsar -- jablkon-1988-devata-vlna-igalerie-cz.rar 
+ra
+f
+ra
+man ranger
+cd ~/comp/r/testing/
+ll
+vim test.R 
+vim ~/dotfiles/config/ranger/rifle.conf.sml 
+git clone http://github.com/ranger/ranger
+cd ranger/
+ll
+ranger.py
+python3 ranger.py
+man ranger
+python3 ranger.py -c
+find . -iname "*rar"
+locate -i *zip
+locate -i *zip | grep jakub
+cd /home/jakub/zdroje/tobi/
+ll
+ra
+cd /home/jakub/zdroje/tobi/
+ra
+lsar chap23.zip 
+ra
+man convert
+man geometry
+man convert
+file svatba_153.jpg 
+convert svatba_153.jpg -resize 547 svatba.jpg
+convert svatba_153.jpg -resize 1000 svatba.jpg
+file svatba.jpg 
+du -sh svatba.jpg 
+find . -type f
+find . -type f -execdir info {} \;
+find . -type f -execdir file {} \;
+find . -type f -execdir file {} \; | grep precision
+find . -type f -execdir file {} \; | grep -v 5472
+find . -type f -execdir file {} \; | vim -
+find . -type f -execdir file {} \; | awk {}
+echo ahoj | awk '/a/'
+echo hoj | awk '/a/'
+echo hoj | awk '/o/'
+find . -type f -execdir file {} \; | awk '/x/'
+man awk
+find . -type f -execdir file {} \; | awk { print $1 }
+find . -type f -execdir file {} \; | awk '{ print $1 }'
+find . -type f -execdir file {} \; | awk{ print $1 }
+find . -type f -execdir file {} \; | awk { print $1 }
+find . -type f -execdir file {} \; | awk '{ print $5 }'
+find . -type f -execdir file {} \; | awk '{ print $10 }'
+file svatba_001.jpg 
+find . -type f -execdir file {} \; | awk '{ print $20 }'
+file svatba_001.jpg 
+find . -type f -execdir file {} \; | awk '{ print $28 }'
+file svatba_001.jpg 
+find . -type f -execdir file {} \; | awk '{ print $29 }'
+find . -type f -execdir file {} \; | awk '{ print $29 }' | vim -
+find . -type f -execdir file {} \; | awk '{ print $29 }' | sort
+find . -type f -execdir file {} \; | awk '{ print $29 }' | sort -cz
+find . -type f -execdir file {} \; | awk '{ print $29 }' | sort -cu
+find . -type f -execdir file {} \; | awk '{ print $29 }' | sort | uniq
+find . -type f -execdir file {} \; | awk '{ print $29 }' | sort | uniq -c
+find . -type f -execdir file {} \; | grep 3262
+find . -type f -execdir file {} \; | grep 4395
+man sort
+man uniq
+for i in (1:2); do echo $i; done
+for i in {1:2}; do echo $i; done
+for i in { 1:2 }; do echo $i; done
+for i in 1..2 ; do echo $i; done
+for i in 1 2 ; do echo $i; done
+for i in 1 2 ; do qpdf --empty --pages jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf $i -- page_{$i}.pdf; done
+for i in 1 2 ; do qpdf --empty --pages jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf $i -- page_$i.pdf; done
+cd ~/skola/1_phd/02_dissertation/literature/voice_assimilation/test/
+ll
+qpdf --stream-data=uncompress page_1.pdf page_1_unc.pdf 
+qpdf --stream-data=uncompress page_2.pdf page_2_unc.pdf 
+ll
+vim page_1_unc.pdf 
+man qpdf
+qpdf --help
+man qpdf
+man qpdf-doc
+locate qpdf-doc
+man qpdf
+sudo dnf search qpdf-doc
+sudo dnf install qpdf-doc
+ra
+for i in 11 ; do qpdf --empty --pages jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf $i -- page_$i.pdf; done
+for i in 11 85; do qpdf --empty --pages jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf $i -- page_$i.pdf; done
+for i in 185; do qpdf --empty --pages jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf $i -- page_$i.pdf; done
+for i in 269; do qpdf --empty --pages jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf $i -- page_$i.pdf; done
+for i in 185 269; do qpdf --stream-data=uncompress page_$i.pdf page_$i_unc.pdf 
+for i in 185 269; do qpdf --stream-data=uncompress page_$i.pdf page_$i_unc.pdf; done
+for i in 185 269; do echo qpdf --stream-data=uncompress page_$i.pdf page_$i_unc.pdf; done
+for i in 185 269; do echo qpdf --stream-data=uncompress page_$i.pdf page_${i}_unc.pdf; done
+for i in 185 269; do qpdf --stream-data=uncompress page_$i.pdf page_${i}_unc.pdf; done
+viff page_185_unc.pdf page_269_unc.pdf
+for i in 185 269; do qpdf --stream-data=uncompress page_$i.pdf page_${i}_unc.pdf; done
+for i in {1..5}; do echo $i; done
+for i in {1..415} ; do qpdf --empty --pages jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf $i -- unc/page_$i.pdf; done
+qpdf --stream-data=uncompress jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf uncomp.pdf
+qpdf --emtpy --pages jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf 1-20 -- short.pdf
+qpdf --empty --pages jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf 1-20 -- short.pdf
+qpdf --stream-data=uncompress short.pdf short_uncomp.pdf
+rm -r unc
+rm -r uncompressed/
+mv uncomp.pdf jessen_1998_phonetics_and_phonology_of_tense_and_lax_obstruents_in_german.pdf 
+ra
+vim
+R
+ls -a
+ls -a R*
+ls -a R
+ls -a r
+R
+locate Rprofile
+less $(locate Rprofile)
+vim $(locate Rprofile)
+pgrep mirrors
+top
+jobs
+ra
+vim ~/comp/r/testing/test.R
+cd ~/comp/r/testing/; vim ~/comp/r/testing/test.R
+file Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf 
+cd /home/jakub/zdroje/jazyky/german/
+file Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf 
+qpdf --empty pages Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf 1-z --normalize-content=y -- jessen.pdf 
+qpdf --empty --pages Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf 1-z --normalize-content=y -- jessen.pdf 
+qpdf --normalize-content=y --empty --pages Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf 1-z -- jessen.pdf 
+mupdf jessen.pdf &>/dev/null/ &
+mupdf jessen.pdf &>/dev/null &
+rm jessen.pdf 
+dnf search evince
+qpdf --empty --pages Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf 1-z -- jessen.pdf
+cd ~/zdroje/jazyky/german
+ll
+for i in {1..414}; do echo Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf; done
+for i in {1..414}; do echo $i Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf; done
+for i in {1..414}; do echo Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf $i; done
+list=for i in {1..414}; do echo Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf $i; done
+list=$(for i in {1..414}; do echo Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf $i; done)
+echo $list
+qpdf --empty --pages $list -- jessen.pdf
+dnf search pdfjam
+sudo dnf install texlive-pdfjam
+pdfinfo Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf 
+pdfjam --a4paper Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf -o jessen.pdf
+mupdf jessen.pdf 
+zat jessen.pdf 
+zat Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf 
+pdfjam Jessen_1998_Phonetics_and_Phonology_of_Tense_and_Lax_Obstruents_in_German.pdf --clip true --suffix 'clipped'
+man qpdf
+man qpdf-doc
+dnf search qpdf-doc
+locate qpdf-doc
+locate qpdf
+man qpdf-manual
+locate qpdf-manual.pdf
+mupdf $(locate qpdf-manual.pdf) &>/dev/null &
+less $(locate qpdf-manual.html) &>/dev/null &
+less $(locate qpdf-manual.html)
+ra
+sd
+find . -iname "*normal"
+find . -iname "*normal*"
+gj vot
+cd txt/
+gj vot
+gj VOT
+locate -i prosodic_typology
+locate umeda
+locate -i umeda
+lsblk
+uu1
+lsblk
+pdfjam Penzl_Orthographie_und_Phonemsystem_im_Deutschen_1973.pdf --clip true --suffix 'clipped'
+qpdf --empty --pages luick_1904_deutsche_lautlehre.pdf 1 12-14 16-126 -- luick_1904_deutsche_lautlehre_-_mit_besonderer_beruecksichtigung_der_sprechweise_wiens_und_der_oesterreichischen_alpenlaender.pdf 
+qpdf --empty --pages luick_1904_deutsche_lautlehre.pdf 1,12-14,16-126 -- luick_1904_deutsche_lautlehre_-_mit_besonderer_beruecksichtigung_der_sprechweise_wiens_und_der_oesterreichischen_alpenlaender.pdf 
+pdfjam luick_1904_deutsche_lautlehre_-_mit_besonderer_beruecksichtigung_der_sprechweise_wiens_und_der_oesterreichischen_alpenlaender.pdf --clip true --suffix 'clipped'
+ra
+ra
+cd ~/comp/r/testing/; vim ~/comp/r/testing/test.R
+sd
+ra
+rsync -avn --exclude=prouz /home/jakub/Pictures/svatba_kuba_a_lucinka/oficialni /run/media/jakub/BORTLIK/
+rsync -avn --exclude=*prouzu /home/jakub/Pictures/svatba_kuba_a_lucinka/oficialni /run/media/jakub/BORTLIK/
+rsync -avn --exclude=*prouzu.zip /home/jakub/Pictures/svatba_kuba_a_lucinka/oficialni /run/media/jakub/BORTLIK/
+rsync -av --exclude=*prouzu.zip /home/jakub/Pictures/svatba_kuba_a_lucinka/oficialni /run/media/jakub/BORTLIK/
+ra
+lsblk
+ra
+uu1
+f
+ra
+sd
+vim
+R
+locate ranger
+locate ranger | grep jakub
+ra
+b
+ra
+R
+ls -al
+cd ~/comp/r/testing/
+R
+w3m http://www.dwds.de
+ra
+man ranger
+ra
+find . -type f -execdir grep -i "natural log" {} \;
+find . -type f -execdir grep -i "natural" {} \;
+find . -type f -execdir grep -i "l" {} \;
+find . -type f -execdir grep -i "lo" {} \;
+find . -type f -execdir grep -i "log" {} \;
+su
+R
+cd ~/comp/r/testing/; R
+cd ~/comp/r/testing/; R
+R
+fg
+R
+fg
+sd
+find . -type f
+find . -type f -execdir convert {} -resize 1000 small_{} \;
+find . -type f -execdir convert {} -resize 1000 {}_small \;
+f
+R
+ra
+pdftotext --help
+gj OT
+mkdir txt
+find . -type f -iname "*pdf"
+find . -type f -iname "*pdf" -exec bash -c 'PDF="${0##*/}"; TXT="${PDF%%.pdf}.txt"; pdftotext "$0" ./txt/"$TXT"' {} \;
+ll
+ll txt/
+gj OT
+ranger
+tmux
+pgrep bash
+top
+jobs
+pgrep top
+kill 10063
+top
+pgrep pdftotext
+pgrep bash
+top
+pgrep bash
+kill 9981
+pgrep bash
+fg
+files=$(find . -type f -iname "*pdf"); echo $files
+files=$(find . -type f -iname "*pdf"); sort $files
+kjsdf
+pgrep bash
+kill 9859
+files=$(find . -type f -iname "*pdf" | sort); echo $files
+$files
+echo $files
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- mccarthy_2004_optimality_theory_in_phonology_-_a_reader.pdf
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- mccarthy_2009_.pdf
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- mccarthy_2008_optimality_theory_in_phonology_-_a_reader.pdf
+pgrep bash
+pkill 14790
+diff -s mccarthy_2004_optimality_theory_in_phonology_-_a_reader.pdf  mccarthy_2008_optimality_theory_in_phonology_-_a_reader.pdf 
+pgrep dif
+pgrep bash
+kill 14790
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z /g'); echo qpdf --empty --pages ${list} -- mccarthy_2008_optimality_theory_in_phonology_-_a_reader.pdf
+man sort
+list=$(files=$(find . -type f -iname "*.pdf" | sort -n); echo $files | sed 's/ / 1-z /g'); echo qpdf --empty --pages ${list} -- mccarthy_2008_optimality_theory_in_phonology_-_a_reader.pdf
+list=$(files=$(find . -type f -iname "*.pdf" | sort); echo $files | sed 's/ / 1-z /g'); echo qpdf --empty --pages ${list} -- mccarthy_2008_optimality_theory_in_phonology_-_a_reader.pdf
+list=$(files=$(find . -type f -iname "*.pdf" | sort -n); echo $files | sed 's/ / 1-z /g'); echo qpdf --empty --pages ${list} -- mccarthy_2008_optimality_theory_in_phonology_-_a_reader.pdf
+man sort
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); echo qpdf --empty --pages ${list} -- mccarthy_2008_optimality_theory_in_phonology_-_a_reader.pdf
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); echo qpdf --empty --pages ${list} -- mccarthy_2008_optimality_theory_in_phonology_-_a_reader.pdf | grep part
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+qpdf --stream-data=uncompress ebscohost.pdf unc1.pdf 
+qpdf --stream-data=uncompress ebscohost2.pdf unc2.pdf
+qpdf --stream-data=uncompress ebscohost3.pdf unc3.pdf
+ll
+vim unc1.pdf unc2.pdf unc3.pdf 
+ll
+rm ebscohost* unc1_erased.pdf 
+ll
+find . -iname "*pdf" -execdir qpdf --stream-data=compress {} compressed_{}
+find . -iname "*pdf" -execdir qpdf --stream-data=compress {} compressed_{} \;
+find . -iname "*pdf" -execdir qpdf --stream-data=compress {} {}_cpr \;
+find . -iname "*compressed*pdf"
+find . -iname "*compressed*pdf" -execdir qpdf --stream-data=compress {} {}_unc \;
+find . -iname "*compressed*pdf" -execdir echo qpdf --stream-data=compress {} {}_unc \;
+find . -iname "*compressed*pdf" -execdir qpdf --stream-data=compress {} {}_unc \;
+find . -iname "unc*pdf" -execdir qpdf --stream-data=compress {} {}_unc \;
+qpdf --empty --pages unc1.pdf 1-z unc2.pdf 1-z unc3.pdf 1-z -- complete.pdf
+find . -iname "unc1.pdf" -execdir echo qpdf --stream-data=compress {} {}_unc \;
+find . -iname "unc1.pdf" -execdir qpdf --stream-data=compress {} {}_c \;
+vim unc2.pdf unc3.pdf 
+find . -iname "unc*.pdf" -execdir qpdf --stream-data=compress {} {}_c \;
+vim compressed3.pdf_unc 
+find . -iname "unc3.pdf" -execdir qpdf --stream-data=compress {} {}_c \;
+qpdf --empty --pages unc1.pdf_c 1-z unc2.pdf_c 1-z unc3.pdf 1-z -- complete.pdf
+qpdf --empty --pages unc1.pdf_c 1-z unc2.pdf_c 1-z -- complete.pdf
+qpdf --stream-data=uncompress compressed3.pdf unc3_2.pdf
+vim unc3_2.pdf
+qpdf --stream-data=compress unc3.pdf unc3.pdf_c
+qpdf --empty --pages unc1.pdf 1-z unc2.pdf 1-z -- complete.pdf
+ll
+qpdf --stream-data=uncompress compressed3.pdf unc3.pdf
+qpdf --stream-data=compress unc3.pdf_c unc3.pdf_cc
+qpdf --stream-data=compress unc3.pdf unc3.pdf_cc
+vim unc3.pdf 
+vim compressed3.pdf 
+qpdf --stream-data=compress erased.pdf unc3.pdf_c
+qpdf --stream-data=compress --suppress-recovery erased.pdf unc3.pdf_c
+qpdf --stream-data=compress --ignore-xref-streams erased.pdf unc3.pdf_c
+qpdf --stream-data=uncompress --ignore-xref-streams compressed3.pdf unc3.pdf
+qpdf --stream-data=uncompress --ignore-xref-streams com3.pdf unc3.pdf
+qpdf --stream-data=uncompress com.pdf unc3.pdf
+qpdf --stream-data=uncompress com3.pdf unc3.pdf
+qpdf --stream-data=compress unc3.pdf unc3.pdf_c
+qpdf --empty --pages unc1.pdf 1-z unc2.pdf 1-z unc3.pdf -- complete.pdf
+qpdf --empty --pages unc1.pdf_c 1-z unc2.pdf_c 1-z unc3.pdf -- complete.pdf
+qpdf --stream-data=uncompress comp3.pdf unc3.pdf
+qpdf --stream-data=uncompress com3.pdf unc3.pdf
+vim unc3.pdf 
+qpdf --stream-data=uncompress com3.pdf unc3.pdf
+qpdf --stream-data=compress erased.pdf com3.pdf
+mupdf com3.pdf 
+qpdf --empty --pages unc1.pdf_c 1-z unc2.pdf_c 1-z -- parts_1_and_2.pdf
+ra
+cd ~/comp/r/testing/
+ll
+less .RData 
+vim .RData
+file .RData
+R
+R
+cd ~/comp/r/testing/; R
+R
+pgrep firefox
+sd
+vim
+sd
+ra
+vim ipa.vim 
+vim ipa_utf-8.vim 
+git push
+gs
+glog
+viff ipa_utf-8.vim ~/code/vim-keymaps/keymap/ipa_utf-8.vim 
+glog
+pwd
+viff ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim ~/code/vim-keymaps/keymap/czech_utf-8.vim 
+gs
+git push
+glog
+type gd
+gd eb12127
+gd eb12127 MASTER
+gd eb12127 HEAD
+gd HEAD eb12127
+man git-diff
+glog
+man git-commit
+man git-everyday
+man giteveryday
+man git-reset
+pwd
+git reset hard eb12127
+git reset hard -- eb12127
+man git-reset
+git reset --hard eb12127
+glog
+gs
+git pull
+glog
+vi
+vim
+vim vokaly.md
+gs
+glog
+git push
+git pull
+git push
+glog
+vim
+vim ipa_utf-8.vim 
+glog
+git reset --hard 4eac9c7
+glog
+git branch
+git pull
+glog
+git reset --hard 54782d4
+glog
+git push origin master
+git push --help
+git push --force origin master
+glog
+git push
+glog
+git pull
+glog
+ll
+git clone http://github.com/jakubbortlik/vim-keymaps
+glog
+vim
+cd ~/comp/r/testing/
+ll
+view barplot.jpeg
+gpicview barplot.jpeg 
+rm barplot.jpeg
+gpicview barplot.jpeg 
+ll
+gpicview barplot.jpeg 
+rm barplot.jpeg
+ll
+gpicview 6plots.jpeg 
+ll
+mupdf barplot.ps
+zat barplot.ps 
+dnf search zathura | postscript
+dnf search zathura | grep postscript
+dnf search zathura
+dnf install zathura-ps zathura-djvu
+sudo dnf install zathura-ps zathura-djvu
+vim
+dnf search mupdf
+ra
+sd
+locate IPA_ch
+locate IPA_chart
+locate IPA_chart_2005
+zat $(locate IPA_chart_2005)
+zat $("locate IPA_chart_2005")
+zat "$(locate IPA_chart_2005)"
+man tmux
+vim
+date
+cd ~/comp/r/testing/; R
+vim lesson2.R 
+cd ~/skola/1_phd/02_dissertation/literature/german/; zat ~/skola/1_phd/02_dissertation/literature/german/Krech_Stock_Hirschfel_Anders_2009_deutsches_ausspracheworterbuch.pdf 
+cd ~/skola/1_phd/02_dissertation/literature/german/; mupdf ~/skola/1_phd/02_dissertation/literature/german/Krech_Stock_Hirschfel_Anders_2009_deutsches_ausspracheworterbuch.pdf &>/dev/null &
+locate IPA
+locate IPA_chart
+ra
+sd
+f
+cd ~/comp/r/testing/; vim ~/comp/r/testing/lesson2.R 
+kill firefox
+pkill firefox
+sd
+cd ~/Pictures/svatba_kuba_a_lucinka/
+ll
+cd oficialni/
+ls
+..
+find . -type f -iname "*jpg" -execdir bash -c 'BIG="${##*/}"; echo $BIG' {} \;
+find . -type f -iname "*jpg" -execdir bash -c 'BIG="${0##*/}"; echo $BIG' {} \;
+find . -type f -iname "*jpg" -execdir bash -c 'BIG="${0##*/}"; SMALL="${BIG%%.jpg}_small.jpg"; echo convert "$BIG" -resize 1000 "$SMALL"' {} \;
+find . -type f -iname "*jpg" -execdir bash -c 'BIG="${0##*/}"; SMALL="${BIG%%.jpg}_small.jpg"; echo convert "$BIG" -resize 1000 small/"$SMALL"' {} \;
+find . -type f -iname "*054.jpg" -execdir bash -c 'BIG="${0##*/}"; SMALL="${BIG%%.jpg}_small.jpg"; echo convert "$BIG" -resize 1000 small/"$SMALL"' {} \;
+find . -type f -iname "*054.jpg" -execdir bash -c 'BIG="${0##*/}"; SMALL="${BIG%%.jpg}_small.jpg"; convert "$BIG" -resize 1000 small/"$SMALL"' {} \;
+find . -type f -iname "*054.jpg" -execdir bash -c 'BIG="${0##*/}"; SMALL="${BIG%%.jpg}_small.jpg"; convert "$BIG" -resize 1000 ../oficialni_small/"$SMALL"' {} \;
+find . -type f -iname "*.jpg" -execdir bash -c 'BIG="${0##*/}"; SMALL="${BIG%%.jpg}_small.jpg"; convert "$BIG" -resize 1000 ../oficialni_small/"$SMALL"' {} \;
+cd ~/Pictures/svatba_kuba_a_lucinka/oficialni_small/
+ll
+du -sh
+find -type f
+a=0; find -type f -execdir bash -c 'a=a+1; echo 
+$a' {} \;
+du -sh
+ra
+uu1
+ra
+sd
+lpinfo
+lpinfo 
+lpinfo -v
+ll
+ls *praat
+diff -s vowel_transcription_trainer.praat ../teaching_vowels_3-4_4/vowel_transcription_trainer.praat 
+viff vowel_transcription_trainer.praat ../teaching_vowels_3-4_4/vowel_transcription_trainer.praat 
+vim vowel_transcription_trainer.praat 
+rsync -avn teaching_vowels/ teaching_vowels_lucka/
+viff vowel_transcription_trainer.praat ~/skola/2_teaching/AFO2-FO02/teaching_vowels_lucka/vowel_transcription_trainer.praat 
+pwd
+rsync -avn ./ /home/jakub/praat/teaching_vowel_transcription/stimuli
+rsync -av ./ /home/jakub/praat/teaching_vowel_transcription/stimuli
+rsync -avn ./ /home/jakub/praat/teaching_vowel_transcription/stimuli
+rsync -av ./ /home/jakub/praat/teaching_vowel_transcription/stimuli
+find . -type f
+find . -type f -iname "*wav" >> list.txt
+find /home/jakub/skola/2_teaching/AFO2-FO02/teaching_vowels -type f "*mp3
+"
+find /home/jakub/skola/2_teaching/AFO2-FO02/teaching_vowels -type f "*.mp3"
+find /home/jakub/skola/2_teaching/AFO2-FO02/teaching_vowels -type f -iname "*.mp3"
+find /home/jakub/skola/2_teaching/AFO2-FO02/teaching_vowels* -type f -iname "*.mp3"
+find /home/jakub/skola/2_teaching/AFO2-FO02/teaching_vowels_27-28_3/stimuli/ -type f -iname "*.mp3"
+find /home/jakub/skola/2_teaching/AFO2-FO02/teaching_vowels_27-28_3/stimuli/ -type f -iname "*.wav"
+ra
+uu1
+locate .praat
+locate -i .praat | grep -i "trainer"
+ra
+uu1
+f
+lpr
+lpr --help
+apropos printing
+ippf
+apropos print
+apropos printers
+apropos printer
+lpadmin 
+lpoptions 
+lpoptions --help
+man lpoptions 
+ra
+sd
+man find
+find . -executable
+find . -type f -executable
+find . -type f -executable -execdir chmod a-x {} \;
+find . -type f -executable
+locate env_tex
+cd ~/comp/r/testing/; vim ~/comp/r/testing/lesson2.R 
+ra
+ra
+fg
+sd
+qpdf --stream-data=uncompress hildenbrandt_moosmueller_2015_pronunciation_of_-ig_in_three_varieties_of_austria.pdf unc.pdf
+zat unc.pdf 
+vim unc.pdf
+ll
+qpdf --stream-data=compress erased.pdf hildenbrandt_moosmueller_2015_pronunciation_of_-ig_in_three_varieties_of_austria2.pdf 
+mv erased.pdf hildenbrandt_moosmueller_2015_pronunciation_of_-ig_in_three_varieties_of_austria.pdf 
+sudo updatedb 
+ra
+locate -i ipa | grep jakub
+locate -i ipa | grep aust
+mv muhr_and_s1995dt_and_wiesinger_XXXX_oesterreichisches_deutsch_-_linguistische_sozialpsychologische_und_sprachpolitische_aspekte_einer_nationalen_variante_des_deutschen.pdf muhr_schrodt_wiesinger_1995_oesterreichisches_deutsch_-_linguistische_sozialpsychologische_und_sprachpolitische_aspekte_einer_nationalen_variante_des_deutschen.pdf 
+locate jassem
+locate Jassem
+locate jasse
+locate jessen
+vim german.txt
+locate simacko
+locate czech
+locate czech | grep morav
+ra
+ra
+sd
+unar plodnost\,\ cykly\,\ výživa.rar 
+f
+ra
+man zip
+sd
+locate polski
+pgrep latexmk 
+dnf search biber
+dnf search -i biber
+man dnf
+dnf info --installed biber
+dnf info --installed firefox
+dnf info firefox
+dnf info biber
+sudo dnf install biber
+openbox --reconfigure
+ra
+pdfjam --help
+man pdfjam
+pdfjam --help | vim -
+pdfjam --help | less
+uu1
+b
+lsblk
+vim
+uu1
+ra
+cd ~/comp/r/testing/; vim ~/comp/r/testing/lesson2.R 
+sd
+f
+ra
+ra
+f
+ls
+find . -type f
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+git clone https://github.com/philc/vimium
+find -type f
+find -type f -execdir grep -i "address" {} \;
+find -type f -execdir grep -i "vomnibar.acti" {} \;
+find -type f -execdir grep -Hi "vomnibar.acti" {} \;
+find -type f -exec grep -Hi "vomnibar.acti" {} \;
+find -type f -exec grep -Hi "activate" {} \;
+find -type f -exec grep -Hi "activate" {} | grep -iv "vomnibar" \;
+find -type f -exec grep -Hi "activate" {} \; | grep -iv "vomnibar" \;
+find -type f -exec grep -Hi "activate" {} \;
+find -type f -exec bash -c 'grep -Hi "activate" | grep -v "omnibar"' {} \;
+find -type f -exec bash -c 'grep -Hi "activate" | grep -iv "omnibar"' {} \;
+find -type f -exec bash -c 'grep -Hi "activate"' {} \;
+find . -type f -exec bash -c 'grep -Hi "activate"' {} \;
+find . -type f -exec bash -c 'grep -Hi "activate" {}' {} \;
+find . -type f -exec bash -c 'grep -Hi "activate" {} | grep -iv "vomnibar"' {} \;
+..
+find . -type f -exec bash -c 'grep -Hi "activate" {} | grep -iv "vomnibar"' {} \;
+find . -type f -exec grep -iH "location" {} \;
+find . -type f -exec grep -iH "bar" {} \;
+find . -type f -exec bash -c 'grep -iH "bar" {} | grep -vi "omnibar"' {} \;
+find . -type f -exec bash -c 'grep -iH "bar" {} | grep -vi "omnibar"' {} \; | grep "bar"
+find . -type f -exec bash -c 'grep -iH "bar" {} | grep -vi "omnibar"' {} \; | grep -i "bar"
+find . -type f -exec bash -c 'grep -iH "address" {}' {} \;
+find . -type f
+find . -type f | grep Cake
+find . -type f -exec grep -iH "passnextkey" {} \;
+vim
+ls
+curl https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.fm/9783110158823.2.fm.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.toc/9783110158823.2.toc.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.7.1015/9783110158823.2.7.1015.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.7.1030/9783110158823.2.7.1030.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.7.1061/9783110158823.2.7.1061.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.7.1085/9783110158823.2.7.1085.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.7.1107/9783110158823.2.7.1107.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.7.1117/9783110158823.2.7.1117.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.7.1123/9783110158823.2.7.1123.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.7.1136/9783110158823.2.7.1136.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.8.1144/9783110158823.2.8.1144.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.8.1155/9783110158823.2.8.1155.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.8.1171/9783110158823.2.8.1171.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.8.1196/9783110158823.2.8.1196.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.8.1207/9783110158823.2.8.1207.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.8.1213/9783110158823.2.8.1213.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.8.1222/9783110158823.2.8.1222.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.8.1231/9783110158823.2.8.1231.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.9.1241/9783110158823.2.9.1241.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.9.1248/9783110158823.2.9.1248.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.9.1252/9783110158823.2.9.1252.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.9.1257/9783110158823.2.9.1257.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.9.1263/9783110158823.2.9.1263.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.9.1270/9783110158823.2.9.1270.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.9.1276/9783110158823.2.9.1276.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.9.1283/9783110158823.2.9.1283.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.9.1288/9783110158823.2.9.1288.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1294/9783110158823.2.10.1294.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1304/9783110158823.2.10.1304.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1320/9783110158823.2.10.1320.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1332/9783110158823.2.10.1332.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1340/9783110158823.2.10.1340.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1351/9783110158823.2.10.1351.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1358/9783110158823.2.10.1358.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1365/9783110158823.2.10.1365.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1385/9783110158823.2.10.1385.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1391/9783110158823.2.10.1391.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.10.1399/9783110158823.2.10.1399.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1409/9783110158823.2.11.1409.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1422/9783110158823.2.11.1422.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1431/9783110158823.2.11.1431.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1435/9783110158823.2.11.1435.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1456/9783110158823.2.11.1456.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1463/9783110158823.2.11.1463.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1470/9783110158823.2.11.1470.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1478/9783110158823.2.11.1478.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1491/9783110158823.2.11.1491.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1496/9783110158823.2.11.1496.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.11.1505/9783110158823.2.11.1505.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1513/9783110158823.2.12.1513.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1527/9783110158823.2.12.1527.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1542/9783110158823.2.12.1542.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1554/9783110158823.2.12.1554.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1584/9783110158823.2.12.1584.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1594/9783110158823.2.12.1594.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1605/9783110158823.2.12.1605.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1623/9783110158823.2.12.1623.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1646/9783110158823.2.12.1646.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1665/9783110158823.2.12.1665.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1673/9783110158823.2.12.1673.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1682/9783110158823.2.12.1682.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1705/9783110158823.2.12.1705.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.12.1713/9783110158823.2.12.1713.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1746/9783110158823.2.13.1746.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1765/9783110158823.2.13.1765.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1782/9783110158823.2.13.1782.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1804/9783110158823.2.13.1804.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1810/9783110158823.2.13.1810.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1818/9783110158823.2.13.1818.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1847/9783110158823.2.13.1847.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1855/9783110158823.2.13.1855.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1903/9783110158823.2.13.1903.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1911/9783110158823.2.13.1911.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1918/9783110158823.2.13.1918.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1932/9783110158823.2.13.1932.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1951/9783110158823.2.13.1951.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1967/9783110158823.2.13.1967.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.13.1980/9783110158823.2.13.1980.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.1991/9783110158823.2.14.1991.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.1999/9783110158823.2.14.1999.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2008/9783110158823.2.14.2008.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2016/9783110158823.2.14.2016.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2037/9783110158823.2.14.2037.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2047/9783110158823.2.14.2047.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2054/9783110158823.2.14.2054.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2064/9783110158823.2.14.2064.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2101/9783110158823.2.14.2101.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2107/9783110158823.2.14.2107.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2137/9783110158823.2.14.2137.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2146/9783110158823.2.14.2146.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2152/9783110158823.2.14.2152.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2159/9783110158823.2.14.2159.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2168/9783110158823.2.14.2168.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2175/9783110158823.2.14.2175.xml
+https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.14.2185/9783110158823.2.14.2185.xml
+vim links.txt
+man curl
+vim links.txt 
+curl https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.fm/9783110158823.2.fm.pdf
+curl -O https://www.degruyter.com/downloadpdf/books/9783110158823.2/9783110158823.2.fm/9783110158823.2.fm.pdf
+vim links.txt
+awk '{system("curl -O "$2)}' links.txt 
+awk '{system("echo mv "$2" "$1$2)}' links.txt 
+awk '{system("echo mv "$2" "$1_$2)}' links.txt 
+awk '{system("echo mv "$2" "$1"_"$2)}' links.txt 
+awk '{system("mv "$2" "$1"_"$2)}' links.txt 
+ra
+ra
+awk '{system("curl -O "$2)}' links.txt 
+sd
+awk '{system("echo mv "$3" "$1"_"$3)}' links.txt 
+awk '{system("mv "$3" "$1"_"$3)}' links.txt 
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+curl --help
+curl --help | less
+curl -I http://www.thegeekstuff.com/2012/04/curl-examples
+vim links.txt
+awk '{system("curl -O "$2)}' links.txt 
+ra
+man curl
+ra
+vim links.txt 
+curl https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.fm.pdf
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.fm.pdf
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/[a-z0-9].pdf
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/[a-z].pdf
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.fm.pdf
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.[a-z][a-z].pdf
+man curl
+curl -l https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.fm.pdf
+man tmux
+ra
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.fm.pdf
+curl -l https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.fm.pdf
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.17.22[0-100].pdf
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.17.23[11-22].pdf
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.17.23[12-22].pdf
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.fm/9783110158830.3.15.23[12-22].pdf
+curl -I https://www.degruyter.com/downloadpdf/books/9783110158830.3/9783110158830.3.15.23[11-22]/9783110158830.3.15.23[11-22].pdf
+awk '{system("mv "$3" "$1"_"$3)}' links.txt 
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+vim links.txt 
+awk '{system("curl -O "$2)}' links.txt 
+ll
+vim links.txt 
+awk '{system("mv "$3" "$1"_"$3)}' links.txt 
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+locate -i nespor
+vim links.txt 
+awk '{system("curl -O "$2)}' links.txt 
+awk '{system("mv "$3" "$1"_"$3)}' links.txt 
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+pdfjam complete.pdf --clip true --suffix 'clipped'
+pdfjam complete.pdf --trim '1cm 5cm 5cm 1cm' --clip true --suffix 'trimmed'
+mupdf complete-trimmed.pdf &>/dev/null &
+pdfjam complete.pdf --trim '1cm 6cm 6cm 1cm' --clip true --suffix 'trimmed'
+pdfjam complete.pdf --trim '1cm 7cm 7cm 1cm' --clip true --suffix 'trimmed'
+pdfjam complete.pdf --trim '1cm 7cm 7cm 0cm' --clip true --suffix 'trimmed'
+pdfjam complete.pdf --trim '1cm 8cm 8cm 0cm' --clip true --suffix 'trimmed'
+pdfjam complete.pdf --trim '1cm 7cm 8cm 0cm' --clip true --suffix 'trimmed'
+ra
+ra
+pkill mupdf
+systemctl poweroff
+f
+sd
+f
+ra
+sd
+f
+sd
+ra
+ra
+locate linking
+top
+pgrep 5018
+pgrep bash
+kill 5018
+pgrep bash
+kill 4589
+pgrep ranger
+top
+kill 4624
+ra
+ra
+fg
+sd
+f
+vim
+sudo dnf search dictionary
+ra
+sd
+find . -type f
+find . -type f -exec grep -iH "alt-c" {} \;
+find . -type f -exec grep -iH "alt" {} \;
+find . -type f -exec grep -iH "cite" {} \;
+find . -type f -exec grep -iH "\cite" {} \;
+find . -type f -exec grep -iH "\cite{}" {} \;
+find . -type f -exec grep -iH "\cite\{\}" {} \;
+find . -type f -exec grep -iH "\cite\{}" {} \;
+find . -type f -exec grep -iH "\cite{}" {} \;
+find . -type f -exec grep -iH "\\cite{}" {} \;
+find . -type f -exec grep -iH "\\cite\{\}" {} \;
+find . -type f -exec grep -iH "\\cite" {} \;
+find . -type f -exec grep -iH "\cite" {} \;
+find . -type f -exec grep -iH "cite" {} \;
+find . -type f -exec grep -iH "<++>" {} \;
+find . -type f -exec grep -iH "\<++\>" {} \;
+find . -type f -exec grep -iH "\leftqn" {} \;
+..
+find . -type f -exec grep -iH "\leftqn" {} \;
+find . -type f -exec grep -iH "\lefteqn" {} \;
+find . -type f -iname "*vim" -exec grep -iH "\lefteqn" {} \;
+.
+..
+find . -type f -iname "*vim" -exec grep -iH "\lefteqn" {} \;
+find . -type f -iname "*vim" -exec grep -iH "<M-b>" {} \;
+find . -type f -iname "*vim" -exec grep -iH "M-b" {} \;
+find . -type f -iname "*vim" -exec grep -iH "Tex_LeftRight" {} \;
+find . -type f -iname "*vim" -exec grep -iH "LeftRight" {} \;
+find . -type f -exec grep -iH "Tex_LeftRight" {} \;
+find . -type f -exec grep -iH "LeftRight" {} \;
+find . -type f -exec grep -H "LeftRight" {} \;
+find . -type f -exec grep -H "MathBF" {} \;
+
+find . -type f -exec grep -H "M-c" {} \;
+find . -type f -exec grep -H "M-i" {} \;
+find . -type f -exec grep -H "InserItemOnT" {} \;
+find . -type f -exec grep -iH "in" {} \;
+find . -type f -exec grep -H "InsertItemOnT" {} \;
+find . -type f -exec grep -H "InsertItem" {} \;
+vim envmacros.vim 
+find . -type f -exec grep -H "M-b" {} \;
+find . -type f -exec grep -H "M-c" {} \;
+ra
+locate wiener
+wc ChapterTemplate.tex 
+wc --help
+wc -w
+wc -w ChapterTemplate.tex 
+wc -w *tex 
+nwords=$(wc -w "*tex")
+nwords=$(wc -w *tex)
+nwords
+echo nwords
+echo $nwords
+man wc
+wc -w *tex
+wc -w *tex >> nwords.txt
+cat nwords.txt 
+wc -w *tex >> nwords.txt
+cat nwords.txt 
+locate -i artmann
+locate -i artman
+date
+vim nwords.sh
+ra
+dnf info biblatex
+dnf search biblatex
+dnf info texlive-biblatex
+dnf upgrade texlive-biblatex
+sudo dnf upgrade texlive-biblatex
+sudo dnf upgrade texlive
+sudo dnf upgrade
+type nwords 
+vim $(nwords)
+vim $(type nwords)
+vim $(which nwords)
+..
+nwords 
+find . -type f -iname "*tex"
+find . -type f -iname "*tex" -execdir wc -w {} \;
+f=$(find . -type f -iname "*tex")
+f=$(find . -type f -iname "*tex"); echo $f
+f=$(find . -type f -iname "*tex"); echo wc -w $f
+f=$(find . -type f -iname "*tex"); wc -w $f
+man tail
+tail -n 1 .gmrun
+tail -n 1 .gmrunrc 
+nwords -h
+nwords -t
+nwords -h
+nwords -t
+cat nwords.txt 
+nwords -t
+cat nwords.txt 
+nwords -t
+ls /tmp/
+nwords -t
+tail --help
+tail nwords.txt 
+nwords -t
+nwords -h
+nwords
+nwords -t
+man diff
+diff --help
+man diff
+nwords -t
+nwords
+nwords -t
+nwords
+nwords -t
+vim nwords.txt 
+nwords -t
+nwords
+man diff
+nwords 
+nwords -t
+ra
+nwords -t
+vim ~/dotfiles/bin/nwords 
+nwords -t
+vim ~/dotfiles/bin/nwords 
+nwords -t
+vim ~/dotfiles/bin/nwords 
+nwords 
+nwords -t
+nwords
+nwords -t
+nwords
+nwords -t
+latexmk --help
+latexmk --help | less
+latexmk -v
+nwords -t
+nwords 
+cd /home/jakub/skola/1_phd/02_dissertation/thesis/
+find . -type f -iname "*tex"
+find . -type f -iname "*tex" | sort -d
+nwords -t
+nwords 
+vim ~/dotfiles/bin/nwords 
+nwords -e
+vim ~/dotfiles/bin/nwords 
+nwords -
+nwords -t
+vim ~/dotfiles/bin/nwords 
+nwords -t
+nwords -e
+vim ~/dotfiles/bin/nwords 
+nwords 
+nwords -t
+nwords -e
+ra
+ra
+fg
+clear
+ra
+sd
+f
+sd
+vim
+sd
+f
+ra
+locate konference
+vim
+dnf search texlive | grep -i "font"
+grep -H "vachek" *tex
+man font-manager
+font-manager
+locate mathpazo
+dnf search texlive-mathpazo
+sudo dnf isntall texlive-mathpazo-doc
+sudo dnf install texlive-mathpazo-doc
+locate mathpazo-doc
+locate mathpazo
+sudo updatedb
+locate mathpazo-doc
+man mathpazo-doc
+man mathpazo
+mathpazo --help
+cat /usr/share/licenses/texlive-mathpazo-doc/gpl.txt 
+more /usr/share/licenses/texlive-mathpazo-doc/gpl.txt 
+less /usr/share/licenses/texlive-mathpazo-doc/gpl.txt 
+locate mathpazo-doc
+less /usr/share/licenses/texlive-mathpazo-doc
+cd /usr/share/licenses/texlive-mathpazo-doc
+ll
+find . -iname "*JPG"
+find . -iname "*JPG" -execdir bash -c 'f={}; echo $f' {} \;
+find . -iname "*JPG" -execdir bash -c 'f={}; echo toto je $f' {} \;
+find . -iname "*JPG" -execdir bash -c 'f={%%*.JPG};  $f' {} \;
+find . -iname "*JPG" -execdir bash -c 'f={%%JPG}; echo $f' {} \;
+find . -iname "*JPG" -execdir bash -c 'f={%%*.JPG};  $f' {} \;
+find . -iname "*JPG" -execdir bash -c 'f={%%JPG}; echo $f' {} \;
+find . -iname "*JPG" -execdir bash -c 'f=${%%JPG}; echo $f' {} \;
+find . -iname "*JPG" -execdir bash -c 'f={@%%JPG}; echo $f' {} \;
+find . -iname "*JPG" -execdir bash -c 'f={0%%JPG}; echo $f' {} \;
+find . -iname "*JPG" -execdir bash -c 'f=${0%%.JPG}; echo $f' {} \;
+find . -iname "*JPG" -execdir bash -c 'f=${0}; pdf=${0%%.JPG}.pdf; echo convert $f $pdf' {} \;
+find . -iname "*JPG" -execdir bash -c 'f=${0}; pdf=${0%%.JPG}.pdf;convert $f $pdf' {} \;
+man convert
+find . -iname "*JPG" -execdir bash -c 'f=${0}; pdf=${0%%.JPG}.pdf;convert -rotate 90 $f $pdf' {} \;
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+find . -iname "*JPG" -execdir bash -c 'f=${0}; pdf=${0%%.JPG}.pdf;convert -rotate 90 $f $pdf' {} \;
+qpdf --empty --pages szende_20XX_illustrations_of_the_ipa.pdf 1-z DSC_0009.pdf 1-z -- szende_20XX_illustrations_of_the_ipa_full.pdf 
+ra
+uu1
+pwd
+pdfinfo 1.pdf 
+pdfinfo last.pdf 
+pdfjam last.pdf --clip
+pdfinfo last-pdfjam.pdf 
+nwords 
+nwords -e
+dnf search CMU
+updmap-sys --listmaps
+dnf search calligra
+sudo dnf install texlive-calligra
+dnf search texlive | grep -i "font"
+sudo dnf install texlive-calligra
+dnf search mathpazo
+sudo dnf install texlive-phonetic
+dnf search texlive-phonetic
+sudo dnf install texlive-phonetic-doc
+dnf info texlive-phonetic-doc
+dnf info texlive-wsuipa
+dnf info texlive-phonetic
+dnf info texlive-computer
+dnf info texlive | grep -i computer
+dnf search texlive | grep -i computer
+dnf search texlive-cm texlive-cm-unicode
+sudo dnf install texlive-cm texlive-cm-unicode
+nwords -e
+nwords -t
+pkill zathura
+pkill mupdf
+cd ~/comp/r/testing/; vim ~/comp/r/testing/lesson2.R 
+lsblk
+uu1
+lsblk
+sd
+f
+sd
+pdfinfo -f 1 -l 2 volin_2012_jak_se_v_cechach_razuje.pdf 
+b
+alias qep="qpdf --empty --pages"
+qep volin_2012_jak_se_v_cechach_razuje.pdf 2-z -- v2.pdf
+qep volin_2012_jak_se_v_cechach_razuje.pdf 1 -- v1.pdf
+mupdf v1.pdf 
+mupdf v2
+mupdf v2.pdf 
+pdfinfo v2.pdf 
+pdfjam v2.pdf --clip
+mupdf v2-pdfjam.pdf 
+pdfinfo v2-pdfjam.pdf
+qep v1.pdf 1 v2-pdfjam.pdf 1-z -- vol.pdf
+mupdf vol.pdf 
+zat vol.pdf
+zat volin_2012_jak_se_v_cechach_razuje.pdf 
+mv vol.pdf volin_2012_jak_se_v_cechach_razuje.pdf 
+ll
+rm v1.pdf v2*
+ll
+cp ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks
+locate pollak | grep volin
+vim unaccessible_sources.txt
+locate skarnitzl
+locate skarnitzl | grep categ
+locate skarnitzl | grep vari
+locate skarnitzl | grep phonation
+locate -i skarnitzl | grep -i catego
+locate -i skarnitzl | grep -i charac
+alias qep="qpdf --empty --pages"
+qep pavelkova_2001_k_tzv_razu_v_cj.pdf 41-43 -- pavelkova_2001_k_tzv_razu_v_cj_only.pdf 
+zat pavelkova_2001_k_tzv_razu_v_cj_only.pdf 
+zat pavelkova_2001_k_tzv_razu_v_cj.pdf 
+mv pavelkova_2001_k_tzv_razu_v_cj.pdf jazykovedne_aktuality_2001.pdf
+mv pavelkova_2001_k_tzv_razu_v_cj_only.pdf pavelkova_2001_k_tzv_razu_v_cj.pdf 
+find . -iname "*JPG" -execdir bash -c 'f=${0}; pdf=${0%%.JPG}.pdf;convert $f $pdf' {} \;
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+pdfjam complete.pdf --clip
+zat complete
+zat complete.pdf 
+pdfinfo complete.pdf 
+pdfinfo -f 1 -l 4 complete.pdf 
+mv Modlitba\ za\ zemřelé\ přátele\ z\ ulice\ výběr/ modlitba_za_zemrele_2017
+mv ST\ Egidio\ modlitba\ za\ zemřelé\ výběr/ modlitba_za_zemrele_2016
+ls /tmp/
+cp /tmp/mozilla_jakub0/ /home/jakub/Pictures/sant-egidio
+mv /tmp/mozilla_jakub0/ /home/jakub/Pictures/sant-egidio
+cd /home/jakub/Pictures/sant-egidio
+ll
+cd mozilla_jakub0/
+ll
+mv Modlitba\ za\ zemřelé\ přátele\ z\ ulice\ výběr.rar ../
+lll
+ll
+..
+ll
+ra
+file moosmueller_schmid_brandstaetter_2015_illustrations_of_the_ipa_standard_austrian_german.pdf 
+find . -iname "*.pdf"
+find . -iname "*.pdf" -exec pdftotext {} \;
+pdftotext volin_2012_jak_se_v_cechach_razuje.pdf 
+find . -iname "*.pdf" -exec pdftotext {} | less \;
+man find
+man xargs
+find . -iname "*.pdf" -exec pdftotext {} \; | less
+find . -iname "volin201*pdf" -exec pdftotext {} \; | less
+find . -iname "volin201*pdf"
+find . -iname "volin20*pdf"
+find . -iname "volin_20*pdf"
+ra
+find . -iname "volin_201*pdf"
+find . -iname "volin_201*pdf" -execdir pdftotext {} \; | less
+man find
+find . -iname "volin_201*pdf" -execdir cat {} \; | less
+find . -iname "volin_201*pdf" -execdir bash -c 'pdftotext {} | less ' \;
+man pdftotext 
+pdftotext volin_2012_jak_se_v_cechach_razuje.pdf | less
+pdftotext volin_2012_jak_se_v_cechach_razuje.pdf > less
+pdftotext volin_2012_jak_se_v_cechach_razuje.pdf | less -
+pdftotext volin_2012_jak_se_v_cechach_razuje.pdf - | less -
+man pdftotext 
+find . -iname "*pdf" -execdir bash -c 'pdftotext {} - | less ' \;
+locate volin
+pwd
+rsync -av /home/jakub/zdroje/cestina /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/citace /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/glottalization /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/intonation /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/ipa /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/intonation /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/german /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/phonation /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/phonetics_and_phonology /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/phonology /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/phonotactics /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/prosody /run/media/jakub/Sony_16GR/zdroje/
+rsync -av /home/jakub/zdroje/statistics /run/media/jakub/Sony_16GR/zdroje/
+..
+cd skola/
+ll
+rsync /home/jakub/skola/01_phd/02_dissertation /run/media/jakub/Sony_16GR/skola/01_phd/
+rsync -av /home/jakub/skola/01_phd/02_dissertation /run/media/jakub/Sony_16GR/skola/01_phd/
+ra
+lsblk
+cp ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks
+ra
+fg
+rsync -av /home/jakub/skola/01_phd/02_dissertation /run/media/jakub/Sony_16GR/skola/01_phd/
+rsync -avn --delete /home/jakub/skola/01_phd/02_dissertation /run/media/jakub/Sony_16GR/skola/01_phd/
+rsync -av --delete /home/jakub/skola/01_phd/02_dissertation /run/media/jakub/Sony_16GR/skola/01_phd/
+ra
+pkill zathu
+cd ~/comp/r/testing/; vim ~/comp/r/testing/lesson2.R 
+uu1
+sd
+mocp
+ra
+f
+ra
+sd
+vim
+locate xkb
+locate xkb | grep ipa
+vimdiff /usr/share/X11/xkb/symbols/ipa /home/jakub/code/xkb/symbols/ipa 
+gs
+glog
+git push
+sudo mv ipa /usr/share/X11/xkb/symbols/
+cp /usr/share/X11/xkb/symbols/ipa ./
+gs
+vim ipa 
+locate mines
+locate -i mines
+locate Mines
+zat $(locate Mines)
+m=$(locate Mines)
+$m
+echo $m
+alias qep="qpdf --empty --pages"
+b
+. ~/.bashrc 
+type qep
+zat "$m"
+qep "$m" 1-21 -- "$m"_short.pdf
+zat "$m"_short.pdf
+ls "$m"_short.pdf
+mv "$m"_short.pdf "$m"
+m=$(locate Mines)
+zat "$m"
+m=$(locate Mines)
+zat "$m"
+find . -type f
+man find
+find . -iname "*txt"
+lateck
+ra
+ra
+sd
+dnf info fedora
+dnf info linux
+man zathura
+cd ~/comp/r/testing/; vim ~/comp/r/testing/lesson2.R 
+man dnf
+dnf check-update ranger
+man dnf
+dnf upgrade ranger
+sudo dnf upgrade ranger
+ranger --version
+which ranger
+ra
+sd
+lsblk
+lsblk
+ra
+uu1
+lsblk
+sd
+nwords 
+nwords -e
+nwords 
+nwords -t
+man curl
+curl -I http://cja.ujc.cas.cz/CJA5/files/05-[0000-0681].pdf
+curl -O http://cja.ujc.cas.cz/CJA5/files/05-[0001-0681].pdf
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+cd ~/zdroje/cestina/CJA3/
+curl -I http://cja.ujc.cas.cz/CJA5/files/03-[0001-0578].pdf
+curl -I http://cja.ujc.cas.cz/CJA3/files/03-[0001-0578].pdf
+pdfjam complete.pdf --clip
+mupdf complete-pdfjam.pdf 
+bg
+mupdf complete.pdf &>/dev/null &
+pdfinfo -f 69 l 69 complete.pdf 
+pdfinfo -f 68 -l 69complete.pdf 
+pdfinfo complete.pdf 
+pdfinfo -f 69 -l 69 complete.pdf 
+pdfinfo -f 68 -l 69 complete.pdf 
+pdfinfo -f 68 -l 70 complete.pdf 
+pdfinfo -f 68 -l 90 complete.pdf 
+pdfinfo complete.pdf 
+pdfinfo -f 1 -l 682 complete.pdf 
+man qpdf
+qpdf --help | less
+curl -I http://cja.ujc.cas.cz/CJA1/files/01-[0001-0428].pdf
+curl -O http://cja.ujc.cas.cz/CJA1/files/01-[0001-0428].pdf
+ls
+cd ~/zdroje/cestina/CJA3/
+curl -I http://cja.ujc.cas.cz/CJA3/files/03-[0001-0578].pdf
+curl -O http://cja.ujc.cas.cz/CJA3/files/03-[0001-0578].pdf
+curl -I http://cja.ujc.cas.cz/CJA2/files/02-[0001-0508].pdf
+curl -O http://cja.ujc.cas.cz/CJA2/files/02-[0001-0508].pdf
+ls
+curl -I http://cja.ujc.cas.cz/CJA4/files/04-[0301-0500].pdf
+curl -I http://cja.ujc.cas.cz/CJA4/files/04-[0501-0599].pdf
+curl -I http://cja.ujc.cas.cz/CJA4/files/04-[0601-0690].pdf
+curl -I http://cja.ujc.cas.cz/CJA4/files/04-[0001-0627].pdf
+curl -O http://cja.ujc.cas.cz/CJA4/files/04-[0001-0627].pdf
+curl -I http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[001-500].pdf
+curl -I http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[501-700].pdf
+curl -I http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[501-600].pdf
+curl -I http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[580-600].pdf
+curl -I http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[580-590].pdf
+curl -I http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[570-580].pdf
+curl -I http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[570-588].pdf
+curl -I http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[570-585].pdf
+curl -I http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[570-580].pdf
+curl -I http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[570-581].pdf
+curl -O http://cja.ujc.cas.cz/CJA-dodatky/files/Dodatky[001-580].pdf
+qpdf --help | grep rotate
+qpdf --help | grep static
+qpdf --version
+sudo dnf upgrade qpdf
+pdfinfo -f 1 -l 100 complete.pdf 
+ls
+convert -rotate -90 05-0069.pdf 05-0069R.pdf 
+zat 05-0069R.pdf
+pdfinfo 05-0069R.pdf
+zat complete.pdf 
+qpdf --empty --pages complete-pdfjam.pdf 1-68 complete.pdf 69 --output c.pdf
+qpdf --empty --pages complete-pdfjam.pdf 1-68 complete.pdf 69 -- c.pdf
+qep c.pdf 1-z complete-pdfjam.pdf 70-z -- co.pdf
+zat co.pdf
+mupdf co.pdf 
+mv co.pdf CJA5.pdf
+ls c*
+rm c*
+ls c*
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- c.pdf
+man pdfinfo
+pdfinfo -f 300 -l 500 c.pdf 
+pdfinfo -f 1 -l 500 c.pdf | grep "size: 8"
+mupdf *221.pdf
+pdfjam c.pdf --clip
+zat c-pdfjam.pdf 
+qep c-pdfjam.pdf 1-220 01-0221.pdf 1 -- o.pdf
+zat o.pdf 
+qep o.pdf 1-z c-pdfjam.pdf 222-z -- CJA1.pdf
+zat CJA1.pdf 
+mupdf CJA1.pdf
+find . -iname "*pdf"
+find . -iname "*pdf" -execdir pdfinfo {} \; | grep "size: 5"
+find . -iname "*pdf" -execdir bash -c 'pdfinfo {} | grep "size: 5" ' \;
+find . -iname "*pdf" -execdir bash -c 'pdfinfo {}" ' \;
+find . -iname "*pdf" -execdir bash -c 'pdfinfo {} " ' {} \;
+find . -iname "*pdf" -execdir bash -c 'pdfinfo {} ' \;
+find . -iname "*pdf" -execdir bash -c 'pdfinfo {} | grep -E "size:[ ]*5" ' \;
+find . -iname "*pdf" -execdir bash -c 'pdfinfo {} | grep -HE "size:[ ]*8" ' \;
+find . -iname "*pdf" -execdir pdfinfo {} \;
+find . -iname "*pdf" -execdir pdfinfo {} \; | grep -HE "size:      5"
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+pdfjam complete.pdf --clip
+pdfinfo -f 1 -l 1000 complete.pdf 
+pdfinfo -f 1 -l 1000 complete.pdf | grep "size: 8"
+pdfinfo -f 1 -l 1000 complete.pdf | grep "size: 5"
+pdfinfo -f 1 -l 1000 complete.pdf | grep "size: 8"
+mv complete-pdfjam.pdf CJA2.pdf
+mv CJA2.pdf ../
+..
+cd CJA3
+ls
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+pdfinfo -f 1 -l 1000 complete.pdf | grep "size: 8"
+pdfinfo -f 1 -l 1000 complete.pdf | grep "size: 5"
+pdfinfo -f 1 -l 1000 complete.pdf | grep "size: 8"
+pdfjam complete.pdf --clip
+mv complete-pdfjam.pdf CJA3.pdf
+cd ../CJA4/
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+pdfinfo 04-0535.pdf 
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+ls c*
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+pdfinfo -f 1 -l 1000 complete.pdf | grep "size: 8"
+pdfjam complete.pdf --clip
+qep complete-pdfjam.pdf 1-463 04-0464.pdf -- o1.pdf
+qep o1.pdf 1-z complete-pdfjam.pdf 465-489 -- o2.pdf
+qep o2.pdf 1-z 04-0490.pdf 1 -- o3.pdf
+qep o2.pdf 1-z 04-0490.pdf 1 complete-pdfjam.pdf 491-z -- o4.pdf
+mupdf o4.pdf
+rm o4.pdf 
+mupdf o3.pdf 
+rm o3.pdf
+ll
+rm complete* o*
+ll
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+size: 
+pdfinfo -f 1 -l 1000 complete.pdf | grep "size: 8"
+mupdf 04-0464.pdf 
+mupdf 04-0465.pdf 
+mupdf 04-0463.pdf 
+mupdf 04-0489.pdf 
+pdfjam complete.pdf --clip
+mupdf complete-pdfjam.pdf 
+mv complete-pdfjam.pdf c1.pdf
+cp c1.pdf c2.pdf
+cp c2.pdf c3.pdf
+qep c1.pdf 1-463 04-0463.pdf 1 c2.pdf 465-489 04-0489.pdf 1 c3.pdf 491-z -- o.pdf
+mupdf o.pdf
+zat c2.pdf 
+mupdf c2.pdf
+pdfinfo -f 1 -l 1000 complete.pdf | grep -v "size: 5"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size" | -vi "size: 5"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size" | grep -vi "size: 5"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size" | grep -vi "size: 57"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size" | grep -vi "size: 59"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size" | grep -vi "size: 58"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size" | grep -viE "size: 5[79]"
+cp c1.pdf c4.pdf
+qep c1.pdf 1-463 04-0463.pdf 1 c2.pdf 465-487 04-0487.pdf 1 c3.pdf 489 04-0489.pdf 1 c3.pdf 491-z -- o.pdf
+mupdf o.pdf &>/dev/null &
+mv o.pdf ../CJA4.pdf
+ll
+rm c*
+..
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size" | grep -viE "size: 5[79]"
+ll
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size" | grep -viE "size: 5[79]"
+mv CJA3.pdf ../
+..
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size" | grep -viE "size: 5[79]"
+mupdf complete.pdf &>/dev/null &
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size" | grep -viE "size: 5[4679]"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size: "
+pdfinfo -f 1 -l 1000 complete.pdf | grep -i "size: 8"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -iE "size: [0-9]"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -iE "size: [0-46-9]"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -iE "size: [0-4,6-9]"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -iE "size: [0-4a6-9]"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -iE "size: [0-46-9]"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -iE "size: [0-4,6-9]"
+pdfinfo -f 1 -l 1000 complete.pdf | grep -iE "size: [0-456-9]"
+pdfjam complete.pdf 
+mv complete.pdf ../CJA-dodatky.pdf
+ra
+ra
+f
+ra
+sd
+f
+vim
+ra
+lsblk
+ra
+sd
+nwords -e
+vim ~/dotfiles/bin/nwords 
+nwords -t
+echo $nwords
+cat ~/dotfiles/bin/nwords
+pgrep zathura
+kill 2864
+pgrep zathura
+nwords -e
+ra
+lateck
+ra
+lsblk
+b
+baun
+b
+. ~/.bashrc 
+baun
+b
+. ~/.bashrc 
+baun
+bau
+ra
+uu1
+f
+ra
+pkill zathura
+pkill mupdf
+ra
+sd
+f
+sd
+f
+ra
+sd
+rsync -rptgoDvn --delete --exclude=.* ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation
+rsync -rptgoDv --delete --exclude=.* ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation
+rsync -avn --exclude-from=exclude.txt --exclude=practical_english --delete /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+rsync -av --exclude-from=exclude.txt --exclude=practical_english --delete /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+ra
+cd
+rsync -av --exclude-from=exclude.txt --exclude=practical_english --delete /home/jakub/zdroje/ /run/media/jakub/backup/jakub/zdroje
+diff -s sbornik_rendar_niekolko_poznamok*
+locate skandinawisch
+locate skandinavisch
+dark 
+light
+ra
+nwords -e
+ra
+nwords -t
+nwords
+uu1
+lsblk
+sox veganstvi_a_krestanstvi.wav veganstvi_a_krestanstvi.mp3
+ra
+ra
+uu1
+sd
+dnf info
+man dnf
+ra
+ra
+nwords -e
+nwords -t
+nwords -e
+sd
+qep main.pdf 25-32 -- dissertation_draft.pdf
+lsblk
+ra
+ra
+uu1
+uu1
+lsblk
+f
+pkill firefox
+sd
+locate deti
+locate -i deti
+locate -i jmena
+locate -i jmen
+locate -i neman
+locate -i dzieci
+locate neman
+locate polsk
+ra
+locate kefir
+locate -i bortlik
+locate -i bortlik | grep song
+uu1
+lsblk
+locate tahak
+zat $(locate tahak)
+ra
+dnf search cups
+sudo dnf install cups
+dnf search printing
+dnf search printing | grep manager
+cups
+cupsd
+f
+ra
+sd
+f
+ra
+sd
+qep optimality-theory-and-word-formation.pdf 2-z -- 1.pdf
+mv 1.pdf 2.pdf
+qep optimality-theory-and-word-formation.pdf 1 -- 1.pdf
+pdfinfo 1.pdf 
+pdfinfo 2.pdf 
+pdfjam 2.pdf --clip
+zat 2-pdfjam.pdf 
+pdfinfo 2-pdfjam.pdf 
+qep 1.pdf 1 2-pdfjam.pdf 1-z -- all.pdf
+zat all.pdf 
+rm 1.pdf 2.pdf 2-pdfjam.pdf 
+ll
+zat optimality-theory-and-word-formation.pdf 
+mv all.pdf stichauer_2009_optimality-theory-and-word-formation.pdf 
+ll
+rm optimality-theory-and-word-formation.pdf 
+zat
+zat stichauer_2009_optimality-theory-and-word-formation.pdf 
+ra
+f
+ra
+nwords -e
+ra
+sd
+ping -c3 8.8.8.8
+f
+ra
+sd
+nwords -t
+a=5828
+a
+echo $a
+b=5633
+c=$a-$b
+echo $c
+c=a-b
+echo $c
+R
+nwords -t
+R
+nwords -t
+ra
+f
+sd
+vim ~/dotfiles/bin/nwords 
+ll
+ra
+f
+ra
+vim
+sd
+ra
+pdfjam --help | less
+pdfjam --suffix rot180 --angle 180 ma.pdf 
+ll
+zat ma-rot180.pdf 
+pdfjam --suffix rot180 --angle 180 --fitpage true ma.pdf 
+pdfjam --suffix rot180 --angle 180 --fitpaper true ma.pdf 
+zat ma-rot180.pdf 
+pdfinfo ma-rot180.pdf
+pdfjam --suffix rot180 --angle 180 --fitpaper true --clip ma.pdf 
+pdfjam --suffix rot180 --angle 180 --clip --fitpaper true ma.pdf 
+ll
+pdfjam --suffix rot180 --angle 180 --cip true --fitpaper true ma.pdf 
+pdfjam --suffix rot180 --angle 180 --clip true --fitpaper true ma.pdf 
+zat ma-rot180.pdf 
+ll
+pdfinfo bc.pdf 
+zat bc.pdf
+qep bc.pdf 1 ma-rot180.pdf 1 -- bc_ma_diplomas.pdf
+zat bc_ma_diplomas.pdf
+pdfinfo bc.pdf 
+pdfinfo ma-rot180.pdf 
+pdfjam --suffix rot180 --angle 180 --clip true --fitpaper true ma.pdf
+pdfinfo ma-rot180.pdf
+pdfjam --clip true ma-rot180.pdf 
+pdfinfo ma-rot180.pdf
+pdfjam ma-rot180.pdf 
+pdfinfo ma-rot180.pdf
+pdfinfo --trim true ma-rot180.pdf
+pdfjam --trim ma-rot180.pdf 
+pdfjam --trim '0cm 0cm 0cm 0cm' ma-rot180.pdf 
+pdfinfo ma-rot180.pdf
+pdfinfo ma-rot180-pdfjam.pdf 
+qep bc.pdf 1 ma-rot180-pdfjam.pdf 1 -- bc_ma_diplomas.pdf
+zat bc_ma_diplomas.pdf 
+zat ma-rot180-pdfjam.pdf
+rm ma-rot180-pdfjam.pdf
+zat ma-rot180.pdf 
+pdfinfo ma-rot180.pdf
+pdfjam --clip ma-rot180.pdf
+pdfjam --clip true --suffix 'clip' ma-rot180.pdf
+zat ma-rot180-clip.pdf 
+rm ma-rot180-clip.pdf
+pdfjam --suffix rot90 --angle 90 --clip true --fitpaper true ma.pdf
+pdfinfo ma.pdf
+pdfinfo ma-rot90.pdf 
+zat ma-rot90.pdf
+pdfjam --clip true ma-rot90.pdf
+pdfinfo ma-rot90.pdf 
+zat ma-rot90.pdf
+zat ma-rot90-pdfjam.pdf
+pdfinfo ma-rot90-pdfjam.pdf
+pdfjam --suffix hotovo --angle 90 --clip true --fitpaper true ma-rot90-pdfjam.pdf
+pdfinfo ma-rot90-pdfjam-hotovo.pdf 
+zat ma-rot90-pdfjam-hotovo.pdf
+qep bc.pdf 1 ma-rot90-pdfjam-hotovo.pdf 1 -- bc_ma_diplomas.pdf
+zat bc_ma_diplomas.pdf
+ra
+uu1
+f
+vim
+sd
+viff main.tex ~/.local/share/nvim/swap/%home%jakub%skola%01_phd%02_dissertation%thesis%main.tex.swp 
+vim ~/.local/share/nvim/swap/%home%jakub%skola%01_phd%02_dissertation%thesis%main.tex.swp
+viff main.tex*
+R
+nwords 
+nwords -e
+locate woerter
+locate worter
+ll
+lateck
+rsync -rptgoDvn --delete --exclude=.* ~/skola/01_phd/02_dissertation/ /run/media/jakub/Sony_16GR/skola/01_phd/02_dissertation
+rsync -rptgoDv --delete --exclude=.* ~/skola/01_phd/02_dissertation/ /run/media/jakub/Sony_16GR/skola/01_phd/02_dissertation
+uu1
+ra
+ra
+sd
+ra
+pdfinfo ernestus_kockova-amortova_pollak_2014_*
+pdfinfo ernestus_kockova-amortova_pollak_2014_the_nijmegen_corpus_of_casual_czech.pdf 
+pdfinfo ernestus_kockova-amortova_pollak_2014_lrec.pdf 
+f
+sd
+uu1
+ra
+uu1
+R
+ra
+R
+vim intro.R
+ra
+locate baayen
+locate baayen | grep zdroje
+zat $(locate baayen | grep zdroje)
+zat $(locate baayen | grep comp)
+ra
+sd
+f
+ra
+dnf search itsadug
+ra
+sd
+grep -i baayen ./*html
+locate skarnitzl
+locate skarnitzl | less
+ra
+man find
+ra
+vim final_report.txt
+ra
+rsync -avn /home/jakub/skola/03_stipendia/ /run/media/jakub/Sony_16GR/skola/03_stipendia
+rsync -av /home/jakub/skola/03_stipendia/ /run/media/jakub/Sony_16GR/skola/03_stipendia
+uu1
+ra
+sd
+locate skarnitzl
+locate skarnitzl_sturm
+ll
+sudo updatedb
+locate skarnitzl_sturm
+dnf search party
+w3m cran.project.com
+w3m cran.r-project.org
+ll
+ls 
+w3m cran.r-project.org
+ra
+ra
+ra
+uu1
+ra
+ra
+sd
+locate agenda
+locate "agenda_for"
+type Rstudio
+apropos studio
+ra
+lscpu
+ra
+w
+type w
+apropos w
+ra
+uu1
+sd
+uu1
+ra
+locate krech
+locate Krech
+man grep 
+man tmux
+apropos dot
+apropos pdfto
+apropos pdfto*
+ra
+sd
+ra
+sd
+qep baayen_2008_analyzing_linguistic_data_a_practical_introduction_to_statistics_using_r.pdf 2-z -- b.pdf
+zat b.pdf 
+rm b.pdf
+ra
+f
+ra
+jobs
+vim final_report.txt 
+cd ~/comp/r/testing/; vim ~/comp/r/testing/lesson2.R 
+ra
+ra
+sd
+f
+sd
+pkill firefox
+f
+mocp
+pgrep mocp
+top
+kill 1746
+pgrep mocp
+sd
+rsync -avn /home/jakub/skola/03_stipendia/ /run/media/jakub/Sony_16GR/skola/03_stipendia
+rsync -av /home/jakub/skola/03_stipendia/ /run/media/jakub/Sony_16GR/skola/03_stipendia
+ra
+uu1
+sd
+vim
+ra
+uu1
+sd
+pdfinfo -f 1 -l 2 scholarship_report-pdfjam.pdf 
+pdfinfo -f 1 -l 2 scholarship_report.pdf 
+pdfinfo data_sheet_bortlik.pdf 
+pdfjam data_sheet_bortlik.pdf
+pdfinfo data_sheet_bortlik-pdfjam.pdf
+locate links.txt
+locate links.txt | grep history_of
+locate links.txt | grep band2
+vim $(locate links.txt | grep band2)
+vim links.txt
+vim links.txt 
+awk '{system("curl -I "$2)}' links.txt 
+awk '{system("curl -O "$2)}' links.txt 
+ll
+awk '{system("echo mv "$2" "$1"_"$3".pdf")}' links.txt 
+awk '{system("mv "$2" "$1"_"$3".pdf")}' links.txt 
+ra
+pdfinfo 01_Titelei.pdf 
+vim links.txt
+awk '{system("curl -I "$3)}' links.txt 
+awk '{system("curl -I "$3)}' links.txt > test.txt
+vim
+man curl
+head links.txt 
+head -n 1links.txt 
+head -n1 links.txt 
+head -n1 links.txt > l.txt
+cat l.txt 
+awk '{system("curl -o "$3" "$1_$2".pdf")}' l.txt 
+cat l.txt 
+awk '{system("curl -o "$3" "$1"_"$2".pdf")}' l.txt 
+man find
+find. . +10M
+find . +10M
+find . +11M
+find . +10M
+find . -size +10M
+find . -size +15M
+find . -size +10M -exec du -sh {} \;
+find . -size +17M -exec du -sh {} \;
+find . -size -15M -exec du -sh {} \;
+find . -exec du -sh {} \;
+ll
+man curl
+awk '{system("curl "$3" -o "$1"_"$2".pdf")}' l.txt 
+zat 01_Frontmatter.pdf 
+rm 01_Frontmatter.pdf
+awk '{system("curl "$3" -o "$1"_"$2".pdf")}' links.txt 
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+ll
+ll | grep compl
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+ra
+sd
+f
+sd
+ll
+vim
+ping -c3 8.8.8.8
+f
+ra
+vim -o5
+vim -O5
+cd r
+cd ~/comp/command_line/
+ll
+vim intro-linux.
+vim intro-linux.txt 
+ra
+pkill mup
+sd
+pgrep ranger
+pgrep bash
+kill 2072
+pgrep bash
+f
+vim
+ra
+ra
+vim
+man tmux
+ra
+vim ~/dotfiles/vim/ftplugin/r.vim.sml 
+ra
+w3m www.google.com
+vim ~/dotfiles/vim/ftplugin/r.vim.sml 
+ra
+sd
+f
+vim
+sd
+man detox
+detox -rn
+detox -rn ./*
+detox -rn maus
+detox -rn mauss
+man detox
+ra
+touch "tohle je fakt hloupý, ačkoliv platný, název souboru! ÚŽASNÝ!"
+ll
+detox -n tohle\ je\ fakt\ hloupý\,\ ačkoliv\ platný\,\ název\ souboru\!\ ÚŽASNÝ\! 
+detox -n -s utf-8 tohle\ je\ fakt\ hloupý\,\ ačkoliv\ platný\,\ název\ souboru\!\ ÚŽASNÝ\! 
+detox -n -s iso8859_1 tohle\ je\ fakt\ hloupý\,\ ačkoliv\ platný\,\ název\ souboru\!\ ÚŽASNÝ\! 
+ll
+detox -n -s utf-8 tohle\ je\ fakt\ hloupý\,\ ačkoliv\ platný\,\ název\ souboru\!\ ÚŽASNÝ\! 
+man detox
+detox -L
+detox -n -s utf_8 tohle\ je\ fakt\ hloupý\,\ ačkoliv\ platný\,\ název\ souboru\!\ ÚŽASNÝ\! 
+detox -s utf_8 tohle\ je\ fakt\ hloupý\,\ ačkoliv\ platný\,\ název\ souboru\!\ ÚŽASNÝ\! 
+ll
+detox tohle_je_fakt_hloupy,_ackoliv_platny,_nazev_souboru_UZASNY_ 
+ll
+detox -s uncgi tohle_je_fakt_hloupy,_ackoliv_platny,_nazev_souboru_UZASNY_ 
+ll
+detox -s lower tohle_je_fakt_hloupy,_ackoliv_platny,_nazev_souboru_UZASNY_ 
+ll
+uu1
+dnf search adobe
+dnf search adobe | grep flash
+dnf search flash
+f
+ra
+sd
+f
+sd
+nwords -e
+nwords -t
+nwords 
+nwords -e
+pdfinfo n1-pdfjam.pdf 
+pdfinfo n2-pdfjam.pdf 
+pdfinfo n1.pdf 
+pdfinfo n2.pdf 
+rm n*-pdfjam.pdf
+ll
+qep n2.pdf 1 n1.pdf 1 -- n3.pdf
+qep bl_2017-12.pdf 7 bl.pdf
+qep bl_2017-12.pdf 7 -- bl.pdf
+ra
+uu1
+vim
+nwords -e
+ra
+sd
+f
+ra
+sd
+cp domácí\ úkol2\ -\ 4.12.2017.doc domácí\ úkol2\ -\ 4.12.2017_2.doc 
+man detox
+detox -sn domácí\ úkol2\ -\ 4.12.2017.doc 
+detox -s utf_8 -n domácí\ úkol2\ -\ 4.12.2017.doc 
+mplayer -fs Bridget_Jones_Diary_2001.mkv 
+lsblk
+uu1
+man mplayer
+ra
+f
+ra
+sd
+vim
+sd
+c++
+cd comp/testing/
+ll
+vim test
+c++ test 
+ll
+chmod a+x test
+ll
+c++ test 
+rm test
+vim
+play ~/skola/01_phd/02_dissertation/rec/bundesrebublik.wav 
+vim ~/skola/01_phd/02_dissertation/rec/bundesrebublik.txt
+ra
+ra
+sd
+f
+ls --help
+sd
+f
+sd
+vim german_obstruent-vowel_sequences.txt
+touch german_obstruent-vowel_sequences.txt
+ll
+ra
+locate sturm
+ra
+(firefox &> /dev/null &)
+cd ~/skola/1_phd/02_dissertation/literature/german/; mupdf ~/skola/1_phd/02_dissertation/literature/german/Krech_Stock_Hirschfel_Anders_2009_deutsches_ausspracheworterbuch.pdf &>/dev/null &
+mupdf ~/skola/1_phd/02_dissertation/literature/german/Krech_Stock_Hirschfel_Anders_2009_deutsches_ausspracheworterbuch.pdf &>/dev/null &
+locate Krech
+mupdf ~/skola/01_phd/02_dissertation/literature/german/Krech_Stock_Hirschfel_Anders_2009_deutsches_ausspracheworterbuch.pdf &>/dev/null &
+play ~/skola/01_phd/02_dissertation/rec/bundesrebublik.wav 
+cd ~/skola/01_phd/02_dissertation/thesis/
+cd ~/skola/01_phd/02_dissertation/thesis/; vim ~/skola/01_phd/02_dissertation/thesis/main.tex ~/skola/01_phd/02_dissertation/thesis/phd_bibliography.bib ~/skola/01_phd/02_dissertation/thesis/Chapters/Chapter03_Voice_assimilation.tex
+sd
+ra
+f
+cd ~/skola/01_phd/02_dissertation/thesis/; vim ~/skola/01_phd/02_dissertation/thesis/main.tex ~/skola/01_phd/02_dissertation/thesis/phd_bibliography.bib ~/skola/01_phd/02_dissertation/thesis/Chapters/Chapter03_Voice_assimilation.tex
+sd
+mv jansen_2004_laryngeal_contrast_and_phonetic_voicing.pdf ~/skola/01_phd/02_dissertation/literature/voice_assimilation/jansen_2004_laryngeal_contrast_and_phonetic_voicing_a_laboratory_phonology_approach_to_english_hungarian_and_dutch.pdf 
+vim
+R
+head intercorp_v10_de-freq-distrib_node_forms.csv 
+R
+ra
+ra
+zat $(locate baayen | grep comp)
+ls ~/zdroje/statistics/baayen_vienna_2017/
+zat ~/zdroje/statistics/baayen_vienna_2017/updateBook.pdf &>/dev/null &
+mupdf ~/zdroje/statistics/baayen_vienna_2017/updateBook.pdf &>/dev/null &
+mupdf ~/skola/01_phd/02_dissertation/literature/german/Krech_Stock_Hirschfel_Anders_2009_deutsches_ausspracheworterbuch.pdf &>/dev/null &
+locate laryngeal
+ra
+ping -c3 8.8.8.8
+cd ~/comp/r/testing/; vim ~/comp/r/testing/lesson2.R 
+ll
+vim lesson1_update.R
+firefox --help
+firefox -v
+sd
+f
+sd
+mupdf ~/skola/01_phd/02_dissertation/literature/german/Krech_Stock_Hirschfel_Anders_2009_deutsches_ausspracheworterbuch.pdf &>/dev/null &
+list=$(files=$(find . -type f -iname "*.pdf" | sort -d); echo $files | sed 's/ / 1-z /g'); qpdf --empty --pages ${list} -- complete.pdf
+qep pompino-marschall_2009_einfuhrung_in_die_phonetik.pdf 1-z AK_S120.pdf 1 -- pokus.pdf
+mupdf pokus.pdf 
+zat pokus.pdf
+zat pompino-marschall_2009_einfuhrung_in_die_phonetik.pdf 
+zat 01_Frontmatter.pdf 
+pdfjam pompino-marschall_2009_einfuhrung_in_die_phonetik.pdf --trim '2cm 2cm 2cm 2cm'
+locate nespor
+mupdf ~/skola/01_phd/02_dissertation/literature/german/Krech_Stock_Hirschfel_Anders_2009_deutsches_ausspracheworterbuch.pdf &>/dev/null &
+ra
+f
+ra
+sd
+f
+sd
+mupdf ~/skola/01_phd/02_dissertation/literature/german/Krech_Stock_Hirschfel_Anders_2009_deutsches_ausspracheworterbuch.pdf &>/dev/null &
+man curl
+ra
+sudo cp ipa /usr/share/X11/xkb/symbols/ipa
+ra
+ra
+f
+ra
+sd
+pgrep firefox
+sd
+man mplayer 
+ping -c3 8.8.8.8
+ra
+pkill mplayer 
+f
+ra
+sd
+f
+apropos terminal
+sd
+file Část\ 2.asc 
+cat Část\ 2.asc
+cat Část\ *.asc
+diff -s ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks 
+cp ~/.config/ranger/bookmarks ~/dotfiles/config/ranger/bookmarks
+locate podlipsky
+locate podlipsky_2008_vo
+locate podlipsky_2008_vo*pdf
+locate podlipsky_2008_vo\*pdf
+locate podlipsky_2008_vo
+locate chladkova
+vim
+ra
+locate skarnitzl
+locate skarnitzl | grep assimilation
+locate smith
+locate smith | grep production
+qep 2009_advances_in_nonlinear_speech_processing.pdf 53-60 -- bohm_both_nemeth_2010_automatic_classification_of_regular_vs_irregular_phonation_types.pdf
+locate podlipsky_2008_vo
+qep podlipsky_2008_vowel_duration_as_a_cue_for_coda_voicing_and_the_perception_of_second_language_vowel_quantity.pdf 3-z -- podlipsky_2008_v_dur_as_a_cue.pdf
+locate temporal_com
+locate perception_of
+locate -i perception_of_czech
+locate -i perception_of_c
+locate -i perception_of
+locate -i perception_of | grep podlip
+ra
+uu1
+dnf search ranger
+dnf info ranger
+dnf updateinfo ranger
+dnf check-upgrade ranger
+lsblk
+about
+apropos fedora
+apropos system
+apropos man
+apropos internet
+system
+info
+which firefox
+firefox -v
+lsblk
+cat /etc/*-release
+ls /etc/*-release
+cat /etc/fedora-release
+uname
+uname -a
+whatis uname
+apropos uname
+man apropos
+ra
+f
+ra
+f
+sd
+vim
+f
+ra
+sd
+f
+ra
+sd
+f
+sd
+f
+python
+python2
+python
+python3
+shell
+bash
+git status
+vim
+vim
+man tmu
+man tmux
+sd
+f
+sd
+f
+ra
+sd
+f
+pgrep fire
+pgrep firef
+sd
+f
+clear
+f
+sd
+w3m https://www.t-mobile.cz/sms/closed.jsp
+pgrep firefox
+pgrep firewire
+f
+pgrep firefox
+pgrep keybinder
+pgrep keyb
+pgrep key
+sd
+f
+ra
+sd
+f
+ra
+lsblk
+uu1
+lsblk
+ra
+curl -I https://www.ulozto.cz/\!uDZ621YU9/bridget-jonesova-s-rozumem-v-koncich-bridget-jones-the-edge-of-reason-2004-eng-cz-titulky-mp4
+man curl
+curl https://www.ulozto.cz/\!uDZ621YU9/bridget-jonesova-s-rozumem-v-koncich-bridget-jones-the-edge-of-reason-2004-eng-cz-titulky-mp4 -o bridget_2.mp4
+ll
+mplayer bridget_2.mp4 
+curl https://www.ulozto.cz/\!uDZ621YU9/bridget-jonesova-s-rozumem-v-koncich-bridget-jones-the-edge-of-reason-2004-eng-cz-titulky-mp4#download -o bridget_2.mp4
+curl -I https://www.ulozto.cz/\!uDZ621YU9/bridget-jonesova-s-rozumem-v-koncich-bridget-jones-the-edge-of-reason-2004-eng-cz-titulky-mp4#download
+vim plat.txt
+man tmu
+man tmux
+ra
+ra
+sd
+f
+sd
+f
+ra
+sd
+f
+sd
+f
+sd
+uu1
+ra
+sd
+f
+ra
+f
+vim
+sd
+ra
+uu1
+ra
+sd
+f
+man firefox
+f -private
+(firefox -private &> /dev/null &)
+f
+sd
+man mplayer 
+ra
+uu1
+lsblk
+cd /run/media/jakub/2EB0-1E0C/
+ll
+play Povidani1.m4a 
+mplayer Povidani1.m4a 
+ra
+uu1
+cd Audio/
+ll
+mplayer Povidani3.m4a 
+sd
+ping -c3 8.8.8.8
+ra
+f
+ra
+ra
+sd
+vim -O *kml
+ra
+lsblk
+ra
+f
+ra
+lsblk
+sd
+locate slovak
+ra
+uu1
+ra
+b
+sd
+locate skarnit
+locate skarnitzl | grep -v .txt
+locate skarnitzl | grep -v .txt | grep 2016
+locate skarnitzl | grep 2016
+f
+ra
+ra
+f
+ra
+qpdf --empty --pages bl_2018-01.pdf z -- bl.pdf
+zat bl.pdf 
+mv bl.pdf bl_2018-01.pdf
+zat .
+zat bl_2018-01.pdf 
+sd
+ra
+sd
+grep "OT" ./*tex
+dnf list
+dnf list ranger
+dnf list available
+dnf list available | grep "ranger"
+dnf list available | grep zz
+dnf list available | grep rang
+dnf check-update ranger
+dnf check-update
+ra
+find . " "
+find . -iname " "
+find . -iname "./* *"
+find . -iname "* *"
+find . -iname "* *" -execdir detox -n {} \;
+find . -iname "* *" -execdir detox {} \;
+dnf search jmtpfs
+lsblk
+man detox
+uu1
+lsblk
+sd
+dnf check-upgrade ranger
+dnf info ranger
+w3m duckduckgo.com
+dnf search ranger
+dnf install ranger
+sudo dnf install ranger
+dnf search ranger
+dnf search -a ranger
+dnf search -v ranger
+f
+ranger
+ra
+sd
+f
+sd
+qpdf --empty --pages bl_2018-02.pdf 13 -- bl_2018-02.pdf~
+zat bl_2018-02.pdf~
+ll
+zathura bl_2018-02.pdf~
+ra
+qep buzer-listek_vlastni.pdf 13 -- bl_2018-02.pdf 
+zat bl_2018-02.pdf
+cp bl_2018-02.pdf /run/media/jakub/Sony_16GR/TISK/
+ls /run/media/jakub/Sony_16GR/TISK/
+uu1
+f
+sd
+f
+apropos sky
+apropos night
+dnf info -i sky
+dnf info -all sky
+dnf info sky
+ra
+stellarium 
+sd
+locate nvim | grep local
+..
+ls
+cd lost+found/
+sudo cd lost+found/
+ls
+cd lost+found/
+sudo cd lost+found/
+nwords -t
+nwords
+man dnf
+sudo dnf upgrade
+nwords -h
+nwords -w
+nwords -e
+vim nwords 
+man wc
+nwords -w
+vim nwords 
+nwords -nh
+nwords -n
+nwords -e
+nwords -n
+nwords -w
+nwords -t
+nwords -p
+nwords -w
+nwords -
+nwords
+nwr
+nwr -w
+nwr
+nwr -e
+vim nwords 
+vim nwr
+nwr -h
+vim nwr
+nwr -h
+vim nwr
+nwr -h
+nvim -h
+vim nwr
+nvim -h
+nwr -h
+vim nwr
+nwr -h
+vim nwr
+nwr -h
+vim nwr
