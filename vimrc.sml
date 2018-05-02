@@ -57,7 +57,7 @@ call vundle#begin()
 	" Plugin 'tpope/vim-obsession'			" Found in airline help file
 	Plugin 'scrooloose/syntastic'			" syntax checking
     Plugin 'vim-scripts/ReplaceWithRegister' " Replace text with contents of a register
-    Plugin 'christoomey/vim-titlecase'      " Make First Letters Uppercase
+    " Plugin 'christoomey/vim-titlecase'      " Make First Letters Uppercase
 
 	" Colors
 	Plugin 'nanotech/jellybeans.vim'
@@ -101,6 +101,7 @@ set noshowmode 					" don't show mode I am in.
 imap <C-Space> <Plug>IMAP_JumpForward
 nmap <C-Space> <Plug>IMAP_JumpForward
 vmap <C-Space> <Plug>IMAP_JumpForward
+
 " disable the vim-latex-suite compiler
 let g:doneTexCompiler = 1
 
@@ -302,8 +303,9 @@ inoremap <silent> <C-K><C-K> <Esc>:call CycleKeymapsUp()<CR>a
 " endfunction
 " inoremap <C-^> <Esc>:call KeymapWithCtrl6()<CR>a
 
-" appearance settings
+" text formatting settings
 nnoremap <Leader>tw :setlocal textwidth=80<CR>
+nnoremap <Leader>t7 :setlocal textwidth=75<CR>
 nnoremap <Leader>t0 :setlocal textwidth=0<CR>
 nnoremap <Leader>t4 :setlocal tabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>t8 :setlocal tabstop=8 shiftwidth=8<CR>
@@ -431,32 +433,32 @@ inoremap <F5> <C-R>=strftime('%H:%M')<CR>
 
 " some settings for easy SMS wriging
 function! ComposeSMS()
-	function! ComposeSMS_startComposing()
-		:echo "You are composing an SMS. tw=156 and cc=157."
-		:echo "You can write just before the colour column."
-		:echo "When you are finished, insert \"1/4 \", etc. in front of the text."
-		:let b:ComposeSMS_old_textwidth = &l:textwidth
-		:let b:ComposeSMS_old_cc = &l:colorcolumn
-		:let b:ComposeSMS_old_number = &l:number
-		:setlocal textwidth=156
-		:setlocal cc=157
-		:setlocal nonumber
-		:let b:ComposeSMS_composing = 1
-	endfunction
-	if exists("b:ComposeSMS_composing")
-		if b:ComposeSMS_composing == 1
-			:echo "You have stopped composing an SMS."
-			:let &l:textwidth=b:ComposeSMS_old_textwidth
-			:let &l:cc=b:ComposeSMS_old_cc
-			:let &l:number=b:ComposeSMS_old_number
-			:let b:ComposeSMS_composing = 0
-		else
-			:call ComposeSMS_startComposing()
-		endif
-	else
-		:let b:ComposeSMS_composing = 0
-		:call ComposeSMS_startComposing()
-	endif
+    function! ComposeSMS_startComposing()
+        :echo "You are composing an SMS. tw=156 and cc=157."
+        :echo "You can write just before the colour column."
+        :echo "When you are finished, insert \"1/4 \", etc. in front of the text."
+        :let b:ComposeSMS_old_textwidth = &l:textwidth
+        :let b:ComposeSMS_old_cc = &l:colorcolumn
+        :let b:ComposeSMS_old_number = &l:number
+        :setlocal textwidth=156
+        :setlocal cc=157
+        :setlocal nonumber
+        :let b:ComposeSMS_composing = 1
+    endfunction
+    if exists("b:ComposeSMS_composing")
+        if b:ComposeSMS_composing == 1
+            :echo "You have stopped composing an SMS."
+            :let &l:textwidth=b:ComposeSMS_old_textwidth
+            :let &l:cc=b:ComposeSMS_old_cc
+            :let &l:number=b:ComposeSMS_old_number
+            :let b:ComposeSMS_composing = 0
+        else
+            :call ComposeSMS_startComposing()
+        endif
+    else
+        :let b:ComposeSMS_composing = 0
+        :call ComposeSMS_startComposing()
+    endif
 endfunction
 
 " EXPERIMENTAL SETTINGS:
@@ -466,5 +468,17 @@ nnoremap <leader>wt :!nwr<cr>
 nnoremap <leader>ww :!nwr -w<cr>
 " edit the nwords.txt file
 nnoremap <leader>we :e ~/skola/01_phd/02_dissertation/thesis/nwords.txt<cr>
+
+" open the pdf for the source under cursor
+function! OpenSource()
+  silent execute 'normal! "zyiw'
+  silent let l:source = system("sed -n '/".@z."/ p' < sources.txt")
+  if l:source == ""
+    echo "Reference" expand(@z) "has no file assigned."
+  else
+    silent execute "!awk --field-separator=: '/".@z."/ {system(\"zathura \"$2\" 2>/dev/null &\")}' sources.txt"
+  endif
+endfunction
+nnoremap <silent> <leader>lz :call OpenSource()<CR>
 
 " vim:set commentstring="%s:
