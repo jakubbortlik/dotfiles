@@ -1,7 +1,8 @@
 # ===================================================================
 # This file contains the default startup commands for ranger.
-# To change them, it is recommended to create the file
-# ~/.config/ranger/rc.conf and add your custom commands there.
+# To change them, it is recommended to create either /etc/ranger/rc.conf
+# (system-wide) or ~/.config/ranger/rc.conf (per user) and add your custom
+# commands there.
 #
 # If you copy this whole file there, you may want to set the environment
 # variable RANGER_LOAD_DEFAULT_RC to FALSE to avoid loading it twice.
@@ -19,6 +20,13 @@
 # == Options
 # ===================================================================
 
+# Which viewmode should be used?  Possible values are:
+#     miller: Use miller columns which show multiple levels of the hierarchy
+#     multipane: Midnight-commander like multipane view showing all tabs next
+#                to each other
+set viewmode miller
+#set viewmode multipane
+
 # How many columns are there, and what are their relative widths?
 set column_ratios 1,3,4
 
@@ -33,10 +41,10 @@ set show_hidden false
 # With "multiple", ranger will ask only if you delete multiple files at once.
 set confirm_on_delete multiple
 
-# Which script is used to generate file previews?
+# Use non-default path for file preview script?
 # ranger ships with scope.sh, a script that calls external programs (see
 # README.md for dependencies) to preview images, archives, etc.
-set preview_script ~/.config/ranger/scope.sh
+#set preview_script ~/.config/ranger/scope.sh
 
 # Use the external preview script or display simple plain text or image previews?
 set use_preview_script true
@@ -51,15 +59,16 @@ set open_all_images true
 # Be aware of version control systems and display information.
 set vcs_aware true
 
-# State of the three backends git, hg, bzr. The possible states are
+# State of the four backends git, hg, bzr, svn. The possible states are
 # disabled, local (only show local info), enabled (show local and remote
 # information).
-set vcs_backend_git local
+set vcs_backend_git enabled
 set vcs_backend_hg disabled
 set vcs_backend_bzr disabled
+set vcs_backend_svn disabled
 
 # Use one of the supported image preview protocols
-set preview_images true
+set preview_images false
 
 # Set the preview image method. Supported methods:
 #
@@ -72,7 +81,23 @@ set preview_images true
 #   Preview images in full color using iTerm2 image previews
 #   (http://iterm2.com/images.html). This requires using iTerm2 compiled
 #   with image preview support.
+#
+#   This feature relies on the dimensions of the terminal's font.  By default, a
+#   width of 8 and height of 11 are used.  To use other values, set the options
+#   iterm2_font_width and iterm2_font_height to the desired values.
+#
+# * urxvt:
+#   Preview images in full color using urxvt image backgrounds. This
+#   requires using urxvt compiled with pixbuf support.
+#
+# * urxvt-full:
+#   The same as urxvt but utilizing not only the preview pane but the
+#   whole terminal window.
 set preview_images_method w3m
+
+# Default iTerm2 font size (see: preview_images_method: iterm2)
+set iterm2_font_width 8
+set iterm2_font_height 11
 
 # Use a unicode "..." character to mark cut-off filenames?
 set unicode_ellipsis false
@@ -82,16 +107,16 @@ set show_hidden_bookmarks true
 
 # Which colorscheme to use?  These colorschemes are available by default:
 # default, jungle, snow, solarized
-# set colorscheme default
+set colorscheme default
 # set colorscheme jungle
 # set colorscheme snow
-set colorscheme solarized
+# set colorscheme solarized
 
 # Preview files on the rightmost column?
 # And collapse (shrink) the last column if there is nothing to preview?
 set preview_files true
 set preview_directories true
-set collapse_preview false
+set collapse_preview true
 
 # Save the console history on exit?
 set save_console_history true
@@ -116,6 +141,9 @@ set mouse_enabled true
 set display_size_in_main_column true
 set display_size_in_status_bar true
 
+# Display the free disk space in the status bar?
+set display_free_space_in_status_bar true
+
 # Display files tags in all columns or only in main column?
 set display_tags_in_all_columns true
 
@@ -129,8 +157,11 @@ set update_tmux_title true
 # directories are displayed at once, 0 turns off this feature.
 set shorten_title 3
 
+# Show hostname in titlebar?
+set hostname_in_titlebar true
+
 # Abbreviate $HOME with ~ in the titlebar (first line) of ranger?
-set tilde_in_titlebar true
+set tilde_in_titlebar false
 
 # How many directory-changes or console-commands should be kept in history?
 set max_history_size 20
@@ -139,7 +170,7 @@ set max_console_history_size 50
 # Try to keep so much space between the top/bottom border when scrolling:
 set scroll_offset 8
 
-# Flush the input after each key hit?  (Noticable when ranger lags)
+# Flush the input after each key hit?  (Noticeable when ranger lags)
 set flushinput true
 
 # Padding on the right when there's no preview?
@@ -151,6 +182,10 @@ set padding_right true
 # instances but leads to *slight* performance loss.
 # When false, bookmarks are saved when ranger is exited.
 set autosave_bookmarks true
+
+# Save the "`" bookmark to disk.  This can be used to switch to the last
+# directory by typing "``".
+set save_backtick_bookmark true
 
 # You can display the "real" cumulative size of directories by using the
 # command :get_cumulative_size or typing "dc".  The size is expensive to
@@ -177,9 +212,20 @@ set xterm_alt_key false
 # Whether to include bookmarks in cd command
 set cd_bookmarks true
 
+# Changes case sensitivity for the cd command tab completion
+set cd_tab_case sensitive
+
+# Use fuzzy tab completion with the "cd" command. For example,
+# ":cd /u/lo/b<tab>" expands to ":cd /usr/local/bin".
+set cd_tab_fuzzy false
+
 # Avoid previewing files larger than this size, in bytes.  Use a value of 0 to
 # disable this feature.
 set preview_max_size 0
+
+# The key hint lists up to this size have their sublists expanded.
+# Otherwise the submaps are replaced with "...".
+set hint_collapse_threshold 10
 
 # Add the highlighted file to the path in the titlebar
 set show_selection_in_titlebar true
@@ -194,6 +240,30 @@ set idle_delay 2000
 # check all directories above the current one as well?
 set metadata_deep_search false
 
+# Clear all existing filters when leaving a directory
+set clear_filters_on_dir_change false
+
+# Disable displaying line numbers in main column
+set line_numbers false
+
+# Start line numbers from 1 instead of 0
+set one_indexed false
+
+# Save tabs on exit
+set save_tabs_on_exit false
+
+# Enable scroll wrapping - moving down while on the last item will wrap around to
+# the top and vice versa.
+set wrap_scroll false
+
+# Set the global_inode_type_filter to nothing.  Possible options: d, f and l for
+# directories, files and symlinks respectively.
+set global_inode_type_filter
+
+# This setting allows to freeze the list of files to save I/O bandwidth.  It
+# should be 'false' during start-up, but you can toggle it by pressing F.
+set freeze_files false
+
 # ===================================================================
 # == Local Options
 # ===================================================================
@@ -206,35 +276,39 @@ set metadata_deep_search false
 # == Command Aliases in the Console
 # ===================================================================
 
-alias e    edit
-alias q    quit
-alias q!   quitall
-alias qa   quitall
-alias qall quitall
-alias setl setlocal
+alias e     edit
+alias q     quit
+alias q!    quit!
+alias qa    quitall
+alias qa!   quitall!
+alias qall  quitall
+alias qall! quitall!
+alias setl  setlocal
 
-alias filter     scout -prt
-alias find       scout -aeit
+alias filter     scout -prts
+alias find       scout -aets
 alias mark       scout -mr
 alias unmark     scout -Mr
 alias search     scout -rs
 alias search_inc scout -rts
-alias travel     scout -aefiklst
+alias travel     scout -aefklst
 
 # ===================================================================
 # == Define keys for the browser
 # ===================================================================
 
 # Basic
-map     Q quit!
+map     Q quitall
 map     q quit
 copymap q ZZ ZQ
 
 map R     reload_cwd
+map F     set freeze_files!
 map <C-r> reset
 map <C-l> redraw_window
 map <C-c> abort
 map <esc> change_mode normal
+map ~ set viewmode!
 
 map i display_file
 map ? help
@@ -248,14 +322,16 @@ map !  console shell%space
 map @  console -p6 shell  %%s
 map #  console shell -p%space
 map s  console shell%space
-map r  chain draw_possible_programs; console open_with%space
+map r  chain draw_possible_programs; console open_with%%space
 map f  console find%space
 map cd console cd%space
 
 # Change the line mode
 map Mf linemode filename
 map Mi linemode fileinfo
+map Mm linemode mtime
 map Mp linemode permissions
+map Ms linemode sizemtime
 map Mt linemode metatitle
 
 # Tagging / Marking
@@ -270,6 +346,7 @@ map uV      toggle_visual_mode reverse=True
 
 # For the nostalgics: Midnight Commander bindings
 map <F1> help
+map <F2> rename_append
 map <F3> display_file
 map <F4> edit
 map <F5> copy
@@ -312,6 +389,7 @@ map L     history_go 1
 map ]     move_parent 1
 map [     move_parent -1
 map }     traverse
+map )     jump_non
 
 map gh cd ~
 map ge cd /etc
@@ -322,8 +400,10 @@ map gL cd -r %f
 map go cd /opt
 map gv cd /var
 map gm cd /media
+map gi eval fm.cd('/run/media/' + os.getenv('USER'))
 map gM cd /mnt
 map gs cd /srv
+map gp cd /tmp
 map gr cd /
 map gR eval fm.cd(ranger.RANGERDIR)
 map g/ cd /
@@ -333,17 +413,18 @@ map g? cd /usr/share/doc/ranger
 map E  edit
 map du shell -p du --max-depth=1 -h --apparent-size
 map dU shell -p du --max-depth=1 -h --apparent-size | sort -rh
-map yp shell -f echo -n %%d/%%f | xsel -i; xsel -o | xsel -i -b
-map yd shell -f echo -n %%d     | xsel -i; xsel -o | xsel -i -b
-map yn shell -f echo -n %%f     | xsel -i; xsel -o | xsel -i -b
+map yp yank path
+map yd yank dir
+map yn yank name
+map y. yank name_without_extension
 
 # Filesystem Operations
 map =  chmod
 
 map cw console rename%space
 map a  rename_append
-map A  eval fm.open_console('rename ' + fm.thisfile.relative_path)
-map I  eval fm.open_console('rename ' + fm.thisfile.relative_path, position=7)
+map A  eval fm.open_console('rename ' + fm.thisfile.relative_path.replace("%", "%%"))
+map I  eval fm.open_console('rename ' + fm.thisfile.relative_path.replace("%", "%%"), position=7)
 
 map pp paste
 map po paste overwrite=True
@@ -360,11 +441,13 @@ map dd cut
 map ud uncut
 map da cut mode=add
 map dr cut mode=remove
+map dt cut mode=toggle
 
 map yy copy
 map uy uncut
 map ya copy mode=add
 map yr copy mode=remove
+map yt copy mode=toggle
 
 # Temporary workarounds
 map dgg eval fm.cut(dirarg=dict(to=0), narg=quantifier)
@@ -388,7 +471,7 @@ map cm search_next order=mtime
 map ca search_next order=atime
 
 # Tabs
-map <C-n>     tab_new ~
+map <C-n>     tab_new
 map <C-w>     tab_close
 map <TAB>     tab_move 1
 map <S-TAB>   tab_move -1
@@ -396,7 +479,7 @@ map <A-Right> tab_move 1
 map <A-Left>  tab_move -1
 map gt        tab_move 1
 map gT        tab_move -1
-map gn        tab_new ~
+map gn        tab_new
 map gc        tab_close
 map uq        tab_restore
 map <a-1>     tab_open 1
@@ -410,7 +493,7 @@ map <a-8>     tab_open 8
 map <a-9>     tab_open 9
 
 # Sorting
-map or toggle_option sort_reverse
+map or set sort_reverse!
 map oz set sort=random
 map os chain set sort=size;      set sort_reverse=False
 map ob chain set sort=basename;  set sort_reverse=False
@@ -433,18 +516,22 @@ map oE chain set sort=extension; set sort_reverse=True
 map dc get_cumulative_size
 
 # Settings
-map zc    toggle_option collapse_preview
-map zd    toggle_option sort_directories_first
-map zh    toggle_option show_hidden
-map <C-h> toggle_option show_hidden
-map zi    toggle_option flushinput
-map zm    toggle_option mouse_enabled
-map zp    toggle_option preview_files
-map zP    toggle_option preview_directories
-map zs    toggle_option sort_case_insensitive
-map zu    toggle_option autoupdate_cumulative_size
-map zv    toggle_option use_preview_script
+map zc    set collapse_preview!
+map zd    set sort_directories_first!
+map zh    set show_hidden!
+map <C-h> set show_hidden!
+copymap <C-h> <backspace>
+copymap <backspace> <backspace2>
+map zI    set flushinput!
+map zi    set preview_images!
+map zm    set mouse_enabled!
+map zp    set preview_files!
+map zP    set preview_directories!
+map zs    set sort_case_insensitive!
+map zu    set autoupdate_cumulative_size!
+map zv    set use_preview_script!
 map zf    console filter%space
+copymap zf zz
 
 # Bookmarks
 map `<any>  enter_bookmark %any
@@ -490,6 +577,11 @@ cmap <left>  eval fm.ui.console.move(left=1)
 cmap <right> eval fm.ui.console.move(right=1)
 cmap <home>  eval fm.ui.console.move(right=0, absolute=True)
 cmap <end>   eval fm.ui.console.move(right=-1, absolute=True)
+cmap <a-left>   eval fm.ui.console.move_word(left=1)
+cmap <a-right>  eval fm.ui.console.move_word(right=1)
+
+copycmap <a-left>  <a-b>
+copycmap <a-right> <a-f>
 
 # Line Editing
 cmap <backspace>  eval fm.ui.console.delete(-1)
@@ -509,11 +601,6 @@ copycmap <home>      <C-a>
 copycmap <end>       <C-e>
 copycmap <delete>    <C-d>
 copycmap <backspace> <C-h>
-
-# cmap <A-b>  eval fm.ui.console.move(left=5)
-# cmap <A-f> eval fm.ui.console.move(right=5)
-# copycmap <A-left>      <A-b>
-# copycmap <A-right>     <A-f>
 
 # Note: There are multiple ways to express backspaces.  <backspace> (code 263)
 # and <backspace2> (code 127).  To be sure, use both.
@@ -589,5 +676,3 @@ tmap <delete>   eval -q fm.ui.taskview.task_remove()
 tmap <C-l> redraw_window
 tmap <ESC> taskview_close
 copytmap <ESC> q Q w <C-c>
-
-set line_numbers true
