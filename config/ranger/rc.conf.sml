@@ -44,7 +44,7 @@ set confirm_on_delete multiple
 # Use non-default path for file preview script?
 # ranger ships with scope.sh, a script that calls external programs (see
 # README.md for dependencies) to preview images, archives, etc.
-#set preview_script ~/.config/ranger/scope.sh
+set preview_script ~/.config/ranger/scope.sh
 
 # Use the external preview script or display simple plain text or image previews?
 set use_preview_script true
@@ -68,7 +68,7 @@ set vcs_backend_bzr disabled
 set vcs_backend_svn disabled
 
 # Use one of the supported image preview protocols
-set preview_images false
+set preview_images true
 
 # Set the preview image method. Supported methods:
 #
@@ -244,10 +244,10 @@ set metadata_deep_search false
 set clear_filters_on_dir_change false
 
 # Disable displaying line numbers in main column
-set line_numbers false
+set line_numbers true
 
 # Start line numbers from 1 instead of 0
-set one_indexed false
+set one_indexed true
 
 # Save tabs on exit
 set save_tabs_on_exit false
