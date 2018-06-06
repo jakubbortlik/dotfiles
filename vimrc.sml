@@ -309,6 +309,7 @@ nnoremap <Leader>t7 :setlocal textwidth=75<CR>
 nnoremap <Leader>t0 :setlocal textwidth=0<CR>
 nnoremap <Leader>t4 :setlocal tabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>t8 :setlocal tabstop=8 shiftwidth=8<CR>
+nnoremap <Leader>q gwip
 
 " turn off highlighting for search resutls
 nnoremap coh :nohlsearch<CR>
@@ -380,7 +381,12 @@ cnoremap <C-P> <Up>
 " change the last word in a line from "false" to "true" and vicer versa
 " Mnemonic: cv - Change Value
 function! ToggleTrueFalse()
+    " virtual columns ignore multibyte characters, so if there is such a
+    " character in in front of the cursor, it needs to be taken care of:
+    " try it here: /sʌm ˌaɪ ˌpʰiː ˈeɪ/ false
 	let column = virtcol(".")
+    let bytecol = col(".")
+    let coldiff = bytecol - column
 	let linenumber = line(".")
 	let line = getline(".")
     let value_bytes = match(line, '\c\<\(false\|true\)\>')
@@ -422,7 +428,7 @@ function! ToggleTrueFalse()
     else
         let offset = 0
     endif
-	call cursor(linenumber, column + offset)
+    call cursor(linenumber, column + offset + coldiff)
 endfunction
 nnoremap <silent> cv :call ToggleTrueFalse()<CR>
 
