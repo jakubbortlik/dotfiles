@@ -34,6 +34,7 @@ call vundle#begin()
 	Plugin 'tommcdo/vim-exchange'		" easy exange of two portions of text
 	Plugin 'vim-airline/vim-airline'	" activate the vim-airline
 	Plugin 'vim-airline/vim-airline-themes'	" themse for the vim-airline
+	"Plugin 'unblevable/quick-scope'	" show hints for f, F, t and T commands
 	Plugin 'tpope/vim-unimpaired'		" pairs of handy bracket mappings
 	Plugin 'tpope/vim-fugitive'			" git wrapper
 	Plugin 'tpope/vim-commentary'		" toggle comments
@@ -96,7 +97,7 @@ set noshowmode 					" don't show mode I am in.
 "
 " see :h vundle for more details or wiki for FAQ
 
-" jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (<C-@>).
+" jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (or <C-@>).
 " Default <c-j> conflicts with custom mapping to move between split windows.
 imap <C-Space> <Plug>IMAP_JumpForward
 nmap <C-Space> <Plug>IMAP_JumpForward
@@ -193,6 +194,11 @@ let g:vim_has_started = 1
 let mapleader = ","
 " remap two commas to perform Next search in opposite direction
 nnoremap ,,	,
+
+" show the number of occurences of the last search
+nnoremap <leader>n :%s///gn<CR>
+" show all lines containing the last search
+nnoremap <leader>g :g//p<CR>
 
 " toggle NERDTree
 nnoremap cot :NERDTreeToggle<CR>
@@ -313,6 +319,8 @@ nnoremap <Leader>q gwip
 
 " turn off highlighting for search resutls
 nnoremap coh :nohlsearch<CR>
+" use very magic on default search
+nnoremap / /\v
 
 " remap Space to toggle folds
 nnoremap <Space> za
@@ -376,7 +384,7 @@ cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 
 " abbreviations
-" cab th tab h
+" ab th tab h
 
 " change the last word in a line from "false" to "true" and vicer versa
 " Mnemonic: cv - Change Value
@@ -486,5 +494,7 @@ function! OpenSource()
   endif
 endfunction
 nnoremap <silent> <leader>lz :call OpenSource()<CR>
+
+abbreviate vd vertical diffsplit
 
 " vim:set commentstring="%s:
