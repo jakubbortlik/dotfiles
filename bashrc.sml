@@ -63,7 +63,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 function ranger-cd {
 	tempfile="$(mktemp -t tmp.XXXXXX)"
 	# /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-    ~/comp/testing/ranger/ranger.py --choosedir="$tempfile" "${@:-$(pwd)}"
+    ~/code/ranger/ranger.py --choosedir="$tempfile" "${@:-$(pwd)}"
 	test -f "$tempfile" &&
 	if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
 		cd -- "$(cat "$tempfile")"
@@ -138,12 +138,11 @@ alias ..2="cd ../.."
 alias ..3="cd ../../.."
 
 alias b="($EDITOR ~/dotfiles/bashrc.sml)"
-alias f="(firefox &> /dev/null &)"
 alias h="(localc ~/harmonogram.xls &> /dev/null &)"
 alias m="(mocp)"
 alias p="(/home/jakub/dotfiles/bin/praat &> /dev/null &)"
 alias s="(/usr/bin/skypeforlinux &> /dev/null &)"
-alias S="(/usr/bin/oocalc /home/jakub/Documents/domaci/svatba/seznam_rozpocet_organizace.xls &> /dev/null &)"
+alias t="tmux new-window -c ~/zdroje/nccc ~/code/ranger/ranger.py ; tmux rename-window DATA ; tmux previous-window ; tmux rename-window THESIS ; cd ~/skola/01_phd/02_dissertation/thesis/ ; nvim -S ./session_chapter03.vim"
 
 alias bh="($EDITOR ~/.bash_history)"
 alias bs="(. ~/.bashrc)"
@@ -161,6 +160,13 @@ alias sus="systemctl suspend"
 # alias vim="nvim"
 alias vimdiff="nvim -d"
 # alias rename="perl-rename"
+
+# firefox aliases
+alias f="(firefox &> /dev/null &)"
+alias geo="(firefox --private-window www.george.csas.cz &> /dev/null &)"
+alias jr="(firefox --private-window https://www.seznam.cz/jizdnirady/ &> /dev/null &)"
+alias post="(firefox --private-window https://outlook.com/upol.cz &> /dev/null &)"
+alias tra="(firefox --private-window https://en.mapy.cz/zakladni?planovani-trasy &> /dev/null &)"
 
 # git aliases
 alias gs="(git status)"
@@ -183,10 +189,10 @@ alias wired="(sudo systemctl stop netctl-auto@wlp12s0.service; sudo netctl stop-
 alias tether="(f=`ip link | grep -oE "enp0s29f[0-9]+u[0-9]+c[0-9]+"`; sudo dhcpcd "$f")"
 
 # temporary aliases:
-alias bau='rsync -rptgoDv --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/Sony_16GR/skola/01_phd/02_dissertation'
-alias baun='rsync -rptgoDvn --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/Sony_16GR/skola/01_phd/02_dissertation'
-alias bad='rsync -rptgoDv --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation'
-alias badn='rsync -rptgoDvn --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation'
+alias bu='rsync -rptgoDv --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/Sony_16GR/skola/01_phd/02_dissertation'
+alias bun='rsync -rptgoDvn --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/Sony_16GR/skola/01_phd/02_dissertation'
+alias bd='rsync -rptgoDv --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation'
+alias bdn='rsync -rptgoDvn --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation'
 
 # (mount automatically and) cd to the the first connected USB
 alias cu1="cd /mnt/usb1"
