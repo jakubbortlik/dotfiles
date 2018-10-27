@@ -26,7 +26,7 @@ STATE=0
 echo "Started checking..."
 while true
 do
-	APPID=`pgrep "$APP"`
+	APPID=$(pgrep "$APP")
 
 	if [[ "$APPID" != "" ]] && [[ $STATE == 0 ]] ; then
 		STATE=1
