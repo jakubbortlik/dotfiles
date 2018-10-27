@@ -39,10 +39,6 @@ ranger:
 - let the :console source .bashrc
 - find a way to sync bookmarks with the dotfiles .sml version
 
-vimperator:
------------
-- make iabbreviate work, e.g. for a phone number
-
 openbox:
 --------
 - choose custom titles of windows in title bar instead of full path (where is it
@@ -67,6 +63,7 @@ install latexmk, xelatex, bibtex
 		   - main.tex|| Package biblatex Warning: '\name' is deprecated in
 			 sorting specifications, please use '\field'.
 - replace tabs with spaces (expandtab?)
+- enable <c-space> in for replacing <++> imode
 
 libreoffice:
 ------------
