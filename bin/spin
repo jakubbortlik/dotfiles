@@ -1,0 +1,48 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: spin
+# 
+#         USAGE: ./spin [filename] [number]
+# 
+#   DESCRIPTION: 
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: YOUR NAME (), 
+#  ORGANIZATION: 
+#       CREATED: 04/19/2018 16:36
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+E_WRONGARGS=85
+
+# specify the name of the .cmdi file to scan for speaker info:
+
+N_ARGUMENTS=1
+if [[ $# -ne $N_ARGUMENTS ]]
+then
+	echo "Usage: $(basename $0) basename"
+	exit $E_WRONGARGS
+else
+	CMDI="$1.cmdi"
+	# CMDI="~/zdroje/nccc/session_09/Session_09.cmdi"
+fi
+
+# specify the speaker
+NUMBER=$(echo $CMDI | sed -E 's/(^.*_)([0-9]{2})(.cmdi)/\2/')
+OUT_FILENAME="${NUMBER}_speakers.txt"
+
+STRING="\(<name>speaker\|<code>\|<sex>\|<years>\|<education>\|\(\(father\|mother\)&apos;s \|\"\|in \)place of \(residence\|birth\)\)"
+grep -i "${STRING}" ${CMDI} > ${OUT_FILENAME}
+sed 's/ \{18\}//g' < ${OUT_FILENAME} > out.tmp
+sed '/Mother&apos;s place of residence/a \
+' < out.tmp > ${OUT_FILENAME}
+
+rm out.tmp
+
+exit
