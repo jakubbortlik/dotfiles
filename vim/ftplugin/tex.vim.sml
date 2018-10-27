@@ -34,7 +34,7 @@ let g:vimtex_toc_secnumdepth = 1
 let maplocalleader = ","
 
 " set zathura as the vimtex_view_method
-let g:vimtex_view_method="mupdf"
+let g:vimtex_view_method="zathura"
 
 " workaround for viewer
 " nnoremap <leader>lv :silent !mupdf "%:r.pdf" &>/dev/null &<CR>
@@ -45,13 +45,13 @@ nnoremap <leader>la :!modcheck<CR>
 " map <leader>lb to "!biber filenameWithoutExtension"
 nnoremap <leader>lb :!biber "%:t:r"<CR>
 
-" map <leader>T-> to paste \textrightarrow
-call IMAP('T->', '\textrightarrow<++>', 'tex')
-nmap <leader>-> aT->
+" map <leader>T-> to paste \textrightarrow{}
+call IMAP('->', '\textrightarrow{}<++>', 'tex')
+nmap <leader>-> a->
 
-" map <leader>T<- to paste \textrightarrow
-call IMAP('T<-', '\textleftarrow<++>', 'tex')
-nmap <leader><- aT<-
+" map <leader>T<- to paste \textleftarrow{}
+call IMAP('<-', '\textleftarrow{}<++>', 'tex')
+nmap <leader><- a<-
 
 " map <leader>cit to paste \autocite[<++>]{<++>}<++> and go inside the []
 call IMAP('CIP', '\autocite[<++>]{<++>}<++>', 'tex')
@@ -97,13 +97,14 @@ setlocal lazyredraw
 setlocal synmaxcol=128
 syntax sync minlines=256
 
-" Format lines to be up to 80 characters long
-setlocal textwidth=80
+" Format lines to be long up to this number of characters:
+setlocal textwidth=75
+set colorcolumn=76				" Display a line at the N column:
 
-" Set shiftwidth to 2
+" Set shiftwidth to:
 setlocal shiftwidth=2
 
-" Set the tabstop to 2
+" Set the tabstop to:
 setlocal tabstop=2
 
 " in visual mode put \url{} around the selected text
@@ -151,6 +152,11 @@ setlocal winaltkeys=no
 let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode -file-line-error-style $*'
 let g:Tex_DefaultTargetFormat = 'pdf'
 
+" jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (<C-@>).
+" Default <c-j> conflicts with custom mapping to move between split windows.
+" imap <C-Space> <Plug>IMAP_JumpForward
+" nmap <C-Space> <Plug>IMAP_JumpForward
+" vmap <C-Space> <Plug>IMAP_JumpForward
 
 " This is because of vim-latex suite:
 " IMPORTANT: grep will sometimes skip displaying the file name if you
@@ -165,5 +171,18 @@ let g:tex_flavor='latex'
 
 " EXPERIMENTAL MAPPINGS
 nmap yse viw+em
+
+" used :Frep "arguments" to search the .tex files in the projectc for occurances
+" of an <args> expression
+" Mnemonic: F(ind and g)rep
+command! -nargs=1 Frep !find . -iname "*.tex" -exec grep -iH "<args>" {} \;
+
+" open Chapters:
+nnoremap <leader>c1 :e ~/skola/01_phd/02_dissertation/thesis/Chapters/Chapter01_Dissertation_Outline.tex<CR>
+nnoremap <leader>c2 :e ~/skola/01_phd/02_dissertation/thesis/Chapters/Chapter02_Pre-Vocalic_Glottalization.tex<CR>
+nnoremap <leader>c3 :e ~/skola/01_phd/02_dissertation/thesis/Chapters/Chapter03_Voicing_assimilation.tex<CR>
+nnoremap <leader>c4 :e ~/skola/01_phd/02_dissertation/thesis/Chapters/Chapter04_Final_devoicing.tex<CR>
+nnoremap <leader>c5 :e ~/skola/01_phd/02_dissertation/thesis/Chapters/Chapter05_Research_questions_and_hypotheses.tex<CR>
+
 
 " vim: ft=vim
