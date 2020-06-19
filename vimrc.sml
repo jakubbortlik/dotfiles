@@ -23,56 +23,56 @@ set iskeyword+=$			" not sure why this is here...
 set runtimepath^=~/.vim/ftplugin/
 
 "========================================
-" Settings for the Vundle plugin manager:
+" Settings for the vim-plug plugin manager:
 "========================================
-filetype off
 
-" set the runtime path to include Vundle and initialize
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-	Plugin 'VundleVim/Vundle.vim'		" let Vundle manage Vundle
-	Plugin 'tommcdo/vim-exchange'		" easy exange of two portions of text
-	Plugin 'vim-airline/vim-airline'	" activate the vim-airline
-	Plugin 'vim-airline/vim-airline-themes'	" themse for the vim-airline
-	"Plugin 'unblevable/quick-scope'	" show hints for f, F, t and T commands
-	Plugin 'tpope/vim-unimpaired'		" pairs of handy bracket mappings
-	Plugin 'tpope/vim-fugitive'			" git wrapper
-	Plugin 'tpope/vim-commentary'		" toggle comments
-	Plugin 'tpope/vim-repeat'			" repeat other plugins with . command
-	Plugin 'tpope/vim-surround'			" parentheses, brackets, quotes, and more 
-	Plugin 'tpope/vim-speeddating'		" let <C-A>, <C-X> work on dates properly
-	Plugin 'vim-scripts/bash-support.vim' " selfexplanatory
-	Plugin 'vim-scripts/VisIncr'		" in/decreasing columns of Ns and dates
-	Plugin 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
-	Plugin 'jakubbortlik/vim-praat'		" syntax highlighting for praat
-	Plugin 'scrooloose/nerdtree'		" navigate through the filesystem
-	Plugin 'Xuyuanp/nerdtree-git-plugin' " git status flags for NERDtree
-	Plugin 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
+call plug#begin('~/.vim/bundle')
+	Plug 'junegunn/vim-plug'		" get Vim help for vim-plug
+	Plug 'tommcdo/vim-exchange'		" easy exange of two portions of text
+	Plug 'itchyny/lightline.vim'
+	" Plug 'vim-airline/vim-airline'	" activate the vim-airline
+	" Plug 'vim-airline/vim-airline-themes'	" themse for the vim-airline
+	Plug 'tpope/vim-capslock'			" Software capslock in insert and normal
+	Plug 'tpope/vim-commentary'	    	" toggle comments
+	Plug 'tpope/vim-fugitive'			" git wrapper
+	Plug 'tpope/vim-repeat'			    " repeat other plugins with . command
+	Plug 'tpope/vim-rsi'				" Emulate Readline key bindings
+	Plug 'tpope/vim-sensible'			" 'A universal set of defaults'
+	Plug 'tpope/vim-speeddating'		" let <C-A>, <C-X> work on dates properly
+	Plug 'tpope/vim-surround'			" parentheses, brackets, quotes, and more 
+	Plug 'tpope/vim-tbone'			    " Basic tmux support for Vim
+	Plug 'tpope/vim-unimpaired'	        " pairs of handy bracket mappings
+	Plug 'tpope/vim-vinegar'			" Enhance netrw
+	Plug 'vim-scripts/bash-support.vim' " selfexplanatory
+	Plug 'vim-scripts/VisIncr'		" in/decreasing columns of Ns and dates
+	Plug 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
+	" Plug 'ycm-core/YouCompleteMe'    " advanced code completion
+	" Plug 'jakubbortlik/vim-praat'	" syntax highlighting for praat
+	"Plug 'scrooloose/nerdtree'		" navigate through the filesystem
+	"Plug 'Xuyuanp/nerdtree-git-plugin' " git status flags for NERDtree
+	Plug 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 	"
 	" Consider these plugins:
-	Plugin 'jalvesaq/Nvim-R'			" improved support for R code
-	Plugin 'vim-scripts/UniCycle'		" replace --, ..., ', and \"
-	" Plugin 'mattduck/splitscreen'			" manage windows in vim and tmux
-	" Plugin 'easymotion/vim-easymotion'	" vim motion on speed!
-	" Plugin 'justinmk/vim-sneak'			" versatile motion done by 2 characters
-	" Plugin 'tpope/vim-obsession'			" Found in airline help file
-	Plugin 'scrooloose/syntastic'			" syntax checking
-    Plugin 'vim-scripts/ReplaceWithRegister' " Replace text with contents of a register
-    " Plugin 'christoomey/vim-titlecase'      " Make First Letters Uppercase
+	" Plug 'jalvesaq/Nvim-R'		" improved support for R code
+	" Plug 'vim-scripts/UniCycle'		" replace --, ..., ', and \"
+	" Plug 'tpope/vim-obsession'		" Found in airline help file
+	Plug 'mechatroner/rainbow_csv'	" Show tabulated data in colour
+	" Plug 'chrisbra/csv.vim'			" Another CSV plugin
+	Plug 'scrooloose/syntastic'		" syntax checking
+    Plug 'vim-scripts/ReplaceWithRegister' " Replace text with contents of a register
 
 	" Colors
-	Plugin 'nanotech/jellybeans.vim'
+	Plug 'nanotech/jellybeans.vim'
+
+	" Python plugins:
+	Plug 'python-mode/python-mode', { 'for': 'python' }      " Turn VIM into a Python IDE
 
 	" latex plugins
-	if has('nvim')
-		Plugin 'gerw/vim-latex-suite'	" nvim alternative to official latex-suite
-	endif
-	Plugin 'lervag/vimtex'				" latex plugin with background
-call vundle#end()
-
-if has("autocmd")
-	filetype plugin indent on		" indentation and plugins according to filetype
-endif
+	" if has('nvim')
+	" 	Plug 'gerw/vim-latex-suite'		" nvim alternative to official latex-suite
+	" endif
+	" Plug 'lervag/vimtex'				" latex plugin with background
+call plug#end()
 
 " settings for the quick-scope plugin
 " Trigger a highlight in the appropriate direction when pressing these keys:
@@ -89,13 +89,39 @@ set laststatus=2				" always show the status line
 set noshowmode 					" don't show mode I am in.
 								" HOWTO show insert-mode suspended through ^o?!
 
-" Brief help for Vundle:
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'myfilename': 'LightlineFilename',
+      \   'readonly': 'LightlineReadonly',
+      \   'fugitive': 'LightlineFugitive',
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+function! LightlineReadonly()
+	return &readonly ? '' : ''
+endfunction
+function! LightlineFugitive()
+	if exists('*FugitiveHead')
+		let branch = FugitiveHead()
+		return branch !=# '' ? ''.branch : ''
+	endif
+	return ''
+endfunction
+function! LightlineFilename()
+	return (LightlineReadonly() !=# '' ? LightlineReadonly() . ' ' : '') .
+		  \ (&ft ==# 'vimfiler' ? vimfiler#get_status_string() :
+		  \  &ft ==# 'unite' ? unite#get_status_string() :
+		  \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]') .
+		  \ (LightlineModified() !=# '' ? ' ' . LightlineModified() : '')
+endfunction
+function! LightlineModified()
+	return &modifiable && &modified ? '+' : ''
+endfunction
 
 " jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (or <C-@>).
 " Default <c-j> conflicts with custom mapping to move between split windows.
@@ -110,6 +136,24 @@ let g:tex_flavor='latex'            " start latex-suite for empty .tex files
 
 " bashsupport mappings
 let g:BASH_MapLeader  = ','         " set the leader used by bash-vim plugin
+
+" don't allow automatic syntax checks for Python by Syntastic 
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": ["python"] }
+
+" only allow some lint checkers for pymode (pylama is enabled by default, but it
+" does not recognize f-strings
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+" let g:pymode_lint_ignore = ["W605", "E501"]
+let g:pymode_lint_checkers = ['pep8']
+
+" set the virtual environment of anaconda
+let g:pymode_virtualenv_path = '/home/bortlik/anaconda3'
+
+" Enable autoimport
+let g:pymode_rope_autoimport = 1
 
 "=================
 " builtin plugins:
@@ -156,6 +200,21 @@ let g:jellybeans_use_term_background_color = 1
 colorscheme jellybeans
 " hi Normal ctermbg=NONE		" this enables pane highlighting in tmux
 
+if &term =~ "screen-256color"
+  " 256 colors
+  let &t_Co = 256
+  " restore screen after quitting
+  let &t_ti = "\<Esc>7\<Esc>[r\<Esc>[?47h"
+  let &t_te = "\<Esc>[?47l\<Esc>8"
+  if has("terminfo")
+    let &t_Sf = "\<Esc>[3%p1%dm"
+    let &t_Sb = "\<Esc>[4%p1%dm"
+  else
+    let &t_Sf = "\<Esc>[3%dm"
+    let &t_Sb = "\<Esc>[4%dm"
+  endif
+endif
+
 set linebreak		" define where the lines break on the screen if wrap is set
 set textwidth=80				" Set the textwidth
 "set nowrap						" turn off wrapping of displayed text
@@ -175,6 +234,7 @@ set timeoutlen=1500				" time out for leader mappings
 set ttimeoutlen=50				" ttime out to avoid pause when leaving i_mode
 set splitbelow
 set splitright
+set nostartofline				" don't go to start of line with <CR>, <C-d>, etc.
 
 "===================================
 " some language and format settings:
@@ -230,7 +290,8 @@ vnoremap . :normal .<cr>
 " nnoremap <C-K> <C-W>k
 " nnoremap <C-L> <C-W>l
 " nnoremap <C-H> <C-W>h
- " nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+" nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+" Some terminal settings:
 if has('nvim')
 	tnoremap <C-J> <C-\><C-n><C-W>j
 	tnoremap <C-K> <C-\><C-n><C-W>k
@@ -243,6 +304,10 @@ if has('nvim')
 	autocmd BufWinEnter,WinEnter term://* startinsert
 	" always leave insert mode when switching from a terminal window
 	autocmd BufWinLeave,WinLeave term://* stopinsert
+    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+    nnoremap <leader>te :new term://bash<cr>
+    nnoremap <leader>tt :vne term://bash<cr>
+    " tnoremap <ESC> <C-\><C-n>
 endif
 
 nnoremap <C-E> 3<C-E>
@@ -269,6 +334,7 @@ nnoremap gs :Gstatus<CR>
 nnoremap <Leader>cz :setlocal keymap=czech<CR>
 nnoremap <Leader>ip :setlocal keymap=ipa<CR>
 nnoremap <Leader>en :setlocal keymap=<CR>
+nnoremap <Leader>ru :setlocal keymap=russian-jcukenwin<CR>
 nnoremap <Leader>scs :setlocal spelllang=cs<CR>
 nnoremap <Leader>spl :setlocal spelllang=pl<CR>
 nnoremap <Leader>sen :setlocal spelllang=en_us<CR>
@@ -319,8 +385,6 @@ nnoremap <Leader>q gwip
 
 " turn off highlighting for search resutls
 nnoremap coh :nohlsearch<CR>
-" use very magic on default search
-nnoremap / /\v
 
 " remap Space to toggle folds
 nnoremap <Space> za
@@ -384,7 +448,7 @@ cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 
 " abbreviations
-" ab th tab h
+" cab th tab h
 
 " change the last word in a line from "false" to "true" and vicer versa
 " Mnemonic: cv - Change Value
@@ -494,7 +558,5 @@ function! OpenSource()
   endif
 endfunction
 nnoremap <silent> <leader>lz :call OpenSource()<CR>
-
-abbreviate vd vertical diffsplit
 
 " vim:set commentstring="%s:
