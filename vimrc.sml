@@ -33,10 +33,11 @@ call plug#begin('~/.vim/bundle')
 	" Plug 'vim-airline/vim-airline'	" activate the vim-airline
 	" Plug 'vim-airline/vim-airline-themes'	" themse for the vim-airline
 	Plug 'tpope/vim-capslock'			" Software capslock in insert and normal
-	Plug 'tpope/vim-commentary'	    	" toggle comments
+	Plug 'tpope/vim-commentary'			" toggle comments
 	Plug 'tpope/vim-fugitive'			" git wrapper
 	Plug 'tpope/vim-repeat'			    " repeat other plugins with . command
 	Plug 'tpope/vim-rsi'				" Emulate Readline key bindings
+	Plug 'tpope/vim-scriptease'			" Vim plugin for Vim plugins
 	Plug 'tpope/vim-sensible'			" 'A universal set of defaults'
 	Plug 'tpope/vim-speeddating'		" let <C-A>, <C-X> work on dates properly
 	Plug 'tpope/vim-surround'			" parentheses, brackets, quotes, and more 
@@ -55,7 +56,9 @@ call plug#begin('~/.vim/bundle')
 	" Consider these plugins:
 	" Plug 'jalvesaq/Nvim-R'		" improved support for R code
 	" Plug 'vim-scripts/UniCycle'		" replace --, ..., ', and \"
-	" Plug 'tpope/vim-obsession'		" Found in airline help file
+	" Plug 'tpope/vim-flagship'			" Status line and tab line
+	" Plug 'tpope/vim-flatfoot'			" Enhancement of 'f' and 't' kyes
+	" Plug 'tpope/vim-obsession'		" Record sessions continuously
 	Plug 'mechatroner/rainbow_csv'	" Show tabulated data in colour
 	" Plug 'chrisbra/csv.vim'			" Another CSV plugin
 	Plug 'scrooloose/syntastic'		" syntax checking
@@ -78,13 +81,14 @@ call plug#end()
 " Trigger a highlight in the appropriate direction when pressing these keys:
 "let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-" settings for the vim-airline plugin
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='durant'
-let g:airline_powerline_fonts = 1
-" show whether a keymap is used:
-let g:airline_detect_iminsert=1
-	let g:airline#extensions#tabline#show_tabs = 1
+" " settings for the vim-airline plugin
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme='durant'
+" let g:airline_powerline_fonts = 1
+" " show whether a keymap is used:
+" let g:airline_detect_iminsert=1
+" 	let g:airline#extensions#tabline#show_tabs = 1
+
 set laststatus=2				" always show the status line
 set noshowmode 					" don't show mode I am in.
 								" HOWTO show insert-mode suspended through ^o?!
