@@ -12,7 +12,6 @@ case ":${PATH}:" in
 esac
 
 export PATH
-export EDITOR=nvim
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -59,7 +58,6 @@ fi
 
 # do not load rc.config - ranger configuration twice
 export RANGER_LOAD_DEFAULT_RC=FALSE
-# source /usr/share/doc/packages/ranger/examples/bash_automatic_cd.sh
 function ranger-cd {
 	tempfile="$(mktemp -t tmp.XXXXXX)"
 	# /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
@@ -82,9 +80,20 @@ ra() {
 }
 bind '"\C-o":"ra\C-m"'
 
-# set a fancy prompt (non-color, unless we know we "want" color)
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
 esac
 
 # enable color support of ls and also add handy aliases
@@ -103,7 +112,6 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias l.='ls -d .* --color=auto'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -133,42 +141,14 @@ fi
 # can be used to save buffers in vim or to search through bash history
 stty -ixon
 
-alias ..="cd .."
-alias ..2="cd ../.."
-alias ..3="cd ../../.."
-
 alias b="($EDITOR ~/dotfiles/bashrc.sml)"
-alias h="(localc ~/harmonogram.xls &> /dev/null &)"
-alias m="(mocp)"
-alias p="(/home/jakub/dotfiles/bin/praat &> /dev/null &)"
-alias s="(/usr/bin/skypeforlinux &> /dev/null &)"
-alias t="tmux new-window -c ~/zdroje/nccc ~/code/ranger/ranger.py ; tmux rename-window DATA ; tmux previous-window ; tmux rename-window THESIS ; cd ~/skola/01_phd/02_dissertation/thesis/ ; nvim -S ./session_chapter03.vim"
 
-alias bh="($EDITOR ~/.bash_history)"
 alias bs="(. ~/.bashrc)"
-alias or="(openbox --reconfigure)"
-alias sd="systemctl poweroff"
-alias wm="(sudo wifi-menu)"
 
 alias cbh="(sed -ir '/^.[ ]*$/d' ~/.bash_history; echo 'removed single character lines from .bash_history')"
-alias edu="(sudo systemctl stop netctl-auto@wlp12s0.service; sudo netctl stop-all; sudo netctl start eduroam)"
-alias low="(lowriter &> /dev/null &)"
-alias loc="(localc &> /dev/null &)"
-alias qep="qpdf --empty --pages"
-alias reb="systemctl reboot"
-alias sus="systemctl suspend"
-# alias vim="nvim"
-alias vimdiff="nvim -d"
-# alias rename="perl-rename"
-
-# firefox aliases
-alias f="(firefox &> /dev/null &)"
-alias geo="(firefox --private-window www.george.csas.cz &> /dev/null &)"
-alias jr="(firefox --private-window https://www.seznam.cz/jizdnirady/ &> /dev/null &)"
-alias post="(firefox --private-window https://outlook.com/upol.cz &> /dev/null &)"
-alias tra="(firefox --private-window https://en.mapy.cz/zakladni?planovani-trasy &> /dev/null &)"
 
 # git aliases
+alias g="git"
 alias gs="(git status)"
 alias gss="(git status -sb)"
 alias gl='git pull --prune'
@@ -182,39 +162,6 @@ alias gcb='git copy-branch-name'
 alias gb='git branch'
 alias gac='git add -A && git commit -m'
 
-alias audy="(audacity &> /dev/null &)"
-alias auds="(audacious &> /dev/null &)"
-alias hrad="(sudo systemctl stop netctl-auto@wlp12s0.service; sudo netctl stop-all; sudo netctl start hrad)"
-alias wired="(sudo systemctl stop netctl-auto@wlp12s0.service; sudo netctl stop-all; sudo netctl start ethernet-dhcp)"
-alias tether="(f=`ip link | grep -oE "enp0s29f[0-9]+u[0-9]+c[0-9]+"`; sudo dhcpcd "$f")"
-
-# temporary aliases:
-alias bu='rsync -rptgoDv --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/Sony_16GR/skola/01_phd/02_dissertation'
-alias bun='rsync -rptgoDvn --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/Sony_16GR/skola/01_phd/02_dissertation'
-alias bd='rsync -rptgoDv --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation'
-alias bdn='rsync -rptgoDvn --delete --exclude=".*" ~/skola/01_phd/02_dissertation/ /run/media/jakub/backup/jakub/skola/01_phd/02_dissertation'
-
-# (mount automatically and) cd to the the first connected USB
-alias cu1="cd /mnt/usb1"
-# unmount the first connected USB
-alias uu1="cd ~; sudo umount /dev/sdb1"
-
-# (mount automatically and) cd to the the second connected USB
-alias cu2="cd /mnt/usb2"
-# unmount the second connected USB
-alias uu2="cd ~; sudo umount /dev/sdc1"
-
-# (mount automatically and) cd to the SD card
-alias cs="cd /mnt/sd"
-# unmount SD card
-alias us="cd ~; sudo umount /dev/mmcblk0p1"
-
-# copied from somewhere without ever using it!
-#alias here="find . -type f -print0 | xargs -0"
-
 PS1='[\u@\h \W]\$ '
 # if entered shell from ranger, show it in the prompt:
 [ -n "$RANGER_LEVEL" ] && PS1="$PS1"'(in RA) '
-
-# added by Anaconda3 4.1.1 installer
-# export PATH="/home/jakub/.anaconda3/bin:$PATH"
