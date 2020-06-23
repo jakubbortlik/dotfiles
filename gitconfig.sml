@@ -20,3 +20,6 @@
 	b = branch
 	s = status -sb
 	ac = add -A && git commit -m
+	ctags = !.git/hooks/ctags
+[init]
+	templatedir = ~/.git_template
