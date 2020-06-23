@@ -192,6 +192,6 @@ alias t='tmux'
 alias ta='tmux attach'
 alias ts='tmux ls'
 
-if [[ -r "bashrc_extras" ]]; then
-	source bashrc_extras
+if [[ -r ".bashrc_extras" ]]; then
+	source .bashrc_extras
 fi
