@@ -68,7 +68,7 @@ call plug#begin('~/.vim/bundle')
 	Plug 'nanotech/jellybeans.vim'
 
 	" Python plugins:
-	Plug 'python-mode/python-mode', { 'for': 'python' }      " Turn VIM into a Python IDE
+	Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }      " Turn VIM into a Python IDE
 
 	" latex plugins
 	" if has('nvim')
@@ -150,14 +150,20 @@ let g:syntastic_mode_map = {
 " only allow some lint checkers for pymode (pylama is enabled by default, but it
 " does not recognize f-strings
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-" let g:pymode_lint_ignore = ["W605", "E501"]
+let g:pymode_lint_ignore = ["W605", "E501"]
 let g:pymode_lint_checkers = ['pep8']
 
-" set the virtual environment of anaconda
-let g:pymode_virtualenv_path = '/home/bortlik/anaconda3'
+" " set the virtual environment of anaconda
+" let g:pymode_virtualenv_path = '/home/bortlik/anaconda3'
 
 " Enable autoimport
 let g:pymode_rope_autoimport = 1
+
+" Set breakpoint command (does not work in Python 3.5)
+let g:pymode_breakpoint_cmd = 'breakpoint()'
+let g:pymode_run_bind = '<leader>R'
+" Run current file with python with ,r
+nnoremap ,r :!python %<cr>
 
 "=================
 " builtin plugins:
