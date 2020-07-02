@@ -153,9 +153,6 @@ let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_ignore = ["W605", "E501"]
 let g:pymode_lint_checkers = ['pep8']
 
-" " set the virtual environment of anaconda
-" let g:pymode_virtualenv_path = '/home/bortlik/anaconda3'
-
 " Enable autoimport
 let g:pymode_rope_autoimport = 1
 
