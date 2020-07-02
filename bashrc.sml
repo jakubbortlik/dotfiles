@@ -19,30 +19,36 @@ else
   export TERM="xterm-256color"
 fi
 
-# don't put duplicate lines or lines starting with space in the history.
+# Set the python debugger to pudb
+export PYTHONBREAKPOINT=pudb.set_trace
+
+# Don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
+# Append to the history file, don't overwrite it
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=50000
 HISTFILESIZE=100000
 
-# check the window size after each command and, if necessary,
+# Verify the command brought from history
+shopt -s histverify
+
+# Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# make less more friendly for non-text input files, see lesspipe(1)
+# Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set a fancy prompt (non-color, unless we know we "want" color)
+# Set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
+# Uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
@@ -95,10 +101,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-
 # Do not load rc.config - ranger configuration twice
 export RANGER_LOAD_DEFAULT_RC=FALSE
 function ranger-cd {
@@ -123,6 +125,7 @@ ra() {
 }
 bind '"\C-o":"ra\C-m"'
 
+# Get the header of a table and prepend column numbers to column names.
 header () {
 	if [[ $# -eq 0 ]]; then
 		echo "No arguments supplied"
@@ -155,19 +158,6 @@ alias gcb='git copy-branch-name'
 alias gb='git branch'
 alias gac='git add -A && git commit -m'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -181,17 +171,15 @@ fi
 
 # Bashrc aliases
 alias b="($EDITOR ~/dotfiles/bashrc.sml)"
-alias bs="(. ~/.bashrc)"
-
-# SRV-SGE aliases
-alias qs='qstat'
-alias qsa='qstat -u "*"'
+alias bs="(. $HOME/.bashrc)"
 
 # Tmux aliases:
 alias t='tmux'
 alias ta='tmux attach'
 alias ts='tmux ls'
 
-if [[ -r ".bashrc_extras" ]]; then
-	source .bashrc_extras
+# Some extra aliases etc.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+if [[ -r "$HOME/.bashrc_extras" ]]; then
+	source $HOME/.bashrc_extras
 fi
