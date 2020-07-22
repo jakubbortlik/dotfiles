@@ -63,6 +63,7 @@ call plug#begin('~/.vim/bundle')
 	" Plug 'chrisbra/csv.vim'			" Another CSV plugin
 	Plug 'scrooloose/syntastic'		" syntax checking
     Plug 'vim-scripts/ReplaceWithRegister' " Replace text with contents of a register
+    Plug 'chrisbra/unicode.vim'         " Work with unicode characters
 
 	" Colors
 	Plug 'nanotech/jellybeans.vim'
