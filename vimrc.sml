@@ -207,6 +207,7 @@ let g:jellybeans_use_term_italics = 1
 let g:jellybeans_use_term_background_color = 1
 colorscheme jellybeans
 " hi Normal ctermbg=NONE		" this enables pane highlighting in tmux
+hi Comment cterm=NONE
 
 if &term =~ "screen-256color"
   " 256 colors
