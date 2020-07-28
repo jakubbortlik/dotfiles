@@ -273,8 +273,8 @@ if has('nvim')
     " tnoremap <ESC> <C-\><C-n>
 endif
 
-" nnoremap <C-E> 3<C-E>
-" nnoremap <C-Y> 3<C-Y>
+nnoremap <C-E> 3<C-E>
+nnoremap <C-Y> 3<C-Y>
 
 " edit vimrc in the ~/dotfiles/
 nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.sml \| setlocal nowrap<CR>
