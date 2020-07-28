@@ -11,14 +11,6 @@ endif
 
 set iskeyword+=$			" not sure why this is here...
 
-"jump to the last position when reopening a file
-"if has("autocmd")
-"  autocmd BufReadPost *
-"		\ if line("'\"") > 1 && line("'\"") <= line("$") |
-"		\	exe "normal! g'\"" |
-"		\ endif
-"endif
-
 " prepend (^=) the ftplugins directory
 set runtimepath^=~/.vim/ftplugin/
 
@@ -49,8 +41,6 @@ call plug#begin('~/.vim/bundle')
 	Plug 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
 	" Plug 'ycm-core/YouCompleteMe'    " advanced code completion
 	" Plug 'jakubbortlik/vim-praat'	" syntax highlighting for praat
-	"Plug 'scrooloose/nerdtree'		" navigate through the filesystem
-	"Plug 'Xuyuanp/nerdtree-git-plugin' " git status flags for NERDtree
 	Plug 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 	"
 	" Consider these plugins:
@@ -79,22 +69,11 @@ call plug#begin('~/.vim/bundle')
 	" Plug 'lervag/vimtex'				" latex plugin with background
 call plug#end()
 
-" settings for the quick-scope plugin
-" Trigger a highlight in the appropriate direction when pressing these keys:
-"let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-" " settings for the vim-airline plugin
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline_theme='durant'
-" let g:airline_powerline_fonts = 1
-" " show whether a keymap is used:
-" let g:airline_detect_iminsert=1
-" 	let g:airline#extensions#tabline#show_tabs = 1
-
 set laststatus=2				" always show the status line
 set noshowmode 					" don't show mode I am in.
 								" HOWTO show insert-mode suspended through ^o?!
 
+" Lightline plugin
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
@@ -179,22 +158,18 @@ set runtimepath^=~/.vim/ftplugin/
 
 
 "========================
-" Some useful settings:
+" Some useful settings
+" Other useful settings are defined in the tpope/vim-sensible plugin.
 "========================
 set showcmd					" Show (partial) command in status line
 set showmatch				" Show matching brackets
 set ignorecase				" Do case insensitive matching
 set smartcase				" Do smart case matching
-set incsearch				" Incremental search
-set autoindent				" Turn autoindenting on
-"set cindent				" enable C style indentation
 if !has('nvim')				" in neovim this is done by default
 	set display=lastline	" show as much as possible of the last line in a window
 	set history=10000
 endif
 set hidden					" leave a buffer with unsaved changes
-
-set wildmenu				" File name completion in command mode
 set wildmode=longest,full	" What to do when I press 'wildchar'. Worth tweaking.
 
 "==========================
@@ -230,21 +205,15 @@ endif
 
 set linebreak		" define where the lines break on the screen if wrap is set
 set textwidth=80				" Set the textwidth
-"set nowrap						" turn off wrapping of displayed text
 set colorcolumn=81				" Display a line at the N column:
 highlight ColorColumn ctermbg=52	" Set the color of the ColorColumn to "brown"
 set number						" Show linenumbers
-"set rnu						" Make numbers relative to position of cursor
-set ruler						" show the line and column number of the cursor
-set scrolloff=2					" number of screen lines above and below the cursor
 set tabstop=4					" Nr of spaces a <Tab> in the file counts for  
 set shiftwidth=4				" Set indentation lenght to 4 spaces, default = tabstop
-set backspace=indent,eol,start	" what can you delete with backspace
 set completeopt=menuone,longest,preview " list of options for i_mode completion
 set hlsearch					" Use highlighting with search:
 set cursorline					" the line with the cursor is underlined
 set timeoutlen=1500				" time out for leader mappings
-set ttimeoutlen=50				" ttime out to avoid pause when leaving i_mode
 set splitbelow
 set splitright
 set nostartofline				" don't go to start of line with <CR>, <C-d>, etc.
@@ -272,25 +241,6 @@ nnoremap ,,	,
 nnoremap <leader>n :%s///gn<CR>
 " show all lines containing the last search
 nnoremap <leader>g :g//p<CR>
-
-" toggle NERDTree
-nnoremap cot :NERDTreeToggle<CR>
-" NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('praat', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-" call NERDTreeHighlightFile('csv', 'cyan', 'none', 'cyan', '#151515')
-" call NERDTreeHighlightFile('xlsx', 'cyan', 'none', 'cyan', '#151515')
-" call NERDTreeHighlightFile('xls', 'cyan', 'none', 'cyan', '#151515')
-" call NERDTreeHighlightFile('txt', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-" call NERDTreeHighlightFile('pdf', 'Magenta', 'none', '#ff00ff', '#151515')
 
 " switch between current and last buffer
 nnoremap <leader>. <c-^>
@@ -454,23 +404,9 @@ endfunction
 nnoremap <silent> cv :call ToggleTrueFalse()<CR>
 
 " EXPERIMENTAL SETTINGS:
-" show the output of nwr (diff of nwords.txt)
-nnoremap <leader>wt :!nwr<cr>
-" write the diff of nwords.txt
-nnoremap <leader>ww :!nwr -w<cr>
-" edit the nwords.txt file
-nnoremap <leader>we :e ~/skola/01_phd/02_dissertation/thesis/nwords.txt<cr>
-
-" open the pdf for the source under cursor
-function! OpenSource()
-  silent execute 'normal! "zyiw'
-  silent let l:source = system("sed -n '/".@z."/ p' < sources.txt")
-  if l:source == ""
-    echo "Reference" expand(@z) "has no file assigned."
-  else
-    silent execute "!awk --field-separator=: '/".@z."/ {system(\"zathura \"$2\" 2>/dev/null &\")}' sources.txt"
-  endif
-endfunction
-nnoremap <silent> <leader>lz :call OpenSource()<CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " vim:set commentstring="%s:
