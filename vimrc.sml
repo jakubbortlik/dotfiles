@@ -64,6 +64,7 @@ call plug#begin('~/.vim/bundle')
 	Plug 'scrooloose/syntastic'		" syntax checking
     Plug 'vim-scripts/ReplaceWithRegister' " Replace text with contents of a register
     Plug 'chrisbra/unicode.vim'         " Work with unicode characters
+    Plug 'terryma/vim-smooth-scroll'    " Smooth scrolling
 
 	" Colors
 	Plug 'nanotech/jellybeans.vim'
@@ -319,8 +320,8 @@ if has('nvim')
     " tnoremap <ESC> <C-\><C-n>
 endif
 
-nnoremap <C-E> 3<C-E>
-nnoremap <C-Y> 3<C-Y>
+" nnoremap <C-E> 3<C-E>
+" nnoremap <C-Y> 3<C-Y>
 
 " edit vimrc in the ~/dotfiles/
 nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.sml \| setlocal nowrap<CR>
@@ -355,6 +356,8 @@ function! CycleKeymapsDown()
 	if &keymap == ""
 		:setlocal keymap=czech
 	elseif &keymap == "czech"
+		:setlocal keymap=russian-jcukenwin
+	elseif &keymap == "russian-jcukenwin"
         :setlocal keymap=ipa
 	elseif &keymap == "ipa"
         :setlocal keymap=
@@ -365,24 +368,14 @@ function! CycleKeymapsUp()
 	if &keymap == ""
 		:setlocal keymap=ipa
 	elseif &keymap == "ipa"
+		:setlocal keymap=russian-jcukenwin
+	elseif &keymap == "russian-jcukenwin"
         :setlocal keymap=czech
 	elseif &keymap == "czech"
         :setlocal keymap=
 	endif
 endfunction
 inoremap <silent> <C-K><C-K> <Esc>:call CycleKeymapsUp()<CR>a
-
-" " set keymap to Czech in insert mode by pressing CRTL-^
-" function! KeymapWithCtrl6()
-" 	if &iminsert == 2 || &iminsert == 0
-" 		:setlocal keymap=czech
-" 		:iunmap <C-^>
-" 	else
-" 		:iunmap <C-^>
-" 		:let &iminsert = 0
-" 	endif
-" endfunction
-" inoremap <C-^> <Esc>:call KeymapWithCtrl6()<CR>a
 
 " text formatting settings
 nnoremap <Leader>tw :setlocal textwidth=80<CR>
@@ -399,65 +392,9 @@ nnoremap coh :nohlsearch<CR>
 nnoremap <Space> za
 vnoremap <Space> za
 
-"copy filename to + clipboard"
-nnoremap <Leader>cf :let @+=expand("%")<CR>
-
 " save current buffer by using Ctrl-s:
 nnoremap <C-S> :w<CR>
 inoremap <C-S> <Esc>:w<CR>
-
-" remap Enter to refresh underlining in split windows with aligned lines
-" inoremap <Enter> <CR><C-O><C-W>p<C-O><C-W>p
-
-" remap j and k to refresh underlining in split windows with aligned lines
-" nnoremap j j<C-W>p<C-W>p
-" nnoremap k k<C-W>p<C-W>p
-
-" For Emacs-style moving in Insert mode:
-" to beginning of line
-inoremap <C-A> <Home>
-" to end of line
-inoremap <C-E> <End>
-" back one character
-inoremap <C-B> <Left>
-" forward one character
-inoremap <C-F> <Right>
-
-" For Emacs-style editing on the command-line:
-" to start of line
-cnoremap <C-A> <Home>
-" back one character
-cnoremap <C-B> <Left>
-" delete character under cursor - this overrides command line completion
-cnoremap <C-D> <Del>
-" to end of line
-cnoremap <C-E> <End>
-" forward one character
-cnoremap <C-F> <Right>
-if !has('nvim')
-	" back one word
-	cnoremap <ESC>b <S-Left>
-	" forward one word
-	cnoremap <ESC>f <S-Right>
-	" delete word under cursor
-	cnoremap <ESC>d <S-Right><C-W>
-else
-	" back one word
-	cnoremap <A-b> <S-Left>
-	" forward one word
-	cnoremap <A-f> <S-Right>
-	" delete word under cursor
-	cnoremap <A-d> <S-Right><C-W>
-endif
-" delete from cursor position to end of line
-cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
-" recall newer command-line
-cnoremap <C-N> <Down>
-" recall previous (older) command-line
-cnoremap <C-P> <Up>
-
-" abbreviations
-" cab th tab h
 
 " change the last word in a line from "false" to "true" and vicer versa
 " Mnemonic: cv - Change Value
@@ -512,41 +449,6 @@ function! ToggleTrueFalse()
     call cursor(linenumber, column + offset + coldiff)
 endfunction
 nnoremap <silent> cv :call ToggleTrueFalse()<CR>
-
-" insert current time at cursor position
-" nnoremap <leader>ct :put! =strftime('%H:%M')<CR>
-nnoremap <F5> "=strftime('%H:%M')<CR>p
-inoremap <F5> <C-R>=strftime('%H:%M')<CR>
-
-" some settings for easy SMS wriging
-function! ComposeSMS()
-    function! ComposeSMS_startComposing()
-        :echo "You are composing an SMS. tw=156 and cc=157."
-        :echo "You can write just before the colour column."
-        :echo "When you are finished, insert \"1/4 \", etc. in front of the text."
-        :let b:ComposeSMS_old_textwidth = &l:textwidth
-        :let b:ComposeSMS_old_cc = &l:colorcolumn
-        :let b:ComposeSMS_old_number = &l:number
-        :setlocal textwidth=156
-        :setlocal cc=157
-        :setlocal nonumber
-        :let b:ComposeSMS_composing = 1
-    endfunction
-    if exists("b:ComposeSMS_composing")
-        if b:ComposeSMS_composing == 1
-            :echo "You have stopped composing an SMS."
-            :let &l:textwidth=b:ComposeSMS_old_textwidth
-            :let &l:cc=b:ComposeSMS_old_cc
-            :let &l:number=b:ComposeSMS_old_number
-            :let b:ComposeSMS_composing = 0
-        else
-            :call ComposeSMS_startComposing()
-        endif
-    else
-        :let b:ComposeSMS_composing = 0
-        :call ComposeSMS_startComposing()
-    endif
-endfunction
 
 " EXPERIMENTAL SETTINGS:
 " show the output of nwr (diff of nwords.txt)
