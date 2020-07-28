@@ -210,6 +210,9 @@ colorscheme jellybeans
 " hi Normal ctermbg=NONE		" this enables pane highlighting in tmux
 hi Comment cterm=NONE
 
+if !has('nvim')
+  set term=screen-256color
+endif 
 if &term =~ "screen-256color"
   " 256 colors
   let &t_Co = 256
