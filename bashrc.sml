@@ -64,7 +64,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~";IFS=/; for q in ${p:1}; do printf /${q:0:3}; done; printf "${q:3}")'
+PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf -- "~";IFS=/; for q in ${p:1}; do printf -- /"${q:0:3}"; done; printf -- "${q:3}")'
 
 git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -170,8 +170,8 @@ if ! shopt -oq posix; then
 fi
 
 # Bashrc aliases
-alias b="($EDITOR ~/dotfiles/bashrc.sml)"
-alias bs="(. $HOME/.bashrc)"
+alias b="$EDITOR ~/dotfiles/bashrc.sml"
+alias bs=". $HOME/.bashrc"
 
 # Tmux aliases:
 alias t='tmux'
@@ -183,3 +183,5 @@ alias ts='tmux ls'
 if [[ -r "$HOME/.bashrc_extras" ]]; then
 	source $HOME/.bashrc_extras
 fi
+
+# vim:set syntax=sh:

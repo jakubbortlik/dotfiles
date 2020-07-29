@@ -112,3 +112,5 @@ bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 
 # don't rename windows automatically
 set-option -g allow-rename off
+
+# vim:set syntax=sh:
