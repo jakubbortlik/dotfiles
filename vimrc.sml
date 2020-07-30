@@ -54,6 +54,8 @@ call plug#begin('~/.vim/bundle')
 	Plug 'nanotech/jellybeans.vim'
 
 	" Python plugins:
+    " Plug 'dense-analysis/ale'         " Asynchronous Lint Engine for VIM 8 or neovim
+    " Plug 'jeetsukumaran/vim-pythonsense' " Alternative to pymode
 	Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }      " Turn VIM into a Python IDE
 
 	" latex plugins
@@ -62,10 +64,6 @@ call plug#begin('~/.vim/bundle')
 	" endif
 	" Plug 'lervag/vimtex'				" latex plugin with background
 call plug#end()
-
-set laststatus=2				" always show the status line
-set noshowmode 					" don't show mode I am in.
-								" HOWTO show insert-mode suspended through ^o?!
 
 " Lightline plugin
 let g:lightline = {
@@ -178,6 +176,10 @@ if &term =~ "screen-256color"
     let &t_Sb = "\<Esc>[4%dm"
   endif
 endif
+
+set noshowmode 					" don't show mode I am in.
+                                " HOWTO show insert-mode suspended through ^o?!
+                                " Will be possible in future versions of VIM
 
 set linebreak		" define where the lines break on the screen if wrap is set
 set textwidth=80				" Set the textwidth
