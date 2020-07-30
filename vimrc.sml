@@ -11,9 +11,6 @@ endif
 
 set iskeyword+=$			" not sure why this is here...
 
-" prepend (^=) the ftplugins directory
-set runtimepath^=~/.vim/ftplugin/
-
 "========================================
 " Settings for the vim-plug plugin manager:
 "========================================
@@ -22,8 +19,6 @@ call plug#begin('~/.vim/bundle')
 	Plug 'junegunn/vim-plug'		" get Vim help for vim-plug
 	Plug 'tommcdo/vim-exchange'		" easy exange of two portions of text
 	Plug 'itchyny/lightline.vim'
-	" Plug 'vim-airline/vim-airline'	" activate the vim-airline
-	" Plug 'vim-airline/vim-airline-themes'	" themse for the vim-airline
 	Plug 'tpope/vim-capslock'			" Software capslock in insert and normal
 	Plug 'tpope/vim-commentary'			" toggle comments
 	Plug 'tpope/vim-fugitive'			" git wrapper
@@ -42,10 +37,9 @@ call plug#begin('~/.vim/bundle')
 	" Plug 'ycm-core/YouCompleteMe'    " advanced code completion
 	" Plug 'jakubbortlik/vim-praat'	" syntax highlighting for praat
 	Plug 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
-	"
+
 	" Consider these plugins:
 	" Plug 'jalvesaq/Nvim-R'		" improved support for R code
-	" Plug 'vim-scripts/UniCycle'		" replace --, ..., ', and \"
 	" Plug 'tpope/vim-flagship'			" Status line and tab line
 	" Plug 'tpope/vim-flatfoot'			" Enhancement of 'f' and 't' kyes
 	" Plug 'tpope/vim-obsession'		" Record sessions continuously
@@ -80,10 +74,8 @@ let g:lightline = {
       \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'myfilename': 'LightlineFilename',
       \   'readonly': 'LightlineReadonly',
       \   'fugitive': 'LightlineFugitive',
-      \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
 
@@ -96,16 +88,6 @@ function! LightlineFugitive()
 		return branch !=# '' ? ''.branch : ''
 	endif
 	return ''
-endfunction
-function! LightlineFilename()
-	return (LightlineReadonly() !=# '' ? LightlineReadonly() . ' ' : '') .
-		  \ (&ft ==# 'vimfiler' ? vimfiler#get_status_string() :
-		  \  &ft ==# 'unite' ? unite#get_status_string() :
-		  \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]') .
-		  \ (LightlineModified() !=# '' ? ' ' . LightlineModified() : '')
-endfunction
-function! LightlineModified()
-	return &modifiable && &modified ? '+' : ''
 endfunction
 
 " jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (or <C-@>).
@@ -142,12 +124,6 @@ let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
 " Run current file with python with ,r
 nnoremap ,r :!python %<cr>
-
-"=================
-" builtin plugins:
-"=================
-
-runtime macros/matchit.vim	" matchit plugin finds matching if/endif, etc.
 
 " prepend (^=) the ftplugins directory
 set runtimepath^=~/.vim/ftplugin/
@@ -248,12 +224,6 @@ nnoremap <leader>. <c-^>
 " enable . command in visual mode
 vnoremap . :normal .<cr>
 
-" keybindings for moving between split windows:
-" nnoremap <C-J> <C-W>j
-" nnoremap <C-K> <C-W>k
-" nnoremap <C-L> <C-W>l
-" nnoremap <C-H> <C-W>h
-" nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 " Some terminal settings:
 if has('nvim')
 	tnoremap <C-J> <C-\><C-n><C-W>j
@@ -273,10 +243,11 @@ if has('nvim')
     " tnoremap <ESC> <C-\><C-n>
 endif
 
+" Move three lines down/up instead of just one
 nnoremap <C-E> 3<C-E>
 nnoremap <C-Y> 3<C-Y>
 
-" edit vimrc in the ~/dotfiles/
+" Edit vimrc in the ~/dotfiles/
 nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.sml \| setlocal nowrap<CR>
 nnoremap <Leader>vt :tabedit ~/dotfiles/vimrc.sml<CR>
 " source the linked .vimrc from ~/
@@ -286,11 +257,11 @@ else
 	nnoremap <Leader>vs :source ~/.vimrc<CR>
 endif
 
-" edit and source the keymap file for Czech
+" Edit and source the keymap file for Czech
 nnoremap <Leader>cc :tabedit ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
 nnoremap <Leader>cs :source ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
 
-" open a Git status window
+" Open a Git status window
 nnoremap gs :Gstatus<CR>
 
 " language settings
@@ -330,7 +301,7 @@ function! CycleKeymapsUp()
 endfunction
 inoremap <silent> <C-K><C-K> <Esc>:call CycleKeymapsUp()<CR>a
 
-" text formatting settings
+" Text formatting mappings
 nnoremap <Leader>tw :setlocal textwidth=80<CR>
 nnoremap <Leader>t7 :setlocal textwidth=75<CR>
 nnoremap <Leader>t0 :setlocal textwidth=0<CR>
@@ -338,18 +309,18 @@ nnoremap <Leader>t4 :setlocal tabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>t8 :setlocal tabstop=8 shiftwidth=8<CR>
 nnoremap <Leader>q gwip
 
-" turn off highlighting for search resutls
+" Turn off highlighting for search resutls
 nnoremap coh :nohlsearch<CR>
 
-" remap Space to toggle folds
+" Remap Space to toggle folds
 nnoremap <Space> za
 vnoremap <Space> za
 
-" save current buffer by using Ctrl-s:
+" Save current buffer by using Ctrl-s:
 nnoremap <C-S> :w<CR>
 inoremap <C-S> <Esc>:w<CR>
 
-" change the last word in a line from "false" to "true" and vicer versa
+" Change the first occurence in a line of "false" to "true" and vicer versa
 " Mnemonic: cv - Change Value
 function! ToggleTrueFalse()
     " virtual columns ignore multibyte characters, so if there is such a
