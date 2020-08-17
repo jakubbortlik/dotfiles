@@ -35,7 +35,7 @@ call plug#begin('~/.vim/bundle')
 	Plug 'vim-scripts/VisIncr'		" in/decreasing columns of Ns and dates
 	Plug 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
 	" Plug 'ycm-core/YouCompleteMe'    " advanced code completion
-	" Plug 'jakubbortlik/vim-praat'	" syntax highlighting for praat
+	Plug 'jakubbortlik/vim-praat', { 'for': 'praat' }	" syntax highlighting for praat
 	Plug 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 
 	" Consider these plugins:
@@ -49,6 +49,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'vim-scripts/ReplaceWithRegister' " Replace text with contents of a register
     Plug 'chrisbra/unicode.vim'         " Work with unicode characters
     Plug 'terryma/vim-smooth-scroll'    " Smooth scrolling
+    Plug 'jakubbortlik/vim-psytoolkit', { 'for': 'psy' }  " Syntax highlighting for PsyToolkit scripts
 
 	" Colors
 	Plug 'nanotech/jellybeans.vim'
