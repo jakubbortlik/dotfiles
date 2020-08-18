@@ -69,15 +69,19 @@ call plug#end()
 " Lightline plugin
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
+      \   'left': [ [ 'mode', 'paste', 'keymap' ],
       \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
+      \   'keymap': 'LightlineKeymap',
       \   'readonly': 'LightlineReadonly',
       \   'fugitive': 'LightlineFugitive',
       \ },
       \ }
 
+function! LightlineKeymap()
+	return &keymap
+endfunction
 function! LightlineReadonly()
 	return &readonly ? '' : ''
 endfunction
