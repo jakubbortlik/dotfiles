@@ -126,7 +126,7 @@ let g:pymode_rope_autoimport = 1
 let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
 " Run current file with python with ,r
-nnoremap ,r :!python %<cr>
+nnoremap ,r :!python %
 
 " prepend (^=) the ftplugins directory
 set runtimepath^=~/.vim/ftplugin/
@@ -272,13 +272,9 @@ nnoremap <Leader>cs :source ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
 nnoremap gs :Gstatus<CR>
 
 " language settings
-nnoremap <Leader>cz :setlocal keymap=czech<CR>
-nnoremap <Leader>ip :setlocal keymap=ipa<CR>
-nnoremap <Leader>en :setlocal keymap=<CR>
-nnoremap <Leader>ru :setlocal keymap=russian-jcukenwin<CR>
-nnoremap <Leader>scs :setlocal spelllang=cs<CR>
-nnoremap <Leader>spl :setlocal spelllang=pl<CR>
-nnoremap <Leader>sen :setlocal spelllang=en_us<CR>
+nnoremap <Leader>sc :setlocal spelllang=cs<CR>
+nnoremap <Leader>sp :setlocal spelllang=pl<CR>
+nnoremap <Leader>se :setlocal spelllang=en_us<CR>
 nnoremap <Leader>sl :setlocal spelllang?<CR>
 
 " cycle through keymaps: English -> Czech -> IPA in insert mode by pressing
@@ -295,6 +291,7 @@ function! CycleKeymapsDown()
 	endif
 endfunction
 inoremap <silent> <C-K><C-J> <Esc>:call CycleKeymapsDown()<CR>a
+nnoremap <silent> ckj :call CycleKeymapsDown()<CR>
 function! CycleKeymapsUp()
 	if &keymap == ""
 		:setlocal keymap=ipa
@@ -307,6 +304,7 @@ function! CycleKeymapsUp()
 	endif
 endfunction
 inoremap <silent> <C-K><C-K> <Esc>:call CycleKeymapsUp()<CR>a
+nnoremap <silent> ckk :call CycleKeymapsUp()<CR>
 
 " Text formatting mappings
 nnoremap <Leader>tw :setlocal textwidth=80<CR>
