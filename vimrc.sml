@@ -310,7 +310,7 @@ inoremap <silent> <C-K><C-K> <Esc>:call CycleKeymapsUp()<CR>a
 
 " Text formatting mappings
 nnoremap <Leader>tw :setlocal textwidth=80<CR>
-nnoremap <Leader>t7 :setlocal textwidth=75<CR>
+nnoremap <Leader>t7 :setlocal textwidth=72<CR>
 nnoremap <Leader>t0 :setlocal textwidth=0<CR>
 nnoremap <Leader>t4 :setlocal tabstop=4 shiftwidth=4<CR>
 nnoremap <Leader>t8 :setlocal tabstop=8 shiftwidth=8<CR>
