@@ -8,18 +8,24 @@
 [diff "praat"]
 	lextconv = base64
 [alias]
-	lol = log --oneline --graph --all --decorate
-	pl = pull --prune
-	log = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-	p = push origin HEAD
-	d = diff
-	c = commit
-	ca = commit -a
-	co = checkout
-	cb = copy-branch-name
 	b = branch
-	s = status -sb
-	ac = add -A && git commit -m
+	c = commit
+	d = diff
+	ca = commit -a
+	cb = copy-branch-name
+	co = checkout
+	cm = checkout master
+	d = diff
+	log = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	lol = log --oneline --graph --all --decorate
+	p = push origin HEAD
+	pl = pull --prune
+	s = status
+	sb = status -sb
+[credential]
+	helper = store
 	ctags = !.git/hooks/ctags
 [init]
 	templatedir = ~/.git_template
+[push]
+	default = simple
