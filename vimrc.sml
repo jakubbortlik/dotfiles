@@ -127,6 +127,7 @@ let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
 " Run current file with python with ,r
 nnoremap ,r :!python %
+nnoremap ,u :!python -m unittest<CR>
 
 " prepend (^=) the ftplugins directory
 set runtimepath^=~/.vim/ftplugin/
@@ -267,9 +268,6 @@ endif
 " Edit and source the keymap file for Czech
 nnoremap <Leader>cc :tabedit ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
 nnoremap <Leader>cs :source ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
-
-" Open a Git status window
-nnoremap gs :Gstatus<CR>
 
 " language settings
 nnoremap <Leader>sc :setlocal spelllang=cs<CR>
