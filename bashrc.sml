@@ -145,18 +145,13 @@ alias l='ls -CF'
 
 # Git aliases:
 alias g='git'
-alias gs='git status'
-alias gss='git status -sb'
-alias gl='git pull --prune'
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gp='git push origin HEAD'
-alias gd='git diff'
-alias gc='git commit'
-alias gca='git commit -a'
-alias gco='git checkout'
-alias gcb='git copy-branch-name'
-alias gb='git branch'
-alias gac='git add -A && git commit -m'
+# Git branch bash completion
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+  
+  # Add git completion to aliases
+  __git_complete g __git_main
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
