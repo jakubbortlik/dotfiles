@@ -69,11 +69,12 @@ call plug#end()
 " Lightline plugin
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'keymap' ],
+      \   'left': [ [ 'mode', 'paste', 'keymap', 'capslock' ],
       \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'keymap': 'LightlineKeymap',
+	  \   'capslock': 'CapsLock',
       \   'readonly': 'LightlineReadonly',
       \   'fugitive': 'LightlineFugitive',
       \ },
@@ -91,6 +92,9 @@ function! LightlineFugitive()
 		return branch !=# '' ? ''.branch : ''
 	endif
 	return ''
+endfunction
+function! CapsLock()
+	return CapsLockStatusline()
 endfunction
 
 " jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (or <C-@>).
@@ -256,8 +260,8 @@ nnoremap <C-E> 3<C-E>
 nnoremap <C-Y> 3<C-Y>
 
 " Edit vimrc in the ~/dotfiles/
-nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.sml \| setlocal nowrap<CR>
-nnoremap <Leader>vt :tabedit ~/dotfiles/vimrc.sml<CR>
+nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.sml \| setlocal nowrap nobuflisted<CR>
+nnoremap <Leader>vt :tabedit ~/dotfiles/vimrc.sml \| setlocal nobuflisted<CR>
 " source the linked .vimrc from ~/
 if has('nvim')
 	nnoremap <Leader>vs :source ~/.config/nvim/init.vim<CR>
@@ -266,7 +270,7 @@ else
 endif
 
 " Edit and source the keymap file for Czech
-nnoremap <Leader>cc :tabedit ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
+nnoremap <Leader>cc :tabedit ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim \| setlocal nobuflisted<CR>
 nnoremap <Leader>cs :source ~/.vim/bundle/vim-keymaps/keymap/czech_utf-8.vim<CR>
 
 " language settings

@@ -107,8 +107,8 @@ set show_hidden_bookmarks true
 
 # Which colorscheme to use?  These colorschemes are available by default:
 # default, jungle, snow, solarized
-set colorscheme default
-# set colorscheme jungle
+# set colorscheme default
+set colorscheme jungle
 # set colorscheme snow
 # set colorscheme solarized
 
