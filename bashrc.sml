@@ -173,10 +173,40 @@ alias t='tmux'
 alias ta='tmux attach'
 alias ts='tmux ls'
 
+# wc aliases:
+alias lc='wc -l'
+
+# Simplify `cut` usage with tab-separated files
+alias cutt="cut -d'	' -f"
+
 # Some extra aliases etc.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [[ -r "$HOME/.bashrc_extras" ]]; then
 	source $HOME/.bashrc_extras
 fi
+
+# Remap cd to pushd and bd to popd
+function cd() {
+  if [ "$#" = "0" ]
+  then
+    pushd ${HOME} > /dev/null
+  elif [ -f "${1}" ]
+  then
+    ${EDITOR} ${1}
+  else
+    pushd "$1" > /dev/null
+  fi
+}
+function bd(){
+  if [ "$#" = "0" ]
+  then
+    popd > /dev/null
+  else
+    for i in $(seq ${1})
+    do
+      popd > /dev/null
+    done
+  fi
+}
 
 # vim:set syntax=sh:
