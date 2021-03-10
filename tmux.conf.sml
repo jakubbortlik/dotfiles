@@ -1,20 +1,25 @@
 # use some vim-like keybindings
-bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
-bind-key -T copy-mode-vi 'y' send-keys -X copy-selection
-bind-key -T copy-mode-vi 'C-v' send-keys -X rectangle-toggle
+unbind-key -t vi-copy v
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+bind-key -t vi-copy 'C-v' rectangle-toggle
 
 # the following configuration comes mostly from:
 # http://technopoetic.com/2014/05/emulating-powerline-with-just-vim-and-tmux/
 
 # Index windows from 1
 set-option -g base-index 1
+
+# Make Prefix + 0 go to window number 10
+bind 0 select-window -t :10
  
 # If a window is closed, renumber the remaining windows
 set -g renumber-windows on
 
-# Lower delay
-set -s escape-time 1
- 
+# Swap windows with < and >
+bind -r < swap-window -t -1
+bind -r > swap-window -t +1
+
 # Silence bell
 set-option -g visual-bell off
  
@@ -110,7 +115,23 @@ bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
 bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
 bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 
+# Disable the delay between an escape key press and subsequent characters. This
+# increases Vim responsiveness:
+set -sg escape-time 0
+
 # don't rename windows automatically
 set-option -g allow-rename off
 
+# Settings for the Tmux Plugin Manager
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+# Other examples:
+set -g @plugin 'tmux-plugins/tmux-sidebar'
+# set -g @plugin 'seebi/tmux-colors-solarized'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
 # vim:set syntax=sh:
