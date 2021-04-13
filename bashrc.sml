@@ -127,15 +127,32 @@ bind '"\C-o":"ra\C-m"'
 
 # Get the header of a table and prepend column numbers to column names.
 header () {
-	if [[ $# -eq 0 ]]; then
-		echo "No arguments supplied"
-	else
-		if [[ -r $1 ]]; then
-			head -1 $1 | sed -r 's/\s/\n/g' | nl
-		else
-			echo "File $1 not readable"
-		fi
-	fi
+  SEPARATOR="[ 	;,]"
+  if [[ $# -eq 0 ]]; then
+    echo "No arguments supplied"
+  elif [[ $# -gt 2 ]]; then
+    echo "Too many arguments"
+  else
+    if [[ $# -eq 2 ]]; then
+      if [[ $1 == "," ]]; then
+        SEPARATOR=","
+      elif [[ $1 == ";" ]]; then
+        SEPARATOR=";"
+      elif [[ $1 == " " ]]; then
+        SEPARATOR=" "
+      elif [[ $1 == "	" ]]; then
+        SEPARATOR="	"
+      fi
+      FILE="$2"
+    else
+      FILE="$1"
+    fi
+    if [[ -r ${FILE} ]]; then
+      head -1 ${FILE} | sed -r "s/${SEPARATOR}/\n/g" | nl
+    else
+      echo "File ${FILE} not readable"
+    fi
+  fi
 }
 
 # some more ls aliases
@@ -166,7 +183,8 @@ fi
 
 # Bashrc aliases
 alias b="$EDITOR ~/dotfiles/bashrc.sml"
-alias bs=". $HOME/.bashrc"
+alias be="$EDITOR $HOME/.bashrc_extras"
+alias bs=". $HOME/.bashrc; . $HOME/.bashrc_extras"
 
 # Tmux aliases:
 alias t='tmux'
