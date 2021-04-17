@@ -14,7 +14,11 @@ set iskeyword+=$			" not sure why this is here...
 "========================================
 " Settings for the vim-plug plugin manager:
 "========================================
-
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 call plug#begin('~/.vim/bundle')
 	Plug 'junegunn/vim-plug'		" get Vim help for vim-plug
 	Plug 'tommcdo/vim-exchange'		" easy exange of two portions of text
