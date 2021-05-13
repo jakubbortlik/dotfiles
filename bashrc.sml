@@ -66,14 +66,19 @@ fi
 
 PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf -- "~";IFS=/; for q in ${p:1}; do printf -- /"${q:0:3}"; done; printf -- "${q:3}")'
 
+bg_jobs() {
+  if [[ -n $(jobs 2> /dev/null) ]]; then
+    echo "(jobs: $(jobs 2> /dev/null | wc -l))"
+  fi
+}
 git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 if [ "$color_prompt" = yes ]; then
-    export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;33m\]${PS1X}\[\033[01;32m\]$(git_branch)\[\033[00m\]\$ '
+    export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;33m\]${PS1X}\[\033[01;32m\]$(git_branch)$(bg_jobs)\[\033[00m\]\$ '
 else
 	echo "NO COLOR PROMPT"
-    export PS1='\u@\h:\w\[\033[01;32m\]$(git_branch)\[\033[00m\]\$ '
+    export PS1='\u@\h:\w\[\033[01;32m\]$(git_branch)$(bg_jobs)\[\033[00m\]\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -227,4 +232,5 @@ function bd(){
   fi
 }
 
+export DISPLAY=:0
 # vim:set syntax=sh:
