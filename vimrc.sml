@@ -135,7 +135,7 @@ let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
 " Run current file with python with ,r
 nnoremap ,r :!python %
-nnoremap ,u :!python -m unittest<CR>
+nnoremap ,e :!python -m unittest<CR>
 
 " prepend (^=) the ftplugins directory
 set runtimepath^=~/.vim/ftplugin/
@@ -262,6 +262,9 @@ endif
 " Move three lines down/up instead of just one
 nnoremap <C-E> 3<C-E>
 nnoremap <C-Y> 3<C-Y>
+
+" Create a new window (split vertically) and start editing an empty file in it.
+nnoremap <C-W>N :vnew<CR>
 
 " Edit vimrc in the ~/dotfiles/
 nnoremap <Leader>ve :vsplit ~/dotfiles/vimrc.sml \| setlocal nowrap nobuflisted<CR>
