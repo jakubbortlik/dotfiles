@@ -16,8 +16,8 @@
 	co = checkout
 	cm = checkout master
 	d = diff
-	log = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-	lol = log --oneline --graph --all --decorate
+	l = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	ll = log --oneline --graph --all --decorate
 	p = push origin HEAD
 	pl = pull --prune
 	s = status
