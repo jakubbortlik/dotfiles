@@ -135,7 +135,7 @@ let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
 " Run current file with python with ,r
 nnoremap ,r :!python %
-nnoremap ,e :!python -m unittest<CR>
+nnoremap ,e :!python -m unittest %
 
 " prepend (^=) the ftplugins directory
 set runtimepath^=~/.vim/ftplugin/
