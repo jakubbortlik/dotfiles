@@ -75,7 +75,7 @@ if [[ "${PWD}" = "${DOTFILES_DIR}" ]]; then
 	# If the ~/dotfiles/bin directory exists, create a link to it in "$HOME"
 	echo -e "\nCreating symlinks for the bin directory:"
 	echo "========================================"
-	BIN_LINK="${HOME}/.bin"
+	BIN_LINK="${HOME}/bin"
 	BIN_TARGET=$(readlink -f "$BIN_LINK")
 	if [[ -d "${DOTFILES_DIR}/bin" ]]; then
 		if [[ ! -d "$BIN_LINK" ]] || [[ "${BIN_TARGET}" != "${DOTFILES_DIR}/bin" ]]; then
