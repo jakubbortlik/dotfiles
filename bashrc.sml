@@ -12,7 +12,14 @@ esac
 # used to save buffers in vim or to serach through bash history
 stty -ixon
 
-export EDITOR=vim
+if command -v nvim > /dev/null 2>&1; then
+  export EDITOR=nvim
+  alias vi='nvim'
+else
+  export EDITOR=vim
+  alias vi='vim'
+fi
+
 if [[ -n ${TMUX} ]]; then
   export TERM="screen-256color"
 else
