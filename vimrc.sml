@@ -1,11 +1,11 @@
 " Source a global configuration file if available
-if filereadable("/etc/vimrc")
+if filereadable('/etc/vimrc')
 	source /etc/vimrc
 endif
 
 set nocompatible			" enable features which differ from 'vi'
 
-if has("syntax")			" enable syntax highlighting
+if has('syntax')			" enable syntax highlighting
 	syntax on
 endif
 
@@ -43,16 +43,16 @@ call plug#begin('~/.vim/bundle')
 	Plug 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
 
 	" Consider these plugins:
-	" Plug 'jalvesaq/Nvim-R'		" improved support for R code
+	Plug 'jalvesaq/Nvim-R'		" improved support for R code
 	" Plug 'tpope/vim-flagship'			" Status line and tab line
 	" Plug 'tpope/vim-flatfoot'			" Enhancement of 'f' and 't' kyes
 	" Plug 'tpope/vim-obsession'		" Record sessions continuously
 	Plug 'mechatroner/rainbow_csv'	" Show tabulated data in colour
 	" Plug 'chrisbra/csv.vim'			" Another CSV plugin
 	Plug 'scrooloose/syntastic'		" syntax checking
-    Plug 'vim-scripts/ReplaceWithRegister' " Replace text with contents of a register
+    " Plug 'vim-scripts/ReplaceWithRegister' " Replace text with contents of a register
     Plug 'chrisbra/unicode.vim'         " Work with unicode characters
-    Plug 'terryma/vim-smooth-scroll'    " Smooth scrolling
+    " Plug 'terryma/vim-smooth-scroll'    " Smooth scrolling
     Plug 'jakubbortlik/vim-psytoolkit', { 'for': 'psy' }  " Syntax highlighting for PsyToolkit scripts
 
 	" Colors
@@ -78,7 +78,7 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'keymap': 'LightlineKeymap',
-	  \   'capslock': 'CapsLock',
+	  \   'capslock': 'CapsLockStatusline',
       \   'readonly': 'LightlineReadonly',
       \   'fugitive': 'LightlineFugitive',
       \ },
@@ -97,8 +97,6 @@ function! LightlineFugitive()
 	endif
 	return ''
 endfunction
-function! CapsLock()
-	return CapsLockStatusline()
 endfunction
 
 " jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (or <C-@>).
@@ -117,25 +115,26 @@ let g:BASH_MapLeader  = ','         " set the leader used by bash-vim plugin
 
 " don't allow automatic syntax checks for Python by Syntastic 
 let g:syntastic_mode_map = {
-    \ "mode": "active",
-    \ "active_filetypes": [],
-    \ "passive_filetypes": ["python"] }
+    \ 'mode': 'active',
+    \ 'active_filetypes': [],
+    \ 'passive_filetypes': ['python'] }
 
 " only allow some lint checkers for pymode (pylama is enabled by default, but it
 " does not recognize f-strings
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_lint_ignore = ["W605", "E501"]
-let g:pymode_lint_checkers = ['pep8']
+let g:pymode_lint_ignore = ['E501']
 
 " Enable autoimport
+" let g:pymode_rope = 1
 let g:pymode_rope_autoimport = 1
 
 " Set breakpoint command (does not work in Python 3.5)
 let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
 " Run current file with python with ,r
-nnoremap ,r :!python %
+" nnoremap ,r :!python %
 nnoremap ,e :!python -m unittest %
+nnoremap ,d :tab new term://pudb3 %
 
 " prepend (^=) the ftplugins directory
 set runtimepath^=~/.vim/ftplugin/
@@ -176,7 +175,7 @@ hi Comment cterm=NONE
 if !has('nvim')
   set term=screen-256color
 endif 
-if &term =~ "screen-256color"
+if &term =~ 'screen-256color'
   " 256 colors
   let &t_Co = 256
   " restore screen after quitting
@@ -216,7 +215,7 @@ set nostartofline				" don't go to start of line with <CR>, <C-d>, etc.
 set spelllang=en_us				" The default language for spell-checking
 set thesaurus+=~/.vim/mthesaur.txt
 set fileformat=unix				" in case I use this vimrc on a Windows machine
-if !exists("g:vim_has_started")
+if !exists('g:vim_has_started')
 	set encoding=utf8
 endif
 let g:vim_has_started = 1
@@ -225,12 +224,12 @@ let g:vim_has_started = 1
 " Some mappings:
 "===============
 
-let mapleader = ","
+let mapleader = ','
 " remap two commas to perform Next search in opposite direction
 nnoremap ,,	,
 
 " show the number of occurences of the last search
-nnoremap <leader>n :%s///gn<CR>
+nnoremap <leader>n 0:%s///gn<CR>
 " show all lines containing the last search
 nnoremap <leader>g :g//p<CR>
 
@@ -289,26 +288,26 @@ nnoremap <Leader>sl :setlocal spelllang?<CR>
 " cycle through keymaps: English -> Czech -> IPA in insert mode by pressing
 " <C-K><C-J> and <C-K><C-K>
 function! CycleKeymapsDown()
-	if &keymap == ""
+	if &keymap == ''
 		:setlocal keymap=czech
-	elseif &keymap == "czech"
+	elseif &keymap == 'czech'
 		:setlocal keymap=russian-jcukenwin
-	elseif &keymap == "russian-jcukenwin"
+	elseif &keymap == 'russian-jcukenwin'
         :setlocal keymap=ipa
-	elseif &keymap == "ipa"
+	elseif &keymap == 'ipa'
         :setlocal keymap=
 	endif
 endfunction
 inoremap <silent> <C-K><C-J> <Esc>:call CycleKeymapsDown()<CR>a
 nnoremap <silent> ckj :call CycleKeymapsDown()<CR>
 function! CycleKeymapsUp()
-	if &keymap == ""
+	if &keymap == ''
 		:setlocal keymap=ipa
-	elseif &keymap == "ipa"
+	elseif &keymap == 'ipa'
 		:setlocal keymap=russian-jcukenwin
-	elseif &keymap == "russian-jcukenwin"
+	elseif &keymap == 'russian-jcukenwin'
         :setlocal keymap=czech
-	elseif &keymap == "czech"
+	elseif &keymap == 'czech'
         :setlocal keymap=
 	endif
 endfunction
@@ -331,51 +330,51 @@ nnoremap <Space> za
 vnoremap <Space> za
 
 " Save current buffer by using Ctrl-s:
-nnoremap <C-S> :w<CR>
-inoremap <C-S> <Esc>:w<CR>
+nnoremap <C-S> :update<CR>
+inoremap <C-S> <Esc>:update<CR>
 
-" Change the first occurence in a line of "false" to "true" and vicer versa
+" Change the first occurence in a line of 'false' to 'true' and vicer versa
 " Mnemonic: cv - Change Value
 function! ToggleTrueFalse()
     " virtual columns ignore multibyte characters, so if there is such a
     " character in in front of the cursor, it needs to be taken care of:
     " try it here: /sʌm ˌaɪ ˌpʰiː ˈeɪ/ false
-	let column = virtcol(".")
-    let bytecol = col(".")
+	let column = virtcol('.')
+    let bytecol = col('.')
     let coldiff = bytecol - column
-	let linenumber = line(".")
-	let line = getline(".")
+	let linenumber = line('.')
+	let line = getline('.')
     let value_bytes = match(line, '\c\<\(false\|true\)\>')
 	let value = strpart(line , value_bytes, 4)
-	if value ==# "fals"
-        echo "false -> true"
+	if value ==# 'fals'
+        echo 'false -> true'
 		silent execute "normal! :.s/\\Cfalse/true/"
-	elseif value ==# "Fals"
-        echo "False -> True"
+	elseif value ==# 'Fals'
+        echo 'False -> True'
 		silent execute "normal! :.s/\\CFalse/True/"
-	elseif value ==# "FALS"
-        echo "FALSE -> TRUE"
+	elseif value ==# 'FALS'
+        echo 'FALSE -> TRUE'
 		silent execute "normal! :.s/\\CFALSE/TRUE/"
-	elseif value ==# "true"
-        echo "true -> false"
+	elseif value ==# 'true'
+        echo 'true -> false'
 		silent execute "normal! :.s/\\Ctrue/false/"
-	elseif value ==# "True"
-        echo "True -> False"
+	elseif value ==# 'True'
+        echo 'True -> False'
 		silent execute "normal! :.s/\\CTrue/False/"
-	elseif value ==# "TRUE"
-        echo "TRUE -> FALSE"
+	elseif value ==# 'TRUE'
+        echo 'TRUE -> FALSE'
 		silent execute "normal! :.s/\\CTRUE/FALSE/"
 	else
-        echo "No false/true value on line"
+        echo 'No false/true value on line'
 	endif
     let value_end = value_bytes + 4
-    if value == "true"
+    if value == 'true'
         if value_end >= column
             let offset = 0
         else
             let offset = 1
         endif
-    elseif value == "fals"
+    elseif value == 'fals'
         if value_end >= column
             let offset = 0
         else
@@ -389,9 +388,5 @@ endfunction
 nnoremap <silent> cv :call ToggleTrueFalse()<CR>
 
 " EXPERIMENTAL SETTINGS:
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " vim:set commentstring="%s syntax=vim:

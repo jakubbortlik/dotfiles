@@ -239,5 +239,5 @@ function bd(){
   fi
 }
 
-export DISPLAY=:0
+export DISPLAY=$(ip route|awk '/^default/{print $3}'):0
 # vim:set syntax=sh:

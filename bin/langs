@@ -1,0 +1,68 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: langs
+# 
+#         USAGE: ./langs
+# 
+#   DESCRIPTION: 
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: YOUR NAME (), 
+#  ORGANIZATION: 
+#       CREATED: 10/19/2020 07:58
+#      REVISION: 07/23/2021 21:57
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+print_usage() {
+    printf "Usage: langs INPUT_FILE.zip\n" 1>&2; exit 1;
+}
+
+INPUT_FILE=$@
+
+# Input directory
+if [[ ! -r ${INPUT_FILE} ]]; then
+	langs=$(find . -maxdepth 1 -iname "languages*txt" | sort | tail -n1)
+	if [[ -r $langs ]]; then
+		echo -e "Showing newest lang list: ${langs}"
+		cat ${langs}
+	else
+		langs=$(find . -maxdepth 1 -iname "2021*zip" | sort | tail -n1)
+		if [[ -r $langs ]]; then
+			langs $(basename $langs)
+		else
+			echo "No zip file available. Exiting."
+			print_usage
+		fi
+	fi
+	exit 1
+else
+	file_type=$(file ${INPUT_FILE} -b | cut -d' ' -f1)
+	if [[ $file_type != 'Zip' ]]; then
+		echo "Not a zip file: ${INPUT_FILE}"
+		print_usage
+	fi
+	output_dir="${INPUT_FILE%%.zip}"
+	echo "Processing file: ${INPUT_FILE}"
+	unzip "${INPUT_FILE}" -d $output_dir
+	unlink last
+	ln -i -s $output_dir last
+	Rscript process_data.R $output_dir
+	clear
+	cut -d',' -f8-14 $output_dir/data.csv | grep -v '"' | sort -r | uniq -c | grep -v "native" > languages_${INPUT_FILE}.txt.tmp
+	OLDIFS=$IFS
+	IFS=':'
+	for i in "\n1.Czech":" 1," "\n2.Slovak":" 0,1" "\n3.American_English":" 0,0,1," "\n4.British_English":" 0,0,0,1," "\n5.German":" 0,0,0,0,1," "\n6.Polish":" 0,0,0,0,0,1," "\n7.other":" 0,0,0,0,0,0,1"; do
+		set -- $i
+		echo -e $1 >> languages_${INPUT_FILE}.txt
+		grep "$2" languages_${INPUT_FILE}.txt.tmp >> languages_${INPUT_FILE}.txt
+	done
+	IFS=$OLDIFS
+	rm languages_${INPUT_FILE}.txt.tmp
+	cat languages_${INPUT_FILE}.txt
+fi

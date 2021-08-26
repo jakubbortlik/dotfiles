@@ -118,7 +118,17 @@ if [[ "${PWD}" = "${DOTFILES_DIR}" ]]; then
 		echo $NVIM_INIT - already exists and links to $NI_TARGET
 	fi
 
-	echo -e "\nFinished creating symlinks.\n"
+	echo -e "\nFinished creating symlinks."
+
+	TMP="${HOME}/.tmux/plugins/tpm"
+	echo -e "\nCloning Tmux Plugin Manager repository:"
+	echo "======================================="
+	if [[ ! -e $TMP ]]; then
+		git clone https://github.com/tmux-plugins/tpm $TMP
+		echo "git clone https://github.com/tmux-plugins/tpm $TMP"
+	else
+		echo -e "Tmux Plugin Manager repository already exists in $TMP"
+	fi
 else
 	echo Cannot cd to "$HOME"/dotfiles
 	exit
