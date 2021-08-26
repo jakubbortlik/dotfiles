@@ -1,5 +1,5 @@
 [user]
-	email = jakub.bortlik@gmail.com
+	email = jakub.bortlik@protonmail.com
 	name = Jakub Bortlik
 [color]
 	ui = true
