@@ -32,15 +32,17 @@ call plug#begin('~/.vim/bundle')
 	Plug 'tpope/vim-sensible'			" 'A universal set of defaults'
 	Plug 'tpope/vim-speeddating'		" let <C-A>, <C-X> work on dates properly
 	Plug 'tpope/vim-surround'			" parentheses, brackets, quotes, and more 
-	Plug 'tpope/vim-tbone'			    " Basic tmux support for Vim
+	" Plug 'tpope/vim-tbone'			    " Basic tmux support for Vim
 	Plug 'tpope/vim-unimpaired'	        " pairs of handy bracket mappings
 	Plug 'tpope/vim-vinegar'			" Enhance netrw
 	Plug 'vim-scripts/bash-support.vim' " selfexplanatory
 	Plug 'vim-scripts/VisIncr'		" in/decreasing columns of Ns and dates
+	Plug 'vim-scripts/linediff.vim'		" diff two different parts of the same file
 	Plug 'jakubbortlik/vim-keymaps'	" use custom keymaps for Czech and IPA
 	" Plug 'ycm-core/YouCompleteMe'    " advanced code completion
 	Plug 'jakubbortlik/vim-praat', { 'for': 'praat' }	" syntax highlighting for praat
 	Plug 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
+    Plug 'jakubbortlik/vim-dictionary'
 
 	" Consider these plugins:
 	Plug 'jalvesaq/Nvim-R'		" improved support for R code
@@ -97,13 +99,12 @@ function! LightlineFugitive()
 	endif
 	return ''
 endfunction
-endfunction
 
-" jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (or <C-@>).
-" Default <c-j> conflicts with custom mapping to move between split windows.
-imap <C-Space> <Plug>IMAP_JumpForward
-nmap <C-Space> <Plug>IMAP_JumpForward
-vmap <C-Space> <Plug>IMAP_JumpForward
+" " jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (or <C-@>).
+" " Default <c-j> conflicts with custom mapping to move between split windows.
+" imap <C-Space> <Plug>IMAP_JumpForward
+" nmap <C-Space> <Plug>IMAP_JumpForward
+" vmap <C-Space> <Plug>IMAP_JumpForward
 
 " disable the vim-latex-suite compiler
 let g:doneTexCompiler = 1
@@ -125,15 +126,16 @@ let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_ignore = ['E501']
 
 " Enable autoimport
-" let g:pymode_rope = 1
-let g:pymode_rope_autoimport = 1
+let g:pymode_rope = 1
+" let g:pymode_rope_autoimport = 1
+let g:pymode_rope_complete_on_dot = 0
 
 " Set breakpoint command (does not work in Python 3.5)
 let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
 " Run current file with python with ,r
-" nnoremap ,r :!python %
-nnoremap ,e :!python -m unittest %
+nnoremap ,r :!python %
+nnoremap ,e :!python -m unittest<cr>
 nnoremap ,d :tab new term://pudb3 %
 
 " prepend (^=) the ftplugins directory

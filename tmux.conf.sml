@@ -76,12 +76,12 @@ set -g xterm-keys on
 setw -g monitor-activity on
  
 # highlight panes
-set -g window-style 'fg=colour247,bg=colour236'
+set -g window-style 'fg=colour247,bg=colour235'
 set -g window-active-style 'fg=colour250,bg=black'
-set-option -g pane-active-border-fg red
-set-option -g pane-active-border-bg black
-set-option -g pane-border-fg blue
-set-option -g pane-border-bg black
+# set-option -g pane-active-border-fg red
+# set-option -g pane-active-border-bg black
+# set-option -g pane-border-fg blue
+# set-option -g pane-border-bg black
  
 # Here's where we get into the status line:
 # These basically set the defaults
@@ -113,7 +113,7 @@ bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
 bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
 bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
 bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
-bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+# bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 
 # Disable the delay between an escape key press and subsequent characters. This
 # increases Vim responsiveness:

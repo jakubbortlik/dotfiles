@@ -1,3 +1,4 @@
 .*.swp
 bin/praat*
 bin/test
+tags
