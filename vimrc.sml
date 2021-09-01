@@ -74,6 +74,11 @@ call plug#end()
 
 " Lightline plugin
 let g:lightline = {
+      \ 'mode_map': {
+      \   'niI': '(insert)', 'niR': '(replace)', 'niV': '(virt-replace)',
+      \   'ic': 'INSERT', 'ix': 'INSERT', 'Rc': 'REPLACE', 'Rv': 'VIRT-REPLACE',
+      \   'Rx': 'REPLACE',
+      \ },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', 'keymap', 'capslock' ],
       \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
@@ -85,18 +90,6 @@ let g:lightline = {
       \   'fugitive': 'LightlineFugitive',
       \ },
       \ }
-
-" Enhanced showmode
-let g:lightline.mode_map = {
-    \ 'niI' : '(insert)',
-    \ 'niR' : '(replace)',
-    \ 'niV' : '(virt-replace)',
-    \ 'ic' : 'INSERT',
-    \ 'ix' : 'INSERT',
-    \ 'Rc' : 'REPLACE',
-    \ 'Rv' : 'VIRT-REPLACE',
-    \ 'Rx' : 'REPLACE',
-    \ }
 
 function! LightlineKeymap()
 	return &keymap
