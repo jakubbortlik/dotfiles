@@ -86,6 +86,18 @@ let g:lightline = {
       \ },
       \ }
 
+" Enhanced showmode
+let g:lightline.mode_map = {
+    \ 'niI' : '(insert)',
+    \ 'niR' : '(replace)',
+    \ 'niV' : '(virt-replace)',
+    \ 'ic' : 'INSERT',
+    \ 'ix' : 'INSERT',
+    \ 'Rc' : 'REPLACE',
+    \ 'Rv' : 'VIRT-REPLACE',
+    \ 'Rx' : 'REPLACE',
+    \ }
+
 function! LightlineKeymap()
 	return &keymap
 endfunction
