@@ -21,8 +21,14 @@ set -o nounset                              # Treat unset variables as an error
 
 pdf_names="$@"
 
+if ! timeout 1s xset q &>/dev/null; then
+	echo "No X server at \$DISPLAY [$DISPLAY]"
+	exit 1
+fi
+
 if [[ $# -eq 0 ]]; then
 	echo "No arguments supplied"
+	exit 1
 else
 	for pdf_name in $pdf_names; do
 		if [[ -r "$pdf_name" ]]; then
@@ -34,4 +40,3 @@ else
 fi
 
 exit
-
