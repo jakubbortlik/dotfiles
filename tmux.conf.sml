@@ -1,8 +1,8 @@
 # use some vim-like keybindings
-unbind-key -t vi-copy v
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
-bind-key -t vi-copy 'C-v' rectangle-toggle
+unbind-key -T copy-mode-vi v
+bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
+bind-key -T copy-mode-vi 'y' send-keys -X copy-selection
+bind-key -T copy-mode-vi 'C-v' send-keys -X rectangle-toggle
 
 # the following configuration comes mostly from:
 # http://technopoetic.com/2014/05/emulating-powerline-with-just-vim-and-tmux/
@@ -92,11 +92,11 @@ set-option -g status-fg white
 # Set the length of the left region to 40 characters
 set-option -g status-left-length 40
  
-set-option -g message-fg white
-set-option -g message-bg red
+set-option -g message-style fg=white
+set-option -g message-style bg=red
  
-setw -g window-status-bg black
-setw -g window-status-current-fg red
+setw -g window-status-style bg=black
+setw -g window-status-current-style fg=red
 #setw -g window-status-alert-attr default
 #setw -g window-status-alert-fg yellow
  
@@ -127,6 +127,7 @@ set-option -g allow-rename off
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'christoomey/vim-tmux-navigator'
 
 # Other examples:
 set -g @plugin 'tmux-plugins/tmux-sidebar'

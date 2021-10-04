@@ -139,32 +139,33 @@ bind '"\C-o":"ra\C-m"'
 
 # Get the header of a table and prepend column numbers to column names.
 header () {
-  SEPARATOR="[ 	;,]"
-  if [[ $# -eq 0 ]]; then
-    echo "No arguments supplied"
-  elif [[ $# -gt 2 ]]; then
-    echo "Too many arguments"
-  else
+    SEPARATOR="[ 	;,]"
+    if [[ $# -eq 0 ]]; then
+        echo "No arguments supplied"
+        exit 1
+    elif [[ $# -gt 2 ]]; then
+        echo "Too many arguments"
+        exit 1
+    fi
     if [[ $# -eq 2 ]]; then
-      if [[ $1 == "," ]]; then
-        SEPARATOR=","
-      elif [[ $1 == ";" ]]; then
-        SEPARATOR=";"
-      elif [[ $1 == " " ]]; then
-        SEPARATOR=" "
-      elif [[ $1 == "	" ]]; then
-        SEPARATOR="	"
-      fi
-      FILE="$2"
+        if [[ $1 == "," ]]; then
+            SEPARATOR=","
+        elif [[ $1 == ";" ]]; then
+            SEPARATOR=";"
+        elif [[ $1 == " " ]]; then
+            SEPARATOR=" "
+        elif [[ $1 == "	" ]]; then
+            SEPARATOR="	"
+        fi
+        FILE="$2"
     else
-      FILE="$1"
+        FILE="$1"
     fi
     if [[ -r ${FILE} ]]; then
-      head -1 ${FILE} | sed -r "s/${SEPARATOR}/\n/g" | nl
+        head -1 ${FILE} | sed -r "s/${SEPARATOR}/\n/g" | nl
     else
-      echo "File ${FILE} not readable"
+        echo "File ${FILE} not readable"
     fi
-  fi
 }
 
 # some more ls aliases

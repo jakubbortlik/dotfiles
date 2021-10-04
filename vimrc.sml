@@ -85,7 +85,7 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'keymap': 'LightlineKeymap',
-	  \   'capslock': 'CapsLockStatusline',
+      \   'capslock': 'CapsLockStatusline',
       \   'readonly': 'LightlineReadonly',
       \   'fugitive': 'LightlineFugitive',
       \ },
@@ -138,14 +138,19 @@ let g:pymode_rope_complete_on_dot = 0
 " Set breakpoint command (does not work in Python 3.5)
 let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
-" Run current file with python with ,r
-nnoremap ,r :!python %
-nnoremap ,e :!python -m unittest<cr>
-nnoremap ,d :tab new term://pudb3 %
+nnoremap <leader>r :!python %
+nnoremap <leader>te :!python -m unittest<cr>
+if has('nvim')
+  nnoremap <leader>d :tab new term://pudb3 %
+else
+  nnoremap <leader>d :!pudb3 %
+endif
+nnoremap <leader>B /breakpoint()<cr>
 
 " prepend (^=) the ftplugins directory
 set runtimepath^=~/.vim/ftplugin/
 
+nnoremap dr :RainbowDelim<cr>
 "==========================================
 " Put your non-Plugin stuff after this line
 "==========================================
@@ -210,6 +215,9 @@ set tabstop=4					" Nr of spaces a <Tab> in the file counts for
 set shiftwidth=4				" Set indentation lenght to 4 spaces, default = tabstop
 set completeopt=menuone,longest,preview " list of options for i_mode completion
 set hlsearch					" Use highlighting with search:
+if has('nvim')
+  set inccommand=nosplit
+endif
 set cursorline					" the line with the cursor is underlined
 set timeoutlen=1500				" time out for leader mappings
 set splitbelow
@@ -231,17 +239,15 @@ let g:vim_has_started = 1
 " Some mappings:
 "===============
 
-let mapleader = ','
-" remap two commas to perform Next search in opposite direction
-nnoremap ,,	,
-
-" show the number of occurences of the last search
-nnoremap <leader>n 0:%s///gn<CR>
-" show all lines containing the last search
-nnoremap <leader>g :g//p<CR>
+" Count Occurences of the last search
+nnoremap co ms0:%s///gn<CR>`s
+nnoremap cO ms:%s///gn<CR>`s
+" Grep Occurences of the last search
+nnoremap go ms:g//p<CR>
+nnoremap gO ms:g//p<CR>
 
 " switch between current and last buffer
-nnoremap <leader>. <c-^>
+nnoremap <leader>\ <c-^>
 
 " enable . command in visual mode
 vnoremap . :normal .<cr>
@@ -260,8 +266,9 @@ if has('nvim')
 	" always leave insert mode when switching from a terminal window
 	autocmd BufWinLeave,WinLeave term://* stopinsert
     tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-    nnoremap <leader>te :new term://bash<cr>
-    nnoremap <leader>tt :vne term://bash<cr>
+    nnoremap <leader>tn :new term://bash<cr>
+    nnoremap <leader>tv :vne term://bash<cr>
+    nnoremap <leader>ti :vne term://ipython<cr>
     " tnoremap <ESC> <C-\><C-n>
 endif
 
@@ -306,6 +313,7 @@ function! CycleKeymapsDown()
 	endif
 endfunction
 inoremap <silent> <C-K><C-J> <Esc>:call CycleKeymapsDown()<CR>a
+cnoremap <silent> <C-K><C-J> :call CycleKeymapsDown()<CR>:
 nnoremap <silent> ckj :call CycleKeymapsDown()<CR>
 function! CycleKeymapsUp()
 	if &keymap == ''
@@ -319,6 +327,7 @@ function! CycleKeymapsUp()
 	endif
 endfunction
 inoremap <silent> <C-K><C-K> <Esc>:call CycleKeymapsUp()<CR>a
+cnoremap <silent> <C-K><C-K> :call CycleKeymapsUp()<CR>:
 nnoremap <silent> ckk :call CycleKeymapsUp()<CR>
 
 " Text formatting mappings
@@ -330,7 +339,7 @@ nnoremap <Leader>t8 :setlocal tabstop=8 shiftwidth=8<CR>
 nnoremap <Leader>q gwip
 
 " Turn off highlighting for search resutls
-nnoremap coh :nohlsearch<CR>
+nnoremap yoo :nohlsearch<CR>
 
 " Remap Space to toggle folds
 nnoremap <Space> za
@@ -346,54 +355,55 @@ function! ToggleTrueFalse()
     " virtual columns ignore multibyte characters, so if there is such a
     " character in in front of the cursor, it needs to be taken care of:
     " try it here: /sʌm ˌaɪ ˌpʰiː ˈeɪ/ false
-	let column = virtcol('.')
-    let bytecol = col('.')
-    let coldiff = bytecol - column
-	let linenumber = line('.')
-	let line = getline('.')
-    let value_bytes = match(line, '\c\<\(false\|true\)\>')
-	let value = strpart(line , value_bytes, 4)
-	if value ==# 'fals'
+	let l:column = virtcol('.')
+    let l:bytecol = col('.')
+    let l:coldiff = l:bytecol - l:column
+	let l:linenumber = line('.')
+	let l:line = getline('.')
+    let l:value_bytes = match(l:line, '\c\<\(false\|true\)\>')
+	let l:value = strpart(l:line , l:value_bytes, 4)
+	if l:value ==# 'fals'
         echo 'false -> true'
-		silent execute "normal! :.s/\\Cfalse/true/"
-	elseif value ==# 'Fals'
+		silent execute "normal! :.s/\\C\\<false\\>/true/"
+	elseif l:value ==# 'Fals'
         echo 'False -> True'
-		silent execute "normal! :.s/\\CFalse/True/"
-	elseif value ==# 'FALS'
+		silent execute "normal! :.s/\\C\\<False\\>/True/"
+	elseif l:value ==# 'FALS'
         echo 'FALSE -> TRUE'
-		silent execute "normal! :.s/\\CFALSE/TRUE/"
-	elseif value ==# 'true'
+		silent execute "normal! :.s/\\C\\<FALSE\\>/TRUE/"
+	elseif l:value ==# 'true'
         echo 'true -> false'
-		silent execute "normal! :.s/\\Ctrue/false/"
-	elseif value ==# 'True'
+		silent execute "normal! :.s/\\C\\<true\\>/false/"
+	elseif l:value ==# 'True'
         echo 'True -> False'
-		silent execute "normal! :.s/\\CTrue/False/"
-	elseif value ==# 'TRUE'
+		silent execute "normal! :.s/\\C\\<True\\>/False/"
+	elseif l:value ==# 'TRUE'
         echo 'TRUE -> FALSE'
-		silent execute "normal! :.s/\\CTRUE/FALSE/"
+		silent execute "normal! :.s/\\C\\<TRUE\\>/FALSE/"
 	else
         echo 'No false/true value on line'
 	endif
-    let value_end = value_bytes + 4
-    if value == 'true'
-        if value_end >= column
-            let offset = 0
+    let l:value_end = l:value_bytes + 4
+    if l:value == 'true'
+        if l:value_end >= l:column
+            let l:offset = 0
         else
-            let offset = 1
+            let l:offset = 1
         endif
-    elseif value == 'fals'
-        if value_end >= column
-            let offset = 0
+    elseif l:value == 'fals'
+        if l:value_end >= l:column
+            let l:offset = 0
         else
-            let offset = -1
+            let l:offset = -1
         endif
     else
-        let offset = 0
+        let l:offset = 0
     endif
-    call cursor(linenumber, column + offset + coldiff)
+    call cursor(l:linenumber, l:column + l:offset + l:coldiff)
 endfunction
 nnoremap <silent> cv :call ToggleTrueFalse()<CR>
 
 " EXPERIMENTAL SETTINGS:
+nnoremap <leader>m :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 
 " vim:set commentstring="%s syntax=vim:
