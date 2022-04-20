@@ -40,8 +40,6 @@ call plug#begin('~/.vim/bundle')
   Plug 'jakubbortlik/vim-praat', { 'for': 'praat' }  " syntax highlighting for praat
   Plug 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
   Plug 'jakubbortlik/vim-dictionary'
-  " Plug 'https://gitlab.int.phonexia.com/bortlik/vim-phxstm.git'
-  Plug 'ambv/black'
   Plug 'mechatroner/rainbow_csv'        " Show tabulated data in colour
   Plug 'chrisbra/unicode.vim'           " Work with unicode characters
 
@@ -50,8 +48,6 @@ call plug#begin('~/.vim/bundle')
   " Plug 'tpope/vim-flagship'           " Status line and tab line
   " Plug 'tpope/vim-flatfoot'           " Enhancement of 'f' and 't' kyes
   " Plug 'tpope/vim-obsession'          " Record sessions continuously
-  Plug '~/code/vim-phxstm', { 'for': 'phxstm' }
-  Plug '~/code/vim-keymaps'
   " Plug 'scrooloose/syntastic'         " syntax checking
   Plug 'jakubbortlik/vim-psytoolkit', { 'for': 'psy' }  " Syntax highlighting for PsyToolkit scripts
 
@@ -61,6 +57,7 @@ call plug#begin('~/.vim/bundle')
   " Python plugins:
   Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }      " Turn VIM into a Python IDE
+  Plug 'ambv/black'                     " Black code style
   " Plug 'dense-analysis/ale'           " Asynchronous Lint Engine for VIM 8 or neovim
 
   " latex plugins
@@ -70,6 +67,8 @@ call plug#begin('~/.vim/bundle')
   Plug 'lervag/vimtex', { 'for': 'tex' }            " latex plugin with background
 
   " Local plugins
+  Plug '~/code/vim-phxstm', { 'for': 'phxstm' }
+  Plug '~/code/vim-keymaps'
 call plug#end()
 
 " Lightline plugin
@@ -136,7 +135,7 @@ let g:pymode_rope_complete_on_dot = 0   " Disable automatic completion on dot
 let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
 nnoremap <leader>r :!python %
-nnoremap <leader>te :!python -m unittest<cr>
+nnoremap <leader>te :!python -m unittest %<cr>
 if has('nvim')
   nnoremap <leader>d :tab new term://pudb3 %
 else
