@@ -16,8 +16,7 @@ if command -v nvim > /dev/null 2>&1; then
   export EDITOR=nvim
   alias vi='nvim'
 else
-  export EDITOR=vim
-  alias vi='vim'
+  export EDITOR=vi
 fi
 
 if [[ -n ${TMUX} ]]; then
@@ -61,14 +60,14 @@ esac
 #force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
 PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf -- "~";IFS=/; for q in ${p:1}; do printf -- /"${q:0:3}"; done; printf -- "${q:3}")'
@@ -82,10 +81,10 @@ git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 if [ "$color_prompt" = yes ]; then
-    export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;33m\]${PS1X}\[\033[01;32m\]$(git_branch)$(bg_jobs)\[\033[00m\]\$ '
+  export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;33m\]${PS1X}\[\033[01;32m\]$(git_branch)$(bg_jobs)\[\033[00m\]\$ '
 else
-	echo "NO COLOR PROMPT"
-    export PS1='\u@\h:\w\[\033[01;32m\]$(git_branch)$(bg_jobs)\[\033[00m\]\$ '
+  echo "NO COLOR PROMPT"
+  export PS1='\u@\h:\w\[\033[01;32m\]$(git_branch)$(bg_jobs)\[\033[00m\]\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -116,14 +115,14 @@ fi
 # Do not load rc.config - ranger configuration twice
 export RANGER_LOAD_DEFAULT_RC=FALSE
 function ranger-cd {
-	tempfile="$(mktemp -t tmp.XXXXXX)"
-	# /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-    ~/code/ranger/ranger.py --choosedir="$tempfile" "${@:-$(pwd)}"
-	test -f "$tempfile" &&
-	if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
-		cd -- "$(cat "$tempfile")"
-	fi
-	rm -f -- "$tempfile"
+  tempfile="$(mktemp -t tmp.XXXXXX)"
+  # /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+  ~/code/ranger/ranger.py --choosedir="$tempfile" "${@:-$(pwd)}"
+  test -f "$tempfile" &&
+  if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+    cd -- "$(cat "$tempfile")"
+  fi
+  rm -f -- "$tempfile"
 }
 alias ranger='ranger-cd'
 # alias "ra" to start ranger or return to the already started version
@@ -182,6 +181,11 @@ if [ -f ~/.git-completion.bash ]; then
   # Add git completion to aliases
   __git_complete g __git_main
 fi
+lull() {
+  for lfs_object in $@; do
+    git lfs pull --include="${lfs_object}" --exclude="";
+  done
+}
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -212,8 +216,8 @@ alias cutt="cut -d'	' -f"
 
 # Some extra aliases etc.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [[ -r "$HOME/.bashrc_extras" ]]; then
-	source $HOME/.bashrc_extras
+if [[ -f "$HOME/.bashrc_extras" ]]; then
+  source $HOME/.bashrc_extras
 fi
 
 # Remap cd to pushd and bd to popd
@@ -241,4 +245,5 @@ function bd(){
 }
 
 export DISPLAY=$(ip route|awk '/^default/{print $3}'):0
-# vim:set syntax=sh:
+
+# vim:set syntax=sh commentstring=#%s:
