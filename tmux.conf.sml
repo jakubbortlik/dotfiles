@@ -32,6 +32,12 @@ bind C-q display-pane
 
 # Bind control-key + Ctrl-a to last window
 bind-key C-a last-window
+
+# Bind prefix+f to disable input to pane
+bind-key f select-pane -d
+
+# Bind prefix+F to enable input to pane
+bind-key F select-pane -e
  
 # Up the history limit
 set-option -g history-limit 10000
@@ -51,10 +57,10 @@ bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
  
 # Pane resizing commands
-bind H resize-pane -L 5
-bind J resize-pane -D 5
-bind K resize-pane -U 5
-bind L resize-pane -R 5
+bind H resize-pane -L 10
+bind J resize-pane -D 10
+bind K resize-pane -U 10
+bind L resize-pane -R 10
  
 # Turn on mouse support
 # set-option -g mode-mouse on

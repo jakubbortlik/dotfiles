@@ -18,6 +18,7 @@ if command -v nvim > /dev/null 2>&1; then
 else
   export EDITOR=vi
 fi
+alias swapurge="rm ~/.local/share/nvim/swap/*"
 
 if [[ -n ${TMUX} ]]; then
   export TERM="screen-256color"
@@ -205,7 +206,7 @@ alias bs=". $HOME/.bashrc; . $HOME/.bashrc_extras"
 
 # Tmux aliases:
 alias t='tmux'
-alias ta='tmux attach'
+alias ta='tmux attach -d'
 alias ts='tmux ls'
 
 # wc aliases:

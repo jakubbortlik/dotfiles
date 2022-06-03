@@ -124,6 +124,9 @@ let g:syntastic_mode_map = {
     \ 'active_filetypes': [],
     \ 'passive_filetypes': ['python'] }
 
+let g:semshi#error_sign_delay = 3
+nmap <silent> yr :Semshi rename<cr>
+
 " only allow some lint checkers for pymode (pylama is enabled by default)
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_ignore = ['E501']
@@ -138,6 +141,7 @@ nnoremap <leader>r :!python %
 nnoremap <leader>te :!python -m unittest %<cr>
 if has('nvim')
   nnoremap <leader>d :tab new term://pudb3 %
+  nnoremap <leader>td :tab new term://python -m unittest %<cr>
 else
   nnoremap <leader>d :!pudb3 %
 endif
