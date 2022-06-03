@@ -1,10 +1,10 @@
 [user]
-	email = jakub.bortlik@protonmail.com
+	email = jakub.bortlik@proton.me
 	name = Jakub Bortlik
 [color]
 	ui = true
 [core]
-	editor = nvim
+	editor = vim
 [diff "praat"]
 	lextconv = base64
 [alias]
