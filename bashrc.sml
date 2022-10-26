@@ -176,9 +176,9 @@ alias l='ls -CF'
 # Git aliases:
 alias g='git'
 # Git branch bash completion
+# curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/git-completion.bash
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
-  
   # Add git completion to aliases
   __git_complete g __git_main
 fi
@@ -187,6 +187,8 @@ lull() {
     git lfs pull --include="${lfs_object}" --exclude="";
   done
 }
+# Regenerate ctags:
+alias rtags='~/.git_template/hooks/ctags >/dev/null 2>&1 &'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -214,6 +216,8 @@ alias lc='wc -l'
 
 # Simplify `cut` usage with tab-separated files
 alias cutt="cut -d'	' -f"
+# Simplify `cut` usage with space-separated files
+alias cuts="cut -d' ' -f"
 
 # Some extra aliases etc.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.

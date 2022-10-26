@@ -50,6 +50,14 @@ call plug#begin('~/.vim/bundle')
   " Plug 'tpope/vim-obsession'          " Record sessions continuously
   " Plug 'scrooloose/syntastic'         " syntax checking
   Plug 'jakubbortlik/vim-psytoolkit', { 'for': 'psy' }  " Syntax highlighting for PsyToolkit scripts
+  Plug 'SirVer/ultisnips'
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    let g:ultisnips_python_style = 'google'
+  Plug 'honza/vim-snippets'
+  Plug 'vim-scripts/FastFold'
+  Plug 'tmhedberg/SimpylFold'
 
   " Colors
   Plug 'nanotech/jellybeans.vim'
@@ -125,13 +133,15 @@ let g:syntastic_mode_map = {
     \ 'passive_filetypes': ['python'] }
 
 let g:semshi#error_sign_delay = 3
+let g:semshi#always_update_all_highlights = 1
+" let g:semshi#tolerate_syntax_errors = 1
 nmap <silent> yr :Semshi rename<cr>
 
 " only allow some lint checkers for pymode (pylama is enabled by default)
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_ignore = ['E501']
 let g:pymode_preview_position = 'botright'
-
+let g:pymode_options_max_line_length = 88
 let g:pymode_rope = 1
 let g:pymode_rope_lookup_project = 0    " Disable rope lookup project, it causes vim to hang
 let g:pymode_rope_complete_on_dot = 0   " Disable automatic completion on dot 
@@ -207,8 +217,8 @@ endif
 set noshowmode                  " don't show mode I am in.
 
 set linebreak                   " define where the lines break on the screen if wrap is set
-set textwidth=80                " Set the textwidth
-set colorcolumn=81              " Display a line at the N column:
+set textwidth=88                " Set the textwidth
+set colorcolumn=89              " Display a line at the N column:
 highlight ColorColumn ctermbg=52    " Set the color of the ColorColumn to "brown"
 set number                      " Show linenumbers
 set tabstop=4                   " Nr of spaces a <Tab> in the file counts for  
@@ -235,6 +245,7 @@ if !exists('g:vim_has_started')
   set encoding=utf8
 endif
 let g:vim_has_started = 1
+let g:keymaps = ['', 'czech', 'russian']
 
 "===============
 " Some mappings:
@@ -291,18 +302,16 @@ else
 endif
 
 " language settings
-nnoremap <Leader>sc :setlocal spelllang=cs<CR>
-nnoremap <Leader>sp :setlocal spelllang=pl<CR>
-nnoremap <Leader>se :setlocal spelllang=en_us<CR>
+nnoremap <Leader>sp :setlocal spelllang=
 nnoremap <Leader>sl :setlocal spelllang?<CR>
+nnoremap <Leader>sc :setlocal spelllang=cs<CR>
+nnoremap <Leader>se :setlocal spelllang=en_us<CR>
 
 " Text formatting mappings
-nnoremap <Leader>tw :setlocal textwidth=80<CR>
-nnoremap <Leader>t7 :setlocal textwidth=72<CR>
 nnoremap <Leader>t0 :setlocal textwidth=0<CR>
-nnoremap <Leader>t4 :setlocal tabstop=4 shiftwidth=4<CR>
-nnoremap <Leader>t8 :setlocal tabstop=8 shiftwidth=8<CR>
-nnoremap <Leader>q gwip
+nnoremap <Leader>t7 :setlocal textwidth=72<CR>
+nnoremap <Leader>t8 :setlocal textwidth=80<CR>
+nnoremap <Leader>tw :setlocal textwidth=88<CR>
 
 " Turn off highlighting for search resutls
 nnoremap yoo :nohlsearch<CR>
@@ -381,7 +390,6 @@ function! SearchMultiLine(bang, ...)
   endif
 endfunction
 command! -bang -nargs=* -complete=tag S call SearchMultiLine(<bang>0, <f-args>)|normal! /<C-R>/<CR>
-nnoremap c/ :S 
 
 command! -complete=file -nargs=+ Grr call s:RunShellCommand('grep '.<q-args>)
 let stt_dir = '/home/jakub.bortlik/code/STT-ES6-3.45.5/'
@@ -403,5 +411,8 @@ function! s:RunShellCommand(cmdline)
   setlocal nomodifiable
   1
 endfunction
+
+" nnoremap <c-o> :echo "Do not use \<c-o\>!"<cr>
+" nnoremap <c-i> :echo "Do not use \<c-i\>!"<cr>
 
 " vim:set commentstring="%s syntax=vim:
