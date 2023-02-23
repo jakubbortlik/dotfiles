@@ -29,7 +29,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-scriptease'           " Vim plugin for Vim plugins
   Plug 'tpope/vim-sensible'             " 'A universal set of defaults'
   Plug 'tpope/vim-speeddating'          " let <C-A>, <C-X> work on dates properly
-  Plug 'tpope/vim-surround'             " parentheses, brackets, quotes, and more 
+  Plug 'tpope/vim-surround'             " parentheses, brackets, quotes, and more
   " Plug 'tpope/vim-tbone'              " Basic tmux support for Vim
   Plug 'tpope/vim-unimpaired'           " pairs of handy bracket mappings
   Plug 'tpope/vim-vinegar'              " Enhance netrw
@@ -44,11 +44,10 @@ call plug#begin('~/.vim/bundle')
   Plug 'chrisbra/unicode.vim'           " Work with unicode characters
 
   " Consider these plugins:
-  Plug 'jalvesaq/Nvim-R'                " improved support for R code
+  Plug 'jalvesaq/Nvim-R', { 'for': 'R' } " improved support for R code
   " Plug 'tpope/vim-flagship'           " Status line and tab line
   " Plug 'tpope/vim-flatfoot'           " Enhancement of 'f' and 't' kyes
   " Plug 'tpope/vim-obsession'          " Record sessions continuously
-  " Plug 'scrooloose/syntastic'         " syntax checking
   Plug 'jakubbortlik/vim-psytoolkit', { 'for': 'psy' }  " Syntax highlighting for PsyToolkit scripts
   Plug 'SirVer/ultisnips'
     let g:UltiSnipsExpandTrigger="<tab>"
@@ -66,7 +65,15 @@ call plug#begin('~/.vim/bundle')
   Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }      " Turn VIM into a Python IDE
   Plug 'ambv/black'                     " Black code style
+
+  " Plug 'neovim/nvim-lspconfig'
+
   " Plug 'dense-analysis/ale'           " Asynchronous Lint Engine for VIM 8 or neovim
+  " let g:ale_linters = { "python": ["ruff", "pyflakes"] }
+  " let g:ale_fixers = {
+  " \       "python": ["black", "ruff"],
+  " \}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " latex plugins
   if has('nvim')
@@ -75,29 +82,53 @@ call plug#begin('~/.vim/bundle')
   Plug 'lervag/vimtex', { 'for': 'tex' }            " latex plugin with background
 
   " Local plugins
+  Plug '~/code/vim-dictionary', { 'for': 'dct' }
   Plug '~/code/vim-phxstm', { 'for': 'phxstm' }
   Plug '~/code/vim-keymaps'
+  Plug '~/code/vim-srt'
 call plug#end()
 
 " Lightline plugin
 let g:lightline = {
-      \ 'mode_map': {
-      \   'niI': '(insert)', 'niR': '(replace)', 'niV': '(virt-replace)',
-      \   'ic': 'INSERT', 'ix': 'INSERT', 'Rc': 'REPLACE', 'Rv': 'VIRT-REPLACE',
-      \   'Rx': 'REPLACE',
-      \ },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', 'keymap', 'capslock' ],
       \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
       \ },
+      \   'mode_map': {
+      \     'n': 'NORMAL', 'no': 'NORMAL', 'nov': 'NORMAL', 'noV': 'NORMAL',
+      \     "no\<C-v>": 'NORMAL', 'niI': '(insert)', 'niR': '(replace)',
+      \     'niV': '(vreplace)', 'nt': '(TERMINAL)', 'ntT': '(terminal)',
+      \     'v': 'VISUAL', 'vs': '(visual)', 'V': 'V-LINE', 'Vs': '(visual)',
+      \     "\<C-v>": 'V-BLOCK', "\<C-v>s": '(v-block)', 's': 'SELECT',
+      \     'S': 'S-LINE', "\<C-s>": 'S-BLOCK', 'i': 'INSERT', 'ic': 'INSERT',
+      \     'ix': 'INSERT', 'R': 'REPLACE', 'Rc': 'REPLACE', 'Rx': 'REPLACE',
+      \     'Rv': 'VREPLACE', 'Rvc': 'VREPLACE', 'Rvx': 'VREPLACE',
+      \     'c': 'COMMAND', 't': 'TERMINAL'
+      \   },
       \ 'component_function': {
-      \   'keymap': 'LightlineKeymap',
       \   'capslock': 'CapsLockStatusline',
-      \   'readonly': 'LightlineReadonly',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
       \   'fugitive': 'LightlineFugitive',
+      \   'keymap': 'LightlineKeymap',
+      \   'mode': 'DetailedMode',
+      \   'readonly': 'LightlineReadonly',
       \ },
       \ }
 
+function! LightlineFileencoding()
+  return winwidth(0) > 70 ? (&fileencoding !=# '' ? &fileencoding : &encoding) : ''
+endfunction
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+function! DetailedMode()
+  return get(g:lightline.mode_map, mode(1), get(g:lightline.mode_map, mode(), ''))
+endfunction
 function! LightlineKeymap()
   return &keymap
 endfunction
@@ -121,16 +152,10 @@ vmap <C-q> <Plug>IMAP_JumpForward
 " disable the vim-latex-suite compiler
 let g:doneTexCompiler = 1
 
-let g:tex_flavor='latex'            " start latex-suite for empty .tex files 
+let g:tex_flavor='latex'            " start latex-suite for empty .tex files
 
 " bashsupport mappings
 let g:BASH_MapLeader  = ','         " set the leader used by bash-vim plugin
-
-" don't allow automatic syntax checks for Python by Syntastic 
-let g:syntastic_mode_map = {
-    \ 'mode': 'active',
-    \ 'active_filetypes': [],
-    \ 'passive_filetypes': ['python'] }
 
 let g:semshi#error_sign_delay = 3
 let g:semshi#always_update_all_highlights = 1
@@ -138,13 +163,13 @@ let g:semshi#always_update_all_highlights = 1
 nmap <silent> yr :Semshi rename<cr>
 
 " only allow some lint checkers for pymode (pylama is enabled by default)
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_lint_ignore = ['E501']
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pep257']
+let g:pymode_lint_ignore = ['E501', 'D102', 'D103', 'D105', 'D107', 'D203', 'D213', 'D406', 'D407', 'D413']
 let g:pymode_preview_position = 'botright'
 let g:pymode_options_max_line_length = 88
 let g:pymode_rope = 1
 let g:pymode_rope_lookup_project = 0    " Disable rope lookup project, it causes vim to hang
-let g:pymode_rope_complete_on_dot = 0   " Disable automatic completion on dot 
+let g:pymode_rope_complete_on_dot = 0   " Disable automatic completion on dot
 let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
 nnoremap <leader>r :!python %
@@ -198,7 +223,7 @@ hi SpellBad cterm=bold ctermbg=88 gui=bold guibg=#902020 guisp=Red
 
 if !has('nvim')
   set term=screen-256color
-endif 
+endif
 if &term =~ 'screen-256color'
   " 256 colors
   let &t_Co = 256
@@ -221,7 +246,7 @@ set textwidth=88                " Set the textwidth
 set colorcolumn=89              " Display a line at the N column:
 highlight ColorColumn ctermbg=52    " Set the color of the ColorColumn to "brown"
 set number                      " Show linenumbers
-set tabstop=4                   " Nr of spaces a <Tab> in the file counts for  
+set tabstop=4                   " Nr of spaces a <Tab> in the file counts for
 set shiftwidth=4                " Set indentation lenght to 4 spaces, default = tabstop
 set completeopt=menuone,longest,preview " list of options for i_mode completion
 set hlsearch                    " Use highlighting with search:
@@ -266,12 +291,17 @@ vnoremap . :normal .<cr>
 
 " Some terminal settings:
 if has('nvim')
-  tnoremap <C-J> <C-\><C-n><C-W>j
-  tnoremap <C-K> <C-\><C-n><C-W>k
-  tnoremap <C-L> <C-\><C-n><C-W>l
-  tnoremap <C-H> <C-\><C-n><C-W>h
-  " nnoremap <BS> <C-W>h
+  let g:tmux_navigator_no_mappings = 1
+  noremap <silent> <A-h> :<C-U>TmuxNavigateLeft<cr>
+  noremap <silent> <A-j> :<C-U>TmuxNavigateDown<cr>
+  noremap <silent> <A-k> :<C-U>TmuxNavigateUp<cr>
+  noremap <silent> <A-l> :<C-U>TmuxNavigateRight<cr>
+  noremap <silent> <A-\> :<C-U>TmuxNavigatePrevious<cr>
   nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+  tnoremap <A-j> <C-\><C-n><C-W>j
+  tnoremap <A-k> <C-\><C-n><C-W>k
+  tnoremap <A-l> <C-\><C-n><C-W>l
+  tnoremap <A-h> <C-\><C-n><C-W>h
 
   " always enter insert mode when switching to a terminal window
   autocmd BufWinEnter,WinEnter term://* startinsert
@@ -380,6 +410,10 @@ nnoremap <silent> cv :call ToggleTrueFalse()<CR>
 
 " EXPERIMENTAL SETTINGS:
 nnoremap c" :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
+
 
 " Search for the ... arguments separated with whitespace (if no '!'),
 " or with non-word characters (if '!' added to command).
@@ -414,5 +448,4 @@ endfunction
 
 " nnoremap <c-o> :echo "Do not use \<c-o\>!"<cr>
 " nnoremap <c-i> :echo "Do not use \<c-i\>!"<cr>
-
-" vim:set commentstring="%s syntax=vim:
+" vim:set ft=vim et sw=2 sts=2 cms="%s syn=vim:
