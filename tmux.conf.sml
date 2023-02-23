@@ -70,7 +70,7 @@ bind L resize-pane -R 10
  
 # 256 colors, this gives me real trouble, and I'm still not sure
 # it's right
-set -g default-terminal "screen-256color"
+set -g default-terminal "tmux-256color"
 
 # alternative copy mode key
 bind Escape copy-mode

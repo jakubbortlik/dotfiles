@@ -16,12 +16,12 @@ if command -v nvim > /dev/null 2>&1; then
   export EDITOR=nvim
   alias vi='nvim'
 else
-  export EDITOR=vi
+  export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
 fi
 alias swapurge="rm ~/.local/share/nvim/swap/*"
 
 if [[ -n ${TMUX} ]]; then
-  export TERM="screen-256color"
+  export TERM="tmux-256color"
 else
   export TERM="xterm-256color"
 fi
@@ -251,4 +251,5 @@ function bd(){
 
 export DISPLAY=$(ip route|awk '/^default/{print $3}'):0
 
-# vim:set syntax=sh commentstring=#%s:
+export PATH=$HOME/local/bin:$PATH
+# vim:set expandtab ts=2 sw=2 syntax=sh commentstring=#%s:

@@ -67,6 +67,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }      " Turn VIM into a Python IDE
   Plug 'ambv/black'                     " Black code style
   " Plug 'dense-analysis/ale'           " Asynchronous Lint Engine for VIM 8 or neovim
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " latex plugins
   if has('nvim')
@@ -118,6 +119,12 @@ imap <C-q> <Plug>IMAP_JumpForward
 nmap <C-q> <Plug>IMAP_JumpForward
 vmap <C-q> <Plug>IMAP_JumpForward
 
+" Mappings for Coc
+nmap [d <Plug>(coc-diagnostic-prev)
+nmap ]d <Plug>(coc-diagnostic-next)
+nmap [D <Plug>(coc-diagnostic-prev-error)
+nmap ]D <Plug>(coc-diagnostic-next-error)
+
 " disable the vim-latex-suite compiler
 let g:doneTexCompiler = 1
 
@@ -138,11 +145,11 @@ let g:semshi#always_update_all_highlights = 1
 nmap <silent> yr :Semshi rename<cr>
 
 " only allow some lint checkers for pymode (pylama is enabled by default)
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_lint_ignore = ['E501']
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pep257']
+let g:pymode_lint_ignore = ['E501', 'D102', 'D103', 'D105', 'D107', 'D203', 'D213', 'D406', 'D407', 'D413']
 let g:pymode_preview_position = 'botright'
 let g:pymode_options_max_line_length = 88
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0    " Disable rope lookup project, it causes vim to hang
 let g:pymode_rope_complete_on_dot = 0   " Disable automatic completion on dot 
 let g:pymode_breakpoint_cmd = 'breakpoint()'
@@ -380,6 +387,9 @@ nnoremap <silent> cv :call ToggleTrueFalse()<CR>
 
 " EXPERIMENTAL SETTINGS:
 nnoremap c" :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 " Search for the ... arguments separated with whitespace (if no '!'),
 " or with non-word characters (if '!' added to command).
