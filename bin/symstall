@@ -72,19 +72,22 @@ if [[ "${PWD}" = "${DOTFILES_DIR}" ]]; then
 		fi
 	done
 
-	# If the ~/dotfiles/bin directory exists, create a link to it in "$HOME"
-	echo -e "\nCreating symlinks for the bin directory:"
-	echo "========================================"
-	BIN_LINK="${HOME}/bin"
-	BIN_TARGET=$(readlink -f "$BIN_LINK")
-	if [[ -d "${DOTFILES_DIR}/bin" ]]; then
-		if [[ ! -d "$BIN_LINK" ]] || [[ "${BIN_TARGET}" != "${DOTFILES_DIR}/bin" ]]; then
-			ln --no-dereference --symbolic --backup=numbered --interactive "${DOTFILES_DIR}/bin" "$BIN_LINK"
-			echo ln --no-dereference  "${DOTFILES_DIR}/bin" "$BIN_LINK"
-		else
-			echo $BIN_LINK - already exists and links to ${DOTFILES_DIR}/bin 
+	# If the following directories exist in ~/dotfiles, create a link to them in "$HOME"
+	dirs="bin .git_template"
+	for d in $dirs; do
+		echo -e "\nCreating symlinks for the "$d" directory:"
+		echo "========================================"
+		DIR_LINK="${HOME}/$d"
+		DIR_TARGET=$(readlink -f "$DIR_LINK")
+		if [[ -d "${DOTFILES_DIR}/$d" ]]; then
+			if [[ ! -d "$DIR_LINK" ]] || [[ "${DIR_TARGET}" != "${DOTFILES_DIR}/$d" ]]; then
+				ln --no-dereference --symbolic --backup=numbered --interactive "${DOTFILES_DIR}/$d" "$DIR_LINK"
+				echo ln --no-dereference  "${DOTFILES_DIR}/$d" "$DIR_LINK"
+			else
+				echo $DIR_LINK - already exists and links to ${DOTFILES_DIR}/$d 
+			fi
 		fi
-	fi
+	done
 
 	# symlinks for neovim:
 	NVIM_DIR="${HOME}/.config/nvim"

@@ -22,7 +22,7 @@
 set -o nounset                              # Treat unset variables as an error
 
 E_XCD=86                                    # Can't change directory?
-DIR="/home/jakub/skola/01_phd/02_dissertation/thesis"
+DIR="/media/shared/bortlik/Dataformat/fix_kk_kz_6"
 LOGFILE="nwords.txt"
 cd "$DIR"
 WRITE_DIFF="false"

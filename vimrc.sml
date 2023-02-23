@@ -24,6 +24,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-capslock'             " Software capslock in insert and normal
   Plug 'tpope/vim-commentary'           " toggle comments
   Plug 'tpope/vim-fugitive'             " git wrapper
+  Plug 'rbong/vim-flog'                 " Git branch viewer
   Plug 'tpope/vim-repeat'               " repeat other plugins with . command
   Plug 'tpope/vim-rsi'                  " Emulate Readline key bindings
   Plug 'tpope/vim-scriptease'           " Vim plugin for Vim plugins
@@ -39,7 +40,6 @@ call plug#begin('~/.vim/bundle')
   " Plug 'ycm-core/YouCompleteMe'       " advanced code completion
   Plug 'jakubbortlik/vim-praat', { 'for': 'praat' }  " syntax highlighting for praat
   Plug 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
-  Plug 'jakubbortlik/vim-dictionary'
   Plug 'mechatroner/rainbow_csv'        " Show tabulated data in colour
   Plug 'chrisbra/unicode.vim'           " Work with unicode characters
 
@@ -49,12 +49,12 @@ call plug#begin('~/.vim/bundle')
   " Plug 'tpope/vim-flatfoot'           " Enhancement of 'f' and 't' kyes
   " Plug 'tpope/vim-obsession'          " Record sessions continuously
   Plug 'jakubbortlik/vim-psytoolkit', { 'for': 'psy' }  " Syntax highlighting for PsyToolkit scripts
-  Plug 'SirVer/ultisnips'
-    let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="<tab>"
-    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-    let g:ultisnips_python_style = 'google'
-  Plug 'honza/vim-snippets'
+  " Plug 'SirVer/ultisnips', { 'for': 'python' }
+    " let g:UltiSnipsExpandTrigger="<tab>"
+    " let g:UltiSnipsJumpForwardTrigger="<tab>"
+    " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    " let g:ultisnips_python_style = 'google'
+  " Plug 'honza/vim-snippets'
   Plug 'vim-scripts/FastFold'
   Plug 'tmhedberg/SimpylFold'
 
@@ -82,10 +82,12 @@ call plug#begin('~/.vim/bundle')
   Plug 'lervag/vimtex', { 'for': 'tex' }            " latex plugin with background
 
   " Local plugins
-  Plug '~/code/vim-dictionary', { 'for': 'dct' }
-  Plug '~/code/vim-phxstm', { 'for': 'phxstm' }
-  Plug '~/code/vim-keymaps'
-  Plug '~/code/vim-srt'
+  " Plug '~/code/vim-phxstm', { 'for': 'phxstm' }
+  " Plug '~/code/vim-keymaps'
+  Plug 'https://gitlab.int.phonexia.com/bortlik/vim-dictionary', { 'for': 'dct' }
+  Plug 'https://gitlab.int.phonexia.com/bortlik/vim-phxstm', { 'for': 'phxstm' }
+  Plug 'https://gitlab.int.phonexia.com/bortlik/vim-srt', { 'for': 'srt' }
+  Plug 'jakubbortlik/vim-keymaps'
 call plug#end()
 
 " Lightline plugin
@@ -149,6 +151,12 @@ imap <C-q> <Plug>IMAP_JumpForward
 nmap <C-q> <Plug>IMAP_JumpForward
 vmap <C-q> <Plug>IMAP_JumpForward
 
+" Mappings for Coc
+nmap [d <Plug>(coc-diagnostic-prev)
+nmap ]d <Plug>(coc-diagnostic-next)
+nmap [D <Plug>(coc-diagnostic-prev-error)
+nmap ]D <Plug>(coc-diagnostic-next-error)
+
 " disable the vim-latex-suite compiler
 let g:doneTexCompiler = 1
 
@@ -167,18 +175,18 @@ let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pep257']
 let g:pymode_lint_ignore = ['E501', 'D102', 'D103', 'D105', 'D107', 'D203', 'D213', 'D406', 'D407', 'D413']
 let g:pymode_preview_position = 'botright'
 let g:pymode_options_max_line_length = 88
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0    " Disable rope lookup project, it causes vim to hang
-let g:pymode_rope_complete_on_dot = 0   " Disable automatic completion on dot
+let g:pymode_rope_complete_on_dot = 0   " Disable automatic completion on dot 
 let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
 nnoremap <leader>r :!python %
 nnoremap <leader>te :!python -m unittest %<cr>
 if has('nvim')
-  nnoremap <leader>d :tab new term://pudb3 %
+  nnoremap <leader>d :tab new term://pudb %
   nnoremap <leader>td :tab new term://python -m unittest %<cr>
 else
-  nnoremap <leader>d :!pudb3 %
+  nnoremap <leader>d :!pudb %
 endif
 nnoremap <leader>f /breakpoint()<cr>
 
@@ -270,7 +278,7 @@ if !exists('g:vim_has_started')
   set encoding=utf8
 endif
 let g:vim_has_started = 1
-let g:keymaps = ['', 'czech', 'russian']
+let g:keymaps = ['', 'ukrainian']
 
 "===============
 " Some mappings:
@@ -413,7 +421,6 @@ nnoremap c" :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:registe
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
-
 
 " Search for the ... arguments separated with whitespace (if no '!'),
 " or with non-word characters (if '!' added to command).
