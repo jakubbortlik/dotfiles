@@ -8,7 +8,7 @@
 #   DESCRIPTION: 1. the script cd's to the ~/dotfiles directory, finds all files
 #                   with the ".sml" extension and creates links in ${HOME}
 #                2. it makes a link for ~/dotfiles/bin if the folder exists
-#				 3. it creates links for nvim
+#                3. it creates links for nvim
 #
 #       OPTIONS: ---
 #  REQUIREMENTS: ---

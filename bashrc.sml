@@ -251,5 +251,5 @@ function bd(){
 
 export DISPLAY=$(ip route|awk '/^default/{print $3}'):0
 
-# vim:set expandtab ts=2 sw=2 syntax=sh commentstring=#%s:
 export PATH=$HOME/local/bin:$PATH
+# vim:set expandtab ts=2 sw=2 syntax=sh commentstring=#%s:
