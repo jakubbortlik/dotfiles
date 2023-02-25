@@ -24,7 +24,9 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-capslock'             " Software capslock in insert and normal
   Plug 'tpope/vim-commentary'           " toggle comments
   Plug 'tpope/vim-fugitive'             " git wrapper
-  Plug 'rbong/vim-flog'                 " Git branch viewer
+  if has('nvim')
+    Plug 'rbong/vim-flog'                 " Git branch viewer
+  endif
   Plug 'tpope/vim-repeat'               " repeat other plugins with . command
   Plug 'tpope/vim-rsi'                  " Emulate Readline key bindings
   Plug 'tpope/vim-scriptease'           " Vim plugin for Vim plugins
@@ -73,7 +75,9 @@ call plug#begin('~/.vim/bundle')
   " let g:ale_fixers = {
   " \       "python": ["black", "ruff"],
   " \}
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  if has('nvim')
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  endif
 
   " latex plugins
   if has('nvim')
@@ -232,7 +236,7 @@ hi SpellBad cterm=bold ctermbg=88 gui=bold guibg=#902020 guisp=Red
 if !has('nvim')
   set term=screen-256color
 endif
-if &term =~ 'screen-256color'
+if &term =~ 'tmux-256color'
   " 256 colors
   let &t_Co = 256
   " restore screen after quitting
@@ -297,15 +301,16 @@ nnoremap <leader>\ <c-^>
 " enable . command in visual mode
 vnoremap . :normal .<cr>
 
+let g:tmux_navigator_no_mappings = 1
+noremap <silent> <A-h> :<C-U>TmuxNavigateLeft<cr>
+noremap <silent> <A-j> :<C-U>TmuxNavigateDown<cr>
+noremap <silent> <A-k> :<C-U>TmuxNavigateUp<cr>
+noremap <silent> <A-l> :<C-U>TmuxNavigateRight<cr>
+noremap <silent> <A-\> :<C-U>TmuxNavigatePrevious<cr>
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+
 " Some terminal settings:
 if has('nvim')
-  let g:tmux_navigator_no_mappings = 1
-  noremap <silent> <A-h> :<C-U>TmuxNavigateLeft<cr>
-  noremap <silent> <A-j> :<C-U>TmuxNavigateDown<cr>
-  noremap <silent> <A-k> :<C-U>TmuxNavigateUp<cr>
-  noremap <silent> <A-l> :<C-U>TmuxNavigateRight<cr>
-  noremap <silent> <A-\> :<C-U>TmuxNavigatePrevious<cr>
-  nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
   tnoremap <A-j> <C-\><C-n><C-W>j
   tnoremap <A-k> <C-\><C-n><C-W>k
   tnoremap <A-l> <C-\><C-n><C-W>l

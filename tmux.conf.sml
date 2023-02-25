@@ -116,11 +116,20 @@ set -g status-right '#[fg=colour100]#[bg=colour100] #[fg=black]%Y-%m-%d #[fg=
 # smart pane switching with awareness of vim splits
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
     | grep -iqE '^([^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?|python)$'"
-bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
-bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
-bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
-bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
-# bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+bind-key -n M-h if-shell "$is_vim" "send-keys M-h"  "select-pane -L"
+bind-key -n M-j if-shell "$is_vim" "send-keys M-j"  "select-pane -D"
+bind-key -n M-k if-shell "$is_vim" "send-keys M-k"  "select-pane -U"
+bind-key -n M-l if-shell "$is_vim" "send-keys M-l"  "select-pane -R"
+bind-key -n M-\ if-shell "$is_vim" "send-keys M-\\" "select-pane -l"
+if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
+    "bind-key -n 'M-\\' if-shell \"$is_vim\" 'send-keys M-\\'  'select-pane -l'"
+if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
+    "bind-key -n 'M-\\' if-shell \"$is_vim\" 'send-keys M-\\\\'  'select-pane -l'"
+bind-key -T copy-mode-vi 'M-h' select-pane -L
+bind-key -T copy-mode-vi 'M-j' select-pane -D
+bind-key -T copy-mode-vi 'M-k' select-pane -U
+bind-key -T copy-mode-vi 'M-l' select-pane -R
+bind-key -T copy-mode-vi 'M-\' select-pane -l
 
 # Disable the delay between an escape key press and subsequent characters. This
 # increases Vim responsiveness:
@@ -134,7 +143,6 @@ set-option -g allow-rename off
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @plugin 'christoomey/vim-tmux-navigator'
 
 # Other examples:
 set -g @plugin 'tmux-plugins/tmux-sidebar'
