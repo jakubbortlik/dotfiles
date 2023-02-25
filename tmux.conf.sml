@@ -132,7 +132,7 @@ bind-key -T copy-mode-vi 'M-\' select-pane -l
 
 # Disable the delay between an escape key press and subsequent characters. This
 # increases Vim responsiveness:
-set -sg escape-time 0
+set -sg escape-time 10
 
 # don't rename windows automatically
 set-option -g allow-rename off
