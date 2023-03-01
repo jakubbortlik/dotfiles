@@ -64,7 +64,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'nanotech/jellybeans.vim'
 
   " Python plugins:
-  Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+  Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins' }  " numirias' repo " unmaintained
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }      " Turn VIM into a Python IDE
   Plug 'ambv/black'                     " Black code style
 
@@ -218,6 +218,7 @@ endif
 set hidden                  " leave a buffer with unsaved changes
 set wildmode=longest,full   " What to do when I press 'wildchar'. Worth tweaking.
 set updatetime=100
+set mouse=                  " I want normal pasting with a mouse click in a terminal
 
 "==========================
 " some appearance settings:
@@ -226,18 +227,17 @@ let g:jellybeans_use_term_italics = 1
 let g:jellybeans_overrides = {
 \    'background': { 'guibg': '000000' },
 \}
-let g:jellybeans_use_lowcolor_black = 0
 let g:jellybeans_use_term_background_color = 1
 colorscheme jellybeans
-hi Normal ctermbg=NONE guibg=NONE              " this enables pane highlighting in tmux
-hi LineNr ctermfg=59 guifg=#605958 guibg=NONE  " this enables pane highlighting in tmux
-hi Comment cterm=NONE
+hi Normal ctermbg=NONE guibg=NONE               " enable pane highlighting in tmux
+hi LineNr ctermfg=59 guifg=#605958 guibg=NONE   " enable pane highlighting in tmux
+hi NonText ctermfg=240 guifg=#606060 guibg=NONE " enable pane highlighting in tmux
 hi SpellBad cterm=bold ctermbg=88 gui=bold guibg=#902020 guisp=Red
 
 if !has('nvim')
-  set term=screen-256color
+  set term=tmux-256color
 endif
-if &term =~ 'screen-256color'
+if &term =~ 'tmux-256color'
   " 256 colors
   let &t_Co = 256
   " restore screen after quitting
