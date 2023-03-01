@@ -46,6 +46,12 @@ call plug#begin('~/.vim/bundle')
   Plug 'chrisbra/unicode.vim'           " Work with unicode characters
 
   " Consider these plugins:
+  Plug 'nvim-telescope/telescope.nvim'  " Gaze deeply into unknown regions using the power of the moon.
+  Plug 'fannheyward/telescope-coc.nvim'
+  Plug 'nvim-lua/plenary.nvim'          " required for (telescope)
+  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'neovim/nvim-lspconfig'
+
   Plug 'jalvesaq/Nvim-R', { 'for': 'R' } " improved support for R code
   " Plug 'tpope/vim-flagship'           " Status line and tab line
   " Plug 'tpope/vim-flatfoot'           " Enhancement of 'f' and 't' kyes
@@ -67,8 +73,6 @@ call plug#begin('~/.vim/bundle')
   Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins' }  " numirias' repo " unmaintained
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }      " Turn VIM into a Python IDE
   Plug 'ambv/black'                     " Black code style
-
-  " Plug 'neovim/nvim-lspconfig'
 
   " Plug 'dense-analysis/ale'           " Asynchronous Lint Engine for VIM 8 or neovim
   " let g:ale_linters = { "python": ["ruff", "pyflakes"] }
@@ -232,6 +236,8 @@ colorscheme jellybeans
 hi Normal ctermbg=NONE guibg=NONE               " enable pane highlighting in tmux
 hi LineNr ctermfg=59 guifg=#605958 guibg=NONE   " enable pane highlighting in tmux
 hi NonText ctermfg=240 guifg=#606060 guibg=NONE " enable pane highlighting in tmux
+" hi Comment gui=NONE
+hi Folded ctermfg=145 ctermbg=236 guifg=#a0a8b0 guibg=#384048 gui=NONE cterm=NONE
 hi SpellBad cterm=bold ctermbg=88 gui=bold guibg=#902020 guisp=Red
 
 if !has('nvim')
@@ -321,11 +327,12 @@ if has('nvim')
   autocmd BufWinEnter,WinEnter term://* startinsert
   " always leave insert mode when switching from a terminal window
   autocmd BufWinLeave,WinLeave term://* stopinsert
-    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-    nnoremap <leader>tn :new term://bash<cr>
-    nnoremap <leader>tv :vne term://bash<cr>
-    nnoremap <leader>ti :vne term://ipython<cr>
-    " tnoremap <ESC> <C-\><C-n>
+  au TermOpen * setlocal listchars= nonumber
+  tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+  nnoremap <leader>tn :new term://bash<cr>
+  nnoremap <leader>tv :vne term://bash<cr>
+  nnoremap <leader>ti :vne term://ipython<cr>
+  " tnoremap <ESC> <C-\><C-n>
 endif
 
 " Move three lines down/up instead of just one
@@ -463,6 +470,18 @@ function! s:RunShellCommand(cmdline)
   setlocal nomodifiable
   1
 endfunction
+
+lua << EOF
+require("telescope").setup({
+  extensions = {
+    coc = {
+        theme = 'ivy',
+        prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
+    }
+  },
+})
+require('telescope').load_extension('coc')
+EOF
 
 " nnoremap <c-o> :echo "Do not use \<c-o\>!"<cr>
 " nnoremap <c-i> :echo "Do not use \<c-i\>!"<cr>
