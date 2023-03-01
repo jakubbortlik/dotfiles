@@ -229,14 +229,15 @@ let g:jellybeans_overrides = {
 let g:jellybeans_use_lowcolor_black = 0
 let g:jellybeans_use_term_background_color = 1
 colorscheme jellybeans
-" hi Normal ctermbg=NONE    " this enables pane highlighting in tmux
+hi Normal ctermbg=NONE guibg=NONE              " this enables pane highlighting in tmux
+hi LineNr ctermfg=59 guifg=#605958 guibg=NONE  " this enables pane highlighting in tmux
 hi Comment cterm=NONE
 hi SpellBad cterm=bold ctermbg=88 gui=bold guibg=#902020 guisp=Red
 
 if !has('nvim')
   set term=screen-256color
 endif
-if &term =~ 'tmux-256color'
+if &term =~ 'screen-256color'
   " 256 colors
   let &t_Co = 256
   " restore screen after quitting
@@ -255,8 +256,8 @@ set noshowmode                  " don't show mode I am in.
 
 set linebreak                   " define where the lines break on the screen if wrap is set
 set textwidth=88                " Set the textwidth
-set colorcolumn=89              " Display a line at the N column:
-highlight ColorColumn ctermbg=52    " Set the color of the ColorColumn to "brown"
+set colorcolumn=+1              " Display a line at the N column:
+hi ColorColumn ctermbg=52 guibg=#700009  " Set ColorColumn to "brown"
 set number                      " Show linenumbers
 set tabstop=4                   " Nr of spaces a <Tab> in the file counts for
 set shiftwidth=4                " Set indentation lenght to 4 spaces, default = tabstop
@@ -366,6 +367,11 @@ vnoremap <Space> za
 " Save current buffer by using Ctrl-s:
 nnoremap <C-S> :update<CR>
 inoremap <C-S> <Esc>:update<CR>
+
+" Change the default grepprg to RipGrep if it's available
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+endif
 
 " Change the first occurence in a line of 'false' to 'true' and vicer versa
 " Mnemonic: cv - Change Value
