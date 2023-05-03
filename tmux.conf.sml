@@ -40,7 +40,7 @@ bind-key f select-pane -d
 bind-key F select-pane -e
  
 # Up the history limit
-set-option -g history-limit 10000
+set-option -g history-limit 1000000
  
 # Change window-splitting commands
 # unbind %
@@ -149,4 +149,4 @@ set -g @plugin 'tmux-plugins/tmux-sidebar'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run -b '~/.tmux/plugins/tpm/tpm'
-# vim:set syntax=sh:
+# vim:set syntax=sh commentstring=#\ %s:

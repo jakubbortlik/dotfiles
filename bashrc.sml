@@ -18,13 +18,7 @@ if command -v nvim > /dev/null 2>&1; then
 else
   export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
 fi
-alias swapurge="rm ~/.local/share/nvim/swap/*"
-
-if [[ -n ${TMUX} ]]; then
-  export TERM="tmux-256color"
-else
-  export TERM="xterm-256color"
-fi
+alias swapurge="rm -i ~/.local/state/nvim/swap/*"
 
 # Set the python debugger to pudb
 export PYTHONBREAKPOINT=pudb.set_trace
@@ -51,31 +45,20 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # Set a fancy prompt (non-color, unless we know we "want" color)
+if [[ -n ${TMUX} ]]; then
+  export TERM="tmux-256color"
+else
+  export TERM="xterm-256color"
+fi
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# Uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    # We have color support; assume it's compliant with Ecma-48
-    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-    # a case would tend to support setf rather than setaf.)
-    color_prompt=yes
-  else
-    color_prompt=
-  fi
-fi
-
 PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf -- "~";IFS=/; for q in ${p:1}; do printf -- /"${q:0:3}"; done; printf -- "${q:3}")'
 
 bg_jobs() {
-  if [[ -n $(jobs 2> /dev/null) ]]; then
-    echo "(jobs: $(jobs 2> /dev/null | wc -l))"
+  if [[ -n $(jobs -s 2> /dev/null) ]]; then
+    echo "(jobs: $(jobs -s 2> /dev/null | wc -l))"
   fi
 }
 git_branch() {
@@ -88,15 +71,6 @@ else
   export PS1='\u@\h:\w\[\033[01;32m\]$(git_branch)$(bg_jobs)\[\033[00m\]\$ '
 fi
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    export PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # If entered shell from ranger, show it in the prompt:
 [ -n "$RANGER_LEVEL" ] && PS1="$PS1"'(in RA) '

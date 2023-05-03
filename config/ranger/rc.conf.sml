@@ -108,9 +108,11 @@ set show_hidden_bookmarks true
 # Which colorscheme to use?  These colorschemes are available by default:
 # default, jungle, snow, solarized
 # set colorscheme default
-set colorscheme jungle
+# set colorscheme jellybeans
+# set colorscheme jungle
 # set colorscheme snow
-# set colorscheme solarized
+set colorscheme solarized
+# set colorscheme zenburn
 
 # Preview files on the rightmost column?
 # And collapse (shrink) the last column if there is nothing to preview?
@@ -322,7 +324,7 @@ map !  console shell%space
 map @  console -p6 shell  %%s
 map #  console shell -p%space
 map s  console shell%space
-map r  chain draw_possible_programs; console open_with%%space
+map r  chain draw_possible_programs; console open_with%space
 map f  console find%space
 map cd console cd%space
 

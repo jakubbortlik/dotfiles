@@ -49,9 +49,16 @@ call plug#begin('~/.vim/bundle')
   Plug 'nvim-telescope/telescope.nvim'  " Gaze deeply into unknown regions using the power of the moon.
   Plug 'fannheyward/telescope-coc.nvim'
   Plug 'nvim-lua/plenary.nvim'          " required for (telescope)
-  Plug 'nvim-treesitter/nvim-treesitter'
-  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
+  " LSP support
+  Plug 'williamboman/mason.nvim' " Bridge between Mason and lspconfig
+  Plug 'williamboman/mason-lspconfig.nvim' " Bridge between Mason and lspconfig
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'machakann/vim-highlightedyank'  " Highlight the yanked area
   Plug 'jalvesaq/Nvim-R', { 'for': 'R' } " improved support for R code
   " Plug 'tpope/vim-flagship'           " Status line and tab line
   " Plug 'tpope/vim-flatfoot'           " Enhancement of 'f' and 't' kyes
@@ -65,6 +72,14 @@ call plug#begin('~/.vim/bundle')
   " Plug 'honza/vim-snippets'
   Plug 'vim-scripts/FastFold'
   Plug 'tmhedberg/SimpylFold'
+  Plug 'ThePrimeagen/harpoon'
+
+  " Autocompletion
+  Plug 'hrsh7th/nvim-cmp'     " Required by lsp-zero.vim
+  Plug 'hrsh7th/cmp-nvim-lsp' " Required by lsp-zero.vim
+  Plug 'L3MON4D3/LuaSnip'     " Required by lsp-zero.vim
+
+  Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
 
   " Colors
   Plug 'nanotech/jellybeans.vim'
@@ -102,7 +117,7 @@ call plug#end()
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', 'keymap', 'capslock' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+      \             [ 'fugitive', 'readonly', 'myfilename', 'modified' ] ],
       \ },
       \   'mode_map': {
       \     'n': 'NORMAL', 'no': 'NORMAL', 'nov': 'NORMAL', 'noV': 'NORMAL',
@@ -116,6 +131,7 @@ let g:lightline = {
       \     'c': 'COMMAND', 't': 'TERMINAL'
       \   },
       \ 'component_function': {
+      \   'myfilename': 'LightlineFilename',
       \   'capslock': 'CapsLockStatusline',
       \   'fileencoding': 'LightlineFileencoding',
       \   'fileformat': 'LightlineFileformat',
@@ -127,14 +143,25 @@ let g:lightline = {
       \ },
       \ }
 
+function! LightlineFilename()
+  if expand('%') == ''
+    return '[No Name]'
+  endif
+  if strlen(expand('%:t')) > 54
+    return substitute(expand('%:t'), "^\\(.\\{,50}\\).*\\(.\\{4}\\)$", "\\1………\\2", "")
+  endif
+  return expand('%:t')
+endfunc
 function! LightlineFileencoding()
-  return winwidth(0) > 70 ? (&fileencoding !=# '' ? &fileencoding : &encoding) : ''
+  let g:file_name_len = strlen(expand('%:t'))
+  let g:branch_name_len = strlen(LightlineFugitive())
+  return (winwidth(0) - g:file_name_len - g:branch_name_len) > 70 ? (&fileencoding !=# '' ? &fileencoding : &encoding) : ''
 endfunction
 function! LightlineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
+  return (winwidth(0) - g:file_name_len - g:branch_name_len) > 70 ? &fileformat : ''
 endfunction
 function! LightlineFiletype()
-  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+  return (winwidth(0) - g:file_name_len - g:branch_name_len) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction
 function! DetailedMode()
   return get(g:lightline.mode_map, mode(1), get(g:lightline.mode_map, mode(), ''))
@@ -152,6 +179,10 @@ function! LightlineFugitive()
   endif
   return ''
 endfunction
+
+" Use a more convenient leader
+let mapleader = " "
+let localleader = " "
 
 " jump to the next <++> placeholder in Latex-Suite using Ctrl-Space (or <C-@>).
 " Default <c-j> conflicts with custom mapping to move between split windows.
@@ -180,7 +211,7 @@ nmap <silent> yr :Semshi rename<cr>
 
 " only allow some lint checkers for pymode (pylama is enabled by default)
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pep257']
-let g:pymode_lint_ignore = ['E501', 'D102', 'D103', 'D105', 'D107', 'D203', 'D213', 'D406', 'D407', 'D413']
+let g:pymode_lint_ignore = ['E501', 'D102', 'D103', 'D105', 'D107', 'D203', 'D213', 'D406', 'D407', 'D413', 'D415']
 let g:pymode_preview_position = 'botright'
 let g:pymode_options_max_line_length = 88
 let g:pymode_rope = 0
@@ -223,6 +254,7 @@ set hidden                  " leave a buffer with unsaved changes
 set wildmode=longest,full   " What to do when I press 'wildchar'. Worth tweaking.
 set updatetime=100
 set mouse=                  " I want normal pasting with a mouse click in a terminal
+set suffixes-=.info         " Do not ignore .info files
 
 "==========================
 " some appearance settings:
@@ -234,6 +266,7 @@ let g:jellybeans_overrides = {
 let g:jellybeans_use_term_background_color = 1
 colorscheme jellybeans
 hi Normal ctermbg=NONE guibg=NONE               " enable pane highlighting in tmux
+hi SignColumn ctermbg=NONE guibg=NONE           " enable pane highlighting in tmux
 hi LineNr ctermfg=59 guifg=#605958 guibg=NONE   " enable pane highlighting in tmux
 hi NonText ctermfg=240 guifg=#606060 guibg=NONE " enable pane highlighting in tmux
 " hi Comment gui=NONE
@@ -265,6 +298,7 @@ set textwidth=88                " Set the textwidth
 set colorcolumn=+1              " Display a line at the N column:
 hi ColorColumn ctermbg=52 guibg=#700009  " Set ColorColumn to "brown"
 set number                      " Show linenumbers
+set relativenumber
 set tabstop=4                   " Nr of spaces a <Tab> in the file counts for
 set shiftwidth=4                " Set indentation lenght to 4 spaces, default = tabstop
 set completeopt=menuone,longest,preview " list of options for i_mode completion
@@ -309,12 +343,17 @@ nnoremap <leader>\ <c-^>
 vnoremap . :normal .<cr>
 
 let g:tmux_navigator_no_mappings = 1
+if !has('nvim')
+  execute "set <A-h>=\eh"
+  execute "set <A-j>=\ej"
+  execute "set <A-k>=\ek"
+  execute "set <A-l>=\el"
+endif
 noremap <silent> <A-h> :<C-U>TmuxNavigateLeft<cr>
 noremap <silent> <A-j> :<C-U>TmuxNavigateDown<cr>
 noremap <silent> <A-k> :<C-U>TmuxNavigateUp<cr>
 noremap <silent> <A-l> :<C-U>TmuxNavigateRight<cr>
 noremap <silent> <A-\> :<C-U>TmuxNavigatePrevious<cr>
-nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 
 " Some terminal settings:
 if has('nvim')
@@ -366,10 +405,6 @@ nnoremap <Leader>tw :setlocal textwidth=88<CR>
 
 " Turn off highlighting for search resutls
 nnoremap yoo :nohlsearch<CR>
-
-" Remap Space to toggle folds
-nnoremap <Space> za
-vnoremap <Space> za
 
 " Save current buffer by using Ctrl-s:
 nnoremap <C-S> :update<CR>
