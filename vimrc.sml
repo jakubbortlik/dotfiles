@@ -42,7 +42,7 @@ call plug#begin('~/.vim/bundle')
   " Plug 'ycm-core/YouCompleteMe'       " advanced code completion
   Plug 'jakubbortlik/vim-praat', { 'for': 'praat' }  " syntax highlighting for praat
   Plug 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
-  Plug 'mechatroner/rainbow_csv'        " Show tabulated data in colour
+  Plug 'mechatroner/rainbow_csv', { 'for': ['csv', 'tsv'] }        " Show tabulated data in colour
   Plug 'chrisbra/unicode.vim'           " Work with unicode characters
 
   " Consider these plugins:
@@ -52,11 +52,15 @@ call plug#begin('~/.vim/bundle')
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'HiPhish/nvim-ts-rainbow2'
+  Plug 'mbbill/undotree'
 
   " LSP support
   Plug 'williamboman/mason.nvim' " Bridge between Mason and lspconfig
   Plug 'williamboman/mason-lspconfig.nvim' " Bridge between Mason and lspconfig
   Plug 'neovim/nvim-lspconfig'
+  Plug 'mfussenegger/nvim-dap'          " Debug Adapter Protocol client for Neovim
+  Plug 'mfussenegger/nvim-dap-python'   " Python extension for nvim-dap
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'machakann/vim-highlightedyank'  " Highlight the yanked area
@@ -65,15 +69,16 @@ call plug#begin('~/.vim/bundle')
   " Plug 'tpope/vim-flatfoot'           " Enhancement of 'f' and 't' kyes
   " Plug 'tpope/vim-obsession'          " Record sessions continuously
   Plug 'jakubbortlik/vim-psytoolkit', { 'for': 'psy' }  " Syntax highlighting for PsyToolkit scripts
-  " Plug 'SirVer/ultisnips', { 'for': 'python' }
-    " let g:UltiSnipsExpandTrigger="<tab>"
-    " let g:UltiSnipsJumpForwardTrigger="<tab>"
-    " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-    " let g:ultisnips_python_style = 'google'
-  " Plug 'honza/vim-snippets'
+  Plug 'SirVer/ultisnips', { 'for': 'python' }
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    let g:ultisnips_python_style = 'google'
+  Plug 'honza/vim-snippets'
   Plug 'vim-scripts/FastFold'
   Plug 'tmhedberg/SimpylFold'
   Plug 'ThePrimeagen/harpoon'
+  Plug 'ThePrimeagen/vim-be-good'
 
   " Autocompletion
   Plug 'hrsh7th/nvim-cmp'     " Required by lsp-zero.vim
@@ -84,6 +89,8 @@ call plug#begin('~/.vim/bundle')
 
   " Colors
   Plug 'nanotech/jellybeans.vim'
+  Plug 'rafi/awesome-vim-colorschemes'
+  Plug 'vim-scripts/CycleColor'
 
   " Python plugins:
   Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins' }  " numirias' repo " unmaintained
@@ -103,10 +110,9 @@ call plug#begin('~/.vim/bundle')
   " Local plugins
   " Plug '~/code/vim-phxstm', { 'for': 'phxstm' }
   " Plug '~/code/vim-keymaps'
-  Plug '~/code/vim-dictionary'
-  " Plug 'https://gitlab.int.phonexia.com/bortlik/vim-dictionary', { 'for': 'dct' }
-  Plug 'https://gitlab.int.phonexia.com/bortlik/vim-phxstm', { 'for': 'phxstm' }
-  Plug 'https://gitlab.int.phonexia.com/bortlik/vim-srt', { 'for': 'srt' }
+  Plug 'git@gitlab.int.phonexia.com:bortlik/vim-dictionary', { 'for': 'dct' }
+  Plug 'git@gitlab.int.phonexia.com:bortlik/vim-phxstm', { 'for': 'phxstm' }
+  Plug 'git@gitlab.int.phonexia.com:bortlik/vim-srt', { 'for': 'srt' }
   Plug 'jakubbortlik/vim-keymaps'
 call plug#end()
 
@@ -246,6 +252,13 @@ nnoremap <leader>f /breakpoint()<cr>
 set runtimepath^=~/.vim/ftplugin/
 
 nnoremap dr :RainbowDelim<cr>
+nnoremap <leader>u :UndotreeToggle<CR>
+
+let g:Unicode_fuzzy_color = 123
+let g:Unicode_no_default_mappings = 1
+imap <C-X><C-G> <Plug>(DigraphComplete)
+imap <C-G><C-F> <Plug>(UnicodeFuzzy)
+nmap ga <Plug>(UnicodeGA)
 
 "==========================================
 " Put your non-Plugin stuff after this line
@@ -278,7 +291,6 @@ let g:jellybeans_overrides = {
 \}
 let g:jellybeans_use_term_background_color = 1
 colorscheme jellybeans
-
 hi Normal ctermbg=NONE guibg=NONE               " enable pane highlighting in tmux
 hi SignColumn ctermbg=NONE guibg=NONE           " enable pane highlighting in tmux
 hi LineNr ctermfg=59 guifg=#605958 guibg=NONE   " enable pane highlighting in tmux
@@ -337,7 +349,7 @@ if !exists('g:vim_has_started')
   set encoding=utf8
 endif
 let g:vim_has_started = 1
-let g:keymaps = ['', 'ukrainian']
+let g:keymaps = ['', 'russian']
 
 "===============
 " Some mappings:
@@ -519,6 +531,332 @@ function! s:RunShellCommand(cmdline)
   setlocal nomodifiable
   1
 endfunction
+
+if has('nvim')
+lua require("mason").setup()
+lua require('dap-python').setup('/media/shared/bortlik/miniconda3/envs/datatools/bin/python')
+lua << EOF
+  vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+  vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+  vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+  vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+  vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+  vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+  vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+  vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+  vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+  vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+    require('dap.ui.widgets').hover()
+  end)
+  vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+    require('dap.ui.widgets').preview()
+  end)
+  vim.keymap.set('n', '<Leader>df', function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.frames)
+  end)
+  vim.keymap.set('n', '<Leader>ds', function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.scopes)
+  end)
+EOF
+
+lua << EOF
+require("telescope").setup({
+  extensions = {
+    coc = {
+      theme = 'ivy',
+      prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
+    }
+  },
+})
+require('telescope').load_extension('coc')
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+vim.keymap.set('n', '<leader>ps', function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)
+vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+EOF
+
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn", -- set to `false` to disable one of the mappings
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+}
+EOF
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        -- You can optionally set descriptions to the mappings (used in the desc parameter of
+        -- nvim_buf_set_keymap) which plugins like which-key display
+        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        -- You can also use captures from other query groups like `locals.scm`
+        ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+      },
+      -- You can choose the select mode (default is charwise 'v')
+      --
+      -- Can also be a function which gets passed a table with the keys
+      -- * query_string: eg '@function.inner'
+      -- * method: eg 'v' or 'o'
+      -- and should return the mode ('v', 'V', or '<c-v>') or a table
+      -- mapping query_strings to modes.
+      selection_modes = {
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V', -- linewise
+        ['@class.outer'] = '<c-v>', -- blockwise
+      },
+      -- If you set this to `true` (default is `false`) then any textobject is
+      -- extended to include preceding or succeeding whitespace. Succeeding
+      -- whitespace has priority in order to act similarly to eg the built-in
+      -- `ap`.
+      --
+      -- Can also be a function which gets passed a table with the keys
+      -- * query_string: eg '@function.inner'
+      -- * selection_mode: eg 'v'
+      -- and should return true of false
+      include_surrounding_whitespace = true,
+    },
+  },
+}
+EOF
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = { query = "@class.outer", desc = "Next class start" },
+        --
+        -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queires.
+        ["]o"] = "@loop.outer",
+        -- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
+        --
+        -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
+        -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
+        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+        ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[o"] = "@loop.outer",
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+        ["[s"] = { query = "@scope", query_group = "locals", desc = "Previous scope" },
+        ["[z"] = { query = "@fold", query_group = "folds", desc = "Previous fold" },
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+      -- Below will go to either the start or the end, whichever is closer.
+      -- Use if you want more granular movements
+      -- Make it even more gradual by adding multiple queries and regex.
+      goto_next = {
+        ["]d"] = "@conditional.outer",
+      },
+      goto_previous = {
+        ["[d"] = "@conditional.outer",
+      }
+    },
+  },
+}
+EOF
+
+lua << EOF
+local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+
+-- Repeat movement with ; and ,
+-- ensure ; goes forward and , goes backward regardless of the last direction
+vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+
+-- vim way: ; goes to the direction you were moving.
+-- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+-- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+
+-- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
+vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
+vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
+vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+EOF
+
+lua << EOF
+require('nvim-treesitter.configs').setup {
+  rainbow = {
+    enable = true,
+    -- list of languages you want to disable the plugin for
+    disable = { 'jsx', 'cpp' },
+    -- Which query to use for finding delimiters
+    query = 'rainbow-parens',
+    -- Highlight the entire buffer all at once
+    strategy = require('ts-rainbow').strategy.global,
+  }
+}
+EOF
+
+lua << EOF
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+vim.keymap.set("n", "<leader>a", mark.add_file)
+vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+
+vim.keymap.set("n", "<C-j>", function() ui.nav_file(1) end)
+vim.keymap.set("n", "<C-k>", function() ui.nav_file(2) end)
+vim.keymap.set("n", "<C-l>", function() ui.nav_file(3) end)
+vim.keymap.set("n", "<C-;>", function() ui.nav_file(4) end)
+EOF
+
+lua << EOF
+local lsp = require("lsp-zero")
+
+lsp.preset("recommended")
+
+lsp.ensure_installed({
+  'lua_ls',
+  'ruff_lsp',
+  'bashls',
+})
+
+-- Fix Undefined global 'vim'
+lsp.configure('lua_ls', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+})
+
+
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ["<C-Space>"] = cmp.mapping.complete(),
+})
+
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+
+lsp.setup_nvim_cmp({
+  mapping = cmp_mappings
+})
+
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
+    }
+})
+
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
+
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+end)
+
+lsp.setup()
+
+vim.diagnostic.config({
+    virtual_text = true
+})
+
+EOF
+
+lua << EOF
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+
+local ThePrimeagen_Fugitive = vim.api.nvim_create_augroup("ThePrimeagen_Fugitive", {})
+
+local autocmd = vim.api.nvim_create_autocmd
+autocmd("BufWinEnter", {
+    group = ThePrimeagen_Fugitive,
+    pattern = "*",
+    callback = function()
+        if vim.bo.ft ~= "fugitive" then
+            return
+        end
+
+        local bufnr = vim.api.nvim_get_current_buf()
+        local opts = {buffer = bufnr, remap = false}
+        vim.keymap.set("n", "<leader>p", function()
+            vim.cmd.Git('push')
+        end, opts)
+
+        -- rebase always
+        vim.keymap.set("n", "<leader>P", function()
+            vim.cmd.Git({'pull',  '--rebase'})
+        end, opts)
+
+        -- NOTE: It allows me to easily set the branch i am pushing and any tracking
+        -- needed if i did not set the branch up correctly
+        vim.keymap.set("n", "<leader>t", ":Git push -u origin ", opts);
+    end,
+})
+vim.keymap.set("n", "gf", "<cmd>diffget //2<CR>")
+vim.keymap.set("n", "gj", "<cmd>diffget //3<CR>")
+EOF
+
+endif
+
+function! SynStack ()
+  for i1 in synstack(line("."), col("."))
+    let i2 = synIDtrans(i1)
+    let n1 = synIDattr(i1, "name")
+    let n2 = synIDattr(i2, "name")
+    echo n1 "->" n2
+  endfor
+endfunction
+
+function! s:Ctags()
+  call system(['bash', $HOME . '/dotfiles/.git_template/hooks/ctags'])
+endfunction
+command! Ctags call s:Ctags()
+nnoremap <leader>ct :Ctags<cr>
 
 " nnoremap <c-o> :echo "Do not use \<c-o\>!"<cr>
 " nnoremap <c-i> :echo "Do not use \<c-i\>!"<cr>
