@@ -51,6 +51,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'nvim-lua/plenary.nvim'          " required for (telescope)
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+  Plug 'nvim-tree/nvim-web-devicons'
 
   " LSP support
   Plug 'williamboman/mason.nvim' " Bridge between Mason and lspconfig
@@ -89,11 +90,6 @@ call plug#begin('~/.vim/bundle')
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }      " Turn VIM into a Python IDE
   Plug 'ambv/black'                     " Black code style
 
-  " Plug 'dense-analysis/ale'           " Asynchronous Lint Engine for VIM 8 or neovim
-  " let g:ale_linters = { "python": ["ruff", "pyflakes"] }
-  " let g:ale_fixers = {
-  " \       "python": ["black", "ruff"],
-  " \}
   if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
   endif
@@ -107,11 +103,28 @@ call plug#begin('~/.vim/bundle')
   " Local plugins
   " Plug '~/code/vim-phxstm', { 'for': 'phxstm' }
   " Plug '~/code/vim-keymaps'
-  Plug 'https://gitlab.int.phonexia.com/bortlik/vim-dictionary', { 'for': 'dct' }
+  Plug '~/code/vim-dictionary'
+  " Plug 'https://gitlab.int.phonexia.com/bortlik/vim-dictionary', { 'for': 'dct' }
   Plug 'https://gitlab.int.phonexia.com/bortlik/vim-phxstm', { 'for': 'phxstm' }
   Plug 'https://gitlab.int.phonexia.com/bortlik/vim-srt', { 'for': 'srt' }
   Plug 'jakubbortlik/vim-keymaps'
 call plug#end()
+
+if has('nvim')
+
+lua << EOF
+require("telescope").setup({
+  extensions = {
+    coc = {
+        theme = 'ivy',
+        prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
+    }
+  },
+})
+require('telescope').load_extension('coc')
+EOF
+
+endif
 
 " Lightline plugin
 let g:lightline = {
@@ -265,6 +278,7 @@ let g:jellybeans_overrides = {
 \}
 let g:jellybeans_use_term_background_color = 1
 colorscheme jellybeans
+
 hi Normal ctermbg=NONE guibg=NONE               " enable pane highlighting in tmux
 hi SignColumn ctermbg=NONE guibg=NONE           " enable pane highlighting in tmux
 hi LineNr ctermfg=59 guifg=#605958 guibg=NONE   " enable pane highlighting in tmux
@@ -505,18 +519,6 @@ function! s:RunShellCommand(cmdline)
   setlocal nomodifiable
   1
 endfunction
-
-lua << EOF
-require("telescope").setup({
-  extensions = {
-    coc = {
-        theme = 'ivy',
-        prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
-    }
-  },
-})
-require('telescope').load_extension('coc')
-EOF
 
 " nnoremap <c-o> :echo "Do not use \<c-o\>!"<cr>
 " nnoremap <c-i> :echo "Do not use \<c-i\>!"<cr>

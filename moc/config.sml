@@ -74,7 +74,7 @@ MusicDir = "/home/jakub/Music"
 # Start in the music directory by default?  If set to 'no', start
 # in the current directory by default.  A single directory on
 # the command line takes precedence.
-StartInMusicDir = yes
+StartInMusicDir = no
 
 # The number of lines which are retained in an in-memory circular logging
 # buffer.  A value of zero indicates that lines will be written directly
@@ -309,7 +309,7 @@ Keymap = keymap
 #             Fastdir3 = /mp3/rap
 #             Fastdir4 = /mp3/etc
 #
-#Fastdir1 =
+Fastdir1 = /media/marvin/_datasets/confidential/
 #Fastdir2 =
 #Fastdir3 =
 #Fastdir4 =

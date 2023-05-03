@@ -91,8 +91,7 @@ fi
 export RANGER_LOAD_DEFAULT_RC=FALSE
 function ranger-cd {
   tempfile="$(mktemp -t tmp.XXXXXX)"
-  # /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-  ~/code/ranger/ranger.py --choosedir="$tempfile" "${@:-$(pwd)}"
+  /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
   test -f "$tempfile" &&
   if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
     cd -- "$(cat "$tempfile")"
@@ -223,7 +222,7 @@ function bd(){
   fi
 }
 
-export DISPLAY=$(ip route|awk '/^default/{print $3}'):0
+# export DISPLAY=$(ip route|awk '/^default/{print $3}'):0
 
-export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/local/bin:$HOME/.local/bin:$PATH
 # vim:set expandtab ts=2 sw=2 syntax=sh commentstring=#%s:

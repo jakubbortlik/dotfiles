@@ -89,7 +89,10 @@ set -g window-active-style 'fg=colour250,bg=black'
 # set-option -g pane-active-border-bg black
 # set-option -g pane-border-fg blue
 # set-option -g pane-border-bg black
- 
+
+# Get a blinking cursor
+set -g cursor-style blinking-block
+
 # Here's where we get into the status line:
 # These basically set the defaults
 # set-option -g status-utf8 on
@@ -149,4 +152,9 @@ set -g @plugin 'tmux-plugins/tmux-sidebar'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run -b '~/.tmux/plugins/tpm/tpm'
+
+# Undercurl
+set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
+set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
+
 # vim:set syntax=sh commentstring=#\ %s:
