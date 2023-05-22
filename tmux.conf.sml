@@ -2,6 +2,7 @@
 unbind C-b
 set -g prefix C-Space
 bind C-Space send-prefix
+bind C-Space resize-pane -Z
 
 # Use some vim-like keybindings
 unbind-key -T copy-mode-vi v
@@ -118,7 +119,7 @@ setw -g window-status-current-style fg=red
 # Here's where we set the actual display of the various regions
 set -g status-left '#[bg=colour100]#[fg=black]#H: #[fg=blue]#S#[fg=colour100] #[bg=black]#[default]'
 set -g status-right-length 100
-set -g status-right '#[fg=colour100]#[bg=colour100] #[fg=black]%Y-%m-%d #[fg=blue]#[bg=blue]#[fg=black] %H:%M #[default]'
+set -g status-right '#[fg=colour100]#[bg=colour100] #[fg=black]%Y-%m-%d #[fg=blue]#[bg=blue]#[fg=color100] %H:%M #[default]'
 
 # EXPERIMENTAL SETTINGS:
 # smart pane switching with awareness of vim splits
