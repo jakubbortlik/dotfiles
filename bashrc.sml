@@ -149,7 +149,7 @@ alias l='ls -CF'
 # Git aliases:
 alias g='git'
 # Git branch bash completion
-# curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+# curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/git-completion.bash
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
   # Add git completion to aliases
@@ -168,16 +168,17 @@ alias rtags='~/.git_template/hooks/ctags >/dev/null 2>&1 &'
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f ~/code/bash-completion/bash_completion ]; then
-    . ~/code/bash-completion/bash_completion
+    source ~/code/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
   fi
 fi
 
 # Bashrc aliases
 alias b="$EDITOR ~/dotfiles/bashrc.sml"
+alias bs="source $HOME/.bashrc"
 alias be="$EDITOR $HOME/.bashrc_extras"
-alias bs=". $HOME/.bashrc; . $HOME/.bashrc_extras"
+alias bes="source $HOME/.bashrc_extras"
 
 # Tmux aliases:
 alias t='tmux'
