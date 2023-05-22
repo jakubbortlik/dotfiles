@@ -1,4 +1,9 @@
-# use some vim-like keybindings
+# Set prefix to Ctrl-Space
+unbind C-b
+set -g prefix C-Space
+bind C-Space send-prefix
+
+# Use some vim-like keybindings
 unbind-key -T copy-mode-vi v
 bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
 bind-key -T copy-mode-vi 'y' send-keys -X copy-selection
@@ -133,6 +138,8 @@ bind-key -T copy-mode-vi 'M-k' select-pane -U
 bind-key -T copy-mode-vi 'M-l' select-pane -R
 bind-key -T copy-mode-vi 'M-\' select-pane -l
 
+bind-key -n M-H previous-window
+bind-key -n M-L next-window
 # Disable the delay between an escape key press and subsequent characters. This
 # increases Vim responsiveness:
 set -sg escape-time 10

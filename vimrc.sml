@@ -42,7 +42,7 @@ call plug#begin('~/.vim/bundle')
   " Plug 'ycm-core/YouCompleteMe'       " advanced code completion
   Plug 'jakubbortlik/vim-praat', { 'for': 'praat' }  " syntax highlighting for praat
   Plug 'christoomey/vim-tmux-navigator' " navigate easily in vim and tmux
-  Plug 'mechatroner/rainbow_csv', { 'for': ['csv', 'tsv'] }        " Show tabulated data in colour
+  Plug 'mechatroner/rainbow_csv', { 'for': ['csv', 'tsv', 'txt'] }        " Show tabulated data in colour
   Plug 'chrisbra/unicode.vim'           " Work with unicode characters
 
   " Consider these plugins:
@@ -128,6 +128,7 @@ require("telescope").setup({
   },
 })
 require('telescope').load_extension('coc')
+
 EOF
 
 endif
@@ -210,8 +211,8 @@ nmap <C-q> <Plug>IMAP_JumpForward
 vmap <C-q> <Plug>IMAP_JumpForward
 
 " Mappings for Coc
-nmap [d <Plug>(coc-diagnostic-prev)
-nmap ]d <Plug>(coc-diagnostic-next)
+nmap [E <Plug>(coc-diagnostic-prev)
+nmap ]E <Plug>(coc-diagnostic-next)
 nmap [D <Plug>(coc-diagnostic-prev-error)
 nmap ]D <Plug>(coc-diagnostic-next-error)
 
@@ -238,6 +239,7 @@ let g:pymode_rope_lookup_project = 0    " Disable rope lookup project, it causes
 let g:pymode_rope_complete_on_dot = 0   " Disable automatic completion on dot 
 let g:pymode_breakpoint_cmd = 'breakpoint()'
 let g:pymode_run_bind = '<leader>R'
+let g:pymode_doc_bind = '<leader>K'
 nnoremap <leader>r :!python %
 nnoremap <leader>te :!python -m unittest %<cr>
 if has('nvim')
@@ -732,7 +734,7 @@ vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 vim.keymap.set("n", "<C-j>", function() ui.nav_file(1) end)
 vim.keymap.set("n", "<C-k>", function() ui.nav_file(2) end)
 vim.keymap.set("n", "<C-l>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<C-;>", function() ui.nav_file(4) end)
+vim.keymap.set("n", "<C-h>", function() ui.nav_file(4) end)
 EOF
 
 lua << EOF
@@ -791,8 +793,8 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
@@ -837,8 +839,6 @@ autocmd("BufWinEnter", {
         vim.keymap.set("n", "<leader>t", ":Git push -u origin ", opts);
     end,
 })
-vim.keymap.set("n", "gf", "<cmd>diffget //2<CR>")
-vim.keymap.set("n", "gj", "<cmd>diffget //3<CR>")
 EOF
 
 endif
