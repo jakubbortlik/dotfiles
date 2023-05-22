@@ -13,15 +13,17 @@ bind-key -T copy-mode-vi 'C-v' send-keys -X rectangle-toggle
 # the following configuration comes mostly from:
 # http://technopoetic.com/2014/05/emulating-powerline-with-just-vim-and-tmux/
 
-# Index windows from 1
+# Index windows and panes from 1
 set-option -g base-index 1
+set-option -g pane-base-index 1
+set-window-option -g pane-base-index 1
+
+# If a window is closed, renumber the remaining windows
+set -g renumber-windows on
 
 # Make Prefix + 0 go to window number 10
 bind 0 select-window -t :10
  
-# If a window is closed, renumber the remaining windows
-set -g renumber-windows on
-
 # Swap windows with < and >
 bind -r < swap-window -t -1
 bind -r > swap-window -t +1
