@@ -149,7 +149,7 @@ alias l='ls -CF'
 # Git aliases:
 alias g='git'
 # Git branch bash completion
-# curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/git-completion.bash
+# curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
   # Add git completion to aliases
