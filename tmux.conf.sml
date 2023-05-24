@@ -24,10 +24,6 @@ set -g renumber-windows on
 # Make Prefix + 0 go to window number 10
 bind 0 select-window -t :10
  
-# Swap windows with < and >
-bind -r < swap-window -t -1
-bind -r > swap-window -t +1
-
 # Silence bell
 set-option -g visual-bell off
  
@@ -45,7 +41,7 @@ bind-key C-a last-window
 bind-key f select-pane -d
 
 # Bind prefix+F to enable input to pane
-bind-key F select-pane -e
+bind-key e select-pane -e
  
 # Up the history limit
 set-option -g history-limit 1000000
@@ -141,8 +137,17 @@ bind-key -T copy-mode-vi 'M-k' select-pane -U
 bind-key -T copy-mode-vi 'M-l' select-pane -R
 bind-key -T copy-mode-vi 'M-\' select-pane -l
 
+# Move windows left and right
 bind-key -n M-H previous-window
 bind-key -n M-L next-window
+
+# Create new window
+bind-key -n M-N new-window
+
+# Swap windows
+bind-key -r -n M-< swap-window -t -1
+bind-key -r -n M-> swap-window -t +1
+
 # Disable the delay between an escape key press and subsequent characters. This
 # increases Vim responsiveness:
 set -sg escape-time 10
