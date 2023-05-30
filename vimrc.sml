@@ -109,8 +109,8 @@ call plug#begin('~/.vim/bundle')
   " Local plugins
   " Plug '~/code/vim-phxstm', { 'for': 'phxstm' }
   " Plug '~/code/vim-keymaps'
-  Plug 'git@gitlab.int.phonexia.com:bortlik/vim-dictionary', { 'for': 'dct' }
-  Plug 'git@gitlab.int.phonexia.com:bortlik/vim-phxstm', { 'for': 'phxstm' }
+  Plug 'git@gitlab.int.phonexia.com:bortlik/vim-dictionary', { 'for': 'dct', 'branch': 'main' }
+  Plug 'git@gitlab.int.phonexia.com:bortlik/vim-phxstm', { 'for': 'phxstm', 'branch': 'main'}
   Plug 'git@gitlab.int.phonexia.com:bortlik/vim-srt', { 'for': 'srt' }
   Plug 'jakubbortlik/vim-keymaps'
 call plug#end()
