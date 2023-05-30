@@ -50,7 +50,6 @@ call plug#begin('~/.vim/bundle')
   Plug 'fannheyward/telescope-coc.nvim'
   Plug 'nvim-lua/plenary.nvim'          " required for (telescope)
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'HiPhish/nvim-ts-rainbow2'
   Plug 'mbbill/undotree'
