@@ -8,6 +8,33 @@ case $- in
       *) return;;
 esac
 
+colors() {
+  local fgc bgc vals seq0
+
+  printf "Color escapes are %s\n" '\e[${value};...;${value}m'
+  printf "Values 30..37 are \e[33mforeground colors\e[m\n"
+  printf "Values 40..47 are \e[43mbackground colors\e[m\n"
+  printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
+
+  # foreground colors
+  for fgc in {30..37}; do
+    # background colors
+    for bgc in {40..47}; do
+      fgc=${fgc#37} # white
+      bgc=${bgc#40} # black
+
+      vals="${fgc:+$fgc;}${bgc}"
+      vals=${vals%%;}
+
+      seq0="${vals:+\e[${vals}m}"
+      printf "  %-9s" "${seq0:-(default)}"
+      printf " ${seq0}TEXT\e[m"
+      printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
+    done
+    echo; echo
+  done
+}
+
 # disable stopping the flow in terminal by Ctrl-S, so that this mapping can be
 # used to save buffers in vim or to serach through bash history
 stty -ixon
@@ -167,10 +194,12 @@ alias rtags='~/.git_template/hooks/ctags >/dev/null 2>&1 &'
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f ~/code/bash-completion/bash_completion ]; then
+  if [ -r ~/code/bash-completion/bash_completion ]; then
     source ~/code/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
+  elif [ -r /etc/bash_completion ]; then
     source /etc/bash_completion
+  elif [ -r /usr/share/bash-completion/bash_completion ]; then
+    source /usr/share/bash-completion/bash_completion
   fi
 fi
 
@@ -223,7 +252,29 @@ function bd(){
   fi
 }
 
-# export DISPLAY=$(ip route|awk '/^default/{print $3}'):0
+# # ex - archive extractor
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
 export PATH=$HOME/local/bin:$HOME/.local/bin:$PATH
-# vim:set expandtab ts=2 sw=2 syntax=sh commentstring=#%s:
+# vim:set ft=bash expandtab ts=2 sw=2:
