@@ -5,6 +5,7 @@ bind C-Space send-prefix
 bind C-Space resize-pane -Z
 
 # Use some vim-like keybindings
+set-option -g mode-keys vi
 unbind-key -T copy-mode-vi v
 bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
 bind-key -T copy-mode-vi 'y' send-keys -X copy-selection
@@ -115,9 +116,9 @@ setw -g window-status-current-style fg=red
 #setw -g window-status-alert-fg yellow
  
 # Here's where we set the actual display of the various regions
-set -g status-left '#[bg=colour100]#[fg=black]#H: #[fg=blue]#S#[fg=colour100] #[bg=black]#[default]'
+set -g status-left '#[bg=colour100]#[fg=black]#H: #[fg=black]#S#[fg=colour100] #[bg=black]#[default]'
 set -g status-right-length 100
-set -g status-right '#[fg=colour100]#[bg=colour100] #[fg=black]%Y-%m-%d #[fg=blue]#[bg=blue]#[fg=color100] %H:%M #[default]'
+set -g status-right '#[fg=colour100]#[bg=colour100] #[fg=black]%Y-%m-%d #[fg=blue]#[bg=blue]#[fg=black] %H:%M #[default]'
 
 # EXPERIMENTAL SETTINGS:
 # smart pane switching with awareness of vim splits
@@ -165,11 +166,11 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-sidebar'
 # set -g @plugin 'seebi/tmux-colors-solarized'
 
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run -b '~/.tmux/plugins/tpm/tpm'
-
 # Undercurl
 set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
 set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
 
 # vim:set syntax=sh commentstring=#\ %s:

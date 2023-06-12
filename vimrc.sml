@@ -53,6 +53,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'HiPhish/nvim-ts-rainbow2'
   Plug 'mbbill/undotree'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
   " LSP support
   Plug 'williamboman/mason.nvim' " Bridge between Mason and lspconfig
@@ -67,7 +68,6 @@ call plug#begin('~/.vim/bundle')
   " Plug 'tpope/vim-flagship'           " Status line and tab line
   " Plug 'tpope/vim-flatfoot'           " Enhancement of 'f' and 't' kyes
   " Plug 'tpope/vim-obsession'          " Record sessions continuously
-  Plug 'jakubbortlik/vim-psytoolkit', { 'for': 'psy' }  " Syntax highlighting for PsyToolkit scripts
   Plug 'SirVer/ultisnips', { 'for': 'python' }
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -90,6 +90,10 @@ call plug#begin('~/.vim/bundle')
   Plug 'nanotech/jellybeans.vim'
   Plug 'rafi/awesome-vim-colorschemes'
   Plug 'vim-scripts/CycleColor'
+
+  " Syntax plugins
+  Plug 'alunny/pegjs-vim'
+  Plug 'jakubbortlik/vim-psytoolkit', { 'for': 'psy' }  " Syntax highlighting for PsyToolkit scripts
 
   " Python plugins:
   Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins' }  " numirias' repo " unmaintained
@@ -127,7 +131,6 @@ require("telescope").setup({
   },
 })
 require('telescope').load_extension('coc')
-
 EOF
 
 endif
@@ -660,12 +663,12 @@ local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
 vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+vim.keymap.set("n", "<C-h>", ui.toggle_quick_menu)
 
 vim.keymap.set("n", "<C-j>", function() ui.nav_file(1) end)
 vim.keymap.set("n", "<C-k>", function() ui.nav_file(2) end)
 vim.keymap.set("n", "<C-l>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<C-h>", function() ui.nav_file(4) end)
+vim.keymap.set("n", "⁏", function() ui.nav_file(4) end)
 EOF
 
 lua << EOF
