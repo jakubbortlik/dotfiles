@@ -1,7 +1,7 @@
 Jakub's Dotfiles
 ----------------
 
-I am running openSUSE Linux with LXDE on a Dell Latitude E6400
+I am running Manjaro with i3.
 
 How it works
 ------------
