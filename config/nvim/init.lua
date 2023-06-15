@@ -35,7 +35,6 @@ local opts = {
   ui = {
     browser = "firefox",
   },
-  install = { colorscheme = { "tokyonight" } },
   checker = { enabled = true },
   performance = {
     rtp = {
@@ -50,8 +49,8 @@ local opts = {
 -- Install plugins:
 require("lazy").setup("plugins", opts)
 require("autocommands")
-require("keymaps")
 require("highlights")
+require("keymaps")
 require("options")
 
 -- vim: ts=2 sts=2 sw=2 et
