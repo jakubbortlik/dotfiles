@@ -1,0 +1,5 @@
+vim.api.nvim_set_hl(0, "ColorColumn", {bg = "#440011"})
+vim.api.nvim_set_hl(0, "@variable.builtin.python", { fg = "#b2b2b2" })
+vim.api.nvim_set_hl(0, "@parameter.python", { fg = "#5fafff" })
+vim.api.nvim_set_hl(0, "@type.builtin.python", { fg = "#ff5fff" })
+vim.api.nvim_set_hl(0, "@constant.builtin.python", { link = "pythonStatement" })

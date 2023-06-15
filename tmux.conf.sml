@@ -53,10 +53,11 @@ set-option -g history-limit 1000000
 # bind - split-window -v
  
 # Vim style Movement commands
-bind h select-pane -L
-bind j select-pane -D
-bind k select-pane -U
-bind l select-pane -R
+bind -r ^ last-window
+bind -r h select-pane -L
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r l select-pane -R
  
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
@@ -75,7 +76,7 @@ bind L resize-pane -R 10
  
 # 256 colors, this gives me real trouble, and I'm still not sure
 # it's right
-set -g default-terminal "tmux-256color"
+set -g default-terminal 'tmux-256color'
 set-option -ga terminal-overrides ',xterm-256color:Tc'
 
 # alternative copy mode key
@@ -144,6 +145,9 @@ bind-key -n M-L next-window
 
 # Create new window
 bind-key -n M-N new-window
+
+# Use tmux-sessionizer to create new sessions
+bind-key -r f run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
 
 # Swap windows
 bind-key -r -n M-< swap-window -t -1

@@ -123,14 +123,14 @@ if [[ "${PWD}" = "${DOTFILES_DIR}" ]]; then
 
 	echo -e "\nFinished creating symlinks."
 
-	TMP="${HOME}/.tmux/plugins/tpm"
+	TPM="${HOME}/.tmux/plugins/tpm"
 	echo -e "\nCloning Tmux Plugin Manager repository:"
 	echo "======================================="
-	if [[ ! -e $TMP ]]; then
-		git clone https://github.com/tmux-plugins/tpm $TMP
-		echo "git clone https://github.com/tmux-plugins/tpm $TMP"
+	if [[ ! -e $TPM ]]; then
+		git clone https://github.com/tmux-plugins/tpm $TPM
+		echo "git clone https://github.com/tmux-plugins/tpm $TPM"
 	else
-		echo -e "Tmux Plugin Manager repository already exists in $TMP"
+		echo -e "Tmux Plugin Manager repository already exists in $TPM"
 	fi
 else
 	echo Cannot cd to "$HOME"/dotfiles

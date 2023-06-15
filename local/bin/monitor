@@ -1,0 +1,17 @@
+#!/bin/bash
+EXTERNAL_OUTPUT="DP-1-1"
+INTERNAL_OUTPUT="eDP-1"
+
+monitor_mode=$1
+
+if [ $monitor_mode = "external" ]; then
+  xrandr --output $INTERNAL_OUTPUT --off --output $EXTERNAL_OUTPUT --auto --primary
+elif [ $monitor_mode = "internal" ]; then
+  xrandr --output $INTERNAL_OUTPUT --auto --primary --output $EXTERNAL_OUTPUT --off
+elif [ $monitor_mode = "mirrored" ]; then
+  xrandr --output $INTERNAL_OUTPUT --auto --primary --output $EXTERNAL_OUTPUT --auto --same-as $INTERNAL_OUTPUT
+elif [ $monitor_mode = "all" ]; then
+  xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --primary --above $INTERNAL_OUTPUT
+fi
+
+# vim:set ft=bash:

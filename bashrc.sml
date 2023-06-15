@@ -137,6 +137,9 @@ ra() {
 }
 bind '"\C-o":"ra\C-m"'
 
+# Start up a tmux session
+bind -x '"\C-g": "tmux-sessionizer"'
+
 # Get the header of a table and prepend column numbers to column names.
 header () {
     SEPARATOR="[ 	;,]"
