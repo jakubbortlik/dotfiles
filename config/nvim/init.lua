@@ -49,21 +49,9 @@ local opts = {
 
 -- Install plugins:
 require("lazy").setup("plugins", opts)
-
 require("autocommands")
 require("keymaps")
 require("highlights")
 require("options")
-
-vim.cmd [[function! SynStack ()
-  for i1 in synstack(line("."), col("."))
-    let i2 = synIDtrans(i1)
-    let n1 = synIDattr(i1, "name")
-    let n2 = synIDattr(i2, "name")
-    echo n1 "->" n2
-  endfor
-endfunction
-nnoremap <leader>ss :echo SynStack()<cr>
-]]
 
 -- vim: ts=2 sts=2 sw=2 et
