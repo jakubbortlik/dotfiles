@@ -4,6 +4,7 @@ vim.keymap.set("n", "<C-y>", "3<C-Y>", { desc = "Scroll up more" })
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines without moving cursor" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "Centralize cursor after search" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Centralize cursor after backward search" })
+vim.keymap.set("n", "1<C-g>", "1<C-g>", { desc = "Print full path of current file name" }) -- Otherwise tmux-sessionizer is started
 
 -- Navigation
 vim.cmd [[let g:tmux_navigator_no_mappings = 1]]
