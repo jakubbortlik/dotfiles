@@ -76,6 +76,13 @@ return {
       indent = { enable = true, },
       incremental_selection = {
         enable = true,
+        disable = function()
+          local ok, bufname = pcall(vim.fn.expand, "%")
+          print(ok, bufname)
+          if ok and bufname == "[Command Line]" then
+            return true
+          end
+        end,
         keymaps = {
           init_selection = "<cr>", -- set to `false` to disable one of the mappings
           node_incremental = "<cr>",
