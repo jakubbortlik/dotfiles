@@ -49,19 +49,14 @@ return {
     ft = {"csv", "tsv", "txt"},
   },
   {
-    "jakubbortlik/vim-keymaps",
+    "jakubbortlik/vim-keymaps",           -- Switch keyboard layouts
     keys = {
       {"ckj", desc = "Next keymap" },
       {"ckk", desc = "Previous keymap" },
       {"ckl", desc = "Show keymaps" },
     },
-  }, -- Switch keyboard layouts
-  --[[ {
-  "wookayin/semshi",
-  build = ":UpdateRemotePlugins",
-  }, ]]
-  -- "ambv/black",                      -- Python formatter
-  "mbbill/undotree",
+  },
+  "mbbill/undotree",                      -- Show undo history in a tree
   "vim-scripts/bash-support.vim",
   {
     "vim-scripts/linediff.vim",           -- Diff two different parts of the same file
@@ -150,6 +145,9 @@ return {
     end
   },
   {'akinsho/toggleterm.nvim', version = "*", config = true},
+
+  -- Show pending keybinds
+  { 'folke/which-key.nvim', opts = {} },
 
   { dir = "~/projects/vim-phxstm", ft = "phxstm" },
 }
