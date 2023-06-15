@@ -121,12 +121,6 @@ local M = {
       }
     end,
   },
-
-  -- Rename with preview
-  {
-    "smjonas/inc-rename.nvim",
-    config = true,
-  },
 }
 
 return M
