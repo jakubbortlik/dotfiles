@@ -11,7 +11,10 @@ local M = {
         config = true,
       },
       "williamboman/mason-lspconfig.nvim",
-      { "folke/neodev.nvim", opts = {} },
+      {
+        "folke/neodev.nvim",
+        opts = { library = { plugins = { "nvim-dap-ui" }, types = true }, },
+      }
     },
     config = function()
       -- [[ Configure LSP ]]
@@ -26,21 +29,23 @@ local M = {
           vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
         end
 
+        local telescope_builtin = require("telescope.builtin")
+
         nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
         nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
         nmap("<leader>f", vim.lsp.buf.format, "[F]ormat current buffer with LSP")
 
         nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-        nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+        nmap("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences")
         nmap("gR", vim.lsp.buf.references, "Show [R]eferences in quickfix")
-        nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+        nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
         nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
 
-        nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-        nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+        nmap("<leader>ds", telescope_builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
+        nmap("<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
         nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-        nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+        nmap("<leader>k", vim.lsp.buf.signature_help, "Signature Documentation")
 
         -- Lesser used LSP functionality
         nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -49,28 +54,21 @@ local M = {
         nmap("<leader>wl", function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, "[W]orkspace [L]ist Folders")
-
-        -- Diagnostic keymaps
-        nmap("[d", vim.diagnostic.goto_prev, "Go to previous diagnostic message")
-        nmap("]d", vim.diagnostic.goto_next, "Go to next diagnostic message")
-        nmap("<leader>e", vim.diagnostic.open_float, "Open floating diagnostic message")
-        nmap("<leader>q", vim.diagnostic.setloclist, "Open diagnostics list")
       end
 
       -- Enable the following language servers. They will automatically be installed.
       local servers = {
-        pyright = {},
-        ruff_lsp = {},
+        pylsp = {}, -- run ":PylspInstall <plugin>" to install plugins
         lua_ls = {
           Lua = {
+            runtime = {
+              version = "LuaJIT",
+            },
             diagnostics = {
               globals = { "vim" },
             },
             workspace = {
-              library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.stdpath("config") .. "/lua"] = true,
-              },
+              library = vim.api.nvim_get_runtime_file("", true),
               checkThirdParty = false,
             },
             telemetry = { enable = false },
@@ -90,6 +88,7 @@ local M = {
 
       mason_lspconfig.setup({
         ensure_installed = vim.tbl_keys(servers),
+        automatic_installation = true,
       })
 
       mason_lspconfig.setup_handlers({
@@ -114,8 +113,18 @@ local M = {
       return {
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
         sources = {
-          null_ls.builtins.diagnostics.ruff,
-          null_ls.builtins.formatting.black,
+          -- linters
+          null_ls.builtins.diagnostics.pydocstyle.with({
+            extra_args = { "--ignore=D100,D101,D102,D103,D105,D203,D213,D400,D407,D413,D415" },
+          }),
+          null_ls.builtins.diagnostics.shellcheck,                                               -- sh
+          null_ls.builtins.diagnostics.vint,                                                     -- vimscript
+          null_ls.builtins.diagnostics.vulture.with({ args = { "$FILENAME", "whitelist.py" } }), -- detect unused code in Python
+          null_ls.builtins.diagnostics.buf,                                                      -- protobuf
+          null_ls.builtins.diagnostics.markdownlint,
+          null_ls.builtins.diagnostics.yamllint,                                                 -- YAML
+          -- formatters
+          null_ls.builtins.formatting.buf,      -- Protobuf formatting
           null_ls.builtins.formatting.stylua,
         },
       }

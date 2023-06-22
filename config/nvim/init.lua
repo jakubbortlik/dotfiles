@@ -2,6 +2,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.python3_host_prog = "/home/jakub/miniconda3/envs/neovim/bin/python3"
+
 -- Setup colors before jellybeans is loaded
 vim.g.jellybeans_use_term_background_color = 1
 vim.g.jellybeans_use_term_italics = 1
@@ -11,6 +13,7 @@ vim.cmd [[ let g:jellybeans_overrides = {
 \  "LineNr": { "guibg": "NONE" },
 \  "Normal": { "guibg": "NONE" },
 \  "SignColumn": { "guibg": "NONE" },
+\  "Special": {"guifg": "c9dd9a",},
 \}
 ]]
 

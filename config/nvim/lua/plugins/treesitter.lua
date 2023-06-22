@@ -78,7 +78,6 @@ return {
         enable = true,
         disable = function()
           local ok, bufname = pcall(vim.fn.expand, "%")
-          print(ok, bufname)
           if ok and bufname == "[Command Line]" then
             return true
           end
