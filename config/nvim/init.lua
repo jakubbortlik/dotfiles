@@ -30,12 +30,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- https://medium.com/linux-with-michael/lazy-nvim-the-blazingly-fast-neovim-package-manager-19a7a952835c
+-- Specify setup options for lazy.nvim
 local opts = {
   ui = {
     browser = "firefox",
   },
-  checker = { enabled = true },
+  checker = { enabled = true, frequency = 86400 }, -- Check for updates once a day
   performance = {
     rtp = {
       disabled_plugins = {
