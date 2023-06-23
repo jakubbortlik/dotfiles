@@ -34,6 +34,7 @@ return {
         "bash",
         "c",
         "cpp",
+        "dap_repl",
         -- "diff",
         "dockerfile",
         "gitcommit",
@@ -91,6 +92,10 @@ return {
       },
     },
     config = function(_, opts)
+
+      -- This is required for the dap_repl parser to be installable
+      require('nvim-dap-repl-highlights').setup()
+
       if type(opts.ensure_installed) == "table" then
         local added = {}
         opts.ensure_installed = vim.tbl_filter(function(lang)

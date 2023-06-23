@@ -232,17 +232,20 @@ return {
     cmd = "UnicodeTable",
   },
 
-  -- Colorscheme, highlighting and other visual stuff
-  {
-    "nanotech/jellybeans.vim",
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme("jellybeans")
-    end,
-  },
+  -- highlighting and other visual stuff
   "machakann/vim-highlightedyank",
-  "vim-scripts/FastFold",
-  "tmhedberg/SimpylFold",
+  -- TODO: figure out how to disable folding upon enteing the window
+  --[[ {
+    "tmhedberg/SimpylFold",
+    dependencies = {
+      "Konfekt/FastFold",
+    },
+    config = function()
+      vim.keymap.set("n", "zuz", "<Plug>(FastFoldUpdate)<cr>", { desc = "Update folds" })
+      vim.g.SimpylFold_fold_dosctring = 0
+      vim.g.SimpylFold_fold_import = 0
+    end
+  }, ]]
   {
     "RRethy/vim-illuminate", -- Highlight references
     event = { "BufReadPost", "BufNewFile" },
@@ -257,42 +260,16 @@ return {
       require("illuminate").configure(opts)
     end,
   },
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    cmd = "ToggleTerm",
-    -- config = true,
-    config = function()
-      require("toggleterm").setup({
-        size = function(term)
-          if term.direction == "horizontal" then
-            return 15
-          elseif term.direction == "vertical" then
-            return vim.o.columns * 0.4
-          end
-        end,
-        -- open_mapping = [[<c-t>]],
-      })
-    end,
-    keys = {
-      { "<C-t><C-e>", '<cmd>execute v:count . "ToggleTerm"<cr>', mode = { "n" }, desc = "Toggle horizontal terminal" },
-      {
-        "<C-t><C-a>",
-        '<cmd>execute v:count . "ToggleTerm direction=vertical"<cr>',
-        mode = { "n" },
-        desc = "Toggle vertical terminal",
-      },
-      {
-        "<C-t>",
-        "<cmd>ToggleTerm<cr>",
-        mode = { "t" },
-        desc = "Close Terminal",
-      },
-    },
-  },
 
   -- Show pending keybinds
-  { "folke/which-key.nvim",        opts = {} },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      window = {
+        border = "single",
+      },
+    }
+  },
 
   { dir = "~/projects/vim-phxstm", ft = "phxstm" },
 }

@@ -42,6 +42,7 @@ vim.keymap.set("n", "cp", "m`:g//p<cr>", { desc = "print occurrences" })
 vim.keymap.set("n", "<C-w>N", "<cmd>vnew<cr>", { desc = "Create new vertical window" })
 vim.keymap.set("n", "<Leader>h", "<cmd>nohlsearch<cr>", { desc = "Clear highlighting" })
 vim.keymap.set("n", "<Leader>l", "<cmd>Lazy<cr>", { desc = "Show plugins" })
+nmap("<leader>i", "<cmd>Inspect<cr>", "[I]nspect current position")
 
 -- Greatest remaps ever, by ThePrimeagen
 vim.keymap.set("x", "<Leader>p", [["_dP]], { desc = "Paster in Visual mode without losing the register" })

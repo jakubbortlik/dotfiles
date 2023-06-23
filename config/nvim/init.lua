@@ -4,19 +4,6 @@ vim.g.maplocalleader = " "
 
 vim.g.python3_host_prog = "/home/jakub/miniconda3/envs/neovim/bin/python3"
 
--- Setup colors before jellybeans is loaded
-vim.g.jellybeans_use_term_background_color = 1
-vim.g.jellybeans_use_term_italics = 1
-vim.cmd [[ let g:jellybeans_overrides = {
-\  "background": { "guibg": "NONE" },
-\  "Folded": { "guibg": "NONE" },
-\  "LineNr": { "guibg": "NONE" },
-\  "Normal": { "guibg": "NONE" },
-\  "SignColumn": { "guibg": "NONE" },
-\  "Special": {"guifg": "c9dd9a",},
-\}
-]]
-
 -- Install package manager:
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -37,6 +24,7 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
   ui = {
     browser = "firefox",
+    border = "single",
   },
   checker = { enabled = true, frequency = 86400 }, -- Check for updates once a day
   performance = {
@@ -52,7 +40,6 @@ local opts = {
 -- Install plugins:
 require("lazy").setup("plugins", opts)
 require("autocommands")
-require("highlights")
 require("keymaps")
 require("options")
 

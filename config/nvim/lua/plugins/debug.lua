@@ -8,6 +8,8 @@ local M = {
     dependencies = {
       -- Creates a beautiful debugger UI
       "rcarriga/nvim-dap-ui",
+      "LiadOz/nvim-dap-repl-highlights",
+
       -- Show variable values as virtual text
       "theHamsta/nvim-dap-virtual-text",
       -- Work with breakpoints
@@ -144,6 +146,8 @@ local M = {
       keymap({"n"}, "<leader>nL", [[<cmd> lua require("neotest").run.run_last({strategy = "dap"})<cdr>]], { desc = "Run [N]eotest for the [L]ast position with the same args but with DAP" })
 
       keymap({"n"}, "<leader>nw", [[<cmd> lua require("neotest").watch.toggle(vim.fn.expand("%"))<cr>]], { desc = "Toggle [W]atching the current file with [N]eotest" })
+      keymap({"n"}, "<leader>nW", [[<cmd> lua require("neotest").watch.toggle()<cr>]], { desc = "Toggle [W]atching the nearest test with [N]eotest" })
+
       keymap({"n"}, "<leader>no", [[<cmd> lua require("neotest").output.open({ enter = true })<cr>]], { desc = "Open [N]eotest [O]utput" })
       keymap({"n"}, "<leader>ns", [[<cmd> lua require("neotest").summary.toggle()<cr>]], { desc = "Toggle [N]eotest [S]ummary" })
 
