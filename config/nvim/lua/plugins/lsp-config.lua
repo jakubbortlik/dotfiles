@@ -7,14 +7,14 @@ local M = {
       -- Automatically install LSPs to stdpath for neovim
       {
         "williamboman/mason.nvim",
-        keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+        keys = { { "<leader>m", "<cmd>Mason<cr>", desc = "Mason" } },
         config = true,
       },
       "williamboman/mason-lspconfig.nvim",
       {
         "folke/neodev.nvim",
         opts = { library = { plugins = { "nvim-dap-ui" }, types = true }, },
-      }
+      },
     },
     config = function()
       -- [[ Configure LSP ]]
@@ -33,7 +33,7 @@ local M = {
 
         nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
         nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-        nmap("<leader>f", vim.lsp.buf.format, "[F]ormat current buffer with LSP")
+        nmap("<leader>cf", vim.lsp.buf.format, "[C]ode action: [F]ormat current buffer")
 
         nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
         nmap("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences")
@@ -45,7 +45,7 @@ local M = {
         nmap("<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
         nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-        nmap("<leader>k", vim.lsp.buf.signature_help, "Signature Documentation")
+        vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
 
         -- Lesser used LSP functionality
         nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -121,22 +121,41 @@ local M = {
     dependencies = { "mason.nvim" },
     opts = function()
       local null_ls = require("null-ls")
+      local warnings = {
+        -- More info at: http://www.pydocstyle.org/en/stable/error_codes.html
+        "D100", -- Missing docs in public module
+        "D101", -- Missing docs in public class
+        "D102", -- Missing docs in public method
+        "D103", -- Missing docs in public function
+        -- "D104", -- Missing docs in public package
+        "D105", -- Missing docs in magic method
+        "D106", -- Missing docstring in public nested class
+        "D107", -- Missing docstring in __init__
+        "D203", -- 1 blank line required before class docstring
+        "D213", -- Multi-line docstring summary should start at the second line
+        "D400", -- First line should end with a period
+        "D407", -- Missing dashed underline after section
+        "D413", -- Missing blank line after last section
+        "D415", -- First line should end with a period, question mark, or exclamation point
+      }
+      local warnings_str = table.concat(warnings, ",")
       return {
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
         sources = {
           -- linters
           null_ls.builtins.diagnostics.pydocstyle.with({
-            extra_args = { "--ignore=D100,D101,D102,D103,D105,D203,D213,D400,D407,D413,D415" },
+            extra_args = { "--ignore=" .. warnings_str },
           }),
           null_ls.builtins.diagnostics.shellcheck,                                               -- sh
           null_ls.builtins.diagnostics.vint,                                                     -- vimscript
           null_ls.builtins.diagnostics.vulture.with({ args = { "$FILENAME", "whitelist.py" } }), -- detect unused code in Python
           null_ls.builtins.diagnostics.buf,                                                      -- protobuf
-          null_ls.builtins.diagnostics.markdownlint,
+          null_ls.builtins.diagnostics.commitlint,                                               -- conventional commits
           null_ls.builtins.diagnostics.yamllint,                                                 -- YAML
           -- formatters
           null_ls.builtins.formatting.buf,      -- Protobuf formatting
           null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.textlint, -- Mardown
         },
       }
     end,
@@ -144,4 +163,3 @@ local M = {
 }
 
 return M
--- vim: ts=2 sts=2 sw=2 et

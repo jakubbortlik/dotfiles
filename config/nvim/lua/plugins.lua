@@ -2,16 +2,21 @@ return {
   -- "A universal set of defaults"
   "tpope/vim-sensible",
 
-  -- Git related plugins
-  "tpope/vim-fugitive",
-  -- "tpope/vim-rhubarb",
-
   -- Plugins for enhanced editing
   "tpope/vim-repeat",        -- Repeat other plugins with . command
   "tpope/vim-rsi",           -- Emulate Readline key bindings
-  "tpope/vim-capslock",
+  {
+    "tpope/vim-capslock",
+    keys = {
+      { "<C-G>c", mode = "i", desc = "Temporarily toggle caps lock" },
+      { "gC", mode = "n", desc = "Toggle caps lock" },
+    },
+  },
   "tommcdo/vim-exchange",    -- Easy exange of two portions of text
-  "b3nj5m1n/kommentary",     -- Toggle comments
+  {
+    "numToStr/Comment.nvim",   -- Toggle comments
+    config = true,
+  },
   {
     "tpope/vim-speeddating", -- Let <C-A>, <C-X> work on dates properly
     keys = {
@@ -94,6 +99,31 @@ return {
       })
     end,
   },
+  {
+    'gerazov/toggle-bool.nvim',
+    keys = { "cm" },
+    config = function()
+      require("toggle-bool").setup({
+        mapping = "cm",
+        description = "Toggle bool value",
+        additional_toggles = {
+          Yes = 'No',
+          On = 'Off',
+          ["0"] = "1",
+          Enable = 'Disable',
+          Enabled = 'Disabled',
+          First = 'Last',
+          before = 'after',
+          Before = 'After',
+          Persistent = 'Ephemeral',
+          Internal = 'External',
+          Ingress = 'Egress',
+          Allow = 'Deny',
+          All = 'None',
+        },
+      })
+    end
+  },
 
   -- Navigation
   {
@@ -111,6 +141,7 @@ return {
     cmd = {
       "TmuxNavigateDown",
       "TmuxNavigateLeft",
+      "TmuxNavigatePrevious",
       "TmuxNavigateRight",
       "TmuxNavigateUp",
     },
@@ -217,7 +248,10 @@ return {
   "tpope/vim-scriptease",
 
   -- Language specific plugins
-  "alunny/pegjs-vim",
+  {
+    "alunny/pegjs-vim",
+    ft = "pegjs",
+  },
 
   -- Unicode tables and digraphs expansion
   {
@@ -260,15 +294,18 @@ return {
       require("illuminate").configure(opts)
     end,
   },
-
-  -- Show pending keybinds
   {
-    "folke/which-key.nvim",
-    opts = {
-      window = {
-        border = "single",
-      },
-    }
+    "petertriho/nvim-scrollbar",
+    config = true,
+  },
+  {
+    "kevinhwang91/nvim-hlslens",
+    dependencies = "petertriho/nvim-scrollbar",
+    config = function()
+      require("hlslens").setup()  -- is not required
+      require("scrollbar.handlers.search").setup({
+      })
+    end,
   },
 
   { dir = "~/projects/vim-phxstm", ft = "phxstm" },

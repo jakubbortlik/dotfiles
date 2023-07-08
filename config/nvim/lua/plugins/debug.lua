@@ -51,7 +51,7 @@ local M = {
       keymap("n", "<F3>", dap.step_out, { desc = "Dap step out" })
       keymap("n", "<F4>", dap.step_back, { desc = "Dap step out" })
       keymap("n", "<F5>", dap.continue, { desc = "Dap continue" })
-      keymap("n", "<F6>", dap.terminate, { desc = "Dap continue" })
+      keymap("n", "<F6>", dap.terminate, { desc = "Dap terminate" })
       -- Toggle to see last session result to see session output in case of unhandled exception
       keymap("n", "<F7>", function() dapui.toggle({ reset = true }) end, { desc = "Dapui toggle" })
 
@@ -148,7 +148,7 @@ local M = {
       keymap({"n"}, "<leader>nw", [[<cmd> lua require("neotest").watch.toggle(vim.fn.expand("%"))<cr>]], { desc = "Toggle [W]atching the current file with [N]eotest" })
       keymap({"n"}, "<leader>nW", [[<cmd> lua require("neotest").watch.toggle()<cr>]], { desc = "Toggle [W]atching the nearest test with [N]eotest" })
 
-      keymap({"n"}, "<leader>no", [[<cmd> lua require("neotest").output.open({ enter = true })<cr>]], { desc = "Open [N]eotest [O]utput" })
+      keymap({"n"}, "<leader>no", [[<cmd> lua require("neotest").output.open({ enter = true, autoclose = true })<cr>]], { desc = "Open [N]eotest [O]utput" })
       keymap({"n"}, "<leader>ns", [[<cmd> lua require("neotest").summary.toggle()<cr>]], { desc = "Toggle [N]eotest [S]ummary" })
 
       -- Debugger autocommands
@@ -162,6 +162,15 @@ local M = {
           vim.api.nvim_set_current_win(vim.fn.bufwinid(args.buf))
         end)
       })
+
+      vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter", "WinEnter"}, {
+        group = id_dap,
+        pattern = "dap-\\(frames\\|hover\\|preview\\|scopes\\)*",
+        callback = function()
+          vim.keymap.set("n", "q", "<cmd>quit<cr>", { desc = "Quit this window", buffer = true })
+        end
+      })
+
       -- In the elements, use mappings similar to PUDB
       vim.api.nvim_create_autocmd("WinEnter", {
         group = id_dap,
@@ -169,7 +178,7 @@ local M = {
         callback = function()
           local nmap = function(keys, func, desc)
             if desc then
-              desc = "LSP: " .. desc
+              desc = "DAP: " .. desc
             end
             vim.keymap.set("n", keys, func, { desc = desc, buffer = true })
           end
@@ -220,7 +229,7 @@ local M = {
       require("neotest").setup({
         adapters = {
           require("neotest-python")({
-            dap = { justMyCode = false },
+            dap = { justMyCode = true },
           }),
         },
         quickfix = {

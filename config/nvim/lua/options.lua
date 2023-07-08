@@ -25,12 +25,9 @@ vim.opt.suffixes:remove {".info"}
 vim.opt.swapfile = false
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
-vim.opt.termguicolors = true
 vim.opt.textwidth = 88
 vim.opt.timeoutlen = 500
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.updatetime = 50
 vim.opt.wildmode = "longest,full"
-
--- vim: ts=2 sts=2 sw=2 et

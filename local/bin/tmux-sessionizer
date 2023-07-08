@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd --min-depth 1 --max-depth 1 -td . ~/Gitlab_int ~/dotfiles ~/ ~/miniconda3 | fzf)
+    selected=$(fd --min-depth 1 --max-depth 1 -td . ~/Gitlab_int ~/Gitlab_cloud ~/dotfiles ~/dotfiles/config ~/dotfiles/config/nvim ~/dotfiles/config/nvim/lua ~/ ~/miniconda3 ~/.local/share/nvim | fzf)
 fi
 
 if [[ -z $selected ]]; then

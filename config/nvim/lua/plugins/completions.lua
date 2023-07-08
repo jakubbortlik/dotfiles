@@ -1,22 +1,21 @@
 local M = {
-  'hrsh7th/nvim-cmp',
+  "hrsh7th/nvim-cmp",
+  event = {
+    "InsertEnter",
+    "CmdlineEnter",
+  },
   dependencies = {
+    "hrsh7th/cmp-buffer",   -- nvim-cmp source for buffer words
+    "hrsh7th/cmp-cmdline",  -- nvim-cmp source for vim's cmdline
+    "hrsh7th/cmp-nvim-lsp", -- Add LSP completion capabilities
+    "hrsh7th/cmp-path",     -- nvim-cmp source for filesystem paths
+    "rcarriga/cmp-dap",     -- completion in DAP
+    -- "hrsh7th/cmp-nvim-lua", -- nvim-cmp source for neovim Lua API
+
     -- Snippet Engine & its associated nvim-cmp source
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-
-    -- Add LSP completion capabilities
-    'hrsh7th/cmp-nvim-lsp',
-
-    'hrsh7th/cmp-buffer', -- nvim-cmp source for buffer words
-    'hrsh7th/cmp-path',   -- nvim-cmp source for filesystem paths
-    -- 'hrsh7th/cmp-nvim-lua',
-
-    -- Add a number of user-friendly snippets
-    'rafamadriz/friendly-snippets',
-
-    -- completion in DAP
-    'rcarriga/cmp-dap',
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets", -- A number of user-friendly snippets
   },
 
   config = function()
@@ -26,7 +25,7 @@ local M = {
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-m>"] = cmp.mapping.confirm({ select = true }),
       }),
       snippet = {
         expand = function(args)
@@ -51,6 +50,25 @@ local M = {
         { name = "dap" },
         { name = "buffer" },
       },
+    })
+    cmp.setup.cmdline("/", {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = "buffer" }
+      }
+    })
+    cmp.setup.cmdline(":", {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = "path" }
+      }, {
+        {
+          name = "cmdline",
+          option = {
+            ignore_cmds = { "Man", "!" }
+          }
+        }
+      })
     })
   end,
 }
