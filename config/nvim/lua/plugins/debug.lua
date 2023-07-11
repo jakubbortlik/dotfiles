@@ -246,20 +246,20 @@ local M = {
       wk.register({
         n = {
           name = "Neotest", -- optional group name
-          d = { [[<cmd> lua require("neotest").run.run({vim.fn.expand("%"), strategy = "dap" })<cr>]], "Run [n]eotest for current file with [d]ap" },
-          f = { [[<cmd> lua require("neotest").run.run({vim.fn.expand("%")})<cr>]], "Run [n]eotest for current [f]ile" },
-          n = { [[<cmd> lua require("neotest").run.run()<cr>]], "Run [n]eotest for [n]earest test" },
-          l = { [[<cmd> lua require("neotest").run.run_last()<cr>]], "Run [n]eotest for [l]ast position (same args and strategy)" },
-          L = { [[<cmd> lua require("neotest").run.run_last({strategy = "dap" })<cr>]], "Run [n]eotest for [L]ast position (same args but with DAP)" },
-          w = { [[<cmd> lua require("neotest").watch.toggle(vim.fn.expand("%"))<cr>]], "Toggle [n]eotest [w]atching the current file" },
-          W = { [[<cmd> lua require("neotest").watch.toggle()<cr>]], "Toggle [n]eotest [W]atching the nearest test" },
-          o = { [[<cmd> lua require("neotest").output.open({ enter = false, autoclose = true })<cr>]], "Open [n]eotest [o]utput" },
-          O = { [[<cmd> lua require("neotest").output_panel.open({ enter = false, autoclose = true })<cr>]], "Open [n]eotest [O]utput panel" },
-          s = { [[<cmd> lua require("neotest").summary.toggle()<cr>]], "Toggle [n]eotest [s]ummary" },
+          d = { function() neotest.run.run({vim.fn.expand("%"), strategy = "dap" }) end, "Run [n]eotest for current file with [d]ap" },
+          f = { function() neotest.run.run({vim.fn.expand("%")}) end, "Run [n]eotest for current [f]ile" },
+          n = { neotest.run.run, "Run [n]eotest for [n]earest test" },
+          l = { neotest.run.run_last, "Run [n]eotest for [l]ast position (same args and strategy)" },
+          L = { function() neotest.run.run_last({strategy = "dap" }) end, "Run [n]eotest for [L]ast position (same args but with DAP)" },
+          w = { function() neotest.watch.toggle(vim.fn.expand("%")) end, "Toggle [n]eotest [w]atching the current file" },
+          W = { neotest.watch.toggle, "Toggle [n]eotest [W]atching the nearest test" },
+          o = { function() neotest.output.open({ enter = false, autoclose = true }) end, "Open [n]eotest [o]utput" },
+          O = { function() neotest.output_panel.open({ enter = false, autoclose = true }) end, "Open [n]eotest [O]utput panel" },
+          s = { neotest.summary.toggle, "Toggle [n]eotest [s]ummary" },
         },
       }, { prefix = "<leader>" })
-      vim.keymap.set( "n", "[n", [[<cmd>lua require("neotest").jump.prev({ status = "failed" })<CR>]], { desc = "Jump to previous failed test" })
-      vim.keymap.set( "n", "]n", [[<cmd>lua require("neotest").jump.next({ status = "failed" })<CR>]], { desc = "Jump to next failed test" })
+      vim.keymap.set( "n", "[n", function() neotest.jump.prev({ status = "failed" }) end, { desc = "Jump to previous failed test" })
+      vim.keymap.set( "n", "]n", function() neotest.jump.next({ status = "failed" }) end, { desc = "Jump to next failed test" })
     end,
   },
 }
