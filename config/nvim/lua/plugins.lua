@@ -59,10 +59,17 @@ return {
       { "ckj", desc = "Next keymap" },
       { "ckk", desc = "Previous keymap" },
       { "ckl", desc = "Show keymaps" },
+      { mode = "i", "<C-k><C-j>", desc = "Next keymap" },
+      { mode = "i", "<C-k><C-k>", desc = "Previous keymap" },
+      { mode = "i", "<C-k><C-l>", desc = "Show keymaps" },
     },
   },
   "mbbill/undotree", -- Show undo history in a tree
   "vim-scripts/bash-support.vim",
+  {
+    "vim-scripts/bash-support.vim",
+    ft = "sh",
+  },
   {
     "vim-scripts/linediff.vim", -- Diff two different parts of the same file
     cmd = "Linediff",
@@ -150,6 +157,25 @@ return {
     "ggandor/leap.nvim",
     config = function()
       require("leap").add_default_mappings()
+      -- temporary fix of wrong temporary cursor
+      vim.api.nvim_create_autocmd(
+        "User",
+        { callback = function()
+            vim.cmd.hi("Cursor", "blend=100")
+            vim.opt.guicursor:append { "a:Cursor/lCursor" }
+          end,
+          pattern = "LeapEnter"
+        }
+      )
+      vim.api.nvim_create_autocmd(
+        "User",
+        { callback = function()
+            vim.cmd.hi("Cursor", "blend=0")
+            vim.opt.guicursor:remove { "a:Cursor/lCursor" }
+          end,
+          pattern = "LeapLeave"
+        }
+      )
     end,
   },
   {

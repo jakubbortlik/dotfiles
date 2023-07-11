@@ -1,18 +1,16 @@
 M = {
   {
     "folke/which-key.nvim", -- Show pending keybinds
+    event = "VeryLazy",
     opts = {
       window = {
-        border = "single",
+        border = "rounded",
       },
     }
   },
 }
 
 local nmap = function(keys, func, desc)
-  if desc then
-    desc = "LSP: " .. desc
-  end
   vim.keymap.set("n", keys, func, { desc = desc })
 end
 
@@ -32,21 +30,21 @@ vim.keymap.set({"n", "t"}, "<A-l>", "<cmd>TmuxNavigateRight<cr>", { silent = tru
 -- Mmiscellaneous mappings
 vim.keymap.set({ "i", "n", "s", "v" }, "<C-s>", "<cmd>update<cr><esc>", { desc = "[s]ave file" })
 vim.keymap.set("n", "co", "m`0:%s///gn<cr>", { desc = "[c]ount [o]ccurrences" })
-vim.keymap.set("n", "cp", "m`:g//p<cr>", { desc = "print occurrences" })
+vim.keymap.set("n", "cp", "m`:g//p<cr>", { desc = "o[c]currences [p]review" })
 vim.keymap.set("n", "<C-w>N", "<cmd>vnew<cr>", { desc = "Create [N]ew vertical window" })
 vim.keymap.set("n", "<Leader>ch", "<cmd>nohlsearch<cr>", { desc = "[c]lear [h]ighlighting" })
 vim.keymap.set("n", "<Leader>l", "<cmd>Lazy<cr>", { desc = "Show plugins" })
 nmap("<leader>i", "<cmd>Inspect<cr>", "[I]nspect current position")
-nmap("<leader>sa", [[:s/\%>c]], "[S]ubstitute after")
+nmap("<leader>sa", [[:s/\%>c]], "[s]ubstitute [a]fter")
+nmap("<Leader>su", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "[s]ubstitute word [u]nder cursor")
 
 -- Greatest remaps ever, by ThePrimeagen
-vim.keymap.set("x", "<Leader>p", [["_dP]], { desc = "Paster in Visual mode without losing the register" })
+vim.keymap.set("x", "<Leader>p", [["_dP]], { desc = "Visual mode paste without losing register" })
 vim.keymap.set({ "n", "v" }, "<Leader>y", [["+y]], { desc = "Copy to system clipboard" })
 vim.keymap.set("n", "<Leader>Y", [["+Y]], { desc = "Add to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<Leader>d", [["_d]], { desc = "Delete to blackhole register" })
-vim.keymap.set("n", "<Leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Substitute word under cursor" })
 vim.keymap.set("n", "<Leader>x", "<cmd>!chmod +x %<cr>", { silent = true, desc = "Make current file executable" })
-vim.keymap.set("n", "<C-g>", "<cmd>silent !tmux neww tmux-sessionizer<cr>", { desc = "Create tmux session or attach to a an existing one" })
+nmap("<C-g>", "<cmd>silent !tmux neww tmux-sessionizer<cr>", "Create tmux session or attach to a an existing one")
 
 -- Adjust textwidth
 vim.keymap.set("n", "<Leader>w0", "<cmd>setlocal textwidth=0<cr>", { desc = "Set local textwidth to 0" })
@@ -70,10 +68,4 @@ nmap("]d", vim.diagnostic.goto_next, "Go to next diagnostic message")
 nmap("<leader>e", vim.diagnostic.open_float, "Open floating diagnostic message")
 nmap("<leader>q", vim.diagnostic.setloclist, "Open diagnostics list")
 
--- Move cursor up and down in insert mode (useful in dap REPL)
-vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Move cursor down / Select next command", remap = true })
-vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Move cursor up / Select previous command", remap = true })
-
 return M
-
--- vim: ts=2 sts=2 sw=2 et

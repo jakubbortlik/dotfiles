@@ -8,7 +8,7 @@ local M = {
     },
     config = function()
       local telescope = require("telescope")
-      telescope.setup()
+      telescope.setup({})
       -- Enable telescope fzf native, if installed
       pcall(telescope.load_extension, "fzf")
       local builtin = require("telescope.builtin")
@@ -38,6 +38,10 @@ local M = {
       nmap("<leader>sd", builtin.diagnostics, "[S]earch [D]iagnostics")
     end,
   },
+  {
+    "nyarthan/telescope-code-actions.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+  },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -54,4 +58,3 @@ local M = {
 }
 
 return M
--- vim: ts=2 sts=2 sw=2 et

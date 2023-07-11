@@ -8,13 +8,18 @@ local M = {
       {
         "williamboman/mason.nvim",
         keys = { { "<leader>m", "<cmd>Mason<cr>", desc = "Mason" } },
-        config = true,
+        config = function()
+          require("mason").setup({
+            ui = { border = "rounded" },
+          })
+        end,
       },
       "williamboman/mason-lspconfig.nvim",
       {
         "folke/neodev.nvim",
         opts = { library = { plugins = { "nvim-dap-ui" }, types = true }, },
       },
+      "hrsh7th/cmp-nvim-lsp", -- Add LSP completion capabilities
     },
     config = function()
       -- [[ Configure LSP ]]
@@ -41,13 +46,13 @@ local M = {
         nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
         nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
 
-        nmap("<leader>ds", telescope_builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
-        nmap("<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+        nmap("<leader>ss", telescope_builtin.lsp_document_symbols, "[s]earch document [s]ymbols")
+        nmap("<leader>sW", telescope_builtin.lsp_dynamic_workspace_symbols, "[s]earch [W]orkspace symbols")
 
         nmap("K", vim.lsp.buf.hover, "Hover Documentation")
         vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
 
-        -- Lesser used LSP functionality
+        -- Less used LSP functionality
         nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
         nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
         nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
@@ -102,7 +107,7 @@ local M = {
       })
 
       -- Put nice borders around lsp-related floating windows
-      local _border = "single"
+      local _border = "rounded"
       require('lspconfig.ui.windows').default_options = { border = _border }
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
         vim.lsp.handlers.hover, { border = _border }

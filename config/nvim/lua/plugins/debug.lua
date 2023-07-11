@@ -5,6 +5,13 @@ local M = {
 
   {
     "mfussenegger/nvim-dap",
+    keys = {
+      { "<F5>" },
+      { "<F7>" },
+      { "<leader>bb" },
+      { "<leader>bc" },
+      { "<leader>bC" },
+    },
     dependencies = {
       -- Creates a beautiful debugger UI
       "rcarriga/nvim-dap-ui",
@@ -56,25 +63,25 @@ local M = {
       keymap("n", "<F7>", function() dapui.toggle({ reset = true }) end, { desc = "Dapui toggle" })
 
       local opts = { noremap = true, silent = true }
-      local persistent_breakpoints_api = require("persistent-breakpoints.api")
+      local pbapi = require("persistent-breakpoints.api")
       -- Save breakpoints to file automatically.
       keymap(
         "n",
-        "<leader>b",
-        persistent_breakpoints_api.toggle_breakpoint,
-        { unpack(opts), desc = "Dap toggle breakpoint" }
+        "<leader>bb",
+        pbapi.toggle_breakpoint,
+        { unpack(opts), desc = "Dap toggle [b]reakpoint" }
       )
       keymap(
         "n",
-        "<leader>cb",
-        persistent_breakpoints_api.set_conditional_breakpoint,
-        { unpack(opts), desc = "Dap set conditional breakpoint" }
+        "<leader>bc",
+        pbapi.set_conditional_breakpoint,
+        { unpack(opts), desc = "Dap set [b]reakpoint [c]onditional" }
       )
       keymap(
         "n",
-        "<leader>cc",
-        persistent_breakpoints_api.clear_all_breakpoints,
-        { unpack(opts), desc = "Dap clear all breakpoints" }
+        "<leader>bC",
+        pbapi.clear_all_breakpoints,
+        { unpack(opts), desc = "Dap [b]reakpoints - [C]lear all" }
       )
 
       keymap('n', ']b', require('goto-breakpoints').next, { desc = "Go to next [B]reakpoint" })
@@ -88,6 +95,12 @@ local M = {
       keymap({ "n", "v" }, "<Leader>dp", function() widgets.preview() end, { desc = "[D]ap widgets [P]review" })
       keymap("n", "<Leader>df", function() widgets.centered_float(widgets.frames) end, { desc = "[D]ap float widget [F]rames" })
       keymap("n", "<Leader>dv", function() widgets.centered_float(widgets.scopes) end, { desc = "[D]ap float widget [V]ariable scopes" })
+
+      require('dap-python').setup()
+      local dap_python = require('dap-python')
+      keymap("n", "<leader>dm", dap_python.test_method)
+      keymap("n", "<leader>dc", dap_python.test_class)
+      keymap("v", "<leader>ds", dap_python.debug_selection)
 
       -- Dap UI setup
       dapui.setup({
@@ -136,21 +149,6 @@ local M = {
       keymap({"n", "i"}, "<C-q>r", "<cmd>call win_gotoid(win_getid(bufwinnr('\\[dap-repl\\]')))<cr>", { desc = "[G]o to [R]EPL" })
       keymap({"n", "i"}, "<C-q>s", "<cmd>call win_gotoid(win_getid(bufwinnr('DAP Stacks')))<cr>", { desc = "[G]o to [S]tacks" })
 
-      keymap({"n"}, "[n", [[<cmd>lua require("neotest").jump.prev({ status = "failed" })<CR>]], { desc = "Jump to previous failed test" })
-      keymap({"n"}, "]n", [[<cmd>lua require("neotest").jump.next({ status = "failed" })<CR>]], { desc = "Jump to next failed test" })
-
-      keymap({"n"}, "<leader>nd", [[<cmd> lua require("neotest").run.run({vim.fn.expand("%"), strategy = "dap"})<cr>]], { desc = "Run [N]eotest for current file with [D]AP" })
-      keymap({"n"}, "<leader>nf", [[<cmd> lua require("neotest").run.run({vim.fn.expand("%")})<cr>]], { desc = "Run [N]eotest for current [F]ile" })
-      keymap({"n"}, "<leader>nn", [[<cmd> lua require("neotest").run.run()<cr>]], { desc = "Run [N]eotest for [N]earest test" })
-      keymap({"n"}, "<leader>nl", [[<cmd> lua require("neotest").run.run_last()<cdr>]], { desc = "Run [N]eotest for the [l]ast position with the same args and strategy" })
-      keymap({"n"}, "<leader>nL", [[<cmd> lua require("neotest").run.run_last({strategy = "dap"})<cdr>]], { desc = "Run [N]eotest for the [L]ast position with the same args but with DAP" })
-
-      keymap({"n"}, "<leader>nw", [[<cmd> lua require("neotest").watch.toggle(vim.fn.expand("%"))<cr>]], { desc = "Toggle [W]atching the current file with [N]eotest" })
-      keymap({"n"}, "<leader>nW", [[<cmd> lua require("neotest").watch.toggle()<cr>]], { desc = "Toggle [W]atching the nearest test with [N]eotest" })
-
-      keymap({"n"}, "<leader>no", [[<cmd> lua require("neotest").output.open({ enter = true, autoclose = true })<cr>]], { desc = "Open [N]eotest [O]utput" })
-      keymap({"n"}, "<leader>ns", [[<cmd> lua require("neotest").summary.toggle()<cr>]], { desc = "Toggle [N]eotest [S]ummary" })
-
       -- Debugger autocommands
       local id_dap = vim.api.nvim_create_augroup("DAP", {
         clear = false
@@ -187,6 +185,11 @@ local M = {
           nmap("W", "<cmd>call win_gotoid(win_getid(bufwinnr('DAP Watches')))<cr>", "[G]o to [W]atches")
           nmap("S", "<cmd>call win_gotoid(win_getid(bufwinnr('DAP Stacks')))<cr>", "[G]o to [S]tacks")
           nmap("!!", "<cmd>call win_gotoid(win_getid(bufwinnr('\\[dap-repl\\]')))<cr>", "[G]o to [R]EPL")
+
+          -- Move cursor up and down in insert mode (useful in dap REPL)
+          vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Move cursor down / Select next command", remap = true })
+          vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Move cursor up / Select previous command", remap = true })
+
         end
       })
 
@@ -237,10 +240,28 @@ local M = {
           open = false,
         },
       })
+      local neotest = package.loaded.neotest
+      local wk = require("which-key")
+      -- Register normal mode keymaps
+      wk.register({
+        n = {
+          name = "Neotest", -- optional group name
+          d = { [[<cmd> lua require("neotest").run.run({vim.fn.expand("%"), strategy = "dap" })<cr>]], "Run [n]eotest for current file with [d]ap" },
+          f = { [[<cmd> lua require("neotest").run.run({vim.fn.expand("%")})<cr>]], "Run [n]eotest for current [f]ile" },
+          n = { [[<cmd> lua require("neotest").run.run()<cr>]], "Run [n]eotest for [n]earest test" },
+          l = { [[<cmd> lua require("neotest").run.run_last()<cr>]], "Run [n]eotest for [l]ast position (same args and strategy)" },
+          L = { [[<cmd> lua require("neotest").run.run_last({strategy = "dap" })<cr>]], "Run [n]eotest for [L]ast position (same args but with DAP)" },
+          w = { [[<cmd> lua require("neotest").watch.toggle(vim.fn.expand("%"))<cr>]], "Toggle [n]eotest [w]atching the current file" },
+          W = { [[<cmd> lua require("neotest").watch.toggle()<cr>]], "Toggle [n]eotest [W]atching the nearest test" },
+          o = { [[<cmd> lua require("neotest").output.open({ enter = false, autoclose = true })<cr>]], "Open [n]eotest [o]utput" },
+          O = { [[<cmd> lua require("neotest").output_panel.open({ enter = false, autoclose = true })<cr>]], "Open [n]eotest [O]utput panel" },
+          s = { [[<cmd> lua require("neotest").summary.toggle()<cr>]], "Toggle [n]eotest [s]ummary" },
+        },
+      }, { prefix = "<leader>" })
+      vim.keymap.set( "n", "[n", [[<cmd>lua require("neotest").jump.prev({ status = "failed" })<CR>]], { desc = "Jump to previous failed test" })
+      vim.keymap.set( "n", "]n", [[<cmd>lua require("neotest").jump.next({ status = "failed" })<CR>]], { desc = "Jump to next failed test" })
     end,
   },
 }
 
 return M
-
--- vim: ts=2 sts=2 sw=2 et:

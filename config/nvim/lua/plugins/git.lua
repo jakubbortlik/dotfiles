@@ -46,6 +46,9 @@ local M = {
     "lewis6991/gitsigns.nvim",
     config = function()
       require('gitsigns').setup({
+        preview_config = {
+          border = "rounded",
+        },
         on_attach = function(bufnr)
           local gs = package.loaded.gitsigns
 
@@ -94,23 +97,6 @@ local M = {
               r = { function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, "[r]eset" },
             },
           }, { prefix = "<leader>", mode = "v" })
-
-          -- Actions
-          map('n', '<leader>hs', gs.stage_hunk, { desc = "[H]unk [s]tage" })
-          map('n', '<leader>hr', gs.reset_hunk, { desc = "[H]unk [r]eset" })
-          map('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
-            { desc = "[H]unk [s]tage" })
-          map('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
-            { desc = "[H]unk [r]eset" })
-          map('n', '<leader>hS', gs.stage_buffer, { desc = "[H]unk [S]tage buffer" })
-          map('n', '<leader>hu', gs.undo_stage_hunk, { desc = "[H]unk [u]ndo stage" })
-          map('n', '<leader>hR', gs.reset_buffer, { desc = "[H]unk [R]eset buffer" })
-          map('n', '<leader>hp', gs.preview_hunk, { desc = "[H]unk [p]review" })
-          map('n', '<leader>hb', function() gs.blame_line { full = true } end, { desc = "[H]unk [b]lame line" })
-          map('n', '<leader>ht', gs.toggle_current_line_blame, { desc = "[H]unk [t]oggle line blame" })
-          map('n', '<leader>hd', gs.diffthis, { desc = "[H]unk [d]iff this" })
-          map('n', '<leader>hD', function() gs.diffthis('~') end, { desc = "[H]unk [D]iff this agains '~'" })
-          map('n', '<leader>hT', gs.toggle_deleted, { desc = "[H]unk [T]oggle deleted" })
 
           -- Text object
           map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
