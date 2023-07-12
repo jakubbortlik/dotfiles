@@ -38,7 +38,7 @@ local opts = {
   },
 }
 
--- Install plugins:
+-- Set options, install plugins, and define autocommands:
+require("options")
 require("lazy").setup("plugins", opts)
 require("autocommands")
-require("options")
