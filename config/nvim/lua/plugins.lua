@@ -2,19 +2,27 @@ return {
   -- "A universal set of defaults"
   "tpope/vim-sensible",
 
+  -- Plugin for (not only) vimscript plugins
+  {
+    "tpope/vim-scriptease",
+    keys = { { "zS" }, { "K" }, },
+    cmd = { "Messages", "PP", "Scriptnames", "Verbose", "Time" },
+  },
+
+
   -- Plugins for enhanced editing
-  "tpope/vim-repeat",        -- Repeat other plugins with . command
-  "tpope/vim-rsi",           -- Emulate Readline key bindings
+  "tpope/vim-repeat", -- Repeat other plugins with . command
+  "tpope/vim-rsi",    -- Emulate Readline key bindings
   {
     "tpope/vim-capslock",
     keys = {
       { "<C-G>c", mode = "i", desc = "Temporarily toggle caps lock" },
-      { "gC", mode = "n", desc = "Toggle caps lock" },
+      { "gC",     mode = "n", desc = "Toggle caps lock" },
     },
   },
   "tommcdo/vim-exchange",    -- Easy exange of two portions of text
   {
-    "numToStr/Comment.nvim",   -- Toggle comments
+    "numToStr/Comment.nvim", -- Toggle comments
     config = true,
   },
   {
@@ -142,6 +150,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+    config = true,
   },
   {
     "christoomey/vim-tmux-navigator", -- Navigate easily in vim and tmux
@@ -160,7 +169,8 @@ return {
       -- temporary fix of wrong temporary cursor
       vim.api.nvim_create_autocmd(
         "User",
-        { callback = function()
+        {
+          callback = function()
             vim.cmd.hi("Cursor", "blend=100")
             vim.opt.guicursor:append { "a:Cursor/lCursor" }
           end,
@@ -169,7 +179,8 @@ return {
       )
       vim.api.nvim_create_autocmd(
         "User",
-        { callback = function()
+        {
+          callback = function()
             vim.cmd.hi("Cursor", "blend=0")
             vim.opt.guicursor:remove { "a:Cursor/lCursor" }
           end,
@@ -270,9 +281,6 @@ return {
     end,
   },
 
-  -- Plugin for vimscript plugins
-  "tpope/vim-scriptease",
-
   -- Language specific plugins
   {
     "alunny/pegjs-vim",
@@ -307,13 +315,32 @@ return {
     end
   }, ]]
   {
+    'm-demare/hlargs.nvim',
+    config = function()
+      require("hlargs").setup({
+        color = "#5fafff",
+        excluded_argnames = {
+          declarations = {
+            python = { 'self', 'cls' },
+            lua = { 'self' }
+          },
+          usages = {
+            python = { 'self', 'cls' },
+            lua = { 'self' }
+          }
+        },
+      })
+    end,
+  },
+  {
     "RRethy/vim-illuminate", -- Highlight references
     event = { "BufReadPost", "BufNewFile" },
     opts = {
       delay = 0,
+      providers = { "treesitter", "regex" },
       large_file_cutoff = 2000,
       large_file_overrides = {
-        providers = { "lsp" },
+        providers = { "regex" },
       },
     },
     config = function(_, opts)
@@ -328,13 +355,21 @@ return {
     "kevinhwang91/nvim-hlslens",
     dependencies = "petertriho/nvim-scrollbar",
     config = function()
-      require("hlslens").setup()  -- is not required
+      require("hlslens").setup() -- is not required
       require("scrollbar.handlers.search").setup({
+      })
+    end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup({
+        char = "┆",
+        char_highlight_list = { "IndentBlanklineIndent1" },
+        show_trailing_blankline_indent = false,
       })
     end,
   },
 
   { dir = "~/projects/vim-phxstm", ft = "phxstm" },
 }
-
--- vim: ts=2 sts=2 sw=2 et

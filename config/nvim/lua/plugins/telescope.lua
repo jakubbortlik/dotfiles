@@ -8,9 +8,13 @@ local M = {
     },
     config = function()
       local telescope = require("telescope")
-      telescope.setup({})
-      -- Enable telescope fzf native, if installed
-      pcall(telescope.load_extension, "fzf")
+      telescope.setup({
+        defaults = {
+          dynamic_preview_title = true,
+        },
+      })
+      pcall(telescope.load_extension, "fzf") -- Enable telescope fzf native, if installed
+      pcall(telescope.load_extension, "code_actions") -- Enable telescope code actions, if installed
       local builtin = require("telescope.builtin")
 
       local nmap = function(keys, func, desc)

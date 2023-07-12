@@ -63,7 +63,12 @@ local M = {
 
       -- Enable the following language servers. They will automatically be installed.
       local servers = {
-        pylsp = {}, -- run ":PylspInstall <plugin>" to install plugins
+        pylsp = {},         -- run ":PylspInstall <plugin>" to install the following plugins:
+        -- pylsp-mypy       -- type checking
+        -- pylsp-rope       -- refactoring (import sort)
+        -- pyls-memestra    -- deprecation warnings
+        -- python-lsp-ruff  -- linting
+        -- python-lsp-black -- autoformatting
         lua_ls = {
           Lua = {
             runtime = {

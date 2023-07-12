@@ -8,10 +8,11 @@ set $mod Mod4
 bindsym $mod+p mode "select monitor (j: external, k: internal, l: all, ;: mirrored)"
 mode "select monitor (j: external, k: internal, l: all, ;: mirrored)" {
     # These bindings trigger as soon as you enter the 'select monitor' mode
-    bindsym j exec --no-startup-id /home/jakub/.local/bin/monitor external; mode "default"
-    bindsym k exec --no-startup-id /home/jakub/.local/bin/monitor internal; mode "default"
-    bindsym l exec --no-startup-id /home/jakub/.local/bin/monitor all; mode "default"
-    bindsym semicolon exec --no-startup-id /home/jakub/bin/monitor mirrored; mode "default"
+    # The restart at the end makes sure the sbxkb is restarted
+    bindsym j exec --no-startup-id /home/jakub/.local/bin/monitor external; mode "default"; restart
+    bindsym k exec --no-startup-id /home/jakub/.local/bin/monitor internal; mode "default"; restart
+    bindsym l exec --no-startup-id /home/jakub/.local/bin/monitor all; mode "default"; restart
+    bindsym semicolon exec --no-startup-id /home/jakub/bin/monitor mirrored; mode "default"; restart
     # Exit 'select monitor' mode: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -303,6 +304,10 @@ mode "$mode_resize_horizontal" {
 }
 
 # Lock screen
+# If the result of this command: "stat $(which i3lock)" does not contain "Access:
+# (4755/-rwsr-xr-x)" (it may have something like "(0755/-rwsr-xr-x)" instaed), i3lock
+# may not be able to unlock properly, because of permissions. In that case, fix it by
+# the following command: "sudo chmod 4755 $(which i3lock)".
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
@@ -320,7 +325,7 @@ exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 
-# exec --no-startup-id xautolock -time 10 -notify 15 -locker blurlock
+exec --no-startup-id xautolock -time 10 -locker blurlock
 
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor

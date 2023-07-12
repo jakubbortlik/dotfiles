@@ -24,9 +24,10 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
   ui = {
     browser = "firefox",
-    border = "single",
+    border = "rounded",
   },
   checker = { enabled = true, frequency = 86400 }, -- Check for updates once a day
+  change_detection = { enabled = true, notify = false, },
   performance = {
     rtp = {
       disabled_plugins = {
@@ -41,5 +42,3 @@ local opts = {
 require("lazy").setup("plugins", opts)
 require("autocommands")
 require("options")
-
--- vim: ts=2 sts=2 sw=2 et

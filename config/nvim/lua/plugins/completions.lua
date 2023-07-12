@@ -11,7 +11,6 @@ local M = {
     "hrsh7th/cmp-path",     -- nvim-cmp source for filesystem paths
     "ray-x/cmp-treesitter", -- nvim-cmp source for treesitter nodes
     "rcarriga/cmp-dap",     -- completion in DAP
-    -- "hrsh7th/cmp-nvim-lua", -- nvim-cmp source for neovim Lua API
 
     "lukas-reineke/cmp-under-comparator", -- better sorting for magic methods
     "onsails/lspkind.nvim", -- Add vscode-like pictograms to LSP
@@ -48,7 +47,7 @@ local M = {
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<C-m>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-j>"] = cmp.mapping.confirm({ select = true }),
       }),
       snippet = {
         expand = function(args)
@@ -104,19 +103,6 @@ local M = {
       sources = {
         { name = "buffer" }
       }
-    })
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "path" }
-      }, {
-        {
-          name = "cmdline",
-          option = {
-            ignore_cmds = { "Man", "!" }
-          }
-        }
-      })
     })
   end,
 }

@@ -24,6 +24,7 @@ return {
           end
         end,
       },
+      "LiadOz/nvim-dap-repl-highlights",
     },
     keys = {
       { "<c-space>", desc = "Increment selection" },
@@ -66,7 +67,7 @@ return {
       highlight = {
         enable = true,
         -- Disable slow treesitter highlight for large files
-        disable = function(buf)
+        disable = function(_, buf)
           local max_filesize = 100 * 1024 -- 100 KB
           local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then
@@ -127,5 +128,3 @@ return {
     end,
   }
 }
-
--- vim: ts=2 sts=2 sw=2 et

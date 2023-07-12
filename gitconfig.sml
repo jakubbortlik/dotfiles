@@ -14,12 +14,14 @@
 	cb = copy-branch-name
 	co = checkout
 	com = checkout master
+	con = checkout main
 	d = diff
 	l = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	ll = log --oneline --graph --all --decorate
     m = merge
 	p = push origin HEAD
 	pl = pull --prune
+	pr = pull --rebase
     rpo = remote prune origin
 	s = status
 	sb = status -sb

@@ -8,40 +8,13 @@ case $- in
       *) return;;
 esac
 
-colors() {
-  local fgc bgc vals seq0
-
-  printf "Color escapes are %s\n" '\e[${value};...;${value}m'
-  printf "Values 30..37 are \e[33mforeground colors\e[m\n"
-  printf "Values 40..47 are \e[43mbackground colors\e[m\n"
-  printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
-
-  # foreground colors
-  for fgc in {30..37}; do
-    # background colors
-    for bgc in {40..47}; do
-      fgc=${fgc#37} # white
-      bgc=${bgc#40} # black
-
-      vals="${fgc:+$fgc;}${bgc}"
-      vals=${vals%%;}
-
-      seq0="${vals:+\e[${vals}m}"
-      printf "  %-9s" "${seq0:-(default)}"
-      printf " ${seq0}TEXT\e[m"
-      printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
-    done
-    echo; echo
-  done
-}
-
 # disable stopping the flow in terminal by Ctrl-S, so that this mapping can be
 # used to save buffers in vim or to serach through bash history
 stty -ixon
 
 if command -v nvim > /dev/null 2>&1; then
   export EDITOR=nvim
-  alias vi='nvim'
+  alias vi=$EDITOR
 else
   export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
 fi
@@ -137,8 +110,50 @@ ra() {
 }
 bind '"\C-o":"ra\C-m"'
 
-# Start up a tmux session
-bind -x '"\C-g": "tmux-sessionizer"'
+# Fuzzy find stuff in a git repo
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+gf() {
+  is_in_git_repo &&
+    git -c color.status=always status --short |
+    fzf --height 40% -m --ansi --nth 2..,.. | awk '{print $2}'
+}
+gb() {
+  is_in_git_repo &&
+    git branch -a -vv --color=always | grep -v '/HEAD\s' |
+    fzf --height 40% --ansi --multi --tac | sed 's/^..//' | awk '{print $1}' |
+    sed 's#^remotes/[^/]*/##'
+}
+gt() {
+  is_in_git_repo &&
+    git tag --sort -version:refname |
+    fzf --height 40% --multi
+}
+gh() {
+  is_in_git_repo &&
+    git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph |
+    fzf --height 40% --ansi --no-sort --reverse --multi | grep -o '[a-f0-9]\{7,\}'
+}
+gr() {
+  is_in_git_repo &&
+    git remote -v | awk '{print $1 " " $2}' | uniq |
+    fzf --height 40% --tac | awk '{print $1}'
+}
+bind '"\er": redraw-current-line'
+bind '"\C-g\C-f": "$(gf)\e\C-e\er"'  # Fuzzy find git [f]ile
+bind '"\C-g\C-b": "$(gb)\e\C-e\er"'  # Fuzzy find git [b]ranch
+bind '"\C-g\C-t": "$(gt)\e\C-e\er"'  # Fuzzy find git [t]ag
+bind '"\C-g\C-c": "$(gh)\e\C-e\er"'  # Fuzzy find git [c]ommit hash
+bind '"\C-g\C-r": "$(gr)\e\C-e\er"'  # Fuzzy find git [r]emote
+
+# Fuzzy find directory to start up a tmux [s]ession in or attach to an existing one
+bind -x '"\C-g\C-s":"tmux-sessionizer"'
+
+bind -x '"\eh":"tmux select-pane -L"'
+bind -x '"\ej":"tmux select-pane -D"'
+bind -x '"\ek":"tmux select-pane -U"'
+bind -x '"\el":"tmux select-pane -R"'
 
 # Get the header of a table and prepend column numbers to column names.
 header () {
@@ -180,11 +195,20 @@ alias l='ls -CF'
 alias g='git'
 # Git branch bash completion
 # curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
-if [ -f ~/.git-completion.bash ]; then
-  source ~/.git-completion.bash
-  # Add git completion to aliases
-  __git_complete g __git_main
+if [[ ! $(type -t __git_complete) == function ]]; then
+  if [ ! -r ~/.git-completion.bash ]; then
+    echo "Downloading git-completion.bash:"
+    curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash && source ~/.git-completion.bash
+  else
+    source ~/.git-completion.bash
+  fi
 fi
+if [ $(type -t __git_complete) == function ]; then
+  __git_complete g __git_main
+else
+  echo "Cannot enable git CLI completion for alias 'g'"
+fi
+
 lull() {
   for lfs_object in $@; do
     git lfs pull --include="${lfs_object}" --exclude="";
@@ -279,5 +303,32 @@ ex ()
   fi
 }
 
-export PATH=$HOME/local/bin:$HOME/.local/bin:$PATH
-# vim:set ft=bash expandtab ts=2 sw=2:
+colors() {
+  local fgc bgc vals seq0
+
+  printf "Color escapes are %s\n" '\e[${value};...;${value}m'
+  printf "Values 30..37 are \e[33mforeground colors\e[m\n"
+  printf "Values 40..47 are \e[43mbackground colors\e[m\n"
+  printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
+
+  # foreground colors
+  for fgc in {30..37}; do
+    # background colors
+    for bgc in {40..47}; do
+      fgc=${fgc#37} # white
+      bgc=${bgc#40} # black
+
+      vals="${fgc:+$fgc;}${bgc}"
+      vals=${vals%%;}
+
+      seq0="${vals:+\e[${vals}m}"
+      printf "  %-9s" "${seq0:-(default)}"
+      printf " ${seq0}TEXT\e[m"
+      printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
+    done
+    echo; echo
+  done
+}
+
+export PATH=$HOME/local/bin:$HOME/.local/bin:/usr/lib/node_modules/node/bin:$PATH
+# vim:set syntax=sh sw=2 ts=2:

@@ -123,21 +123,14 @@ set -g status-right '#[fg=colour100]#[bg=colour100] #[fg=black]%Y-%m-%d #[fg=
 
 # EXPERIMENTAL SETTINGS:
 # smart pane switching with awareness of vim splits
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-    | grep -iqE '^([^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?|python)$'"
-bind-key -n M-h if-shell "$is_vim" "send-keys M-h"  "select-pane -L"
-bind-key -n M-j if-shell "$is_vim" "send-keys M-j"  "select-pane -D"
-bind-key -n M-k if-shell "$is_vim" "send-keys M-k"  "select-pane -U"
-bind-key -n M-l if-shell "$is_vim" "send-keys M-l"  "select-pane -R"
-if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
-    "bind-key -n 'M-\\' if-shell \"$is_vim\" 'send-keys M-\\'  'select-pane -l'"
-if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
-    "bind-key -n 'M-\\' if-shell \"$is_vim\" 'send-keys M-\\\\'  'select-pane -l'"
-bind-key -T copy-mode-vi 'M-h' select-pane -L
-bind-key -T copy-mode-vi 'M-j' select-pane -D
-bind-key -T copy-mode-vi 'M-k' select-pane -U
-bind-key -T copy-mode-vi 'M-l' select-pane -R
-bind-key -T copy-mode-vi 'M-\' select-pane -l
+is_vim="echo '#{pane_tty}' > ~/tty.log; ps -o state= -o comm= -t '#{pane_tty}' \
+    | tee ~/ps.log | grep -iqE '^([^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?)$'"
+is_poetry="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?poetry$'"
+
+bind -n M-h run "($is_vim && tmux send-keys M-h) || ($is_poetry && tmux send-keys M-h) || tmux select-pane -L"
+bind -n M-j run "($is_vim && tmux send-keys M-j) || ($is_poetry && tmux send-keys M-j) || tmux select-pane -D"
+bind -n M-k run "($is_vim && tmux send-keys M-k) || ($is_poetry && tmux send-keys M-k)  || tmux select-pane -U"
+bind -n M-l run  "($is_vim && tmux send-keys M-l) || ($is_poetry && tmux send-keys M-l) || tmux select-pane -R"
 
 # Move windows left and right
 bind-key -n M-H previous-window
@@ -148,6 +141,9 @@ bind-key -n M-N new-window
 
 # Use tmux-sessionizer to create new sessions
 bind-key -r f run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
+
+bind-key -r C-j run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles"
+bind-key -r C-k run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab_int"
 
 # Swap windows
 bind-key -r -n M-< swap-window -t -1

@@ -34,8 +34,8 @@ vim.keymap.set("n", "cp", "m`:g//p<cr>", { desc = "o[c]currences [p]review" })
 vim.keymap.set("n", "<C-w>N", "<cmd>vnew<cr>", { desc = "Create [N]ew vertical window" })
 vim.keymap.set("n", "<Leader>ch", "<cmd>nohlsearch<cr>", { desc = "[c]lear [h]ighlighting" })
 vim.keymap.set("n", "<Leader>l", "<cmd>Lazy<cr>", { desc = "Show plugins" })
-nmap("<leader>i", "<cmd>Inspect<cr>", "[I]nspect current position")
-nmap("<leader>sa", [[:s/\%>c]], "[s]ubstitute [a]fter")
+nmap("<leader>i", "<cmd>Inspect<cr>", "[i]nspect current position")
+nmap("<leader>sa", [[:s/\%>.c]], "[s]ubstitute [a]fter")
 nmap("<Leader>su", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "[s]ubstitute word [u]nder cursor")
 
 -- Greatest remaps ever, by ThePrimeagen
@@ -56,7 +56,18 @@ vim.keymap.set("n", "<Leader>ww", "<cmd>setlocal textwidth=88<cr>", { desc = "Se
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 vim.keymap.set("n", "<Leader>a", mark.add_file, { desc = "Add file to Harpoon list" })
-vim.keymap.set("n", "<C-h>", ui.toggle_quick_menu, { desc = "Open Harpoon quick menu" })
+
+local toggle_relative_quick_menu = function()
+  require("harpoon").setup({
+    menu = {
+      width = math.floor(vim.api.nvim_win_get_width(0) * 0.75),
+    }
+  })
+  ui.toggle_quick_menu()
+end
+
+vim.keymap.set("n", "<C-h>", toggle_relative_quick_menu, { desc = "Open Harpoon quick menu" })
+
 vim.keymap.set("n", "<C-j>", function() ui.nav_file(1) end, { desc = "Navigate to harpoon file 1" })
 vim.keymap.set("n", "<C-k>", function() ui.nav_file(2) end, { desc = "Navigate to harpoon file 2" })
 vim.keymap.set("n", "<C-l>", function() ui.nav_file(3) end, { desc = "Navigate to harpoon file 3" })
