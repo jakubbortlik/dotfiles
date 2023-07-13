@@ -142,7 +142,7 @@ bind-key -n M-L next-window
 bind-key -n M-N new-window
 
 # Use tmux-sessionizer to create new sessions
-bind-key -r f run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
+bind-key -r g run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
 
 bind-key -r C-j run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles"
 bind-key -r C-k run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab_int"
