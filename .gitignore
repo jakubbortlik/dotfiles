@@ -1,4 +1,5 @@
 .*.swp
+.repro
 bin/praat*
 bin/test
 tags

@@ -269,7 +269,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     opts = {
       delay = 0,
-      providers = { "treesitter", "regex" },
+      providers = { "lsp", "treesitter", "regex" },
       large_file_cutoff = 2000,
       large_file_overrides = {
         providers = { "regex" },

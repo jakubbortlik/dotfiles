@@ -1,7 +1,22 @@
+-- Git related plugins
+
+-- Return "main" or "master" for the repository
+local function get_main()
+  local branch = vim.fn.system("git branch | sed 's/\\* //' | rg '^(main|master)$'")
+  return branch
+end
+
 local M = {
-  -- Git related plugins
   {
     "tpope/vim-fugitive",
+    keys = {
+      { "<C-g><C-g>", "<cmd>Git<cr>", "Run [G]it"},
+      { "<C-g><C-d>", "<cmd>Gdiffsplit " .. get_main() .. "<cr>", "[G][d]iffsplit with main"},
+      { "<C-g><C-v>", "<cmd>Gvdiffsplit " .. get_main() .. "<cr>", "[G][v]diffsplit with main"},
+      { "<C-g>g", ":G ", "Prepopulate commandline with :[G]it"},
+      { "<C-g>d", ":Gdiffsplit ", "Prepopulate commandline with [G][d]iffsplit"},
+      { "<C-g>v", ":Gvdiffsplit ", "Prepopulate commandline with [G][v]diffsplit"},
+    },
     cmd = {
       "G",
       "GBrowse",

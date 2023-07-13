@@ -44,13 +44,13 @@ vim.keymap.set({ "n", "v" }, "<Leader>y", [["+y]], { desc = "Copy to system clip
 vim.keymap.set("n", "<Leader>Y", [["+Y]], { desc = "Add to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<Leader>d", [["_d]], { desc = "Delete to blackhole register" })
 vim.keymap.set("n", "<Leader>x", "<cmd>!chmod +x %<cr>", { silent = true, desc = "Make current file executable" })
-nmap("<C-g>", "<cmd>silent !tmux neww tmux-sessionizer<cr>", "Create tmux session or attach to a an existing one")
+nmap("<C-g><C-s>", "<cmd>silent !tmux neww tmux-sessionizer<cr>", "Create tmux [s]ession or attach to one")
 
 -- Adjust textwidth
-vim.keymap.set("n", "<Leader>w0", "<cmd>setlocal textwidth=0<cr>", { desc = "Set local textwidth to 0" })
-vim.keymap.set("n", "<Leader>w7", "<cmd>setlocal textwidth=72<cr>", { desc = "Set local textwidth to 72" })
-vim.keymap.set("n", "<Leader>w8", "<cmd>setlocal textwidth=80<cr>", { desc = "Set local textwidth to 80" })
-vim.keymap.set("n", "<Leader>ww", "<cmd>setlocal textwidth=88<cr>", { desc = "Set local textwidth to 88" })
+vim.keymap.set("n", "<Leader>w0", "<cmd>setlocal textwidth=0<cr>", { desc = "Set local text[w]idth to [0]" })
+vim.keymap.set("n", "<Leader>w7", "<cmd>setlocal textwidth=72<cr>", { desc = "Set local text[w]idth to [7]2" })
+vim.keymap.set("n", "<Leader>w8", "<cmd>setlocal textwidth=88<cr>", { desc = "Set local text[w]idth to [8]8" })
+vim.keymap.set("n", "<Leader>w9", "<cmd>setlocal textwidth=79<cr>", { desc = "Set local text[w]idth to 7[9]" })
 
 -- Wield the harpoon
 local mark = require("harpoon.mark")

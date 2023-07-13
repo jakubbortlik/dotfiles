@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     set_hl(0, "@constant.builtin.python", { link = "Constant" })
     set_hl(0, "QuickFixLine", { link = "WarningMsg" })
     set_hl(0, "NeoTreeGitUntracked", { fg = "#76946a" })
-    set_hl(0, "IndentBlanklineIndent1", { bg="NONE", fg="#101010", nocombine=true })
+    set_hl(0, "IndentBlanklineIndent1", { bg="NONE", fg="#1a1a1a", nocombine=true })
   end
 })
 

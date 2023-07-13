@@ -15,13 +15,13 @@ local M = {
   end,
   keys = {
     {
-      "<C-t><C-e>",
+      "<C-t><C-a>",
       '<cmd>execute v:count . "ToggleTerm"<cr>',
       mode = { "n" },
       desc = "Toggle horizontal terminal"
     },
     {
-      "<C-t><C-a>",
+      "<C-t><C-e>",
       '<cmd>execute v:count . "ToggleTerm direction=vertical"<cr>',
       mode = { "n" },
       desc = "Toggle vertical terminal",

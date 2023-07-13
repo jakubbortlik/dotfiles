@@ -7,11 +7,11 @@ monitor_mode=$1
 if [ $monitor_mode = "external" ]; then
   xrandr --output $INTERNAL_OUTPUT --off --output $EXTERNAL_OUTPUT --auto --primary
 elif [ $monitor_mode = "internal" ]; then
-  xrandr --output $INTERNAL_OUTPUT --auto --primary --output $EXTERNAL_OUTPUT --off
+  xrandr --output $INTERNAL_OUTPUT --mode "1600x900" --primary --output $EXTERNAL_OUTPUT --off
 elif [ $monitor_mode = "mirrored" ]; then
-  xrandr --output $INTERNAL_OUTPUT --auto --primary --output $EXTERNAL_OUTPUT --auto --same-as $INTERNAL_OUTPUT
+  xrandr --output $INTERNAL_OUTPUT --mode "1600x900" --primary --output $EXTERNAL_OUTPUT --auto --same-as $INTERNAL_OUTPUT
 elif [ $monitor_mode = "all" ]; then
-  xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --primary --above $INTERNAL_OUTPUT
+  xrandr --output $INTERNAL_OUTPUT --mode "1600x900" --output $EXTERNAL_OUTPUT --auto --primary --above $INTERNAL_OUTPUT
 fi
 
-# vim:set ft=bash:
+# vim:set ft=bash ts=2 sw=2:

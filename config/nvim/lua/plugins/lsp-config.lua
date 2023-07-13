@@ -33,6 +33,12 @@ local M = {
           end
           vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
         end
+        local imap = function(keys, func, desc)
+          if desc then
+            desc = "LSP: " .. desc
+          end
+          vim.keymap.set("i", keys, func, { buffer = bufnr, desc = desc })
+        end
 
         local telescope_builtin = require("telescope.builtin")
 
@@ -47,10 +53,14 @@ local M = {
         nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
 
         nmap("<leader>ss", telescope_builtin.lsp_document_symbols, "[s]earch document [s]ymbols")
-        nmap("<leader>sW", telescope_builtin.lsp_dynamic_workspace_symbols, "[s]earch [W]orkspace symbols")
+        nmap(
+          "<leader>sW",
+          telescope_builtin.lsp_dynamic_workspace_symbols,
+          "[s]earch [W]orkspace symbols"
+        )
 
         nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-        vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
+        imap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
         -- Less used LSP functionality
         nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -63,7 +73,7 @@ local M = {
 
       -- Enable the following language servers. They will automatically be installed.
       local servers = {
-        pylsp = {},         -- run ":PylspInstall <plugin>" to install the following plugins:
+        pylsp = {}, -- run ":PylspInstall <plugin>" to install the following plugins:
         -- pylsp-mypy       -- type checking
         -- pylsp-rope       -- refactoring (import sort)
         -- pyls-memestra    -- deprecation warnings
@@ -120,7 +130,7 @@ local M = {
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
         vim.lsp.handlers.signature_help, { border = _border }
       )
-      vim.diagnostic.config{ float={border=_border} }
+      vim.diagnostic.config({ float = { border = _border } })
     end,
   },
 
@@ -149,23 +159,42 @@ local M = {
         "D415", -- First line should end with a period, question mark, or exclamation point
       }
       local warnings_str = table.concat(warnings, ",")
+      -- Disable null_ls source for fugitive buffers
+      local disable_for_fugitive = function(params)
+        if string.find(params.bufname, "fugitive://") then
+          return false
+        else
+          return true
+        end
+      end
       return {
-        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
+        root_dir = require("null-ls.utils").root_pattern(
+          ".null-ls-root",
+          ".neoconf.json",
+          "Makefile",
+          ".git"
+        ),
         sources = {
           -- linters
           null_ls.builtins.diagnostics.pydocstyle.with({
             extra_args = { "--ignore=" .. warnings_str },
+            runtime_condition = disable_for_fugitive,
           }),
-          null_ls.builtins.diagnostics.shellcheck,                                               -- sh
-          null_ls.builtins.diagnostics.vint,                                                     -- vimscript
-          null_ls.builtins.diagnostics.vulture.with({ args = { "$FILENAME", "whitelist.py" } }), -- detect unused code in Python
-          null_ls.builtins.diagnostics.buf,                                                      -- protobuf
-          null_ls.builtins.diagnostics.commitlint,                                               -- conventional commits
-          null_ls.builtins.diagnostics.yamllint,                                                 -- YAML
+          null_ls.builtins.diagnostics.shellcheck, -- sh
+          null_ls.builtins.diagnostics.vint,       -- vimscript
+          -- detect unused code in Python
+          null_ls.builtins.diagnostics.vulture.with({
+            args = { "$FILENAME", "whitelist.py" },
+            runtime_condition = disable_for_fugitive,
+          }),
+          null_ls.builtins.diagnostics.buf,        -- protobuf
+          null_ls.builtins.diagnostics.commitlint, -- conventional commits
+          -- null_ls.builtins.diagnostics.markdownlint.with({ command = "/usr/lib/node_modules/node/bin/markdownlint" }),
+          null_ls.builtins.diagnostics.yamllint,   -- YAML
           -- formatters
-          null_ls.builtins.formatting.buf,      -- Protobuf formatting
+          null_ls.builtins.formatting.buf,         -- Protobuf formatting
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.textlint, -- Mardown
+          null_ls.builtins.formatting.textlint,    -- Mardown
         },
       }
     end,

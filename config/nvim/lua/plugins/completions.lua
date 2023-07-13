@@ -1,3 +1,30 @@
+-- local M = {
+--   {
+--     "ms-jpq/coq_nvim", -- main one
+--     branch = "coq",
+--     dependencies = {
+--       {
+--         "ms-jpq/coq.artifacts", -- 9000+ Snippets
+--         branch = "artifacts",
+--       },
+--       -- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
+--       -- Need to **configure separately**
+--       {
+--         "ms-jpq/coq.thirdparty",
+--         branch = "3p",
+--       },
+--       -- - shell repl
+--       -- - nvim lua api
+--       -- - scientific calculator
+--       -- - comment banner
+--       -- - etc
+--     },
+--     config = function()
+--       vim.cmd([[let g:coq_settings = { "auto_start": v:true }]])
+--     end,
+--   },
+-- }
+
 local M = {
   "hrsh7th/nvim-cmp",
   event = {
@@ -6,7 +33,7 @@ local M = {
   },
   dependencies = {
     "hrsh7th/cmp-buffer",   -- nvim-cmp source for buffer words
-    "hrsh7th/cmp-cmdline",  -- nvim-cmp source for vim's cmdline
+    "petertriho/cmp-git",   -- nvim-cmp source for git
     "hrsh7th/cmp-nvim-lsp", -- Add LSP completion capabilities
     "hrsh7th/cmp-path",     -- nvim-cmp source for filesystem paths
     "ray-x/cmp-treesitter", -- nvim-cmp source for treesitter nodes
@@ -54,6 +81,9 @@ local M = {
           require("luasnip").lsp_expand(args.body)
         end,
       },
+      -- view = {
+      --   entries = { name = "custom", separator = "|" }
+      -- },
       window = {
         completion = cmp.config.window.bordered({winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",}),
         documentation = cmp.config.window.bordered({winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",}),
@@ -62,6 +92,7 @@ local M = {
         { name = "luasnip" },
         { name = "nvim_lsp" },
         { name = "buffer" },
+        { name = "git" },
         { name = "path" },
         { name = "treesitter" },
         { name = "git" },
@@ -78,12 +109,13 @@ local M = {
           cmp.config.compare.order,
         },
       },
-    })
-    cmp.setup({
       enabled = function()
         return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
             or require("cmp_dap").is_dap_buffer()
-      end
+      end,
+      experimental = {
+        ghost_text = true,
+      },
     })
     cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
       sources = {
@@ -93,16 +125,10 @@ local M = {
     })
     cmp.setup.filetype("gitcommit", {
       sources = cmp.config.sources({
-        { name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+        { name = "git" }, -- You can specify the `git` source if [you have installed it](https://github.com/petertriho/cmp-git).
       }, {
           { name = "buffer" },
         })
-    })
-    cmp.setup.cmdline({ "/", "?" }, {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = "buffer" }
-      }
     })
   end,
 }
