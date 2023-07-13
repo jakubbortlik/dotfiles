@@ -4,7 +4,7 @@ local M = {
 vim.cmd [[let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', 'keymap', 'capslock' ],
-      \             [ 'fugitive', 'readonly', 'myfilename', 'modified' ] ],
+      \             [ 'branch', 'readonly', 'myfilename', 'modified' ] ],
       \ },
       \   'mode_map': {
       \     'n': 'NORMAL', 'no': 'NORMAL', 'nov': 'NORMAL', 'noV': 'NORMAL',
@@ -23,7 +23,7 @@ vim.cmd [[let g:lightline = {
       \   'fileencoding': 'LightlineFileencoding',
       \   'fileformat': 'LightlineFileformat',
       \   'filetype': 'LightlineFiletype',
-      \   'fugitive': 'LightlineFugitive',
+      \   'branch': 'GitsignsHead',
       \   'keymap': 'LightlineKeymap',
       \   'mode': 'DetailedMode',
       \   'readonly': 'LightlineReadonly',
@@ -41,7 +41,7 @@ function! LightlineFilename()
 endfunc
 function! LightlineFileencoding()
   let g:file_name_len = strlen(expand('%:t'))
-  let g:branch_name_len = strlen(LightlineFugitive())
+  let g:branch_name_len = strlen(GitsignsHead())
   return (winwidth(0) - g:file_name_len - g:branch_name_len) > 70 ? (&fileencoding !=# '' ? &fileencoding : &encoding) : ''
 endfunction
 function! LightlineFileformat()
@@ -59,10 +59,10 @@ endfunction
 function! LightlineReadonly()
   return &readonly ? '' : ''
 endfunction
-function! LightlineFugitive()
-  if exists('*FugitiveHead')
-    let branch = FugitiveHead()
-    return branch !=# '' ? ''.branch : ''
+function! GitsignsHead()
+  if exists('b:gitsigns_head')
+    let branch = b:gitsigns_head
+    return branch !=# '' ? ''..branch : ''
   endif
   return ''
 endfunction
