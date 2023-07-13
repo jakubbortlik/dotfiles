@@ -79,6 +79,17 @@ local M = {
         -- pyls-memestra    -- deprecation warnings
         -- python-lsp-ruff  -- linting
         -- python-lsp-black -- autoformatting
+        pyright = {
+          pyright = { disableOrganizeImports = true },
+          python = {
+            analysis = {
+              autoImportCompletions = true,
+              autoSearchPaths = true,
+              diagnosticMode = 'openFilesOnly',
+              typeCheckingMode = 'off'
+            }
+          }
+        },
         lua_ls = {
           Lua = {
             runtime = {
