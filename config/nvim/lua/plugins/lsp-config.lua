@@ -17,7 +17,7 @@ local M = {
       "williamboman/mason-lspconfig.nvim",
       {
         "folke/neodev.nvim",
-        opts = { library = { plugins = { "nvim-dap-ui" }, types = true }, },
+        opts = { library = { plugins = { "nvim-dap-ui", "neotest" }, types = true }, },
       },
       "hrsh7th/cmp-nvim-lsp", -- Add LSP completion capabilities
     },
