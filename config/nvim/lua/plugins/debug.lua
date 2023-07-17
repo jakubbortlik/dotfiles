@@ -1,6 +1,21 @@
 -- Use the DAP and Neotest plugins to debug code
 -- Primarily focused on configuring the debugger for Python
 
+local python_path = function()
+  -- TODO: find out if it's possible to get the VIRTUAL_ENV activated in the DAP REPL.
+  -- Debugpy supports launching an application with a different interpreter then
+  -- the one used to launch debugpy itself.
+  -- The code below looks for a Python executable within the `VIRTUAL_ENV` environment.
+  -- 
+  -- return "/home/jakub/.cache/pypoetry/virtualenvs/phonexia-speech-api-ny0Relwj-py3.11/bin/python"
+  local vdir = os.getenv("VIRTUAL_ENV")
+  if vdir then
+    return vdir .. "/bin/python"
+  else
+    return "/usr/bin/python3"
+  end
+end
+
 local M = {
 
   {
@@ -192,29 +207,14 @@ local M = {
 
         end
       })
-
       dap.listeners.after.event_initialized["dapui_config"] = dapui.open
       dap.listeners.before.event_terminated["dapui_config"] = dapui.close
       dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
-      local pythonPath = function()
-        -- TODO: find out if it's possible to get the VIRTUAL_ENV activated in the REPL
-        -- Debugpy supports launching an application with a different interpreter then
-        -- the one used to launch debugpy itself.
-        -- The code below looks for a Python executable within the `VIRTUAL_ENV`
-        -- environment.
-        local vdir = os.getenv("VIRTUAL_ENV")
-        if vdir then
-          return vdir .. "/bin/python"
-        else
-          return "/usr/bin/python3"
-        end
-      end
       -- Install Python specific config
-      require("dap-python").setup(pythonPath())
+      require("dap-python").setup(python_path())
       require("dap-python").resolve_python = function()
-        -- return "/home/jakub/.cache/pypoetry/virtualenvs/phonexia-speech-api-ny0Relwj-py3.11/bin/python"
-        return pythonPath()
+        return python_path()
       end
     end,
   },
@@ -233,6 +233,7 @@ local M = {
         adapters = {
           require("neotest-python")({
             dap = { justMyCode = true },
+            python = python_path(),
           }),
         },
         quickfix = {

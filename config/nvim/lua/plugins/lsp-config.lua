@@ -73,7 +73,16 @@ local M = {
 
       -- Enable the following language servers. They will automatically be installed.
       local servers = {
-        pylsp = {}, -- run ":PylspInstall <plugin>" to install the following plugins:
+        pylsp = {
+          plugins = {
+            rope_completion = {
+              enabled = false
+            },
+            rope_autoimport = {
+              enabled = false
+            },
+          },
+        }, -- run ":PylspInstall <plugin>" to install the following plugins:
         -- pylsp-mypy       -- type checking
         -- pylsp-rope       -- refactoring (import sort)
         -- pyls-memestra    -- deprecation warnings
