@@ -98,88 +98,88 @@ Other:
 
 Packages to install:
 --------------------
-airline
-audacity
-baobab - disk management
-biber
-bibletime
-caca-utils
-ctl 	# for the visualalisation in git
-firefox
-*flashplugin
-flash-player-properties???
-*fluidsynth
-galculator
-gimp
-gmrun	# application starter (Ctrl-R)
-gucharmap
-inkscape
-klavaro
-lame
-leafpad
-libreoffice
-*lilypond
-man-db
-man-pages
-mlocate
-moc
-mtpaint
-mupdf
-*neovim
-noto-fonts?
-noto-fonts-cjk?
-*nvidia
-noto-fonts-emoji?
-*pdfgrep
-obconf - openbox configuration manager??
-perl-biber
-perl-rename
-powerline-fonts
-praat
-*python-neovim
-r-core
-ranger + libcaca (Color AsCii Art library) + highlight
-*redshift
-rosegarden
-rstudio??
-rsync
-rxvt-unicode??
-scrot
-skype
-slock
-smplayer
-sox
-system-config-printer???
-texlive
-texlive-latexmk
-texlive-beamer
-texlive-biber
-texlive-bibtex
-texlive-nag
-texlive-pdfjam
-*tcl??
-*timidity++
-tk		# for the visualalisation in git
-*tmux
-ttf-bitstream-vera
-ttf-dejavu
-ttf-droid
-ttf-liberation
-tuxguitar??
-*unetbootin
-unrar
-unzip
-*vim-latexsuite
-xfce4-power-manager-settings??
-xpad
-w3m
-w3m-inline-image
-*wine
-xorg-xev?
-*zathura
-*zathura-pdf-mupdf
-*zathura-plugin-djvu
-
-podofo - pdf manipulation
-pdftk? - not in Fedora
-tox - aur?
+- airline
+- audacity
+- baobab - disk management
+- biber
+- bibletime
+- caca-utils
+- ctl 	# for the visualalisation in git
+- firefox
+- *flashplugin
+- flash-player-properties???
+- *fluidsynth
+- galculator
+- gimp
+- gmrun	# application starter (Ctrl-R)
+- gucharmap
+- inkscape
+- klavaro
+- lame
+- leafpad
+- libreoffice
+- *lilypond
+- man-db
+- man-pages
+- mlocate
+- moc
+- mtpaint
+- mupdf
+- *neovim
+- noto-fonts?
+- noto-fonts-cjk?
+- *nvidia
+- noto-fonts-emoji?
+- *pdfgrep
+- obconf - openbox configuration manager??
+- perl-biber
+- perl-rename
+- powerline-fonts
+- praat
+- *python-neovim
+- r-core
+- ranger + libcaca (Color AsCii Art library) + highlight
+- *redshift
+- rosegarden
+- rstudio??
+- rsync
+- rxvt-unicode??
+- scrot
+- skype
+- slock
+- smplayer
+- sox
+- system-config-printer???
+- texlive
+- texlive-latexmk
+- texlive-beamer
+- texlive-biber
+- texlive-bibtex
+- texlive-nag
+- texlive-pdfjam
+- *tcl??
+- *timidity++
+- tk		# for the visualalisation in git
+- *tmux
+- ttf-bitstream-vera
+- ttf-dejavu
+- ttf-droid
+- ttf-liberation
+- tuxguitar??
+- *unetbootin
+- unrar
+- unzip
+- *vim-latexsuite
+- xfce4-power-manager-settings??
+- xpad
+- w3m
+- w3m-inline-image
+- *wine
+- xorg-xev?
+- *zathura
+- *zathura-pdf-mupdf
+- *zathura-plugin-djvu
+ 
+- podofo - pdf manipulation
+- pdftk? - not in Fedora
+- tox - aur?
