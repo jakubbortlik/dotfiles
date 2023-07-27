@@ -28,4 +28,13 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
   end
 })
 
--- vim: ts=2 sts=2 sw=2 et
+local python_id = vim.api.nvim_create_augroup("Python", {
+  clear = false
+})
+vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
+  group = python_id,
+  pattern = { "*py" },
+  callback = function()
+    vim.keymap.set("n", "<leader>ra", "<cmd>vnew term://python "..vim.fn.expand("%:p").."<cr>", { desc = "Run current file with Python" })
+  end
+})

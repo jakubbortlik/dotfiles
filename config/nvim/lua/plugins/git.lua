@@ -46,16 +46,10 @@ local M = {
       "Gwq",
       "Gwrite",
     },
-  },
-  {
-    "shumphrey/fugitive-gitlab.vim",
-    lazy = true,
-    dependencies = "tpope/vim-fugitive",
-  },
-  {
-    "tpope/vim-rhubarb",
-    lazy = true,
-    dependencies = "tpope/vim-fugitive",
+    dependencies = {
+      "shumphrey/fugitive-gitlab.vim",
+      "tpope/vim-rhubarb",
+    },
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -119,7 +113,34 @@ local M = {
       })
     end,
   },
-
+  {
+    "sindrets/diffview.nvim", -- a single tabpage interface for reviewing all git changes
+    keys = {
+      { "<leader>vc", "<cmd>DiffviewClose<cr>", "Run Diff[v]iew[C]lose"},
+      { "<leader>vh", "<cmd>DiffviewFileHistory<cr>", "Run Diff[v]iewFile[H]istory"},
+      { "<leader>vm", "<cmd>DiffviewOpen main<cr>", "Run Diff[v]iew[O]pen"},
+      { "<leader>vo", ":DiffviewOpen ", "Run Diff[v]iew[O]pen"},
+      { "<leader>vr", "<cmd>DiffviewRefresh<cr>", "Run Diff[v]iew[R]efresh"},
+    },
+    cmd = {
+      "DiffviewClose",
+      "DiffviewFileHistory",
+      "DiffviewFocusFiles",
+      "DiffviewLog",
+      "DiffviewOpen",
+      "DiffviewRefresh",
+      "DiffviewToggleFiles",
+    },
+    config = function()
+      require("diffview").setup({
+        commit_log_panel = {
+          win_config = function()
+            return { type = "float", border = "rounded", }
+          end
+        }
+      })
+    end,
+  },
 }
 
 return M

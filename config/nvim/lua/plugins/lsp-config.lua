@@ -20,6 +20,29 @@ local M = {
         opts = { library = { plugins = { "nvim-dap-ui", "neotest" }, types = true }, },
       },
       "hrsh7th/cmp-nvim-lsp", -- Add LSP completion capabilities
+      {
+        "WhoIsSethDaniel/mason-tool-installer.nvim", -- autoinstall non-LSP tools
+        dependencies = {
+          "williamboman/mason.nvim",
+          "williamboman/mason-lspconfig.nvim",
+        },
+        config = function()
+          require("mason-tool-installer").setup({
+            ensure_installed = {
+              "black",
+              "commitlint",
+              "debugpy",
+              "ruff",
+              "shellcheck",
+              "stylua",
+              "textlint",
+              "vint",
+              "vulture",
+              "yamllint",
+            },
+          })
+        end,
+      },
     },
     config = function()
       -- [[ Configure LSP ]]
@@ -42,12 +65,14 @@ local M = {
 
         local telescope_builtin = require("telescope.builtin")
 
-        nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-        nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-        nmap("<leader>cf", vim.lsp.buf.format, "[C]ode action: [F]ormat current buffer")
+        nmap("<leader>rn", vim.lsp.buf.rename, "[r]e[n]ame")
+        nmap("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ction")
+        nmap("<leader>cf", vim.lsp.buf.format, "[c]ode action: [f]ormat current buffer")
 
-        nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-        nmap("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences")
+        nmap("gd", vim.lsp.buf.definition, "[g]oto [d]efinition")
+        nmap("gD", "<cmd>tab split | lua vim.lsp.buf.definition()<cr>", "[g]o to [D]efinition in new tab")
+        nmap("g<C-d>", telescope_builtin.lsp_definitions, "[g]oto [d]efinitions with telescope")
+        nmap("gr", telescope_builtin.lsp_references, "[g]oto [r]eferences")
         nmap("gR", vim.lsp.buf.references, "Show [R]eferences in quickfix")
         nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
         nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
@@ -63,7 +88,6 @@ local M = {
         imap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
         -- Less used LSP functionality
-        nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
         nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
         nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
         nmap("<leader>wl", function()
@@ -210,8 +234,11 @@ local M = {
           null_ls.builtins.diagnostics.buf,        -- protobuf
           null_ls.builtins.diagnostics.commitlint, -- conventional commits
           -- null_ls.builtins.diagnostics.markdownlint.with({ command = "/usr/lib/node_modules/node/bin/markdownlint" }),
+          null_ls.builtins.diagnostics.mypy,
+          null_ls.builtins.diagnostics.ruff,
           null_ls.builtins.diagnostics.yamllint,   -- YAML
           -- formatters
+          null_ls.builtins.formatting.black,       -- Python formatting
           null_ls.builtins.formatting.buf,         -- Protobuf formatting
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.textlint,    -- Mardown

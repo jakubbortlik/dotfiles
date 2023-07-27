@@ -51,6 +51,7 @@ return {
         "luap",
         "markdown",
         "markdown_inline",
+        "org",
         "proto",
         "python",
         "r",
@@ -76,8 +77,9 @@ return {
             return false
           end
         end,
+        additional_vim_regex_highlighting = {'org'},
       },
-      indent = { enable = true, },
+      indent = { enable = true, disable = {"python"} },
       incremental_selection = {
         enable = true,
         disable = function()

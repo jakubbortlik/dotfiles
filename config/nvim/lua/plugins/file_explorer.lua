@@ -13,13 +13,16 @@ local M = {
           local picker = require("window-picker")
           picker.setup()
           picker.pick_window = function()
-            return picker.select({ hl = "WindowPicker", prompt = "Swap window: " }, function(winid)
-              if not winid then
-                return nil
-              else
-                return winid
+            return picker.select(
+              { hl = "WindowPicker", prompt = "Pick window: ", include_cur = false },
+              function(winid)
+                if not winid then
+                  return nil
+                else
+                  return winid
+                end
               end
-            end)
+            )
           end
         end,
       },
@@ -51,7 +54,9 @@ local M = {
       open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
       filesystem = {
         bind_to_cwd = false,
-        follow_current_file = true,
+        follow_current_file = {
+          enabled = true,
+        },
         hijack_netrw_behavior = "disabled",
         use_libuv_file_watcher = true,
       },

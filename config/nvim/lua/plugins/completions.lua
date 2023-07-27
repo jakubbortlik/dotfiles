@@ -35,6 +35,7 @@ local M = {
     "hrsh7th/cmp-buffer",                 -- nvim-cmp source for buffer words
     "petertriho/cmp-git",                 -- nvim-cmp source for git
     "hrsh7th/cmp-nvim-lsp",               -- Add LSP completion capabilities
+    "hrsh7th/cmp-nvim-lsp-signature-help",  -- nvim-cmp source for function signatures
     "hrsh7th/cmp-path",                   -- nvim-cmp source for filesystem paths
     "ray-x/cmp-treesitter",               -- nvim-cmp source for treesitter nodes
     "rcarriga/cmp-dap",                   -- completion in DAP
@@ -134,6 +135,7 @@ local M = {
       sources = {
         { name = "luasnip",   keyword_length = 2 },
         { name = "nvim_lsp",  keyword_length = 1 },
+        { name = "nvim_lsp_signature_help",  keyword_length = 1 },
         { name = "buffer",    keyword_length = 3 },
         { name = "git" },
         { name = "path" },
