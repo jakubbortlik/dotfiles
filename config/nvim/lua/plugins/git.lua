@@ -10,12 +10,12 @@ local M = {
   {
     "tpope/vim-fugitive",
     keys = {
-      { "<C-g><C-g>", "<cmd>Git<cr>", "Run [G]it"},
-      { "<C-g><C-d>", "<cmd>Gdiffsplit " .. get_main() .. "<cr>", "[G][d]iffsplit with main"},
-      { "<C-g><C-v>", "<cmd>Gvdiffsplit " .. get_main() .. "<cr>", "[G][v]diffsplit with main"},
-      { "<C-g>g", ":G ", "Prepopulate commandline with :[G]it"},
-      { "<C-g>d", ":Gdiffsplit ", "Prepopulate commandline with [G][d]iffsplit"},
-      { "<C-g>v", ":Gvdiffsplit ", "Prepopulate commandline with [G][v]diffsplit"},
+      { "<C-g><C-g>", "<cmd>Git<cr>", desc = "Run [G]it"},
+      { "<C-g><C-d>", "<cmd>Gdiffsplit " .. get_main() .. "<cr>", desc = "[G][d]iffsplit with main"},
+      { "<C-g><C-v>", "<cmd>Gvdiffsplit " .. get_main() .. "<cr>", desc = "[G][v]diffsplit with main"},
+      { "<C-g>g", ":G ", desc = "Prepopulate commandline with :[G]it"},
+      { "<C-g>d", ":Gdiffsplit ", desc = "Prepopulate commandline with [G][d]iffsplit"},
+      { "<C-g>v", ":Gvdiffsplit ", desc = "Prepopulate commandline with [G][v]diffsplit"},
     },
     cmd = {
       "G",
@@ -116,11 +116,11 @@ local M = {
   {
     "sindrets/diffview.nvim", -- a single tabpage interface for reviewing all git changes
     keys = {
-      { "<leader>vc", "<cmd>DiffviewClose<cr>", "Run Diff[v]iew[C]lose"},
-      { "<leader>vh", "<cmd>DiffviewFileHistory<cr>", "Run Diff[v]iewFile[H]istory"},
-      { "<leader>vm", "<cmd>DiffviewOpen main<cr>", "Run Diff[v]iew[O]pen"},
-      { "<leader>vo", ":DiffviewOpen ", "Run Diff[v]iew[O]pen"},
-      { "<leader>vr", "<cmd>DiffviewRefresh<cr>", "Run Diff[v]iew[R]efresh"},
+      { "<leader>vc", "<cmd>DiffviewClose<cr>", desc = "Run Diff[v]iew[C]lose"},
+      { "<leader>vh", "<cmd>DiffviewFileHistory<cr>", desc = "Run Diff[v]iewFile[H]istory"},
+      { "<leader>vm", "<cmd>DiffviewOpen main<cr>", desc = "Run Diff[v]iew[O]pen"},
+      { "<leader>vo", ":DiffviewOpen ", desc = "Run Diff[v]iew[O]pen"},
+      { "<leader>vr", "<cmd>DiffviewRefresh<cr>", desc = "Run Diff[v]iew[R]efresh"},
     },
     cmd = {
       "DiffviewClose",
