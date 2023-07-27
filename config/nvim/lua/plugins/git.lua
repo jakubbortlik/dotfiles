@@ -117,9 +117,10 @@ local M = {
     "sindrets/diffview.nvim", -- a single tabpage interface for reviewing all git changes
     keys = {
       { "<leader>vc", "<cmd>DiffviewClose<cr>", desc = "Run Diff[v]iew[C]lose"},
-      { "<leader>vh", "<cmd>DiffviewFileHistory<cr>", desc = "Run Diff[v]iewFile[H]istory"},
+      { "<leader>vH", ":DiffviewFileHistory ", desc = "Prepopulate commandline with Diff[v]iewFile[H]istory"},
+      { "<leader>vh", "<cmd>DiffviewFileHistory %<cr>", desc = "Run Diff[v]iewFile[H]istory for current file"},
       { "<leader>vm", "<cmd>DiffviewOpen main<cr>", desc = "Run Diff[v]iew[O]pen"},
-      { "<leader>vo", ":DiffviewOpen ", desc = "Run Diff[v]iew[O]pen"},
+      { "<leader>vo", ":DiffviewOpen ", desc = "Prepopulate commandline with Diff[v]iew[O]pen"},
       { "<leader>vr", "<cmd>DiffviewRefresh<cr>", desc = "Run Diff[v]iew[R]efresh"},
     },
     cmd = {

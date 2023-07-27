@@ -138,6 +138,7 @@ local M = {
             telemetry = { enable = false },
           },
         },
+        ruff_lsp = {},
       }
 
       -- Setup neovim lua configuration
