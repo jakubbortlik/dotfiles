@@ -31,7 +31,7 @@ vi() {
       pwd=$(dirname "$pwd")
     fi
   done
-  if [[ $poetry_project == true ]]; then
+  if [[ $poetry_project == true ]] && ! command -v poetry &> /dev/null; then
     poetry run "$EDITOR" "$@"
   else
     $EDITOR "$@"
