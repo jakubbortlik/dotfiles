@@ -1,30 +1,3 @@
--- local M = {
---   {
---     "ms-jpq/coq_nvim", -- main one
---     branch = "coq",
---     dependencies = {
---       {
---         "ms-jpq/coq.artifacts", -- 9000+ Snippets
---         branch = "artifacts",
---       },
---       -- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
---       -- Need to **configure separately**
---       {
---         "ms-jpq/coq.thirdparty",
---         branch = "3p",
---       },
---       -- - shell repl
---       -- - nvim lua api
---       -- - scientific calculator
---       -- - comment banner
---       -- - etc
---     },
---     config = function()
---       vim.cmd([[let g:coq_settings = { "auto_start": v:true }]])
---     end,
---   },
--- }
-
 local M = {
   "hrsh7th/nvim-cmp",
   event = {
@@ -39,6 +12,7 @@ local M = {
     "hrsh7th/cmp-path",                   -- nvim-cmp source for filesystem paths
     "ray-x/cmp-treesitter",               -- nvim-cmp source for treesitter nodes
     "rcarriga/cmp-dap",                   -- completion in DAP
+    "davidsierradz/cmp-conventionalcommits", -- nvim-cmp source for Conventional Commits
 
     "lukas-reineke/cmp-under-comparator", -- better sorting for magic methods
     "onsails/lspkind.nvim",               -- Add vscode-like pictograms to LSP
@@ -136,6 +110,7 @@ local M = {
         { name = "luasnip",   keyword_length = 2 },
         { name = "nvim_lsp",  keyword_length = 1 },
         { name = "nvim_lsp_signature_help",  keyword_length = 1 },
+        { name = "conventionalcommits" },
         { name = "buffer",    keyword_length = 3 },
         { name = "git" },
         { name = "path" },

@@ -144,6 +144,7 @@ bind-key -n M-N new-window
 # Use tmux-sessionizer to create new sessions
 bind-key -r g run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
 
+bind-key -r C-i run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles/config/i3"
 bind-key -r C-j run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles/config/nvim/lua/plugins"
 bind-key -r C-k run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab_cloud/api"
 
@@ -164,10 +165,6 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'olimorris/tmux-pomodoro-plus'
-
-# Other examples:
-set -g @plugin 'tmux-plugins/tmux-sidebar'
-# set -g @plugin 'seebi/tmux-colors-solarized'
 
 # Undercurl
 set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support

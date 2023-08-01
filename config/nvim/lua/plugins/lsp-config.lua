@@ -30,9 +30,9 @@ local M = {
           require("mason-tool-installer").setup({
             ensure_installed = {
               "black",
+              "buf",
               "commitlint",
               "debugpy",
-              "ruff",
               "shellcheck",
               "stylua",
               "textlint",
@@ -112,23 +112,13 @@ local M = {
         -- pyls-memestra    -- deprecation warnings
         -- python-lsp-ruff  -- linting
         -- python-lsp-black -- autoformatting
-        pyright = {
-          pyright = { disableOrganizeImports = true },
-          python = {
-            analysis = {
-              autoImportCompletions = true,
-              autoSearchPaths = true,
-              diagnosticMode = 'openFilesOnly',
-              typeCheckingMode = 'off'
-            }
-          }
-        },
         lua_ls = {
           Lua = {
             runtime = {
               version = "LuaJIT",
             },
             diagnostics = {
+              disable = { "missing-fields" },
               globals = { "vim" },
             },
             workspace = {
@@ -138,7 +128,6 @@ local M = {
             telemetry = { enable = false },
           },
         },
-        ruff_lsp = {},
       }
 
       -- Setup neovim lua configuration
@@ -235,11 +224,8 @@ local M = {
           null_ls.builtins.diagnostics.buf,        -- protobuf
           null_ls.builtins.diagnostics.commitlint, -- conventional commits
           -- null_ls.builtins.diagnostics.markdownlint.with({ command = "/usr/lib/node_modules/node/bin/markdownlint" }),
-          null_ls.builtins.diagnostics.mypy,
-          null_ls.builtins.diagnostics.ruff,
           null_ls.builtins.diagnostics.yamllint,   -- YAML
           -- formatters
-          null_ls.builtins.formatting.black,       -- Python formatting
           null_ls.builtins.formatting.buf,         -- Protobuf formatting
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.textlint,    -- Mardown

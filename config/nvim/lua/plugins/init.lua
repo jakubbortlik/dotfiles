@@ -88,10 +88,6 @@ return {
     end,
   },
   {
-    "vim-scripts/bash-support.vim",
-    ft = "sh",
-  },
-  {
     "vim-scripts/linediff.vim", -- Diff two different parts of the same file
     cmd = "Linediff",
   },
@@ -138,6 +134,7 @@ return {
           Yes = 'No',
           On = 'Off',
           ["0"] = "1",
+          enable = 'disable',
           Enable = 'Disable',
           Enabled = 'Disabled',
           First = 'Last',
@@ -176,41 +173,17 @@ return {
     },
   },
   {
-    "ggandor/leap.nvim",
-    config = function()
-      require("leap").add_default_mappings()
-      -- temporary fix of wrong temporary cursor
-      vim.api.nvim_create_autocmd(
-        "User",
-        {
-          callback = function()
-            vim.cmd.hi("Cursor", "blend=100")
-            vim.opt.guicursor:append { "a:Cursor/lCursor" }
-          end,
-          pattern = "LeapEnter"
-        }
-      )
-      vim.api.nvim_create_autocmd(
-        "User",
-        {
-          callback = function()
-            vim.cmd.hi("Cursor", "blend=0")
-            vim.opt.guicursor:remove { "a:Cursor/lCursor" }
-          end,
-          pattern = "LeapLeave"
-        }
-      )
-    end,
-  },
-  {
-    "ggandor/flit.nvim",
-    config = function()
-      require("flit").setup(
-        {
-          clever_repeat = false,
-        }
-      )
-    end,
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = { label = { after = { 0, 2 } } },
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
   },
 
   -- Language specific plugins

@@ -22,6 +22,7 @@
 	p = push origin HEAD
 	pl = pull --prune
 	pr = pull --rebase
+    rom = rebase origin/main
     rpo = remote prune origin
 	s = status
 	sb = status -sb

@@ -57,6 +57,7 @@ return {
             FloatTitle = { bg = "none" },
             TelescopeBorder = { bg = "none" },
             ColorColumn = { bg = "#220000" },
+            Visual = { bg = "#44546b" },
 
             -- Save a hlgroup with dark background and dimmed foreground
             -- so that you can use it where your still want darker windows.
@@ -67,7 +68,6 @@ return {
             PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
             PmenuSbar = { bg = theme.ui.bg_m1 },
             PmenuThumb = { bg = theme.ui.bg_p2 },
-
           }
         end,
       })

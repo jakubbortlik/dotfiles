@@ -26,7 +26,6 @@ local opts = {
     browser = "firefox",
     border = "rounded",
   },
-  checker = { enabled = true, frequency = 86400 }, -- Check for updates once a day
   change_detection = { enabled = true, notify = false, },
   performance = {
     rtp = {

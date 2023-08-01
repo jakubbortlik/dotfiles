@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -14,11 +15,28 @@ stty -ixon
 
 if command -v nvim > /dev/null 2>&1; then
   export EDITOR=nvim
-  alias vi=$EDITOR
 else
   export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
 fi
 alias swapurge="rm -i ~/.local/state/nvim/swap/*"
+
+vi() {
+  poetry_project=false
+  pwd=$PWD
+  while [[ "$pwd" != "/" ]]; do
+    if [[ -r "$pwd"/pyproject.toml ]]; then
+      poetry_project=true
+      break
+    else
+      pwd=$(dirname "$pwd")
+    fi
+  done
+  if [[ $poetry_project == true ]]; then
+    poetry run "$EDITOR" "$@"
+  else
+    $EDITOR "$@"
+  fi
+}
 
 # Set the python debugger to pudb
 export PYTHONBREAKPOINT=pudb.set_trace
@@ -82,7 +100,7 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
+    alias grep='rg'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
@@ -331,4 +349,4 @@ colors() {
 }
 
 export PATH=$HOME/local/bin:$HOME/.local/bin:/usr/lib/node_modules/node/bin:$PATH
-# vim:set syntax=sh sw=2 ts=2:
+# vim:set sw=2 ts=2 ft=sh:

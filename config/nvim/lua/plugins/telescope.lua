@@ -42,12 +42,13 @@ local M = {
         }))
       end, "[/] Fuzzily search in current buffer")
 
-      nmap("<leader>gf", builtin.git_files, "Search [G]it [F]iles")
-      nmap("<leader>sf", builtin.find_files, "[S]earch [F]iles")
-      nmap("<leader>sh", builtin.help_tags, "[S]earch [H]elp")
-      nmap("<leader>sw", builtin.grep_string, "[S]earch current [W]ord")
-      nmap("<leader>sg", builtin.live_grep, "[S]earch by [G]rep")
-      nmap("<leader>sd", builtin.diagnostics, "[S]earch [D]iagnostics")
+      nmap("<leader>sd", builtin.diagnostics, "[s]earch [d]iagnostics")
+      nmap("<leader>sf", builtin.find_files, "[s]earch [f]iles")
+      nmap("<leader>sG", builtin.git_files, "[s]earch [G]it files")
+      nmap("<leader>sg", builtin.live_grep, "[s]earch by [g]rep")
+      nmap("<leader>sh", builtin.help_tags, "[s]earch [h]elp")
+      nmap("<leader>sw", builtin.grep_string, "[s]earch current [w]ord")
+      nmap("<leader>sz", function() builtin.grep_string({ shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }) end, "[s]earch by grep fu[z]zily")
     end,
   },
 

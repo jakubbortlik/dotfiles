@@ -319,7 +319,7 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec_always --no-startup-id "setxkbmap -layout us,cz -option grp:alt_caps_toggle"
-exec --no-startup-id "redshift -l 49.2002211:16.6078411 -t 5700:3600 -g 0.8 -m randr -v"
+exec --no-startup-id "redshift -l 49.2002211:16.6078411 -t 5700:3200 -g 0.8 -m randr -v"
 # exec --no-startup-id blueman-applet
 exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
