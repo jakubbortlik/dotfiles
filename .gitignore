@@ -3,3 +3,4 @@
 bin/praat*
 bin/test
 tags
+config/nvim/lazy-lock.json
