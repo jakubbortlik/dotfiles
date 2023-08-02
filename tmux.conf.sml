@@ -119,9 +119,7 @@ setw -g window-status-current-style fg=red
 # Here's where we set the actual display of the various regions
 set -g status-left '#[bg=colour100]#[fg=black]#H: #[fg=black]#S#[fg=colour100] #[bg=black]#[default]'
 set -g status-right-length 100
-set -g @pomodoro_on "#[fg=red]⏳"
-set -g @pomodoro_complete "#[fg=green]🗸"
-set -g status-right '#{pomodoro_status}#[fg=colour100]#[bg=colour100] #[fg=black]%Y-%m-%d #[fg=blue]#[bg=blue]#[fg=black] %H:%M #[default]'
+set -g status-right '#[fg=colour100]#[bg=colour100] #[fg=black]%Y-%m-%d #[fg=blue]#[bg=blue]#[fg=black] %H:%M #[default]'
 
 # EXPERIMENTAL SETTINGS:
 # smart pane switching with awareness of vim splits
@@ -164,7 +162,6 @@ set-option -g allow-rename off
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @plugin 'olimorris/tmux-pomodoro-plus'
 
 # Undercurl
 set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support

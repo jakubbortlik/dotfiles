@@ -111,7 +111,7 @@ function ranger-cd {
   tempfile="$(mktemp -t tmp.XXXXXX)"
   /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
   test -f "$tempfile" &&
-  if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+  if [ "$(cat -- "$tempfile")" != "$(echo -n $(pwd))" ]; then
     cd -- "$(cat "$tempfile")"
   fi
   rm -f -- "$tempfile"
@@ -197,8 +197,8 @@ header () {
     else
         FILE="$1"
     fi
-    if [[ -r ${FILE} ]]; then
-        head -1 ${FILE} | sed -r "s/${SEPARATOR}/\n/g" | nl
+    if [[ -r "${FILE}" ]]; then
+        head -1 "${FILE}" | sed -r "s/${SEPARATOR}/\n/g" | nl
     else
         echo "File ${FILE} not readable"
     fi
@@ -221,14 +221,14 @@ if [[ ! $(type -t __git_complete) == function ]]; then
     source ~/.git-completion.bash
   fi
 fi
-if [ $(type -t __git_complete) == function ]; then
+if [ "$(type -t __git_complete)" == function ]; then
   __git_complete g __git_main
 else
   echo "Cannot enable git CLI completion for alias 'g'"
 fi
 
 lull() {
-  for lfs_object in $@; do
+  for lfs_object in "$@"; do
     git lfs pull --include="${lfs_object}" --exclude="";
   done
 }
@@ -270,17 +270,17 @@ alias cuts="cut -d' ' -f"
 # Some extra aliases etc.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [[ -f "$HOME/.bashrc_extras" ]]; then
-  source $HOME/.bashrc_extras
+  source "{$HOME}/.bashrc_extras"
 fi
 
 # Remap cd to pushd and bd to popd
 function cd() {
   if [ "$#" = "0" ]
   then
-    pushd ${HOME} > /dev/null
+    pushd "${HOME}" > /dev/null
   elif [ -f "${1}" ]
   then
-    ${EDITOR} ${1}
+    "${EDITOR}" "${1}"
   else
     pushd "$1" > /dev/null
   fi
@@ -290,7 +290,7 @@ function bd(){
   then
     popd > /dev/null
   else
-    for i in $(seq ${1})
+    for i in $(seq "${1}")
     do
       popd > /dev/null
     done
@@ -301,19 +301,19 @@ function bd(){
 # # usage: ex <file>
 ex ()
 {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
+  if [ -f "$1" ] ; then
+    case "$1" in
+      *.tar.bz2)   tar xjf "$1"   ;;
+      *.tar.gz)    tar xzf "$1"   ;;
+      *.bz2)       bunzip2 "$1"   ;;
+      *.rar)       unrar x "$1"     ;;
+      *.gz)        gunzip "$1"    ;;
+      *.tar)       tar xf "$1"    ;;
+      *.tbz2)      tar xjf "$1"   ;;
+      *.tgz)       tar xzf "$1"   ;;
+      *.zip)       unzip "$1"     ;;
+      *.Z)         uncompress "$1";;
+      *.7z)        7z x "$1"      ;;
       *)           echo "'$1' cannot be extracted via ex()" ;;
     esac
   else
@@ -340,9 +340,9 @@ colors() {
       vals=${vals%%;}
 
       seq0="${vals:+\e[${vals}m}"
-      printf "  %-9s" "${seq0:-(default)}"
-      printf " ${seq0}TEXT\e[m"
-      printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
+      printf '  %-9s' "${seq0:-(default)}"
+      printf ' %sTEXT\e[m' "${seq0}"
+      printf ' \e[%s1mBOLD\e[m' "${vals:+${vals+$vals;}}"
     done
     echo; echo
   done
