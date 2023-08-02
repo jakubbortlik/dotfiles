@@ -13,13 +13,13 @@ esac
 # used to save buffers in vim or to serach through bash history
 stty -ixon
 
+# Editor aliases and functions
 if command -v nvim > /dev/null 2>&1; then
   export EDITOR=nvim
 else
   export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
 fi
 alias swapurge="rm -i ~/.local/state/nvim/swap/*"
-
 vi() {
   poetry_project=false
   pwd=$PWD
@@ -37,6 +37,11 @@ vi() {
     $EDITOR "$@"
   fi
 }
+get_main() {
+    main=$(git branch | tr -d "+* " | \grep -E "^(main|master)$")
+    echo "$main"
+}
+alias dv='vi -c "DiffviewOpen $(get_main)"'
 
 # Set the python debugger to pudb
 export PYTHONBREAKPOINT=pudb.set_trace
@@ -270,7 +275,7 @@ alias cuts="cut -d' ' -f"
 # Some extra aliases etc.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [[ -f "$HOME/.bashrc_extras" ]]; then
-  source "{$HOME}/.bashrc_extras"
+  source "$HOME"/.bashrc_extras
 fi
 
 # Remap cd to pushd and bd to popd
