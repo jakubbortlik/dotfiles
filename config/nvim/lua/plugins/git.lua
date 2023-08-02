@@ -1,15 +1,12 @@
 -- Git related plugins
 
--- Return "main" or "master" for the repository
-local function get_main()
-  local branch = vim.fn.system("git branch | sed 's/\\* //' | rg '^(main|master)$'")
-  return branch
-end
+local get_main = require("utils").get_main
 
 local M = {
   {
     "tpope/vim-fugitive",
     keys = {
+      { "<C-g><C-b>", "<cmd>Git blame<cr>", desc = "Run [G]it [b]lame"},
       { "<C-g><C-g>", "<cmd>Git<cr>", desc = "Run [G]it"},
       { "<C-g><C-d>", "<cmd>Gdiffsplit " .. get_main() .. "<cr>", desc = "[G][d]iffsplit with main"},
       { "<C-g><C-v>", "<cmd>Gvdiffsplit " .. get_main() .. "<cr>", desc = "[G][v]diffsplit with main"},
@@ -119,7 +116,7 @@ local M = {
       { "<leader>vc", "<cmd>DiffviewClose<cr>", desc = "Run Diff[v]iew[C]lose"},
       { "<leader>vH", ":DiffviewFileHistory ", desc = "Prepopulate commandline with Diff[v]iewFile[H]istory"},
       { "<leader>vh", "<cmd>DiffviewFileHistory %<cr>", desc = "Run Diff[v]iewFile[H]istory for current file"},
-      { "<leader>vm", "<cmd>DiffviewOpen main<cr>", desc = "Run Diff[v]iew[O]pen"},
+      { "<leader>vm", "<cmd>DiffviewOpen " .. get_main() .. "<cr>", desc = "Run Diff[v]iew[O]pen"},
       { "<leader>vo", ":DiffviewOpen ", desc = "Prepopulate commandline with Diff[v]iew[O]pen"},
       { "<leader>vr", "<cmd>DiffviewRefresh<cr>", desc = "Run Diff[v]iew[R]efresh"},
     },
