@@ -4,6 +4,15 @@ local M = {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
+      -- Navigation in a popup window using LSP
+      {
+        "SmiteshP/nvim-navbuddy",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "MunifTanjim/nui.nvim"
+        },
+        opts = { lsp = { auto_attach = true } }
+      },
       -- Automatically install LSPs to stdpath for neovim
       {
         "williamboman/mason.nvim",
@@ -45,9 +54,13 @@ local M = {
       },
     },
     config = function()
+      local navic = require("nvim-navic")
       -- [[ Configure LSP ]]
       --  This function gets run when an LSP connects to a particular buffer.
-      local on_attach = function(_, bufnr)
+      local on_attach = function(client, bufnr)
+        if client.server_capabilities.documentSymbolProvider then
+          navic.attach(client, bufnr)
+        end
         -- More easily define mappings specific for LSP related items. Set the mode,
         -- buffer and description for us each time.
         local nmap = function(keys, func, desc)
@@ -103,7 +116,11 @@ local M = {
               enabled = false
             },
             rope_autoimport = {
-              enabled = false
+              enabled = true
+            },
+            mypy = {
+              enabled = true,
+              dmypy = true,
             },
           },
         }, -- run ":PylspInstall <plugin>" to install the following plugins:

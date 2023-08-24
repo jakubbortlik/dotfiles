@@ -28,7 +28,7 @@ vim.keymap.set({"n", "t"}, "<A-k>", "<cmd>TmuxNavigateUp<cr>", { silent = true, 
 vim.keymap.set({"n", "t"}, "<A-l>", "<cmd>TmuxNavigateRight<cr>", { silent = true, desc = "Navigate right" })
 vim.keymap.set("n", "t<c-]>", "<cmd>tab split | execute 'normal <c-]>'<cr>", { silent = true, desc = "Jump to definition in new tab." })
 
--- Mmiscellaneous mappings
+-- Miscellaneous mappings
 vim.keymap.set({ "i", "n", "s", "v" }, "<C-s>", "<cmd>update<cr><esc>", { desc = "[s]ave file" })
 vim.keymap.set("n", "co", "m`0:%s///gn<cr>", { desc = "[c]ount [o]ccurrences" })
 vim.keymap.set("n", "cp", "m`:g//p<cr>", { desc = "o[c]currences [p]review" })
@@ -38,6 +38,12 @@ vim.keymap.set("n", "<Leader>l", "<cmd>Lazy<cr>", { desc = "Show plugins" })
 nmap("<leader>i", "<cmd>Inspect<cr>", "[i]nspect current position")
 nmap("<leader>sa", [[:s/\%>.c]], "[s]ubstitute [a]fter")
 nmap("<Leader>su", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "[s]ubstitute word [u]nder cursor")
+nmap("<Leader>cp", [[<cmd>let @+ = expand('%') | echo "Copied to clipboard: " .. @+<cr>]], "[c]opy [p]ath of buffer to clipboard")
+nmap("<Leader>cP", [[<cmd>let @+ = expand('%:p') | echo "Copied to clipboard: " .. @+<cr>]], "[c]opy full [P]ath of buffer to clipboard")
+nmap("<Leader>c<c-p>", [[<cmd>let @+ = expand('%:t') | echo "Copied to clipboard: " .. @+<cr>]], "[c]opy basename of buffer to clipboard")
+
+-- TODO: add check that an LSP server is actually attached
+nmap("<leader>L", "<cmd>vertical Verbose lua =vim.lsp.get_active_clients()[1].server_capabilities<cr>", "print [L]SP server capabilities")
 
 -- Greatest remaps ever, by ThePrimeagen
 vim.keymap.set("x", "<Leader>p", [["_dP]], { desc = "Visual mode paste without losing register" })
