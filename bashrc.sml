@@ -41,7 +41,7 @@ get_main() {
     main=$(git branch | tr -d "+* " | \grep -E "^(main|master)$")
     echo "$main"
 }
-alias dv='vi -c "DiffviewOpen $(get_main)"'
+alias vm='vi -c "DiffviewOpen $(get_main)"'
 
 # Set the python debugger to pudb
 export PYTHONBREAKPOINT=pudb.set_trace
@@ -105,6 +105,7 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
+    alias rg="rg -g '!web-components.min.js' -g '!styles.min.css' -g '!poetry.lock'"
     alias grep='rg'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
