@@ -142,9 +142,13 @@ bind-key -n M-N new-window
 # Use tmux-sessionizer to create new sessions
 bind-key -r g run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
 
+bind-key -r C-d run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles"
 bind-key -r C-i run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles/config/i3"
-bind-key -r C-j run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles/config/nvim/lua/plugins"
-bind-key -r C-k run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab_cloud/api"
+bind-key -r C-j run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab_cloud/api"
+bind-key -r C-k run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab_cloud/api_71"
+bind-key -r C-l run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab_cloud/api_116"
+bind-key -r C-n run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles/config/nvim/lua/plugins"
+bind-key -r C-p run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab_cloud/protofiles"
 
 # Swap windows
 bind-key -r -n M-< swap-window -t -1

@@ -4,7 +4,7 @@
 [color]
 	ui = true
 [core]
-	editor = /home/jakub/bin/nvim.appimage
+	editor = nvim
 [diff "praat"]
 	lextconv = base64
 [alias]
