@@ -15,6 +15,10 @@ paths=(
   ~/.local/share/nvim
 )
 
+# Filter out non-existing paths
+for i in "${!paths[@]}" ; do [[ ! -d "${paths[$i]}" ]] && unset -v 'paths[$i]' ; done
+paths=("${paths[@]}")
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
