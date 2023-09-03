@@ -6,6 +6,12 @@ local function get_main()
   return branch
 end
 
+-- Simplify normal mode mappings
+local nmap = function(keys, func, desc)
+  vim.keymap.set("n", keys, func, { desc = desc })
+end
+
 M.get_main = get_main
+M.nmap = nmap
 
 return M

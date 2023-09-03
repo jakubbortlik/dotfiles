@@ -205,6 +205,8 @@ local M = {
         "D203", -- 1 blank line required before class docstring
         "D213", -- Multi-line docstring summary should start at the second line
         "D400", -- First line should end with a period
+        "D406", -- Section name should end with a newline (causes problems with "Returns:")
+        "D407", -- Missing dashed underline after section
         "D407", -- Missing dashed underline after section
         "D413", -- Missing blank line after last section
         "D415", -- First line should end with a period, question mark, or exclamation point
