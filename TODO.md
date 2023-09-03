@@ -4,6 +4,10 @@ symstall:
 - install packages
 - add "vim +PluginInstall +qall"
 
+printing
+--------
+- run `sudo systemctl enable --now cups.service`
+
 nVim:
 -----
 ```

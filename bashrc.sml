@@ -34,6 +34,7 @@ vi() {
   if [[ $poetry_project == true ]] && command -v poetry &> /dev/null; then
     poetry run "$EDITOR" "$@"
   else
+    echo "Running in poetry project, but poetry command not available!"
     $EDITOR "$@"
   fi
 }
@@ -54,6 +55,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTFILE=$HOME/.bash_history
 HISTSIZE=50000
 HISTFILESIZE=100000
 
@@ -81,17 +83,28 @@ PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf -- "
 
 bg_jobs() {
   if [[ -n $(jobs -s 2> /dev/null) ]]; then
-    echo "(jobs: $(jobs -s 2> /dev/null | wc -l))"
+    echo "jobs:$(jobs -s 2> /dev/null | wc -l) "
   fi
 }
 git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
+git_status() {
+  if git status &> /dev/null; then
+      if git status 2> /dev/null | grep -q "working tree clean" ; then
+          echo " "
+      else
+          echo "* "
+      fi
+  fi
+}
+
+# \[\033[01;38;5;243m\] - ANSI bold ([01]) foreground (38;5) color 243
 if [ "$color_prompt" = yes ]; then
-  export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;33m\]${PS1X}\[\033[01;32m\]$(git_branch)$(bg_jobs)\[\033[00m\]\$ '
+    export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;36m\]${PS1X}\[\033[00;38;5;243m\] $(git_branch)$(git_status)$(bg_jobs)\[\033[00m\]\$ '
 else
   echo "NO COLOR PROMPT"
-  export PS1='\u@\h:\w\[\033[01;32m\]$(git_branch)$(bg_jobs)\[\033[00m\]\$ '
+  export PS1='\u@\h:\w\[\033[01;91\] $(git_branch)$(bg_jobs)\[\033[00m\]\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -353,6 +366,9 @@ colors() {
     echo; echo
   done
 }
+
+# correct some typing mistakes with the `cd` command
+shopt -s cdspell
 
 export PATH=$HOME/local/bin:$HOME/.local/bin:/usr/lib/node_modules/node/bin:$PATH
 # vim:set sw=2 ts=2 ft=sh:
