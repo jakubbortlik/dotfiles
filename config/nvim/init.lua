@@ -2,7 +2,14 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.g.python3_host_prog = "/home/jakub/miniconda3/envs/neovim/bin/python3"
+-- get right python3_host_prog on different machines
+local conda_prefix
+if vim.fn.expand("$CONDA_PREFIX_1") ~= "$CONDA_PREFIX_1" then
+  conda_prefix = vim.fn.expand("$CONDA_PREFIX_1")
+else
+  conda_prefix = vim.fn.expand("$CONDA_PREFIX")
+end
+vim.g.python3_host_prog = conda_prefix .. "/envs/neovim/bin/python3"
 
 -- Install package manager:
 --    https://github.com/folke/lazy.nvim
