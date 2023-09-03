@@ -77,7 +77,7 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf -- "~";IFS=/; for q in ${p:1}; do printf -- /"${q:0:3}"; done; printf -- "${q:3}")'
+PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf -- "~";IFS=/; for q in ${p:1}; do printf -- /"${q:0:4}"; done; printf -- "${q:4}")'
 
 bg_jobs() {
   if [[ -n $(jobs -s 2> /dev/null) ]]; then
@@ -115,7 +115,7 @@ fi
 export RANGER_LOAD_DEFAULT_RC=FALSE
 function ranger-cd {
   tempfile="$(mktemp -t tmp.XXXXXX)"
-  /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+  ranger --choosedir="$tempfile" "${@:-$(pwd)}"
   test -f "$tempfile" &&
   if [ "$(cat -- "$tempfile")" != "$(echo -n $(pwd))" ]; then
     cd -- "$(cat "$tempfile")"
