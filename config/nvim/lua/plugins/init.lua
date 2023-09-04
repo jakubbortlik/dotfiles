@@ -9,7 +9,6 @@ return {
     cmd = { "Messages", "PP", "Scriptnames", "Verbose", "Time" },
   },
 
-
   -- Plugins for enhanced editing
   "tpope/vim-repeat", -- Repeat other plugins with . command
   "tpope/vim-rsi",    -- Emulate Readline key bindings
@@ -148,6 +147,21 @@ return {
         },
       })
     end
+  },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = {}, -- this is equalent to setup({}) function
+  },
+  {
+    "abecodes/tabout.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = true,
+  },
+  {
+    "chrisgrieser/nvim-various-textobjs",
+    lazy = false,
+    opts = { useDefaultKeymaps = true },
   },
 
   -- Navigation

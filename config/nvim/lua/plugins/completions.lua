@@ -5,6 +5,7 @@ local M = {
     "CmdlineEnter",
   },
   dependencies = {
+    "abecodes/tabout.nvim",               -- See ./init.lua, must be registered before nvim-cmp
     "hrsh7th/cmp-buffer",                 -- nvim-cmp source for buffer words
     "petertriho/cmp-git",                 -- nvim-cmp source for git
     "hrsh7th/cmp-nvim-lsp",               -- Add LSP completion capabilities

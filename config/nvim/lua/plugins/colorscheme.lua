@@ -41,7 +41,9 @@ return {
     priority = 1000,
     config = function()
       require("kanagawa").setup({
+        compile = true,
         transparent = true,
+        dimInactive = true,
         background = {
           dark = "wave",
           light = "lotus",
@@ -58,6 +60,7 @@ return {
             TelescopeBorder = { bg = "none" },
             ColorColumn = { bg = "#220000" },
             Visual = { bg = "#44546b" },
+            WinSeparator = { fg = theme.ui.nontext },
 
             -- Save a hlgroup with dark background and dimmed foreground
             -- so that you can use it where your still want darker windows.

@@ -72,10 +72,12 @@ local toggle_relative_quick_menu = function()
 end
 
 nmap("<C-h>", toggle_relative_quick_menu, "Open Harpoon quick menu")
+
 nmap("<C-j>", function() ui.nav_file(1) end, "Navigate to harpoon file 1")
 nmap("<C-k>", function() ui.nav_file(2) end, "Navigate to harpoon file 2")
 nmap("<C-l>", function() ui.nav_file(3) end, "Navigate to harpoon file 3")
 nmap("⁏", function() ui.nav_file(4) end, "Navigate to harpoon file 4")
+nmap("<C-;>", function() ui.nav_file(4) end, "Navigate to harpoon file 4")
 
 -- Diagnostic keymaps
 nmap("[d", vim.diagnostic.goto_prev, "Go to previous diagnostic message")
