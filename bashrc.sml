@@ -26,15 +26,20 @@ vi() {
   while [[ "$pwd" != "/" ]]; do
     if [[ -r "$pwd"/pyproject.toml ]]; then
       poetry_project=true
+      pyproject_toml="$pwd"/pyproject.toml
       break
     else
       pwd=$(dirname "$pwd")
     fi
   done
-  if [[ $poetry_project == true ]] && command -v poetry &> /dev/null; then
-    poetry run "$EDITOR" "$@"
+  if [[ $poetry_project == true ]]; then
+    if command -v poetry &> /dev/null; then
+      poetry run "$EDITOR" "$@"
+    else
+      echo "Running in poetry project ($pyproject_toml), but poetry command not available!"
+      $EDITOR "$@"
+    fi
   else
-    echo "Running in poetry project, but poetry command not available!"
     $EDITOR "$@"
   fi
 }
