@@ -74,20 +74,7 @@ MusicDir = "/home/jakub/Music"
 # Start in the music directory by default?  If set to 'no', start
 # in the current directory by default.  A single directory on
 # the command line takes precedence.
-StartInMusicDir = no
-
-# The number of lines which are retained in an in-memory circular logging
-# buffer.  A value of zero indicates that lines will be written directly
-# to the log file, otherwise the latest CircularLogSize lines are retained
-# in memory and not written to the log file until the MOC client or server
-# are shutdown.  If the client or server terminates abnormally then the
-# log lines are lost.
-#
-# This option is intended to help identify problems which occur infrequently
-# and for which the amount of disk space consumed by logging would otherwise
-# be a limiting factor.  Obviously the memory footprint will increase in
-# proportion to the value of this option.
-#CircularLogSize = 0
+#StartInMusicDir = no
 
 # How to sort?  FileName is the option's only value for now.
 #Sort = FileName
@@ -309,7 +296,7 @@ Keymap = keymap
 #             Fastdir3 = /mp3/rap
 #             Fastdir4 = /mp3/etc
 #
-Fastdir1 = /media/marvin/_datasets/confidential/
+#Fastdir1 =
 #Fastdir2 =
 #Fastdir3 =
 #Fastdir4 =
@@ -399,6 +386,7 @@ Fastdir1 = /media/marvin/_datasets/confidential/
 #PreferredDecoders += flac(flac,*,ffmpeg)
 #PreferredDecoders += opus(ffmpeg)
 #PreferredDecoders += spx(speex)
+#PreferredDecoders += application/ogg(vorbis):audio/ogg(vorbis)
 
 # Which resampling method to use.  There are a few methods of resampling
 # sound supported by libresamplerate.  The default is 'Linear') which is
@@ -657,7 +645,9 @@ TiMidity_Config = no
 #SidPlay2_PlayMode = "M"
 
 # Use start-song information from SID ('yes') or start at first song
-# ('no').  Songs before the start-song won't be played.
+# ('no').  Songs before the start-song won't be played.  (Note that this
+# option previously took the values 1 and 0; these are now deprecated
+# in favour of 'yes' and 'no'.)
 #SidPlay2_StartAtStart = yes
 
 # Play sub-tunes.
@@ -690,10 +680,7 @@ TiMidity_Config = no
 
 # Run the OnStop command (full path, no arguments) when MOC changes state
 # to stopped (i.e., when user stopped playing or changes a song).
-#
-# Example:    OnStop = "/home/jack/.moc/myscript_on_stop"
-#
-#OnStop =
+#OnStop = "/home/jack/.moc/myscript_on_stop"
 
 # This option determines which song to play after finishing all the songs
 # in the queue.  Setting this to 'yes' causes MOC to play the song which

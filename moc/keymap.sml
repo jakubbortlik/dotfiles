@@ -66,8 +66,8 @@ quit                  = Q
 
 # Menu and interface control keys:
 go                    = ENTER
-menu_down             = DOWN ^n
-menu_up               = UP ^p
+menu_down             = DOWN j
+menu_up               = UP k
 menu_page_down        = PAGE_DOWN
 menu_page_up          = PAGE_UP
 menu_first_item       = HOME
@@ -139,8 +139,8 @@ add_directory         = A
 plist_add_stream      = ^u
 delete_from_playlist  = d
 playlist_full_paths   = P
-plist_move_up         = k
-plist_move_down       = j
+plist_move_up         = ^p
+plist_move_down       = ^n
 save_playlist         = V
 remove_dead_entries   = Y
 clear_playlist        = C
