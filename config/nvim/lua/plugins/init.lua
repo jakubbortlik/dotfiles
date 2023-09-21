@@ -1,3 +1,5 @@
+local nmap = require("utils").nmap
+
 return {
   -- "A universal set of defaults"
   "tpope/vim-sensible",
@@ -295,6 +297,21 @@ return {
         show_trailing_blankline_indent = false,
       })
     end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      search = {
+        pattern = [[\b(KEYWORDS):]]
+      }
+    },
+    config = function(opts)
+      local todo = require("todo-comments")
+      todo.setup(opts)
+        nmap("]t", todo.jump_next, "Next [t]odo comment")
+        nmap("[t", todo.jump_prev, "Previous [t]odo comment")
+    end
   },
 
   { dir = "~/projects/vim-phxstm", ft = "phxstm" },
