@@ -16,28 +16,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
   end
 })
 
--- Setup jellybeans colors before jellybeans is loaded
-vim.g.jellybeans_use_term_background_color = 1
-vim.g.jellybeans_use_term_italics = 1
-vim.cmd [[ let g:jellybeans_overrides = {
-\  "background": { "guibg": "NONE" },
-\  "Folded": { "guibg": "NONE" },
-\  "LineNr": { "guibg": "NONE" },
-\  "Normal": { "guibg": "NONE" },
-\  "SignColumn": { "guibg": "NONE" },
-\  "Special": {"guifg": "c9dd9a",},
-\  "ColorColumn": {"guibg": "440011",},
-\}
-]]
 
 return {
-  {
-    "nanotech/jellybeans.vim",
-    priority = 1000,
-    -- config = function()
-    --   vim.cmd.colorscheme("jellybeans")
-    -- end,
-  },
   {
     "rebelot/kanagawa.nvim",
     priority = 1000,
@@ -45,7 +25,6 @@ return {
       require("kanagawa").setup({
         compile = true,
         transparent = true,
-        dimInactive = true,
         background = {
           dark = "wave",
           light = "lotus",

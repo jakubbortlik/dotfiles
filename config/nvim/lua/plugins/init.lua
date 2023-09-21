@@ -121,6 +121,7 @@ return {
     config = function()
       require("registers").setup({
         show_empty = false,
+        window = { border = "rounded" },
       })
     end,
   },
@@ -134,6 +135,7 @@ return {
         additional_toggles = {
           Yes = 'No',
           On = 'Off',
+          on = 'off',
           ["0"] = "1",
           enable = 'disable',
           Enable = 'Disable',
@@ -191,7 +193,7 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    opts = { label = { after = { 0, 2 } } },
+    opts = { label = { after = false, before = { 0, 0 } } },
     -- stylua: ignore
     keys = {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },

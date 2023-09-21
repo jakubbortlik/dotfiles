@@ -99,10 +99,10 @@ local M = {
         { unpack(opts), desc = "Dap [b]reakpoints - [C]lear all" }
       )
 
-      keymap('n', ']b', require('goto-breakpoints').next, { desc = "Go to next [B]reakpoint" })
-      keymap('n', '[b', require('goto-breakpoints').prev, { desc = "Go to previous [B]reakpoint" })
-      keymap('n', ']t', require('goto-breakpoints').stopped, { desc = "Go to breakpoin[T] at the current stopped line" })
-      keymap('n', '[t', require('goto-breakpoints').stopped, { desc = "Go to breakpoin[T] at the current stopped line" })
+      keymap("n", "]k", require("goto-breakpoints").next, { desc = "Go to next brea[k]point" })
+      keymap("n", "[k", require("goto-breakpoints").prev, { desc = "Go to previous brea[k]point" })
+      keymap("n", "]K", require("goto-breakpoints").stopped, { desc = "Go to brea[K]point at the current stopped line" })
+      keymap("n", "[K", require("goto-breakpoints").stopped, { desc = "Go to brea[K]point at the current stopped line" })
 
       local widgets = require("dap.ui.widgets")
 
@@ -111,8 +111,8 @@ local M = {
       keymap("n", "<Leader>df", function() widgets.centered_float(widgets.frames) end, { desc = "[D]ap float widget [F]rames" })
       keymap("n", "<Leader>dv", function() widgets.centered_float(widgets.scopes) end, { desc = "[D]ap float widget [V]ariable scopes" })
 
-      require('dap-python').setup()
-      local dap_python = require('dap-python')
+      require("dap-python").setup()
+      local dap_python = require("dap-python")
       keymap("n", "<leader>dm", dap_python.test_method)
       keymap("n", "<leader>dc", dap_python.test_class)
       keymap("v", "<leader>ds", dap_python.debug_selection)

@@ -47,6 +47,7 @@ local M = {
       nmap("<leader>sG", builtin.git_files, "[s]earch [G]it files")
       nmap("<leader>sg", builtin.live_grep, "[s]earch by [g]rep")
       nmap("<leader>sh", builtin.help_tags, "[s]earch [h]elp")
+      nmap("<leader>sr", builtin.resume, "[s]earch - [r]esume")
       nmap("<leader>sw", builtin.grep_string, "[s]earch current [w]ord")
       nmap("<leader>sz", function() builtin.grep_string({ shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }) end, "[s]earch by grep fu[z]zily")
     end,
