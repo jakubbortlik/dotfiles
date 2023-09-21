@@ -2,7 +2,7 @@ local set_hl = vim.api.nvim_set_hl
 
 vim.api.nvim_create_autocmd('ColorScheme', {
   callback = function ()
-    set_hl(0, "ColorColumn", { bg = "#440011" })
+    set_hl(0, "ColorColumn", { link = "CursorLine" })
     set_hl(0, "@variable.builtin.python", { fg = "#e46876", italic = true })
     set_hl(0, "@variable.python", { link = "Identifier" })
     set_hl(0, "@parameter.python", { fg = "#5fafff" })
@@ -11,6 +11,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     set_hl(0, "QuickFixLine", { link = "WarningMsg" })
     set_hl(0, "NeoTreeGitUntracked", { fg = "#76946a" })
     set_hl(0, "IndentBlanklineIndent1", { bg="NONE", fg="#1a1a1a", nocombine=true })
+    set_hl(0, "MatchParen", { bg="#363646", fg="#ff9e3b" })
+    set_hl(0, "CursorLine", { bg="#161616" })
   end
 })
 

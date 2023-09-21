@@ -32,6 +32,7 @@ local opts = {
   performance = {
     rtp = {
       disabled_plugins = {
+        "matchparen",
         "tohtml",
         "tutor",
       },
