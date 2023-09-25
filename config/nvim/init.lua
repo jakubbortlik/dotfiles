@@ -3,12 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- get right python3_host_prog on different machines
-local conda_prefix
-if vim.fn.expand("$CONDA_PREFIX_1") ~= "$CONDA_PREFIX_1" then
-  conda_prefix = vim.fn.expand("$CONDA_PREFIX_1")
-else
-  conda_prefix = vim.fn.expand("$CONDA_PREFIX")
-end
+local conda_prefix = string.gsub(vim.fn.expand("$CONDA_PREFIX"), "/envs/.*", "")
 vim.g.python3_host_prog = conda_prefix .. "/envs/neovim/bin/python3"
 
 -- Install package manager:
