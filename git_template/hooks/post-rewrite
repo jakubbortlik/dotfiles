@@ -1,0 +1,9 @@
+#!/bin/sh
+if [ -f .git ]; then
+    hooks_dir="$(sed 's/.*: //' .git)/../../hooks"
+elif [ -d .git ]; then
+    hooks_dir=".git/hooks"
+fi
+case "$1" in
+  rebase) exec "$hooks_dir"/post-merge ;;
+esac
