@@ -22,14 +22,16 @@ fi
 alias swapurge="rm -i ~/.local/state/nvim/swap/*"
 vi() {
   poetry_project=false
-  pwd=$PWD
-  while [[ "$pwd" != "/" ]]; do
-    if [[ -r "$pwd"/pyproject.toml ]]; then
-      poetry_project=true
-      pyproject_toml="$pwd"/pyproject.toml
+  dir=$PWD
+  while [[ "$dir" != "${HOME}" ]]; do
+    if [[ -r "$dir"/pyproject.toml ]]; then
+      pyproject_toml="$dir"/pyproject.toml
+      if \grep -q "tool.poetry" "$dir"/pyproject.toml; then
+        poetry_project=true
+      fi
       break
     else
-      pwd=$(dirname "$pwd")
+      dir=$(dirname "$dir")
     fi
   done
   if [[ $poetry_project == true ]]; then
@@ -48,6 +50,10 @@ get_main() {
     echo "$main"
 }
 alias vm='vi -c "DiffviewOpen $(get_main)"'
+# Search for a pattern with ripgrep and set the error list to the matches
+qf() {
+    vi -q <(rg --vimgrep --no-heading --smart-case -g '!web-components.min.js' -g '!styles.min.css' -g '!poetry.lock' "$@")
+}
 
 # Set the python debugger to pudb
 export PYTHONBREAKPOINT=pudb.set_trace
