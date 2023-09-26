@@ -63,10 +63,10 @@ bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
  
 # Pane resizing commands
-bind H resize-pane -L 10
-bind J resize-pane -D 10
-bind K resize-pane -U 10
-bind L resize-pane -R 10
+bind -r H resize-pane -L 3
+bind -r J resize-pane -D 3
+bind -r K resize-pane -U 3
+bind -r L resize-pane -R 3
  
 # Turn on mouse support
 # set-option -g mode-mouse on
