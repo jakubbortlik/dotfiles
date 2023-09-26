@@ -90,7 +90,7 @@ setw -g monitor-activity on
  
 # highlight panes
 set -g window-style 'fg=colour247,bg=colour235'
-set -g window-active-style 'fg=colour250,bg=black'
+set -g window-active-style 'fg=colour250,bg=terminal'
 # set-option -g pane-active-border-fg red
 # set-option -g pane-active-border-bg black
 # set-option -g pane-border-fg blue
