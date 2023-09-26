@@ -40,6 +40,7 @@ nmap("<Leader>cp", [[<cmd>let @+ = expand('%') | echo "Copied to clipboard: " ..
 nmap("<Leader>cP", [[<cmd>let @+ = expand('%:p') | echo "Copied to clipboard: " .. @+<cr>]], "[c]opy full [P]ath of buffer to clipboard")
 nmap("<Leader>c<c-p>", [[<cmd>let @+ = expand('%:t') | echo "Copied to clipboard: " .. @+<cr>]], "[c]opy basename of buffer to clipboard")
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], {desc = "Exit terminal-mode"})
+nmap("<BS>", "<Del>", "Delete the last digit when entering a number.")
 
 -- TODO: add check that an LSP server is actually attached
 nmap("<leader>L", "<cmd>vertical Verbose lua =vim.lsp.get_active_clients()[1].server_capabilities<cr>", "print [L]SP server capabilities")
