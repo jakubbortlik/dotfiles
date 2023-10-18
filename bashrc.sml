@@ -23,7 +23,7 @@ alias swapurge="rm -i ~/.local/state/nvim/swap/*"
 vi() {
   poetry_project=false
   dir=$PWD
-  while [[ "$dir" != "${HOME}" ]]; do
+  while [[ "$dir" != "${HOME}" ]] && [[ "$dir" != "/" ]]; do
     if [[ -r "$dir"/pyproject.toml ]]; then
       pyproject_toml="$dir"/pyproject.toml
       if \grep -q "tool.poetry" "$dir"/pyproject.toml; then
@@ -54,6 +54,7 @@ alias vm='vi -c "DiffviewOpen $(get_main)"'
 qf() {
     vi -q <(rg --vimgrep --no-heading --smart-case -g '!web-components.min.js' -g '!styles.min.css' -g '!poetry.lock' "$@")
 }
+alias e="$EDITOR -u NONE"
 
 # Set the python debugger to pudb
 export PYTHONBREAKPOINT=pudb.set_trace
