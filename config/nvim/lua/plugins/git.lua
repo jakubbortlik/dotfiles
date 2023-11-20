@@ -45,9 +45,22 @@ local M = {
       "Gwq",
       "Gwrite",
     },
+  },
+  {
+    "shumphrey/fugitive-gitlab.vim",
+    cmd = {"GBrowse"},
     dependencies = {
-      "shumphrey/fugitive-gitlab.vim",
-      "tpope/vim-rhubarb",
+      "tpope/vim-fugitive",
+    },
+    config = function()
+      vim.g.fugitive_gitlab_domains = {"https://gitlab.cloud.phonexia.com"}
+    end
+  },
+  {
+    "tpope/vim-rhubarb",
+    cmd = {"GBrowse"},
+    dependencies = {
+      "tpope/vim-fugitive",
     },
   },
   {
