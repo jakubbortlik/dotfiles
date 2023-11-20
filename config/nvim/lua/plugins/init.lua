@@ -13,15 +13,15 @@ return {
 
   -- Plugins for enhanced editing
   "tpope/vim-repeat", -- Repeat other plugins with . command
-  "tpope/vim-rsi",    -- Emulate Readline key bindings
+  "tpope/vim-rsi", -- Emulate Readline key bindings
   {
     "tpope/vim-capslock",
     keys = {
       { "<C-G>c", mode = "i", desc = "Temporarily toggle caps lock" },
-      { "gC",     mode = "n", desc = "Toggle caps lock" },
+      { "gC", mode = "n", desc = "Toggle caps lock" },
     },
   },
-  "tommcdo/vim-exchange",    -- Easy exange of two portions of text
+  "tommcdo/vim-exchange", -- Easy exange of two portions of text
   {
     "numToStr/Comment.nvim", -- Toggle comments
     config = true,
@@ -34,8 +34,8 @@ return {
     },
     cmd = "SpeedDatingFormat",
   },
-  "tpope/vim-surround",    -- Parentheses, brackets, quotes, and more
-  "tpope/vim-unimpaired",  -- Pairs of handy bracket mappings
+  "tpope/vim-surround", -- Parentheses, brackets, quotes, and more
+  "tpope/vim-unimpaired", -- Pairs of handy bracket mappings
   {
     "vim-scripts/VisIncr", -- In/decreasing columns of Ns and dates
     cmd = {
@@ -65,12 +65,12 @@ return {
   {
     "jakubbortlik/vim-keymaps", -- Switch keyboard layouts
     keys = {
-      { "ckj",      desc = "Next keymap" },
-      { "ckk",      desc = "Previous keymap" },
-      { "ckl",      desc = "Show keymaps" },
-      { mode = "i", "<C-k><C-j>",            desc = "Next keymap" },
-      { mode = "i", "<C-k><C-k>",            desc = "Previous keymap" },
-      { mode = "i", "<C-k><C-l>",            desc = "Show keymaps" },
+      { "ckj", desc = "Next keymap" },
+      { "ckk", desc = "Previous keymap" },
+      { "ckl", desc = "Show keymaps" },
+      { mode = "i", "<C-k><C-j>", desc = "Next keymap" },
+      { mode = "i", "<C-k><C-k>", desc = "Previous keymap" },
+      { mode = "i", "<C-k><C-l>", desc = "Show keymaps" },
     },
   },
   {
@@ -94,7 +94,13 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_browser = "firefox"
+    end,
+    ft = { "markdown" },
   },
   {
     "smjonas/inc-rename.nvim", -- Rename with preview
@@ -114,7 +120,7 @@ return {
     "tversteeg/registers.nvim",
     name = "registers",
     keys = {
-      { '"',     mode = { "n", "v" } },
+      { '"', mode = { "n", "v" } },
       { "<C-R>", mode = "i" },
     },
     cmd = "Registers",
@@ -165,7 +171,11 @@ return {
   {
     "chrisgrieser/nvim-various-textobjs",
     lazy = false,
-    opts = { useDefaultKeymaps = true },
+    opts = { useDefaultKeymaps = true, disabledKeymaps = { "gw", "gc" } },
+    confit = function(_, opts)
+      require("various-textobjs").setup(opts)
+      vim.keymap.set("o", "gc", "<cmd>lua require('various-textobjs').multiCommentedLines()<CR>")
+    end,
   },
 
   -- Navigation
@@ -296,13 +306,19 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("indent_blankline").setup({
-        char = "┆",
-        char_highlight_list = { "IndentBlanklineIndent1" },
-        show_trailing_blankline_indent = false,
-      })
-    end,
+    main = "ibl",
+    opts = {
+      enabled = true,
+      indent = {
+        -- char = "┆",
+        char = "│",
+        highlight = { "IBLIndent" },
+      },
+      scope = {
+        show_start = false,
+        show_end = false,
+      },
+    },
   },
   {
     "folke/todo-comments.nvim",
