@@ -257,6 +257,7 @@ if [ "$(type -t __git_complete)" == function ]; then
 else
   echo "Cannot enable git CLI completion for alias 'g'"
 fi
+alias gl='glab'
 
 lull() {
   for lfs_object in "$@"; do
