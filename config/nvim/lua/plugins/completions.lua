@@ -5,18 +5,18 @@ local M = {
     "CmdlineEnter",
   },
   dependencies = {
-    "abecodes/tabout.nvim",               -- See ./init.lua, must be registered before nvim-cmp
-    "hrsh7th/cmp-buffer",                 -- nvim-cmp source for buffer words
-    "petertriho/cmp-git",                 -- nvim-cmp source for git
-    "hrsh7th/cmp-nvim-lsp",               -- Add LSP completion capabilities
-    "hrsh7th/cmp-nvim-lsp-signature-help",  -- nvim-cmp source for function signatures
-    "hrsh7th/cmp-path",                   -- nvim-cmp source for filesystem paths
-    "ray-x/cmp-treesitter",               -- nvim-cmp source for treesitter nodes
-    "rcarriga/cmp-dap",                   -- completion in DAP
+    "abecodes/tabout.nvim",                  -- See ./init.lua, must be registered before nvim-cmp
+    "hrsh7th/cmp-buffer",                    -- nvim-cmp source for buffer words
+    "petertriho/cmp-git",                    -- nvim-cmp source for git
+    "hrsh7th/cmp-nvim-lsp",                  -- Add LSP completion capabilities
+    "hrsh7th/cmp-nvim-lsp-signature-help",   -- nvim-cmp source for function signatures
+    "hrsh7th/cmp-path",                      -- nvim-cmp source for filesystem paths
+    "ray-x/cmp-treesitter",                  -- nvim-cmp source for treesitter nodes
+    "rcarriga/cmp-dap",                      -- completion in DAP
     "davidsierradz/cmp-conventionalcommits", -- nvim-cmp source for Conventional Commits
 
-    "lukas-reineke/cmp-under-comparator", -- better sorting for magic methods
-    "onsails/lspkind.nvim",               -- Add vscode-like pictograms to LSP
+    "lukas-reineke/cmp-under-comparator",    -- better sorting for magic methods
+    "onsails/lspkind.nvim",                  -- Add vscode-like pictograms to LSP
 
     -- Snippet Engine & its associated nvim-cmp source
     "L3MON4D3/LuaSnip",
@@ -29,7 +29,7 @@ local M = {
   config = function()
     require("luasnip.loaders.from_vscode").lazy_load()
     local cmp = require("cmp")
-    local types = require('cmp.types')
+    local types = require("cmp.types")
     local lspkind = require("lspkind")
     local luasnip = require("luasnip")
     local select_opts = { behaviour = types.cmp.SelectBehavior.Select }
@@ -43,15 +43,15 @@ local M = {
             String = '"',
           },
           mode = "text",
-          menu = ({
+          menu = {
             buffer = "[Buffer]",
             nvim_lsp = "[LSP]",
             luasnip = "[LuaSnip]",
             path = "[Path]",
             treesitter = "[TS]",
             git = "[Git]",
-          }),
-        })
+          },
+        }),
       },
       mapping = cmp.mapping.preset.insert({
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -59,42 +59,41 @@ local M = {
         ["<C-e>"] = cmp.mapping.abort(),
         ["<C-j>"] = cmp.mapping.confirm({ select = true }),
 
-        ['<C-f>'] = cmp.mapping(function(fallback)
+        ["<C-f>"] = cmp.mapping(function(fallback)
           if luasnip.jumpable(1) then
             luasnip.jump(1)
           else
             fallback()
           end
-        end, {'i', 's'}),
+        end, { "i", "s" }),
 
-        ['<C-b>'] = cmp.mapping(function(fallback)
+        ["<C-b>"] = cmp.mapping(function(fallback)
           if luasnip.jumpable(-1) then
             luasnip.jump(-1)
           else
             fallback()
           end
-        end, {'i', 's'}),
+        end, { "i", "s" }),
 
-        ['<Tab>'] = cmp.mapping(function(fallback)
-          local col = vim.fn.col('.') - 1
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          local col = vim.fn.col(".") - 1
 
           if cmp.visible() then
             cmp.select_next_item(select_opts)
-          elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+          elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
             fallback()
           else
             cmp.complete()
           end
-        end, {'i', 's'}),
+        end, { "i", "s" }),
 
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item(select_opts)
           else
             fallback()
           end
-        end, {'i', 's'}),
-
+        end, { "i", "s" }),
       }),
       snippet = {
         expand = function(args)
@@ -103,16 +102,30 @@ local M = {
       },
       window = {
         completion = cmp.config.window.bordered({
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None", }),
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+        }),
         documentation = cmp.config.window.bordered({
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None", }),
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+        }),
       },
       sources = {
-        { name = "luasnip",   keyword_length = 2 },
-        { name = "nvim_lsp",  keyword_length = 1 },
-        { name = "nvim_lsp_signature_help",  keyword_length = 1 },
-        { name = "conventionalcommits" },
-        { name = "buffer",    keyword_length = 3 },
+        { name = "luasnip",                 keyword_length = 2 },
+        { name = "nvim_lsp",                keyword_length = 1 },
+        { name = "nvim_lsp_signature_help", keyword_length = 1 },
+        {
+          name = "buffer",
+          keyword_length = 3,
+          option = {
+            keyword_pattern = [[\k\+]],
+            get_bufnrs = function()
+              local bufs = {}
+              for _, win in ipairs(vim.api.nvim_list_wins()) do
+                bufs[vim.api.nvim_win_get_buf(win)] = true
+              end
+              return vim.tbl_keys(bufs)
+            end,
+          },
+        },
         { name = "git" },
         { name = "path" },
         { name = "treesitter" },

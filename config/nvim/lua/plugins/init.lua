@@ -7,7 +7,7 @@ return {
   -- Plugin for (not only) vimscript plugins
   {
     "tpope/vim-scriptease",
-    keys = { { "zS" }, { "K" }, },
+    keys = { { "zS" }, { "K" } },
     cmd = { "Messages", "PP", "Scriptnames", "Verbose", "Time" },
   },
 
@@ -65,12 +65,12 @@ return {
   {
     "jakubbortlik/vim-keymaps", -- Switch keyboard layouts
     keys = {
-      { "ckj", desc = "Next keymap" },
-      { "ckk", desc = "Previous keymap" },
-      { "ckl", desc = "Show keymaps" },
-      { mode = "i", "<C-k><C-j>", desc = "Next keymap" },
-      { mode = "i", "<C-k><C-k>", desc = "Previous keymap" },
-      { mode = "i", "<C-k><C-l>", desc = "Show keymaps" },
+      { "ckj",      desc = "Next keymap" },
+      { "ckk",      desc = "Previous keymap" },
+      { "ckl",      desc = "Show keymaps" },
+      { mode = "i", "<C-k><C-j>",            desc = "Next keymap" },
+      { mode = "i", "<C-k><C-k>",            desc = "Previous keymap" },
+      { mode = "i", "<C-k><C-l>",            desc = "Show keymaps" },
     },
   },
   {
@@ -126,31 +126,31 @@ return {
     end,
   },
   {
-    'gerazov/toggle-bool.nvim',
+    "gerazov/toggle-bool.nvim",
     keys = { "cm" },
     config = function()
       require("toggle-bool").setup({
         mapping = "cm",
         description = "Toggle bool value",
         additional_toggles = {
-          Yes = 'No',
-          On = 'Off',
-          on = 'off',
+          Yes = "No",
+          On = "Off",
+          on = "off",
           ["0"] = "1",
-          enable = 'disable',
-          Enable = 'Disable',
-          Enabled = 'Disabled',
-          First = 'Last',
-          before = 'after',
-          Before = 'After',
-          Persistent = 'Ephemeral',
-          Internal = 'External',
-          Ingress = 'Egress',
-          Allow = 'Deny',
-          All = 'None',
+          enable = "disable",
+          Enable = "Disable",
+          Enabled = "Disabled",
+          First = "Last",
+          before = "after",
+          Before = "After",
+          Persistent = "Ephemeral",
+          Internal = "External",
+          Ingress = "Egress",
+          Allow = "Deny",
+          All = "None",
         },
       })
-    end
+    end,
   },
   {
     "windwp/nvim-autopairs",
@@ -196,11 +196,10 @@ return {
     opts = { label = { after = false, before = { 0, 0 } } },
     -- stylua: ignore
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
 
@@ -217,8 +216,13 @@ return {
       vim.g.Unicode_no_default_mappings = true
     end,
     keys = {
-      { "ga",         "<Plug>(UnicodeGA)",       mode = "n", desc = "Get detailed Unicode info" },
-      { "<C-x><C-g>", "<Plug>(DigraphComplete)", mode = "i", desc = "Complete Digraph before cursor" },
+      { "ga", "<Plug>(UnicodeGA)", mode = "n", desc = "Get detailed Unicode info" },
+      {
+        "<C-x><C-g>",
+        "<Plug>(DigraphComplete)",
+        mode = "i",
+        desc = "Complete Digraph before cursor",
+      },
     },
     cmd = "UnicodeTable",
   },
@@ -238,19 +242,19 @@ return {
     end
   }, ]]
   {
-    'm-demare/hlargs.nvim',
+    "m-demare/hlargs.nvim",
     config = function()
       require("hlargs").setup({
         color = "#5fafff",
         excluded_argnames = {
           declarations = {
-            python = { 'self', 'cls' },
-            lua = { 'self' }
+            python = { "self", "cls" },
+            lua = { "self" },
           },
           usages = {
-            python = { 'self', 'cls' },
-            lua = { 'self' }
-          }
+            python = { "self", "cls" },
+            lua = { "self" },
+          },
         },
       })
     end,
@@ -272,7 +276,7 @@ return {
   },
   {
     "petertriho/nvim-scrollbar",
-    dependencies = {"kevinhwang91/nvim-hlslens"},
+    dependencies = { "kevinhwang91/nvim-hlslens" },
     config = function()
       require("scrollbar").setup({
         show_in_active_only = true,
@@ -285,7 +289,7 @@ return {
       })
       require("hlslens").setup({
         build_position_cb = function(plist, _, _, _)
-            require("scrollbar.handlers.search").handler.show(plist.start_pos)
+          require("scrollbar.handlers.search").handler.show(plist.start_pos)
         end,
       })
     end,
@@ -311,9 +315,9 @@ return {
     config = function(opts)
       local todo = require("todo-comments")
       todo.setup(opts)
-        nmap("]t", todo.jump_next, "Next [t]odo comment")
-        nmap("[t", todo.jump_prev, "Previous [t]odo comment")
-    end
+      nmap("]t", todo.jump_next, "Next [t]odo comment")
+      nmap("[t", todo.jump_prev, "Previous [t]odo comment")
+    end,
   },
 
   { dir = "~/projects/vim-phxstm", ft = "phxstm" },

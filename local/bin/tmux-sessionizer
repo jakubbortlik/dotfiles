@@ -4,8 +4,8 @@ paths=(
   .
   ~/Documents
   ~/projects
-  ~/Gitlab_int
-  ~/Gitlab_cloud
+  ~/Gitlab
+  ~/Gitlab/speech-platform
   ~/dotfiles
   ~/dotfiles/config
   ~/dotfiles/config/nvim

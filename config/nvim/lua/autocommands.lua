@@ -1,11 +1,11 @@
 -- Terminal autocommands
-local id = vim.api.nvim_create_augroup("Terminal", {
+local term_id = vim.api.nvim_create_augroup("Terminal", {
   clear = false
 })
 
 -- always enter insert mode when switching to a terminal window
 vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
-  group = id,
+  group = term_id,
   pattern = { "term://*", "\\[dap-repl\\]" },
   callback = function()
     vim.cmd [[startinsert]]
@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
 })
 -- always leave insert mode when switching from a terminal window
 vim.api.nvim_create_autocmd({ "BufWinLeave", "WinLeave" }, {
-  group = id,
+  group = term_id,
   pattern = { "term://*", "\\[dap-repl\\" },
   callback = function()
     vim.cmd [[stopinsert]]
@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({ "BufWinLeave", "WinLeave" }, {
 })
 -- don't show line numbers in a terminal window
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
-  group = id,
+  group = term_id,
   pattern = { "term://*" },
   callback = function()
     vim.cmd [[setlocal listchars= nonumber norelativenumber]]
