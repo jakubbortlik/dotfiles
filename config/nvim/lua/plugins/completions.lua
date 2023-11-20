@@ -149,7 +149,9 @@ local M = {
         { name = "git" }, -- You can specify the `git` source if [you have installed it](https://github.com/petertriho/cmp-git).
       }, {
         { name = "buffer" },
-      })
+      }, {
+        { name = "conventionalcommits" },
+      }),
     })
   end,
 }
