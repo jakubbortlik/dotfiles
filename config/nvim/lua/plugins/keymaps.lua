@@ -57,7 +57,8 @@ nmap("<C-g><C-s>", "<cmd>silent !tmux neww tmux-sessionizer<cr>", "Create tmux [
 nmap("<Leader>w0", "<cmd>setlocal textwidth=0<cr>", "Set local text[w]idth to [0]" )
 nmap("<Leader>w7", "<cmd>setlocal textwidth=72<cr>", "Set local text[w]idth to [7]2" )
 nmap("<Leader>w8", "<cmd>setlocal textwidth=88<cr>", "Set local text[w]idth to [8]8" )
-nmap("<Leader>w9", "<cmd>setlocal textwidth=79<cr>", "Set local text[w]idth to 7[9]" )
+nmap("<Leader>w9", "<cmd>setlocal textwidth=90<cr>", "Set local text[w]idth to [9]0" )
+nmap("<Leader>w1", "<cmd>setlocal textwidth=100<cr>", "Set local text[w]idth to [1]00" )
 
 -- Wield the harpoon
 local mark = require("harpoon.mark")
