@@ -11,7 +11,13 @@ local nmap = function(keys, func, desc)
   vim.keymap.set("n", keys, func, { desc = desc })
 end
 
+-- Simplify visual mode mappings
+local vmap = function(keys, func, desc)
+  vim.keymap.set("v", keys, func, { desc = desc })
+end
+
 M.get_main = get_main
 M.nmap = nmap
+M.vmap = vmap
 
 return M
