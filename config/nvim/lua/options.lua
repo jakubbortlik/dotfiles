@@ -3,6 +3,7 @@ vim.opt.backup = false
 vim.opt.colorcolumn = "+1"
 vim.opt.completeopt = "menuone,longest,preview"
 vim.opt.cursorline = true
+vim.opt.diffopt:append({"linematch:60"})
 vim.opt.expandtab = true
 vim.opt.fileformat = "unix"
 vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case -g '!web-components.min.js' -g '!styles.min.css' -g '!poetry.lock'"
@@ -11,6 +12,7 @@ vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700
 vim.opt.hlsearch = false
 vim.opt.history = 10000
 vim.opt.ignorecase = true
+vim.opt.jumpoptions = "view"
 vim.opt.mouse = ""
 vim.opt.number = true
 vim.opt.relativenumber = true

@@ -4,15 +4,6 @@ local M = {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      -- Navigation in a popup window using LSP
-      {
-        "SmiteshP/nvim-navbuddy",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "MunifTanjim/nui.nvim"
-        },
-        opts = { lsp = { auto_attach = true } }
-      },
       -- Automatically install LSPs to stdpath for neovim
       {
         "williamboman/mason.nvim",
@@ -185,8 +176,7 @@ local M = {
       vim.diagnostic.config({ float = { border = _border } })
     end,
   },
-
-  -- formatters
+  -- Non-lsp tools
   {
     "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -254,6 +244,19 @@ local M = {
         },
       }
     end,
+  },
+  -- Navigation in a popup window using LSP
+  {
+    "SmiteshP/nvim-navbuddy",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
+      "numToStr/Comment.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    keys = { { "<leader>nb", "<cmd>Navbuddy<cr>", desc = "Navbuddy" } },
+    opts = { lsp = { auto_attach = true }, window = { border = "rounded" } },
   },
 }
 

@@ -38,7 +38,7 @@ local M = {
       },
     },
     deactivate = function()
-      vim.cmd([[Neotree close]])
+      vim.cmd.Neotree("close")
     end,
     init = function()
       vim.g.neo_tree_remove_legacy_commands = 1

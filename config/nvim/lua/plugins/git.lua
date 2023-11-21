@@ -164,11 +164,15 @@ local M = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
-      "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
-      enabled = true,
+      "stevearc/dressing.nvim",
     },
     build = function () require("gitlab.server").build(true) end, -- Builds the Go binary
     config = function()
+      require("dressing").setup({
+        input = {
+          enabled = true
+        }
+      })
       local gitlab = require("gitlab")
       gitlab.setup({
         debug = { go_request = true, go_response = true }, -- Which values to log
@@ -176,22 +180,22 @@ local M = {
           position = "bottom",
         },
       })
-      nmap("<leader>glr", gitlab.review, "Gitlab Review")
-      nmap("<leader>gls", gitlab.summary, "Gitlab Summary")
-      nmap("<leader>glA", gitlab.approve, "Gitlab Approve")
-      nmap("<leader>glR", gitlab.revoke, "Gitlab Revoke")
-      nmap("<leader>glc", gitlab.create_comment, "Gitlab Create Comment")
-      vmap("<leader>glc", gitlab.create_multiline_comment, "Gitlab Multiline Comment")
-      vmap("<leader>gls", gitlab.create_comment_suggestion, "Gitlab Suggestion")
-      nmap("<leader>gln", gitlab.create_note, "Gitlab Create note")
-      nmap("<leader>gld", gitlab.toggle_discussions, "Gitlab Toggle Discussions")
-      nmap("<leader>glaa", gitlab.add_assignee, "Gitlab Add Assignee")
-      nmap("<leader>glad", gitlab.delete_assignee, "Gitlab Delete Assignee")
-      nmap("<leader>glv", gitlab.add_reviewer, "Gitlab Add Reviewer")
-      nmap("<leader>glV", gitlab.delete_reviewer, "Gitlab Delete Reviewer")
-      nmap("<leader>glp", gitlab.pipeline, "Gitlab Pipeline")
-      nmap("<leader>glo", gitlab.open_in_browser, "Gitlab Open in browser")
-      nmap("<leader>glm", gitlab.move_to_discussion_tree_from_diagnostic, "Move to discussion")
+      nmap("glr", gitlab.review, "Gitlab Review")
+      nmap("gls", gitlab.summary, "Gitlab Summary")
+      nmap("glA", gitlab.approve, "Gitlab Approve")
+      nmap("glR", gitlab.revoke, "Gitlab Revoke")
+      nmap("glc", gitlab.create_comment, "Gitlab Create Comment")
+      vmap("glc", gitlab.create_multiline_comment, "Gitlab Multiline Comment")
+      vmap("gls", gitlab.create_comment_suggestion, "Gitlab Suggestion")
+      nmap("gln", gitlab.create_note, "Gitlab Create note")
+      nmap("gld", gitlab.toggle_discussions, "Gitlab Toggle Discussions")
+      nmap("glaa", gitlab.add_assignee, "Gitlab Add Assignee")
+      nmap("glad", gitlab.delete_assignee, "Gitlab Delete Assignee")
+      nmap("glv", gitlab.add_reviewer, "Gitlab Add Reviewer")
+      nmap("glV", gitlab.delete_reviewer, "Gitlab Delete Reviewer")
+      nmap("glp", gitlab.pipeline, "Gitlab Pipeline")
+      nmap("glo", gitlab.open_in_browser, "Gitlab Open in browser")
+      nmap("glm", gitlab.move_to_discussion_tree_from_diagnostic, "Move to discussion")
     end,
   }
 }
