@@ -257,7 +257,17 @@ if [ "$(type -t __git_complete)" == function ]; then
 else
   echo "Cannot enable git CLI completion for alias 'g'"
 fi
+
 alias gl='glab'
+if [[ $(type -t __start_glab) == function ]]; then
+  if [[ $(type -t compopt) = "builtin" ]]; then
+      complete -o default -F __start_glab gl
+  else
+      complete -o default -o nospace -F __start_glab gl
+  fi
+else
+  echo "Cannot enable glab CLI completion for alias 'gl'"
+fi
 
 lull() {
   for lfs_object in "$@"; do
