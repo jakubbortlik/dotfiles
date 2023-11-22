@@ -171,13 +171,18 @@ local M = {
       require("dressing").setup({
         input = {
           enabled = true
-        }
+        },
       })
       local gitlab = require("gitlab")
       gitlab.setup({
         debug = { go_request = true, go_response = true }, -- Which values to log
         discussion_tree = {
           position = "bottom",
+        },
+        popup = {
+          exit = "q",
+          perform_action = "ZZ",
+          perform_linewise_action = "<leader>l",
         },
       })
       nmap("glr", gitlab.review, "Gitlab Review")
@@ -191,8 +196,8 @@ local M = {
       nmap("gld", gitlab.toggle_discussions, "Gitlab Toggle Discussions")
       nmap("glaa", gitlab.add_assignee, "Gitlab Add Assignee")
       nmap("glad", gitlab.delete_assignee, "Gitlab Delete Assignee")
-      nmap("glv", gitlab.add_reviewer, "Gitlab Add Reviewer")
-      nmap("glV", gitlab.delete_reviewer, "Gitlab Delete Reviewer")
+      nmap("glva", gitlab.add_reviewer, "Gitlab Add Reviewer")
+      nmap("glvd", gitlab.delete_reviewer, "Gitlab Delete Reviewer")
       nmap("glp", gitlab.pipeline, "Gitlab Pipeline")
       nmap("glo", gitlab.open_in_browser, "Gitlab Open in browser")
       nmap("glm", gitlab.move_to_discussion_tree_from_diagnostic, "Move to discussion")
