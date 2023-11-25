@@ -5,7 +5,6 @@ paths=(
   ~/Documents
   ~/projects
   ~/Gitlab
-  ~/Gitlab/speech-platform
   ~/dotfiles
   ~/dotfiles/config
   ~/dotfiles/config/nvim

@@ -239,6 +239,7 @@ local M = {
           -- formatters
           null_ls.builtins.formatting.buf,         -- Protobuf formatting
           null_ls.builtins.formatting.mdformat,
+          null_ls.builtins.formatting.semistandardjs,
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.textlint,    -- Markdown
         },

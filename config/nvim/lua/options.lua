@@ -13,6 +13,7 @@ vim.opt.hlsearch = false
 vim.opt.history = 10000
 vim.opt.ignorecase = true
 vim.opt.jumpoptions = "view"
+vim.opt.linebreak = true
 vim.opt.mouse = ""
 vim.opt.number = true
 vim.opt.relativenumber = true

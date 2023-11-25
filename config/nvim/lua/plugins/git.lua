@@ -178,6 +178,8 @@ local M = {
         debug = { go_request = true, go_response = true }, -- Which values to log
         discussion_tree = {
           position = "bottom",
+          toggle_node = "i",
+          toggle_resolved = "s",
         },
         popup = {
           exit = "q",
