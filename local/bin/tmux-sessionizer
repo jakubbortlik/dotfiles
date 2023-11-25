@@ -7,8 +7,8 @@ paths=(
   ~/Gitlab
   ~/dotfiles
   ~/dotfiles/config
-  ~/dotfiles/config/nvim
-  ~/dotfiles/config/nvim/lua
+  ~/.config/nvim
+  ~/.config/nvim/lua
   ~/
   ~/miniconda3
   ~/.local/share/nvim
