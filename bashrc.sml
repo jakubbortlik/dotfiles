@@ -50,6 +50,7 @@ get_main() {
     echo "$main"
 }
 alias vm='vi -c "DiffviewOpen $(get_main)"'
+alias vr='vi -c "normal glr"'
 # Search for a pattern with ripgrep and set the error list to the matches
 qf() {
     vi -q <(rg --vimgrep --no-heading --smart-case -g '!web-components.min.js' -g '!styles.min.css' -g '!poetry.lock' "$@")
@@ -130,7 +131,7 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias rg="rg -g '!web-components.min.js' -g '!styles.min.css' -g '!poetry.lock'"
+    alias rg="rg -g '!web-components.min.js' -g '!styles.min.css' -g '!poetry.lock' -g '!index.js' -g '!markdown-preview.nvim/**/*.js'"
     alias grep='rg'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -256,17 +257,6 @@ if [ "$(type -t __git_complete)" == function ]; then
   __git_complete g __git_main
 else
   echo "Cannot enable git CLI completion for alias 'g'"
-fi
-
-alias gl='glab'
-if [[ $(type -t __start_glab) == function ]]; then
-  if [[ $(type -t compopt) = "builtin" ]]; then
-      complete -o default -F __start_glab gl
-  else
-      complete -o default -o nospace -F __start_glab gl
-  fi
-else
-  echo "Cannot enable glab CLI completion for alias 'gl'"
 fi
 
 lull() {
