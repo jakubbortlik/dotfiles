@@ -1,7 +1,9 @@
-Jakub's Dotfiles
+Jakub's dotfiles
 ----------------
 
-I am running Manjaro with i3.
+I am running [Manjaro](https://manjaro.org/) with [Sway](https://swaywm.org/).
+This repository contains most of my configuration files.
+I used to use the following instructions, but now am looking for something more convenient...
 
 How it works
 ------------
@@ -38,4 +40,4 @@ Resources:
 My dotfiles have been inspired by dotfiles of [Rueben
 Ramirez](https://github.com/ruebenramirez/.dotfiles), [Jack
 Franklin](https://github.com/jackfranklin/dotfiles), [Zach
-Holman](https://github.com/holman/dotfiles), and others
+Holman](https://github.com/holman/dotfiles), and others.
