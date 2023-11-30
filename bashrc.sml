@@ -131,11 +131,12 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias rg="rg -g '!web-components.min.js' -g '!styles.min.css' -g '!poetry.lock' -g '!index.js' -g '!markdown-preview.nvim/**/*.js'"
     alias grep='rg'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+export RIPGREP_CONFIG_PATH="/home/jakub/.ripgreprc"
 
 # Do not load rc.config - ranger configuration twice
 export RANGER_LOAD_DEFAULT_RC=FALSE

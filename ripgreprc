@@ -1,0 +1,5 @@
+--glob=!web-components.min.js
+--glob=!styles.min.css
+--glob=!poetry.lock
+--glob=!index.js
+--glob=!markdown-preview.nvim/**/*.js
