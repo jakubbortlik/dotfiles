@@ -191,12 +191,19 @@ gr() {
     git remote -v | awk '{print $1 " " $2}' | uniq |
     fzf --height 40% --tac | awk '{print $1}'
 }
+gw() {
+  is_in_git_repo &&
+    git worktree list |
+    fzf --height 40% --ansi --multi --tac | sed 's/^..//' | awk '{print $1}' |
+    sed 's#^remotes/[^/]*/##'
+}
 bind '"\er": redraw-current-line'
 bind '"\C-g\C-f": "$(gf)\e\C-e\er"'  # Fuzzy find git [f]ile
 bind '"\C-g\C-b": "$(gb)\e\C-e\er"'  # Fuzzy find git [b]ranch
 bind '"\C-g\C-t": "$(gt)\e\C-e\er"'  # Fuzzy find git [t]ag
 bind '"\C-g\C-c": "$(gh)\e\C-e\er"'  # Fuzzy find git [c]ommit hash
 bind '"\C-g\C-r": "$(gr)\e\C-e\er"'  # Fuzzy find git [r]emote
+bind '"\C-g\C-w": "$(gw)\e\C-e\er"'  # Fuzzy find git [w]orktree
 
 # Fuzzy find directory to start up a tmux [s]ession in or attach to an existing one
 bind -x '"\C-g\C-s":"tmux-sessionizer"'
