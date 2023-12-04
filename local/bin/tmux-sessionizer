@@ -7,6 +7,7 @@ paths=(
   ~/Gitlab
   ~/dotfiles
   ~/dotfiles/config
+  ~/.config
   ~/.config/nvim
   ~/.config/nvim/lua
   ~/
