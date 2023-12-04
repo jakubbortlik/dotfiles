@@ -3,3 +3,4 @@
 --glob=!poetry.lock
 --glob=!index.js
 --glob=!markdown-preview.nvim/**/*.js
+--glob=!tags
