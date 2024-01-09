@@ -171,15 +171,20 @@ gf() {
     fzf --height 40% -m --ansi --nth 2..,.. | awk '{print $2}'
 }
 gb() {
+  if [[ $# -eq 0 ]]; then
+    prompt="Select a branch"
+  else
+    prompt="$*"
+  fi
   is_in_git_repo &&
     git branch -a -vv --color=always | grep -v '/HEAD\s' |
-    fzf --height 40% --ansi --multi --tac | sed 's/^..//' | awk '{print $1}' |
+    fzf --height 40% --ansi --multi --tac --header "${prompt}" | sed 's/^..//' | awk '{print $1}' |
     sed 's#^remotes/[^/]*/##'
 }
 gt() {
   is_in_git_repo &&
     git tag --sort -version:refname |
-    fzf --height 40% --multi
+    fzf --height 40% --multi --header "Select a tag" 
 }
 gh() {
   is_in_git_repo &&
@@ -194,7 +199,7 @@ gr() {
 gw() {
   is_in_git_repo &&
     git worktree list |
-    fzf --height 40% --ansi --multi --tac | sed 's/^..//' | awk '{print $1}' |
+    fzf --height 40% --ansi --multi --tac --header "Select a worktree" | awk '{print $1}' |
     sed 's#^remotes/[^/]*/##'
 }
 bind '"\er": redraw-current-line'
@@ -204,6 +209,13 @@ bind '"\C-g\C-t": "$(gt)\e\C-e\er"'  # Fuzzy find git [t]ag
 bind '"\C-g\C-c": "$(gh)\e\C-e\er"'  # Fuzzy find git [c]ommit hash
 bind '"\C-g\C-r": "$(gr)\e\C-e\er"'  # Fuzzy find git [r]emote
 bind '"\C-g\C-w": "$(gw)\e\C-e\er"'  # Fuzzy find git [w]orktree
+export -f is_in_git_repo
+export -f gb
+export -f gf
+export -f gt
+export -f gh
+export -f gr
+export -f gw
 
 # Fuzzy find directory to start up a tmux [s]ession in or attach to an existing one
 bind -x '"\C-g\C-s":"tmux-sessionizer"'
