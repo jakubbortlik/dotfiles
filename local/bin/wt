@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+commands=(add ls rm)
+feature_worktrees="feat-1 feat-2 feat-3 feat-4 feat-5" 
+toplevel=$(git rev-parse --show-toplevel)
+
+if [[ $# -eq 0 ]]; then
+  git worktree list
+  exit
+elif [[ $# -eq 1 ]]; then
+  command=$1
+else
+  echo "Too many arguments."
+  exit
+fi
+if [[ ! " ${commands[*]} " =~ \ ${command}\  ]]; then
+  command=$(echo "${commands[@]}" | tr " " "\n" | fzf --header "'$1' is not a sub-command, chose another one")
+fi
+
+if [[ $command == "" ]]; then
+  echo "No sub-command selected."
+  exit
+fi
+
+if [[ $command == "rm" ]]; then
+  selected=$(gw)
+  echo "$selected"
+  if [[ $selected == "" ]]; then
+    echo "No worktree selected."
+    exit
+  fi
+  git worktree remove "$selected"
+elif [[ $command == "add" ]]; then
+  existing_worktrees=$(ls "$toplevel/.." | grep -- "^feat-[0-9]")
+  available_worktrees=$(comm -23 <(echo "$feature_worktrees" | tr " " "\n") <(echo "$existing_worktrees"))
+  selected=$(echo "$available_worktrees" | fzf --header "Select a path for the new worktree")
+  if [[ $selected == "" ]]; then
+    echo "No path selected."
+    exit
+  fi
+  branch=$(gb Select a branch or press Ctrl-C and choose a new branch name)
+  if [[ $branch == "" ]]; then
+    read -rp "Choose a new branch name: " branch
+    branch="-b $branch"
+  fi
+  if [[ $branch == "" ]]; then
+    echo "No branch selected."
+    exit
+  fi
+  git worktree add ../"$selected" "$branch"
+elif [[ $command == "ls" ]]; then
+  git worktree list
+  exit
+fi
+
+exit
+# vim:set ft=bash expandtab ts=2 sw=2:
