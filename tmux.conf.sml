@@ -30,13 +30,10 @@ set-option -g visual-bell off
  
 # Shortcut to reload config
 # Keeps me from having to exit and restart whenever I make a config change.
-bind r source-file ~/.tmux.conf \; display "Reloaded!"
+bind r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf!"
  
 # Bind Ctrl-q to display-pane
 bind C-q display-pane
-
-# Bind control-key + Ctrl-a to last window
-bind-key C-a last-window
 
 # Bind prefix+f to disable input to pane
 bind-key f select-pane -d
@@ -58,9 +55,6 @@ bind -r h select-pane -L
 bind -r j select-pane -D
 bind -r k select-pane -U
 bind -r l select-pane -R
- 
-bind -r C-h select-window -t :-
-bind -r C-l select-window -t :+
  
 # Pane resizing commands
 bind -r H resize-pane -L 3
@@ -142,18 +136,22 @@ bind-key -n M-N new-window
 # Use tmux-sessionizer to create new sessions
 bind-key -r g run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
 
-bind-key -r C-d run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles"
-bind-key -r C-i run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles/config/i3"
-bind-key -r C-j run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/api"
-bind-key -r C-k run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/feat-1"
-bind-key -r C-l run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/feat-2"
-bind-key -r C-m run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/feat-3"
-bind-key -r C-, run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/feat-4"
-bind-key -r C-. run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/feat-5"
-bind-key -r C-n run-shell "~/.local/bin/tmux-sessionizer ~/.config/nvim/lua/plugins"
+bind-key -r C-a run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/api"
+bind-key -r C-s run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/feat-1"
+bind-key -r C-d run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/feat-2"
+bind-key -r C-f run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/feat-3"
+bind-key -r C-g run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/feat-4"
 bind-key -r C-o run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/onboarding-api"
-bind-key -r C-p run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/protofiles"
+bind-key -r C-p run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/technologies/protofiles"
+bind-key -r C-m run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/technologies/microservices"
+bind-key -r C-t run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/datatools"
+
+bind-key -r C-j run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles"
+bind-key -r C-k run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles/config/sway"
+bind-key -r C-n run-shell "~/.local/bin/tmux-sessionizer ~/.config/nvim/lua/plugins"
 bind-key -r C-y run-shell "~/.local/bin/tmux-sessionizer ~/.local/share/nvim/lazy"
+
+bind-key -r C-^ switch-client -l
 
 # Swap windows
 bind-key -r -n M-< swap-window -t -1
@@ -171,6 +169,8 @@ set-option -g allow-rename off
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @resurrect-save 'S'
+set -g @resurrect-restore 'R'
 
 # Undercurl
 set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
