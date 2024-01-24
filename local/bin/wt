@@ -47,7 +47,7 @@ elif [[ $command == "add" ]]; then
     echo "No branch selected."
     exit
   fi
-  git worktree add ../"$selected" "$branch"
+  git worktree add ../"$selected" "$branch" && echo "New worktree created at ../$selected"
 elif [[ $command == "ls" ]]; then
   git worktree list
   exit
