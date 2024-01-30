@@ -41,7 +41,7 @@ elif [[ $command == "add" ]]; then
   branch=$(gb Select a branch or press Ctrl-C and choose a new branch name)
   if [[ $branch == "" ]]; then
     read -rp "Choose a new branch name: " branch
-    branch="-b $branch"
+    branch="-b$branch"
   fi
   if [[ $branch == "" ]]; then
     echo "No branch selected."
