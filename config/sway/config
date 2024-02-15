@@ -13,6 +13,9 @@ include $theme/definitions
 # global variables
 include /etc/sway/definitions
 
+# override autostart (including settings for $swayidle)
+include $HOME/.config/sway/autostart
+
 # user variables
 include $HOME/.config/sway/definitions.d/*.conf
 
