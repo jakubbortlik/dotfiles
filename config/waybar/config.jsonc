@@ -22,7 +22,7 @@
     "modules-right": [
         // informational
         "sway/language",
-        "custom/github",
+        // "custom/github",
         "custom/clipboard",
         // "custom/zeit",
         "cpu",
@@ -32,10 +32,10 @@
 
         // connecting
         // "network",
-        "bluetooth",
+        // "bluetooth",
 
         // media
-        "custom/playerctl",
+        // "custom/playerctl",
         "idle_inhibitor",
         "custom/dnd",
         "pulseaudio",
