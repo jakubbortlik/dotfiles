@@ -148,6 +148,7 @@ bind-key -r C-t run-shell "~/.local/bin/tmux-sessionizer ~/Gitlab/datatools"
 
 bind-key -r C-j run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles"
 bind-key -r C-k run-shell "~/.local/bin/tmux-sessionizer ~/dotfiles/config/sway"
+bind-key -r C-l run-shell "~/.local/bin/tmux-sessionizer ~/projects"
 bind-key -r C-n run-shell "~/.local/bin/tmux-sessionizer ~/.config/nvim/lua/plugins"
 bind-key -r C-y run-shell "~/.local/bin/tmux-sessionizer ~/.local/share/nvim/lazy"
 
