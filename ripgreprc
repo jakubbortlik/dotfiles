@@ -4,3 +4,4 @@
 --glob=!index.js
 --glob=!markdown-preview.nvim/**/*.js
 --glob=!tags
+--glob=!*.svg
