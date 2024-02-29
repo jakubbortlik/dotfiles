@@ -220,6 +220,10 @@ export -f gw
 # Fuzzy find directory to start up a tmux [s]ession in or attach to an existing one
 bind -x '"\C-g\C-s":"tmux-sessionizer"'
 
+# Fuzzy find a file and open with `vi`
+bind -x '"\C-g\C-v":"selected=$(fzf) && if [[ $selected != \"\" ]]; then vi $selected; fi"'
+
+# Navigate to tmux-pane with Alt+hjkl
 bind -x '"\eh":"tmux select-pane -L"'
 bind -x '"\ej":"tmux select-pane -D"'
 bind -x '"\ek":"tmux select-pane -U"'
