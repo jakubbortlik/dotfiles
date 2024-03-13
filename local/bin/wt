@@ -4,6 +4,18 @@ commands=(add ls rm)
 feature_worktrees="feat-1 feat-2 feat-3 feat-4 feat-5" 
 toplevel=$(git rev-parse --show-toplevel)
 
+post_add () {
+  path=$1
+  if [[ ! -d $path ]]; then 
+    echo "Worktree path \"$path\" is not a directory"
+  else
+    if [ -r ".env" ]; then
+      cp -v ".env" $path
+    fi
+    cd $path && poetry install --sync && cd -
+  fi
+}
+
 if [[ $# -eq 0 ]]; then
   git worktree list
   exit
@@ -24,12 +36,11 @@ fi
 
 if [[ $command == "rm" ]]; then
   selected=$(gw)
-  echo "$selected"
   if [[ $selected == "" ]]; then
     echo "No worktree selected."
     exit
   fi
-  git worktree remove "$selected"
+  git worktree remove "$selected" && echo "Removed worktree at $selected"
 elif [[ $command == "add" ]]; then
   existing_worktrees=$(ls "$toplevel/.." | grep -- "^feat-[0-9]")
   available_worktrees=$(comm -23 <(echo "$feature_worktrees" | tr " " "\n") <(echo "$existing_worktrees"))
@@ -47,7 +58,8 @@ elif [[ $command == "add" ]]; then
     echo "No branch selected."
     exit
   fi
-  git worktree add ../"$selected" "$branch" && echo "New worktree created at ../$selected"
+  path="../$selected"
+  git worktree add $path "$branch" && echo "New worktree created at $path" && post_add $path
 elif [[ $command == "ls" ]]; then
   git worktree list
   exit
