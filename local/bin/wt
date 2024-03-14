@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 commands=(add ls rm)
-feature_worktrees="feat-1 feat-2 feat-3 feat-4 feat-5" 
+feature_worktrees="feat-1 feat-2 feat-3 feat-4 feat-5 feat1 feat2 feat3 feat4 feat5" 
 toplevel=$(git rev-parse --show-toplevel)
 
 post_add () {
