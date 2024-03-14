@@ -221,7 +221,7 @@ export -f gw
 bind -x '"\C-g\C-s":"tmux-sessionizer"'
 
 # Fuzzy find a file and open with `vi`
-bind -x '"\C-g\C-v":"selected=$(fzf) && if [[ $selected != \"\" ]]; then vi $selected; fi"'
+bind -x '"\C-g\C-v":"selected=$(fzf --multi) && if [[ $selected != \"\" ]]; then vi $selected; fi"'
 
 # Navigate to tmux-pane with Alt+hjkl
 bind -x '"\eh":"tmux select-pane -L"'
