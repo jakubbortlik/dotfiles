@@ -32,9 +32,6 @@
 	ba = branch -a
 [credential]
 	helper = store
-	ctags = !.git/hooks/ctags
-[init]
-	templatedir = ~/.git_template
 [push]
 	default = simple
 [filter "lfs"]
