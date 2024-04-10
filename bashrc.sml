@@ -34,7 +34,7 @@ vi() {
       dir=$(dirname "$dir")
     fi
   done
-  if [[ $poetry_project == true ]]; then
+  if [[ $poetry_project == true ]] && [[ ! $POETRY_ACTIVE ]]; then
     if command -v poetry &> /dev/null; then
       poetry run "$EDITOR" "$@"
     else
