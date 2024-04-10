@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 commands=(add ls rm)
-feature_worktrees="feat-1 feat-2 feat-3 feat-4 feat-5 feat1 feat2 feat3 feat4 feat5" 
+feature_worktrees="feat_1 feat_2 feat_3 feat_4 feat_5 feat1 feat2 feat3 feat4 feat5" 
 toplevel=$(git rev-parse --show-toplevel)
 
 post_add () {
@@ -63,8 +63,8 @@ if [[ $command == "rm" ]]; then
     git worktree remove "$selected" 2>/dev/null && echo "Removed worktree at $selected" || handle_dirty_worktree $selected
   fi
 elif [[ $command == "add" ]]; then
-  existing_worktrees=$(ls "$toplevel/.." | grep -- "^feat-[0-9]")
-  available_worktrees=$(comm -23 <(echo "$feature_worktrees" | tr " " "\n") <(echo "$existing_worktrees"))
+  existing_worktrees=$(ls "$toplevel/.." | \grep -- "^feat_\?[0-9]" | sort)
+  available_worktrees=$(comm -23 <(echo "$feature_worktrees" | tr " " "\n" | sort) <(echo "$existing_worktrees") | sort -k 2n -tt)
   selected=$(echo "$available_worktrees" | fzf --header "Select a path for the new worktree")
   if [[ $selected == "" ]]; then
     echo "No path selected."
