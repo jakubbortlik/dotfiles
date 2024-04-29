@@ -124,18 +124,14 @@ unset color_prompt force_color_prompt
 # If entered shell from ranger, show it in the prompt:
 [ -n "$RANGER_LEVEL" ] && PS1="$PS1"'(in RA) '
 
-# enable color support of ls and also add handy aliases
+# enable color support of ls
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='rg'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
 fi
 
+# Set up ripgrep
+alias grep='rg'
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 # Do not load rc.config - ranger configuration twice
