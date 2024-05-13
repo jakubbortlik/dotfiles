@@ -84,6 +84,7 @@ Packages to install:
 - git-delta
 - git-lfs
 - glab
+- go
 - inkscape
 - jq
 - k6
