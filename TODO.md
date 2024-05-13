@@ -8,50 +8,18 @@ printing
 --------
 - run `sudo systemctl enable --now cups.service`
 
-nVim:
+Neovim:
 -----
-```
-:set expandtab
-```
-
-- adjust "define" in praat.vim
-
-- airline: show suspended imode, e.g. -- (insert) -- (Ctrl-o) on the statusline
-
-- show the alternate buffer name somewhere
-
 - in imode evaluate mappings after keymap evaluation (e.g., ] -> ) in
   czech_utf-8.vim should not wait for the evaluation of the mapping in
   vimtex-delim-close() or 50_LookupCharacter()
 
 - unimpaired: keep cursor position after ]<Space>
 
-- ToggleTrueFalse - use cursor column to change a particular value when there
-  are more on one line
-
-python:
--------
-- python-mode in vim
-
-
-GTK3:
------
-- firefox scroll bar, radio buttons, fields, etc.
-
 ranger:
 -------
 - let the :console source .bashrc
 - find a way to sync bookmarks with the dotfiles .sml version
-
-openbox:
---------
-- choose custom titles of windows in title bar instead of full path (where is it
-  set for LXTerminal?
-- keep only CS and US in the keyboard layout handler, have a xkbmap shortcut for IPA
-- remap CapsLock to Ctrl (and possibly Escape)
-- highlight the active window's icon on the panel
-- show focused window
-- show preview when cycling windows with Alt-Tab
 
 latex:
 ------
@@ -74,10 +42,6 @@ libreoffice:
 - shortcuts for:
 	- opening the menu at cursor
 	- close find bar with <c-[>
-
-debugger:
----------
-GDB - the GNU Project Debugger
 
 Tmux:
 -----
@@ -102,88 +66,74 @@ Other:
 
 Packages to install:
 --------------------
-- airline
 - audacity
-- baobab - disk management
-- biber
-- bibletime
+- bash-completion
 - caca-utils
-- ctl 	# for the visualalisation in git
+- coreutils
+- ctags
+- cups
+- deno
+- docker
+- docker-compose
+- dust
+- fd
+- ffmpeg
 - firefox
-- *flashplugin
-- flash-player-properties???
-- *fluidsynth
-- galculator
+- fzf
 - gimp
-- gmrun	# application starter (Ctrl-R)
-- gucharmap
+- git-delta
+- git-lfs
+- glab
 - inkscape
+- jq
+- k6
 - klavaro
-- lame
-- leafpad
 - libreoffice
-- *lilypond
 - man-db
 - man-pages
 - mlocate
 - moc
 - mtpaint
 - mupdf
-- *neovim
-- noto-fonts?
-- noto-fonts-cjk?
-- *nvidia
-- noto-fonts-emoji?
-- *pdfgrep
-- obconf - openbox configuration manager??
-- perl-biber
-- perl-rename
+- neovim
+- network-manager-applet
+- networkmanager
+- networkmanager-openvpn
+- npm
+- openvpn
+- pdfgrep
+- postman9-bin
 - powerline-fonts
 - praat
-- *python-neovim
-- r-core
 - ranger + libcaca (Color AsCii Art library) + highlight
-- *redshift
-- rosegarden
-- rstudio??
+- redshift
+- ripgrep
 - rsync
-- rxvt-unicode??
-- scrot
-- skype
-- slock
-- smplayer
+- skype???
+- skypeforlinux-stable-bin???
 - sox
+- sshfs
 - system-config-printer???
+- tealdeer
+- teams-for-linux
 - texlive
-- texlive-latexmk
 - texlive-beamer
 - texlive-biber
 - texlive-bibtex
+- texlive-latexmk
 - texlive-nag
 - texlive-pdfjam
-- *tcl??
-- *timidity++
-- tk		# for the visualalisation in git
-- *tmux
-- ttf-bitstream-vera
-- ttf-dejavu
-- ttf-droid
-- ttf-liberation
-- tuxguitar??
-- *unetbootin
+- thunderbird
+- tmux
 - unrar
+- unrar-free
 - unzip
-- *vim-latexsuite
-- xfce4-power-manager-settings??
-- xpad
-- w3m
-- w3m-inline-image
-- *wine
-- xorg-xev?
-- *zathura
-- *zathura-pdf-mupdf
-- *zathura-plugin-djvu
+- vlc
+- zathura
+- zathura-pdf-mupdf
+- zathura-pdf-poppler
+- zathura-plugin-djvu
+- zoom
  
 - podofo - pdf manipulation
 - pdftk? - not in Fedora
-- tox - aur?
