@@ -85,13 +85,11 @@ Packages to install:
 - git-delta
 - git-lfs
 - glab
-- go
 - inkscape
 - jq
 - k6
 - klavaro
 - libreoffice
-- luarocks (`luarocks install luacheck`)
 - man-db
 - man-pages
 - mlocate
@@ -102,7 +100,6 @@ Packages to install:
 - network-manager-applet
 - networkmanager
 - networkmanager-openvpn
-- npm
 - openvpn
 - pdfgrep
 - postman9-bin
@@ -137,6 +134,13 @@ Packages to install:
 - zathura-pdf-poppler
 - zathura-plugin-djvu
 - zoom
+
+- cargo
+- go
+- luarocks (`luarocks install luacheck`)
+- npm
+- nvm
+- tree-sitter-cli
  
 - podofo - pdf manipulation
 - pdftk? - not in Fedora
