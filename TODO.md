@@ -68,6 +68,7 @@ Packages to install:
 --------------------
 - audacity
 - bash-completion
+- bat
 - caca-utils
 - coreutils
 - ctags
@@ -90,6 +91,7 @@ Packages to install:
 - k6
 - klavaro
 - libreoffice
+- luarocks (`luarocks install luacheck`)
 - man-db
 - man-pages
 - mlocate

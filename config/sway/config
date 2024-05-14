@@ -8,7 +8,7 @@
 set $theme /usr/share/sway/themes/matcha-green
 
 # theme variables
-include $theme/definitions
+include $theme/theme.conf
 
 # global variables
 include /etc/sway/definitions
@@ -16,11 +16,10 @@ include /etc/sway/definitions
 # override autostart (including settings for $swayidle)
 include $HOME/.config/sway/autostart
 
-# user variables
+# user variables can override global definitions
 include $HOME/.config/sway/definitions.d/*.conf
 
 include /etc/sway/inputs/*
-include /etc/sway/outputs/*
 
 # enable modes
 include /etc/sway/modes/*
