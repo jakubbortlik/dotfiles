@@ -1,11 +1,10 @@
 [user]
 	email = jakub.bortlik@proton.me
-	name = Jakub Bortlík
+	name = Jakub F. Bortlík
 [color]
 	ui = true
 [core]
 	editor = nvim
-	pager = delta
 [diff "praat"]
 	lextconv = base64
 [alias]
@@ -14,8 +13,9 @@
 	ca = commit -a
 	cb = copy-branch-name
 	co = checkout
-	com = checkout master
-	con = checkout main
+	com = checkout main
+	con = checkout next
+	cor = checkout master
 	d = diff
 	dc = diff --cached
 	l = log --graph --pretty=format:'%Cred%h%Creset %an: %s%Creset%C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
@@ -51,3 +51,5 @@
     conflictstyle = diff3
 [diff]
     colorMoved = default
+[includeIf "gitdir:~/Gitlab/"]
+    path = .gitconfig.work
