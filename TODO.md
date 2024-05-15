@@ -109,13 +109,10 @@ Packages to install:
 - redshift
 - ripgrep
 - rsync
-- skype???
-- skypeforlinux-stable-bin???
 - sox
 - sshfs
 - system-config-printer???
 - tealdeer
-- teams-for-linux
 - texlive
 - texlive-beamer
 - texlive-biber
@@ -136,11 +133,17 @@ Packages to install:
 - zoom
 
 - cargo
+- github-cli
 - go
 - luarocks (`luarocks install luacheck`)
 - npm
 - nvm
 - tree-sitter-cli
- 
+
+# pamac install
+- skypeforlinux-bin
+- swaykbdd - to enable per-window keyboard layouts
+- teams-for-linux
+
 - podofo - pdf manipulation
 - pdftk? - not in Fedora
