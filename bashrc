@@ -301,7 +301,7 @@ if ! shopt -oq posix; then
 fi
 
 # Bashrc aliases
-alias b="$EDITOR ~/dotfiles/bashrc.sml"
+alias b="$EDITOR ~/dotfiles/bashrc"
 alias bs="source $HOME/.bashrc"
 alias be="$EDITOR $HOME/.bashrc_extras"
 alias bes="source $HOME/.bashrc_extras"
