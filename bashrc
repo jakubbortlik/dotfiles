@@ -129,6 +129,8 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 fi
+# See https://www.bigsoft.co.uk/blog/2008/04/11/configuring-ls_colors for more details.
+export LS_COLORS="ca=30;41:cd=30;33;01:di=01;36:ln=01;34:ow=01;36;40:"
 
 # Set up ripgrep
 alias grep='rg'
