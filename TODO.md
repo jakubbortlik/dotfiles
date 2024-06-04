@@ -7,6 +7,7 @@ symstall:
 printing
 --------
 - run `sudo systemctl enable --now cups.service`
+- install `sudo pacman -Syu ghostscript` to be able to print pdf files
 
 Neovim:
 -----
