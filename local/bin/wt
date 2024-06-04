@@ -4,7 +4,7 @@ commands=(add ls rm)
 feature_worktrees="feat_1 feat_2 feat_3 feat_4 feat_5 feat1 feat2 feat3 feat4 feat5" 
 toplevel=$(git rev-parse --show-toplevel)
 
-post_add () {
+post_add() {
   path=$1
   if [[ ! -d $path ]]; then 
     echo "Worktree path \"$path\" is not a directory"
@@ -12,7 +12,9 @@ post_add () {
     if [ -r ".env" ]; then
       cp -v ".env" $path
     fi
-    cd $path && poetry install --sync && cd -
+    pyproject_toml=$(poetry_project)
+    cd $path && if [[ $pyproject_toml != "" ]]; then setup_pyenv $pyproject_toml && poetry install --sync; fi
+    cd -
   fi
 }
 

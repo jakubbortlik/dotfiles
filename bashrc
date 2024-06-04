@@ -10,7 +10,7 @@ case $- in
 esac
 
 # disable stopping the flow in terminal by Ctrl-S, so that this mapping can be
-# used to save buffers in vim or to serach through bash history
+# used to save buffers in vim or to search through bash history
 stty -ixon
 
 # Editor aliases and functions
@@ -20,37 +20,74 @@ else
   export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
 fi
 alias swapurge="rm -i ~/.local/state/nvim/swap/*"
-vi() {
-  poetry_project=false
+
+# Echo path to current pyproject.toml if any exists.
+poetry_project() {
   dir=$PWD
   while [[ "$dir" != "${HOME}" ]] && [[ "$dir" != "/" ]]; do
-    if [[ -r "$dir"/pyproject.toml ]]; then
-      pyproject_toml="$dir"/pyproject.toml
-      if \grep -q "tool.poetry" "$dir"/pyproject.toml; then
-        poetry_project=true
+    pyproject_toml="$dir/pyproject.toml"
+    if [[ -r $pyproject_toml ]]; then
+      if \grep -q "tool.poetry" $pyproject_toml; then
+        echo $pyproject_toml
       fi
       break
     else
       dir=$(dirname "$dir")
     fi
   done
-  if [[ $poetry_project == true ]] && [[ ! $POETRY_ACTIVE ]]; then
+}
+export -f poetry_project
+
+# Setup local pyenv version if it does not exist already.
+setup_pyenv() {
+  pyenv local &>/dev/null && return
+
+  pyproject_toml=$1
+  if [[ -r $pyproject_toml ]]; then
+    python_version=$(\grep -i "^python =" $pyproject_toml | sed 's/[^0-9.]\+//g')
+  else
+    echo "$pyproject_toml not readable"
+    return 1
+  fi
+
+  if [[ $python_version != '' ]]; then
+    if command -v pyenv &> /dev/null; then
+      pyenv local "$python_version"
+    else
+      echo "Running 'pyenv local $python_version', but pyenv command not available!"
+      return 1
+    fi
+  else
+    echo "No Python version detected in $pyproject_toml"
+    return 1
+  fi
+}
+export -f setup_pyenv
+
+# Wrap $EDITOR with `poetry run` if in a Poetry project.
+vi() {
+  pyproject_toml=$(poetry_project)
+  if [[ $pyproject_toml != "" ]] && [[ ! $POETRY_ACTIVE ]]; then
     if command -v poetry &> /dev/null; then
+      setup_pyenv $pyproject_toml
       poetry run "$EDITOR" "$@"
     else
-      echo "Running in poetry project ($pyproject_toml), but poetry command not available!"
+      echo "Running in Poetry project ($pyproject_toml), but Poetry command not available!"
       $EDITOR "$@"
     fi
   else
     $EDITOR "$@"
   fi
 }
+
 get_main() {
     main=$(git branch | tr -d "+* " | \grep -E "^(main|master)$")
     echo "$main"
 }
 alias vm='vi -c "DiffviewOpen $(get_main)"'
-alias vr='vi -c "normal glr"'
+alias vr='vi -c "lua require\"gitlab\".review()"'
+alias vin='nvim -u NONE'
+
 # Search for a pattern with ripgrep and set the error list to the matches
 qf() {
     vi -q <(rg --vimgrep --no-heading --smart-case -g '!web-components.min.js' -g '!styles.min.css' -g '!poetry.lock' "$@")
@@ -184,7 +221,7 @@ gt() {
     git tag --sort -version:refname |
     fzf --height 40% --multi --header "Select a tag" 
 }
-gh() {
+ghash() {
   is_in_git_repo &&
     git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph |
     fzf --height 40% --ansi --no-sort --reverse --multi | grep -o '[a-f0-9]\{7,\}'
@@ -204,14 +241,14 @@ bind '"\er": redraw-current-line'
 bind '"\C-g\C-f": "$(gf)\e\C-e\er"'  # Fuzzy find git [f]ile
 bind '"\C-g\C-b": "$(gb)\e\C-e\er"'  # Fuzzy find git [b]ranch
 bind '"\C-g\C-t": "$(gt)\e\C-e\er"'  # Fuzzy find git [t]ag
-bind '"\C-g\C-c": "$(gh)\e\C-e\er"'  # Fuzzy find git [c]ommit hash
+bind '"\C-g\C-c": "$(ghash)\e\C-e\er"'  # Fuzzy find git [c]ommit hash
 bind '"\C-g\C-r": "$(gr)\e\C-e\er"'  # Fuzzy find git [r]emote
 bind '"\C-g\C-w": "$(gw)\e\C-e\er"'  # Fuzzy find git [w]orktree
 export -f is_in_git_repo
 export -f gb
 export -f gf
 export -f gt
-export -f gh
+export -f ghash
 export -f gr
 export -f gw
 
