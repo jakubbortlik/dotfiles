@@ -5,3 +5,5 @@
 --glob=!markdown-preview.nvim/**/*.js
 --glob=!tags
 --glob=!*.svg
+--glob=!**/_static/**
+--glob=!**/_next/static/**
