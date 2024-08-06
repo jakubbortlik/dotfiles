@@ -12,8 +12,9 @@ post_add() {
     if [ -r ".env" ]; then
       cp -v ".env" $path
     fi
+    cd $path
     pyproject_toml=$(poetry_project)
-    cd $path && if [[ $pyproject_toml != "" ]]; then setup_pyenv $pyproject_toml && poetry install --sync; fi
+    if [[ $pyproject_toml != "" ]]; then setup_pyenv $pyproject_toml && poetry install --sync; fi
     cd -
   fi
 }
@@ -82,7 +83,7 @@ elif [[ $command == "add" ]]; then
     exit
   fi
   path="../$selected"
-  git worktree add $path "$branch" && echo "New worktree created at $path" && post_add $path
+  git worktree add $path "$branch" && post_add $path && echo "New worktree created at $path"
 elif [[ $command == "ls" ]]; then
   git worktree list
   exit
