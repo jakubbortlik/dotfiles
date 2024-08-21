@@ -51,7 +51,6 @@ call plug#begin('~/.vim/bundle')
   Plug 'nvim-lua/plenary.nvim'          " required for (telescope)
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'nvim-tree/nvim-web-devicons'
-  Plug 'HiPhish/nvim-ts-rainbow2'
   Plug 'mbbill/undotree'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
@@ -77,7 +76,6 @@ call plug#begin('~/.vim/bundle')
   Plug 'vim-scripts/FastFold'
   Plug 'tmhedberg/SimpylFold'
   Plug 'ThePrimeagen/harpoon'
-  Plug 'ThePrimeagen/vim-be-good'
 
   " Autocompletion
   Plug 'hrsh7th/nvim-cmp'     " Required by lsp-zero.vim
