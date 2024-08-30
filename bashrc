@@ -93,13 +93,13 @@ get_main() {
 }
 alias vm='vi -c "DiffviewOpen $(get_main)"'
 alias vr='vi -c "lua require\"gitlab\".review()"'
-alias vin='nvim -u NONE'
+alias vin="$EDITOR --noplugin"
+alias e="$EDITOR -u NONE"
 
 # Search for a pattern with ripgrep and set the error list to the matches
 qf() {
     vi -q <(rg --vimgrep --no-heading --smart-case -g '!web-components.min.js' -g '!styles.min.css' -g '!poetry.lock' "$@")
 }
-alias e="$EDITOR -u NONE"
 
 # Set the python debugger to pudb
 export PYTHONBREAKPOINT=pudb.set_trace
