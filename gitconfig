@@ -28,6 +28,7 @@
     rpo = remote prune origin
 	s = status
 	sb = status -sb
+	sw = switch
     w = worktree
 	ba = branch -a
 [credential]
