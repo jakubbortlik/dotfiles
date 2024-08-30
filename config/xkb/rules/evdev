@@ -1,0 +1,7 @@
+! option = symbols
+  lv5:caps_switch_lock    = +lvl5(caps_switch_lock)
+
+! layout		option			= symbols
+  *			misc:extend		= +extend(basic)
+
+! include %S/evdev
