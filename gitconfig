@@ -53,3 +53,5 @@
     colorMoved = default
 [includeIf "gitdir:~/Gitlab/"]
     path = .gitconfig.work
+[init]
+	defaultbranch = main
