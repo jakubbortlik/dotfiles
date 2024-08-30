@@ -13,6 +13,12 @@ esac
 # used to save buffers in vim or to search through bash history
 stty -ixon
 
+# Disable overwriting when redirecting 
+set -o noclobber
+# Ask before overwriting files
+alias mv="mv -i"
+alias cp="cp -i"
+
 # Editor aliases and functions
 if command -v nvim > /dev/null 2>&1; then
   export EDITOR=nvim
