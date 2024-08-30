@@ -25,7 +25,6 @@ if command -v nvim > /dev/null 2>&1; then
 else
   export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
 fi
-alias swapurge="rm -i ~/.local/state/nvim/swap/*"
 
 # Echo path to current pyproject.toml if any exists.
 poetry_project() {
