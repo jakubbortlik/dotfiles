@@ -26,6 +26,8 @@ else
   export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
 fi
 
+alias pl="poetry shell"
+
 # Echo path to current pyproject.toml if any exists.
 poetry_project() {
   dir=$PWD
