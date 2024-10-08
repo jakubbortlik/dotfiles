@@ -265,12 +265,6 @@ bind -x '"\C-g\C-s":"tmux-sessionizer"'
 # Fuzzy find a file and open with `vi`
 bind -x '"\C-g\C-v":"selected=$(fzf --multi) && if [[ $selected != \"\" ]]; then vi $selected; fi"'
 
-# Navigate to tmux-pane with Alt+hjkl
-bind -x '"\eh":"tmux select-pane -L"'
-bind -x '"\ej":"tmux select-pane -D"'
-bind -x '"\ek":"tmux select-pane -U"'
-bind -x '"\el":"tmux select-pane -R"'
-
 # Get the header of a table and prepend column numbers to column names.
 header () {
     SEPARATOR="[ 	;,]"
