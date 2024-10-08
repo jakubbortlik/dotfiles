@@ -51,8 +51,6 @@ export -f poetry_project
 
 # Setup local pyenv version if it does not exist already.
 setup_pyenv() {
-  pyenv local &>/dev/null && return
-
   pyproject_toml=$1
   if [[ -r $pyproject_toml ]]; then
     python_version=$(\grep -i "^python =" $pyproject_toml | sed 's/[^0-9.]\+//g')
@@ -447,5 +445,5 @@ colors() {
 # correct some typing mistakes with the `cd` command
 shopt -s cdspell
 
-export PATH=$HOME/local/bin:$HOME/.local/bin:/usr/lib/node_modules/node/bin:$PATH
+export PATH=$(command -v pyenv &>/dev/null && echo $(pyenv root)/shims:)$HOME/local/bin:$HOME/.local/bin:$HOME/go/bin:/usr/lib/node_modules/node/bin:$PATH
 # vim:set sw=2 ts=2 ft=sh:
