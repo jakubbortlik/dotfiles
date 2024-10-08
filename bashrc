@@ -26,7 +26,11 @@ else
   export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
 fi
 
-alias pl="poetry shell"
+get_next_tty() {
+  echo $(($(ls /dev/pts | \grep -E "^[0-9]+$" | tail -n1)+1))
+}
+
+alias psh="([[ -n \$TMUX ]] && tmux set -p @active_tty /dev/pts/\$(get_next_tty) && poetry shell) || poetry shell"
 
 # Echo path to current pyproject.toml if any exists.
 poetry_project() {

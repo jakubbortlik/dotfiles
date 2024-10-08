@@ -1,8 +1,0 @@
-#!/bin/bash
-pane_tty=$1
-poetry_pid=$(pgrep -f poetry -t ${pane_tty##/dev/})
-if [[ -n $poetry_pid ]]; then 
-    ps -o state= -o comm= -t $(readlink /proc/$(ps -o pid= --ppid $poetry_pid | tr -d '[:space:]')/fd/0)
-else
-    ps -o state= -o comm= -t $pane_tty
-fi | \grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'
