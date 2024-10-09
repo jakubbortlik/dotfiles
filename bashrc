@@ -29,7 +29,7 @@ fi
 get_next_tty() {
   echo /dev/pts/$(($(ls /dev/pts | \grep -E "^[0-9]+$" | tail -n1) + 1))
 }
-alias psh="tmux set -p @active_tty \$(get_next_tty) >/dev/null 2>&1; poetry shell"
+alias psh="tmux set -p @active_tty \$(get_next_tty) >/dev/null 2>&1; poetry shell && tmux set -u @active_tty"
 
 # Echo path to current pyproject.toml if any exists.
 poetry_project() {
