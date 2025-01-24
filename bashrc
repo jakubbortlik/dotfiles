@@ -35,7 +35,7 @@ get_next_tty() {
   done
   echo /dev/pts/$i
 }
-alias psh="tmux set -p @active_tty \$(get_next_tty) >/dev/null 2>&1; poetry shell && tmux set -u @active_tty"
+alias psh="[ ! $POETRY_ACTIVE ] && (tmux set -p @active_tty \$(get_next_tty) &>/dev/null; poetry shell && tmux set -pu @active_tty &>/dev/null)"
 
 # Echo path to current pyproject.toml if any exists.
 poetry_project() {
