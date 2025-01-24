@@ -82,7 +82,7 @@
             "warning": 70,
             "critical": 90
         },
-        "on-click": "swaymsg exec \\$once \\$term_float htop",
+        "on-click": "swaymsg exec \\$task_manager",
         "tooltip": true
     },
 
@@ -93,15 +93,23 @@
             "warning": 70,
             "critical": 90
         },
-        "on-click": "swaymsg exec \\$once \\$term_float htop",
+        "on-click": "swaymsg exec \\$task_manager",
         "tooltip": true
     },
 
     "network": {
         "interval": 5,
-        "format-wifi": " ",
+        "format-wifi": "{icon}",
         "format-ethernet": "󰈀",
         "format-disconnected": "󰖪",
+        "format-disabled": "󰀝",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
         "tooltip-format": "{icon} {ifname}: {ipaddr}",
         "tooltip-format-ethernet": "{icon} {ifname}: {ipaddr}",
         "tooltip-format-wifi": "{icon} {ifname} ({essid}): {ipaddr}",
@@ -161,7 +169,7 @@
         "return-type": "json",
         "exec-if": "/usr/share/sway/scripts/checkupdates.sh check",
         "exec": "/usr/share/sway/scripts/checkupdates.sh status",
-        "on-click": "/usr/share/sway/scripts/checkupdates.sh check && swaymsg exec \\$update-manager",
+        "on-click": "/usr/share/sway/scripts/checkupdates.sh check && swaymsg exec \\$update_manager",
         "on-click-middle": "waybar-signal pacman",
         "signal": 14
     },
@@ -268,7 +276,7 @@
 
     "custom/weather": {
         "icon-size": 42,
-        "format": "{icon} {}",
+        "format": "{} {icon}",
         "tooltip": true,
         "interval": 3600,
         // accepts -c/--city <city> -t/--temperature <C/F> -d/--distance <km/miles>
