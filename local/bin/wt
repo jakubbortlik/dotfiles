@@ -22,8 +22,8 @@ post_add() {
 handle_dirty_worktree() {
   path=$1
   echo -e "fatal: '$path' contains modified or untracked files\n"
-  cd "$path" && git status || echo "Cannot cd to $path" && exit
-  echo -e "" &&  if [[ $(git status -s) =~ " M" ]]; then git diff; else git diff --cached; fi
+  cd "$path" && git status || echo "Cannot cd to $path"
+  echo -e "\n################################### DIFF ###################################\n" &&  if [[ $(git status -s) =~ " M" ]]; then git diff; else git diff --cached; fi
   echo -e "\nUse 'wt rm f' to delete the worktree"
 }
 
