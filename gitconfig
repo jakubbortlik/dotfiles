@@ -56,3 +56,5 @@
     path = .gitconfig.work
 [init]
 	defaultbranch = main
+[rerere]
+	enabled = true
