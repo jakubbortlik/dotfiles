@@ -21,8 +21,8 @@ post_add() {
 
 handle_dirty_worktree() {
   path=$1
+  cd "$path" 2>/dev/null && git status || return
   echo -e "fatal: '$path' contains modified or untracked files\n"
-  cd "$path" && git status || echo "Cannot cd to $path"
   echo -e "\n################################### DIFF ###################################\n" &&  if [[ $(git status -s) =~ " M" ]]; then git diff; else git diff --cached; fi
   echo -e "\nUse 'wt rm f' to delete the worktree"
 }
@@ -71,7 +71,7 @@ if [[ $command == "rm" ]]; then
   elif [[ $force -eq 2 ]]; then
     cd $root && git worktree remove --force "$selected" && echo "Force-removed worktree at $selected" && git branch -D $branch && echo "Force-removed branch $branch"
   else
-    cd $root && git worktree remove "$selected" 2>/dev/null && echo "Removed worktree at $selected" && git branch -d $branch && echo "Removed branch $branch" || handle_dirty_worktree $selected
+    cd $root && git worktree remove "$selected" 2>/dev/null && echo "Removed worktree at $selected" && git branch -d $branch && echo "Removed branch $branch" || handle_dirty_worktree $selected $branch
   fi
 elif [[ $command == "add" ]]; then
   existing_worktrees=$(ls "$toplevel/.." | \grep -- "^feat_\?[0-9]" | sort)
