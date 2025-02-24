@@ -35,8 +35,12 @@ elif [[ $# -eq 1 ]]; then
   force=0
 elif [[ $# -eq 2 ]]; then
   command=$1
-  if [[ $command == "rm" ]] && [[ $2 == "f" ]]; then
-    force=1
+  if [[ $command == "rm" ]]; then 
+    if [[ $2 == "f" ]]; then
+      force=1
+    elif [[ $2 == "ff" ]]; then
+      force=2
+    fi
   else
     echo "Bad argument \"$2\" for command \"rm\". Acceptable values: \"f\"."
     exit
@@ -60,10 +64,14 @@ if [[ $command == "rm" ]]; then
     echo "No worktree selected."
     exit
   fi
+  branch=$(git -C $selected rev-parse --abbrev-ref HEAD)
+  root=$(git rev-parse --git-common-dir | xargs dirname)
   if [[ $force -eq 1 ]]; then
-    git worktree remove --force "$selected" && echo "Force-removed worktree at $selected"
+    cd $root && git worktree remove --force "$selected" && echo "Force-removed worktree at $selected" && git branch -d $branch && echo "Removed branch $branch"
+  elif [[ $force -eq 2 ]]; then
+    cd $root && git worktree remove --force "$selected" && echo "Force-removed worktree at $selected" && git branch -D $branch && echo "Force-removed branch $branch"
   else
-    git worktree remove "$selected" 2>/dev/null && echo "Removed worktree at $selected" || handle_dirty_worktree $selected
+    cd $root && git worktree remove "$selected" 2>/dev/null && echo "Removed worktree at $selected" && git branch -d $branch && echo "Removed branch $branch" || handle_dirty_worktree $selected
   fi
 elif [[ $command == "add" ]]; then
   existing_worktrees=$(ls "$toplevel/.." | \grep -- "^feat_\?[0-9]" | sort)
