@@ -38,7 +38,7 @@ get_next_tty() {
 alias psh="[ ! $POETRY_ACTIVE ] && (tmux set -p @active_tty \$(get_next_tty) &>/dev/null; poetry shell && tmux set -pu @active_tty &>/dev/null)"
 
 # Echo path to current pyproject.toml if any exists.
-poetry_project() {
+get_pyproject_toml() {
   dir=$PWD
   while [[ "$dir" != "${HOME}" ]] && [[ "$dir" != "/" ]]; do
     pyproject_toml="$dir/pyproject.toml"
@@ -52,7 +52,7 @@ poetry_project() {
     fi
   done
 }
-export -f poetry_project
+export -f get_pyproject_toml
 
 # Setup local pyenv version if it does not exist already.
 setup_pyenv() {
@@ -80,7 +80,7 @@ export -f setup_pyenv
 
 # Wrap $EDITOR with `poetry run` if in a Poetry project.
 vi() {
-  pyproject_toml=$(poetry_project)
+  pyproject_toml=$(get_pyproject_toml)
   if [[ $pyproject_toml != "" ]] && [[ ! $POETRY_ACTIVE ]]; then
     if command -v poetry &> /dev/null; then
       setup_pyenv $pyproject_toml

@@ -13,7 +13,7 @@ post_add() {
       cp -v ".env" $path
     fi
     cd $path
-    pyproject_toml=$(poetry_project)
+    pyproject_toml=$(get_pyproject_toml)
     if [[ $pyproject_toml != "" ]]; then setup_pyenv $pyproject_toml && poetry install --sync; fi
     cd -
   fi
