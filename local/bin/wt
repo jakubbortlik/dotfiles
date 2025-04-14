@@ -32,25 +32,30 @@ if [[ $# -eq 0 ]]; then
   exit
 elif [[ $# -eq 1 ]]; then
   command=$1
-  force=0
+  arg=""
 elif [[ $# -eq 2 ]]; then
+  # Validate sub-command
   command=$1
+  if [[ ! " ${commands[*]} " =~ \ ${command}\  ]]; then
+    command=$(echo "${commands[@]}" | tr " " "\n" | fzf --header "'$1' is not a sub-command, choose another one")
+  fi
+
+  # Validate arguments
+  arg=$2
   if [[ $command == "rm" ]]; then 
-    if [[ $2 == "f" ]]; then
-      force=1
-    elif [[ $2 == "ff" ]]; then
-      force=2
+    if [[ ! $2 == "f" ]] && [[ ! $2 == "ff" ]]; then
+      echo "Bad argument \"$2\" for command \"rm\". Acceptable values: \"f\", \"ff\"."
+      exit
     fi
-  else
-    echo "Bad argument \"$2\" for command \"rm\". Acceptable values: \"f\"."
-    exit
+  elif [[ $command == "add" ]]; then 
+    if [[ ! $2 == "mr" ]]; then
+      echo "Bad argument \"$2\" for command \"add\". Acceptable values: \"mr\"."
+      exit
+    fi
   fi
 else
   echo "Too many arguments."
   exit
-fi
-if [[ ! " ${commands[*]} " =~ \ ${command}\  ]]; then
-  command=$(echo "${commands[@]}" | tr " " "\n" | fzf --header "'$1' is not a sub-command, chose another one")
 fi
 
 if [[ $command == "" ]]; then
@@ -66,9 +71,9 @@ if [[ $command == "rm" ]]; then
   fi
   branch=$(git -C $selected rev-parse --abbrev-ref HEAD)
   root=$(git rev-parse --git-common-dir | xargs dirname)
-  if [[ $force -eq 1 ]]; then
+  if [[ $arg == "f" ]]; then
     cd $root && git worktree remove --force "$selected" && echo "Force-removed worktree at $selected" && git branch -d $branch && echo "Removed branch $branch"
-  elif [[ $force -eq 2 ]]; then
+  elif [[ $arg == "ff" ]]; then
     cd $root && git worktree remove --force "$selected" && echo "Force-removed worktree at $selected" && git branch -D $branch && echo "Force-removed branch $branch"
   else
     cd $root && git worktree remove "$selected" 2>/dev/null && echo "Removed worktree at $selected" && git branch -d $branch || handle_dirty_worktree $selected $branch
@@ -81,7 +86,11 @@ elif [[ $command == "add" ]]; then
     echo "No path selected."
     exit
   fi
-  branch=$(gb Select a branch or press Ctrl-C and choose a new branch name)
+  if [[ $arg == "mr" ]]; then
+    branch=$(gb "Select a branch or press Ctrl-C and choose a new branch name" "mr")
+  else
+    branch=$(gb "Select a branch or press Ctrl-C and choose a new branch name")
+  fi
   if [[ $branch == "" ]]; then
     read -rp "Choose a new branch name: " branch
     branch="-b$branch"

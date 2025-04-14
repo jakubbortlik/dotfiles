@@ -223,11 +223,16 @@ gb() {
   if [[ $# -eq 0 ]]; then
     prompt="Select a branch"
   else
-    prompt="$*"
+    prompt="$1"
   fi
   is_in_git_repo &&
-    git branch -a -vv --color=always | grep -v '/HEAD\s' |
-    fzf --height 40% --ansi --multi --tac --header "${prompt}" | sed 's/^..//' | awk '{print $1}' |
+    if [[ $2 == "mr" ]]; then
+      input=$(glab_mr_list)
+    fi
+    if [[ $input == "" ]]; then
+      input=$(git branch -a -vv --color=always | grep -v '/HEAD\s')
+    fi
+    echo "$input" | fzf --height 40% --ansi --multi --tac --header "${prompt}" | sed 's/^[ *]//' | awk '{print $1}' |
     sed 's#^remotes/[^/]*/##'
 }
 gt() {
@@ -259,6 +264,7 @@ bind '"\C-g\C-c": "$(ghash)\e\C-e\er"'  # Fuzzy find git [c]ommit hash
 bind '"\C-g\C-r": "$(gr)\e\C-e\er"'  # Fuzzy find git [r]emote
 bind '"\C-g\C-w": "$(gw)\e\C-e\er"'  # Fuzzy find git [w]orktree
 export -f is_in_git_repo
+export -f glab_mr_list
 export -f gb
 export -f gf
 export -f gt
