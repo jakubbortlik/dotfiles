@@ -40,12 +40,12 @@ elif [[ $# -lt 3 ]]; then
   # Validate arguments
   arg=$2
   if [[ $command == "rm" ]]; then 
-    if [[ ! $2 == "f" ]] && [[ ! $2 == "ff" ]]; then
+    if [[ $# -eq 2 ]] && [[ ! $2 == "f" ]] && [[ ! $2 == "ff" ]]; then
       echo "Bad argument \"$2\" for command \"rm\". Acceptable values: \"f\", \"ff\"."
       exit
     fi
   elif [[ $command == "add" ]]; then 
-    if [[ ! $2 == "mr" ]]; then
+    if [[ $# -eq 2 ]] && [[ ! $2 == "mr" ]]; then
       echo "Bad argument \"$2\" for command \"add\". Acceptable values: \"mr\"."
       exit
     fi
