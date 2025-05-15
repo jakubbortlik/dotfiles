@@ -9,6 +9,6 @@ end_of_line = lf
 insert_final_newline = true
 max_line_length = 100
 
-[*.{lua,sh}]
+[*.{lua,sh,md}]
 indent_style = space
 indent_size = 2
