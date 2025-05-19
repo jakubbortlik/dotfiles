@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 paths=(
-  .
   ~/Documents
   ~/projects
   ~/Gitlab
@@ -22,7 +21,8 @@ paths=("${paths[@]}")
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd --min-depth 1 --max-depth 1 -td "${paths[@]}" | fzf)
+    selected=$(fd --min-depth 1 --max-depth 1 -td . "${paths[@]}" -x show-root {} | fzf)
+    selected=$(echo "$selected" | cut -d' ' -f1)
 fi
 
 if [[ -z $selected ]]; then
