@@ -240,11 +240,6 @@ gt() {
     git tag --sort -version:refname |
     fzf --height 40% --multi --header "Select a tag" 
 }
-ghash() {
-  is_in_git_repo &&
-    git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph |
-    fzf --height 40% --ansi --no-sort --reverse --multi | grep -o '[a-f0-9]\{7,\}'
-}
 gr() {
   is_in_git_repo &&
     git remote -v | awk '{print $1 " " $2}' | uniq |
@@ -260,7 +255,6 @@ bind '"\er": redraw-current-line'
 bind '"\C-g\C-f": "$(gf)\e\C-e\er"'  # Fuzzy find git [f]ile
 bind '"\C-g\C-b": "$(gb)\e\C-e\er"'  # Fuzzy find git [b]ranch
 bind '"\C-g\C-t": "$(gt)\e\C-e\er"'  # Fuzzy find git [t]ag
-bind '"\C-g\C-c": "$(ghash)\e\C-e\er"'  # Fuzzy find git [c]ommit hash
 bind '"\C-g\C-r": "$(gr)\e\C-e\er"'  # Fuzzy find git [r]emote
 bind '"\C-g\C-w": "$(gw)\e\C-e\er"'  # Fuzzy find git [w]orktree
 export -f is_in_git_repo
@@ -268,7 +262,6 @@ export -f glab_mr_list
 export -f gb
 export -f gf
 export -f gt
-export -f ghash
 export -f gr
 export -f gw
 
