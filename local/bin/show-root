@@ -3,7 +3,7 @@
 dir=$(realpath "$1")
 root=$(git -C $dir worktree list 2>/dev/null | head -n 1 | cut -d' ' -f1)
 if [[ $root != "" ]] && [[ $root != $dir ]]; then
-    echo "$dir -> $root"
+    echo "$dir -> $root -> [$(git -C $dir branch --show-current )]"
 else
     echo "$dir"
 fi
