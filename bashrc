@@ -191,7 +191,7 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 function ranger-cd {
   tempfile="$(mktemp -t tmp.XXXXXX)"
-  ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+  ~/projects/ranger/ranger.py --choosedir="$tempfile" "${@:-$(pwd)}"
   test -f "$tempfile" &&
   if [ "$(cat -- "$tempfile")" != "$(echo -n $(pwd))" ]; then
     cd -- "$(cat "$tempfile")"
@@ -449,5 +449,5 @@ colors() {
 # correct some typing mistakes with the `cd` command
 shopt -s cdspell
 
-export PATH=$(command -v pyenv &>/dev/null && echo $(pyenv root)/shims:)$HOME/local/bin:$HOME/.local/bin:$HOME/go/bin:/usr/lib/node_modules/node/bin:$PATH
+export PATH=$(command -v pyenv &>/dev/null && echo $(pyenv root)/shims:)$HOME/local/bin:$HOME/.local/bin:$HOME/go/bin:/usr/lib/node_modules/node/bin:/usr/bin/vendor_perl:$PATH
 # vim:set sw=2 ts=2 ft=sh:

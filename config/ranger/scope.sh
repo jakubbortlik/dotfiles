@@ -129,6 +129,7 @@ handle_extension() {
         dff|dsf|wv|wvc)
             mediainfo "${FILE_PATH}" && exit 5
             exiftool "${FILE_PATH}" && exit 5
+            ;;
 
         ## MP3 extensions:
         mp3)
