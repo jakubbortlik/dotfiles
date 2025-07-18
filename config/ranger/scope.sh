@@ -82,7 +82,7 @@ handle_extension() {
             transmission-show -- "${FILE_PATH}" && exit 5
             exit 1;;
 
-        # OpenDocument
+        ## OpenDocument
         odt|ods|odp|sxw)
             ## Preview as text conversion
             odt2txt "${FILE_PATH}" && exit 5
@@ -130,7 +130,7 @@ handle_extension() {
             mediainfo "${FILE_PATH}" && exit 5
             exiftool "${FILE_PATH}" && exit 5
 
-        # MP3 extensions:
+        ## MP3 extensions:
         mp3)
             # id3v2 -l "${FILE_PATH}" && { dump | trim; exit 0; } || exit 1;;
             id3v2 -l "${FILE_PATH}" && exit 5
