@@ -35,7 +35,53 @@ get_next_tty() {
   done
   echo /dev/pts/$i
 }
-alias psh="[ ! $POETRY_ACTIVE ] && (tmux set -p @active_tty \$(get_next_tty) &>/dev/null; poetry shell && tmux set -pu @active_tty &>/dev/null)"
+
+poetry_version() {
+  poetry --version | grep -oP '\d+\.\d+\.\d+' | cut -d. -f1
+}
+
+poetry_active() {
+  if [[ $poetry_version == 1 ]]; then
+    echo $POETRY_ACTIVE
+  else
+    poetry_python_bin=$(poetry env info --executable 2>/dev/null)
+    python_bin=$(type -p python)
+    echo $([[ "$poetry_python_bin" == "$python_bin" ]] && echo 1 || echo 0)
+  fi
+}
+
+pa() {
+  if [[ $(poetry_active) -eq 1 ]]; then
+    echo "Poetry env already active"
+    return
+  fi
+
+  if [[ $poetry_version == 1 ]]; then
+    pshell="poetry shell"
+  else
+    activate_cmd=$(poetry env activate 2>/dev/null)
+    if [ $? -eq 0 ]; then
+      pshell="eval $activate_cmd"
+    else
+      echo "Poetry could not find a pyproject.toml file in $PWD or its parents"
+      return
+    fi
+  fi
+  tmux set -p @active_tty $(get_next_tty) &>/dev/null
+  $pshell && tmux set -pu @active_tty &>/dev/null
+}
+
+pd() {
+  if [ $(poetry_active) -eq 1 ]; then
+    if [[ $poetry_version == 1 ]]; then
+      exit
+    else
+      deactivate
+    fi
+  else
+    echo 'Not in a poetry env'
+  fi
+}
 
 # Echo path to current pyproject.toml if any exists.
 get_pyproject_toml() {
@@ -58,7 +104,7 @@ export -f get_pyproject_toml
 setup_pyenv() {
   pyproject_toml=$1
   if [[ -r $pyproject_toml ]]; then
-    python_version=$(\grep -i "^python =" $pyproject_toml | sed 's/[^0-9.]\+//g')
+    python_version=$(\grep -oP '^(requires-)?python.*=\K\d+\.\d+' $pyproject_toml)
   else
     echo "$pyproject_toml not readable"
     return 1
@@ -81,7 +127,7 @@ export -f setup_pyenv
 # Wrap $EDITOR with `poetry run` if in a Poetry project.
 vi() {
   pyproject_toml=$(get_pyproject_toml)
-  if [[ $pyproject_toml != "" ]] && [[ ! $POETRY_ACTIVE ]]; then
+  if [[ $pyproject_toml != "" ]] && [[ $(poetry_active) -ne 1 ]]; then
     if command -v poetry &> /dev/null; then
       setup_pyenv $pyproject_toml
       poetry run "$EDITOR" "$@"
