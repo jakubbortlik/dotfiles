@@ -70,8 +70,6 @@ Packages to install:
 - audacity
 - bash-completion
 - bat
-- caca-utils
-- coreutils
 - ctags
 - cups
 - deno
@@ -89,24 +87,20 @@ Packages to install:
 - inkscape
 - jq
 - k6
-- klavaro
 - libreoffice
-- man-db
-- man-pages
-- mlocate
 - moc
-- mtpaint
 - mupdf
 - neovim
+  - uv tool install --upgrade pynvim 
 - network-manager-applet
 - networkmanager
 - networkmanager-openvpn
 - openvpn
 - pdfgrep
-- postman9-bin
+- postman9-bin / atac
 - powerline-fonts
 - praat
-- ranger + libcaca (Color AsCii Art library) + highlight
+- ranger
 - redshift
 - ripgrep
 - rsync
@@ -114,24 +108,15 @@ Packages to install:
 - sshfs
 - system-config-printer???
 - tealdeer
-- texlive
-- texlive-beamer
-- texlive-biber
-- texlive-bibtex
-- texlive-latexmk
-- texlive-nag
-- texlive-pdfjam
-- thunderbird
 - tmux
 - unrar
-- unrar-free
 - unzip
+- uv
 - vlc
 - zathura
 - zathura-pdf-mupdf
 - zathura-pdf-poppler
 - zathura-plugin-djvu
-- zoom
 
 - cargo
 - github-cli
@@ -142,7 +127,6 @@ Packages to install:
 - tree-sitter-cli
 
 # pamac install
-- skypeforlinux-bin
 - swaykbdd - to enable per-window keyboard layouts
 - teams-for-linux
 
