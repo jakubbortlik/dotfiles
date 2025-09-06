@@ -300,6 +300,11 @@ ra() {
 }
 bind '"\C-o":"ra\C-m"'
 
+
+glab_mr_list() {
+  glab mr list 2>/dev/null | grep '^!' | awk -F'\t' '{branch=$4; gsub(/.*\(|[\)].*/, "", branch); print branch "\t" $3 "\t" $2}' | column -t -s '	'
+}
+
 # Fuzzy find stuff in a git repo
 is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
