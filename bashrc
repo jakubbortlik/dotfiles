@@ -36,50 +36,54 @@ get_next_tty() {
   echo /dev/pts/$i
 }
 
-poetry_version() {
-  poetry --version | grep -oP '\d+\.\d+\.\d+' | cut -d. -f1
-}
-
 poetry_active() {
-  if [[ $poetry_version == 1 ]]; then
-    echo $POETRY_ACTIVE
-  else
-    poetry_python_bin=$(poetry env info --executable 2>/dev/null)
-    python_bin=$(type -p python)
-    echo $([[ "$poetry_python_bin" == "$python_bin" ]] && echo 1 || echo 0)
-  fi
-}
-
-pa() {
-  if [[ $(poetry_active) -eq 1 ]]; then
-    echo "Poetry env already active"
+  venv_path=$(poetry env info --path 2>/dev/null)
+  if [[ "$VIRTUAL_ENV" == "$venv_path" ]]; then
+    echo 1
     return
   fi
+  echo 0
+}
 
-  if [[ $poetry_version == 1 ]]; then
-    pshell="poetry shell"
-  else
-    activate_cmd=$(poetry env activate 2>/dev/null)
+va() {
+  lock=$(get_dep_lock)
+  root=$(dirname "$lock")
+  if [[ $(basename "$lock") == "uv.lock" ]]; then
+    if [[ $VIRTUAL_ENV == ${root}/.venv ]]; then
+      echo "venv already active"
+      return
+    else
+      $(cd $root && uv venv 2>/dev/null)
+      if [[ -r "$root/.venv" ]]; then
+        source $root/.venv/bin/activate
+      else
+        echo "Can't source $root/.venv/bin/activate"
+      fi
+    fi
+  elif [[ $(basename "$lock") == "poetry.lock" ]]; then
+    if [[ $(poetry_active) -eq 1 ]]; then
+      echo "venv already active"
+      return
+    fi
     if [ $? -eq 0 ]; then
-      pshell="eval $activate_cmd"
+      pshell="eval $(poetry env activate 2>/dev/null)"
     else
       echo "Poetry could not find a pyproject.toml file in $PWD or its parents"
       return
     fi
+    tmux set -p @active_tty $(get_next_tty) &>/dev/null
+    $pshell && tmux set -pu @active_tty &>/dev/null
   fi
-  tmux set -p @active_tty $(get_next_tty) &>/dev/null
-  $pshell && tmux set -pu @active_tty &>/dev/null
 }
 
-pd() {
-  if [ $(poetry_active) -eq 1 ]; then
-    if [[ $poetry_version == 1 ]]; then
-      exit
-    else
-      deactivate
-    fi
+vd() {
+  lock=$(get_dep_lock)
+  if [[ $(basename "$lock") == "uv.lock" ]] && [[ $VIRTUAL_ENV != "" ]]; then
+    deactivate
+  elif [[ $(basename "$lock") == "poetry.lock" ]] && [[ $(poetry_active) == 1 ]]; then
+    deactivate
   else
-    echo 'Not in a poetry env'
+    echo 'not in a venv'
   fi
 }
 
@@ -100,11 +104,54 @@ get_pyproject_toml() {
 }
 export -f get_pyproject_toml
 
+# Echo path to current pyproject.toml if any exists.
+get_python_version() {
+  dir=$PWD
+  while [[ "$dir" != "${HOME}" ]] && [[ "$dir" != "/" ]]; do
+    python_version="$dir/.python-version"
+    if [[ -r $python_version ]]; then
+      cat $python_version
+      break
+    else
+      dir=$(dirname "$dir")
+    fi
+  done
+}
+export -f get_python_version
+
+# Echo path to dependency lock if it exists
+get_dep_lock() {
+  dir=$PWD
+  while [[ "$dir" != "${HOME}" ]] && [[ "$dir" != "/" ]]; do
+    uv_lock="$dir/uv.lock"
+    poetry_lock="$dir/poetry.lock"
+
+    if [[ -r $uv_lock ]]; then
+      echo "$uv_lock"
+      return
+    elif [[ -r $poetry_lock ]]; then
+      echo "$poetry_lock"
+      return
+    else
+      dir=$(dirname "$dir")
+    fi
+  done
+}
+export -f get_dep_lock
+
 # Setup local pyenv version if it does not exist already.
 setup_pyenv() {
-  pyproject_toml=$1
+  python_version_file="${1}/.python-version"
+  if [[ -r "$python_version_file" ]]; then
+    python_version=$(cat $python_version_file)
+    if [[ $python_version =~ ^3\.[0-9]+$ ]]; then
+      return
+    fi
+  fi
+
+  pyproject_toml="${1}/pyproject.toml"
   if [[ -r $pyproject_toml ]]; then
-    python_version=$(\grep -oP '^(requires-)?python.*=\K\d+\.\d+' $pyproject_toml)
+    python_version=$(\grep -oP '^(requires-)?python.*[=~^]\K\d+\.\d+' $pyproject_toml)
   else
     echo "$pyproject_toml not readable"
     return 1
@@ -114,7 +161,7 @@ setup_pyenv() {
     if command -v pyenv &> /dev/null; then
       pyenv local "$python_version"
     else
-      echo "Running 'pyenv local $python_version', but pyenv command not available!"
+      echo "Trying to run 'pyenv local $python_version', but pyenv command not available!"
       return 1
     fi
   else
@@ -124,17 +171,14 @@ setup_pyenv() {
 }
 export -f setup_pyenv
 
-# Wrap $EDITOR with `poetry run` if in a Poetry project.
+# Wrap $EDITOR with `uv/poetry run` in a Poetry project.
 vi() {
-  pyproject_toml=$(get_pyproject_toml)
-  if [[ $pyproject_toml != "" ]] && [[ $(poetry_active) -ne 1 ]]; then
-    if command -v poetry &> /dev/null; then
-      setup_pyenv $pyproject_toml
-      poetry run "$EDITOR" "$@"
-    else
-      echo "Running in Poetry project ($pyproject_toml), but Poetry command not available!"
-      $EDITOR "$@"
-    fi
+  lock=$(get_dep_lock)
+  if [[ $(basename "$lock") == "uv.lock" ]]; then
+    uv run "$EDITOR" "$@"
+  elif [[ $(basename "$lock") == "poetry.lock" ]] && [[ -r "$(dirname $lock)/pyproject.toml" ]] && [[ $(poetry_active) -ne 1 ]]; then
+    setup_pyenv "$(dirname $lock)"
+    poetry run "$EDITOR" "$@"
   else
     $EDITOR "$@"
   fi
