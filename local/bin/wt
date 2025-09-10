@@ -4,7 +4,7 @@ commands=(add ls rm)
 feature_worktrees="feat_1 feat_2 feat_3 feat_4 feat_5 feat1 feat2 feat3 feat4 feat5" 
 toplevel=$(git rev-parse --show-toplevel)
 
-post_add() {
+sync_dependencies() {
   path=$1
   if [[ ! -d $path ]]; then 
     echo "Worktree path \"$path\" is not a directory"
@@ -13,8 +13,13 @@ post_add() {
       cp -v ".env" $path
     fi
     cd $path
-    pyproject_toml=$(get_pyproject_toml)
-    if [[ $pyproject_toml != "" ]]; then setup_pyenv $pyproject_toml && poetry install --sync; fi
+    lock=$(get_dep_lock)
+    if [[ $(basename "$lock") == "uv.lock" ]]; then
+      uv sync --all-groups
+    elif [[ $(basename "$lock") == "poetry.lock" ]] && [[ -r "$(dirname $lock)/pyproject.toml" ]]; then
+      setup_pyenv "$(dirname $lock)"
+      poetry sync
+    fi
     cd -
   fi
 }
@@ -40,7 +45,7 @@ elif [[ $# -lt 3 ]]; then
   # Validate arguments
   arg=$2
   if [[ $command == "rm" ]]; then 
-    if [[ $# -eq 2 ]] && [[ ! $2 == "f" ]] && [[ ! $2 == "ff" ]]; then
+    if [[ $# -eq 2 ]] && [[ ! $2 =~ ^ff?$ ]]; then
       echo "Bad argument \"$2\" for command \"rm\". Acceptable values: \"f\", \"ff\"."
       exit
     fi
@@ -69,11 +74,11 @@ if [[ $command == "rm" ]]; then
   branch=$(git -C $selected rev-parse --abbrev-ref HEAD)
   root=$(git rev-parse --git-common-dir | xargs dirname)
   if [[ $arg == "f" ]]; then
-    cd $root && git worktree remove --force "$selected" && echo "Force-removed worktree at $selected" && git branch -d $branch && echo "Removed branch $branch"
+    cd $root && git worktree remove --force "$selected" && echo "Force-removed worktree at $selected --> $root" && git branch -d $branch && echo "Removed branch $branch"
   elif [[ $arg == "ff" ]]; then
-    cd $root && git worktree remove --force "$selected" && echo "Force-removed worktree at $selected" && git branch -D $branch && echo "Force-removed branch $branch"
+    cd $root && git worktree remove --force "$selected" && echo "Force-removed worktree at $selected --> $root" && git branch -D $branch && echo "Force-removed branch $branch"
   else
-    cd $root && git worktree remove "$selected" 2>/dev/null && echo "Removed worktree at $selected" && git branch -d $branch || handle_dirty_worktree $selected $branch
+    cd $root && git worktree remove "$selected" 2>/dev/null && echo "Removed worktree at $selected --> $root" && git branch -d $branch || handle_dirty_worktree $selected $branch
   fi
 elif [[ $command == "add" ]]; then
   existing_worktrees=$(ls "$toplevel/.." | \grep -- "^feat_\?[0-9]" | sort)
@@ -97,7 +102,7 @@ elif [[ $command == "add" ]]; then
     exit
   fi
   path="../$selected"
-  git worktree add $path "$branch" && post_add $path && echo "New worktree created at $path"
+  git worktree add $path "$branch" && sync_dependencies $path && echo "New worktree created at $path"
 elif [[ $command == "ls" ]]; then
   git worktree list
   exit
