@@ -38,7 +38,7 @@ get_next_tty() {
 
 poetry_active() {
   venv_path=$(poetry env info --path 2>/dev/null)
-  if [[ "$VIRTUAL_ENV" == "$venv_path" ]]; then
+  if [[ "$VIRTUAL_ENV" != "" ]] && [[ "$VIRTUAL_ENV" == "$venv_path" ]]; then
     echo 1
     return
   fi
