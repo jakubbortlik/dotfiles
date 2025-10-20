@@ -398,9 +398,8 @@ header () {
 }
 
 # some more ls aliases
-alias ll='ls -alF'
+alias l='ls -AlF'
 alias la='ls -A'
-alias l='ls -CF'
 
 # Git aliases:
 alias g='git'
