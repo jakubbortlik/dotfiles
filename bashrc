@@ -274,7 +274,6 @@ fi
 export LS_COLORS="ca=30;41:cd=30;33;01:di=01;36:ln=01;34:ow=01;36;40:"
 
 # Set up ripgrep
-alias grep='rg'
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 # Do not load rc.config - ranger configuration twice
