@@ -5,3 +5,7 @@ bin/test
 tags
 config/nvim/lazy-lock.json
 generated_background.svg
+moc/equalizer
+moc/softmixer
+moc/playlist.m3u
+moc/last_directory
