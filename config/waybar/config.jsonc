@@ -70,8 +70,15 @@
     "clock": {
         "interval": 60,
         "format": "{:%a %e %b %Y %H:%M}",
+        "locale": "en_GB.utf8",
         "tooltip": true,
-        "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>",
+        "tooltip-format":"{calendar}",
+        "calendar": {
+            "format": {
+                "months": "<b>{}</b>",
+                "today": "<span color='red'><b>{}</b></span>"
+            }
+        },
         "on-click": "swaymsg exec \\$calendar"
     },
 
