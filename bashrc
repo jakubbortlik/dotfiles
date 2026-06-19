@@ -25,6 +25,8 @@ if command -v nvim > /dev/null 2>&1; then
 else
   export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
 fi
+export MANWIDTH=999
+export MANPAGER='nvim +Man!'
 
 get_next_tty() {
   pts_array=($(ls /dev/pts | \grep -E "^[0-9]+$"))
