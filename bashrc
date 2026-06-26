@@ -420,6 +420,10 @@ else
   echo "Cannot enable git CLI completion for alias 'g'"
 fi
 
+lg() {
+  lazygit $@
+}
+
 lull() {
   for lfs_object in "$@"; do
     git lfs pull --include="${lfs_object}" --exclude="";
