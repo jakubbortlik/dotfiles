@@ -1,6 +1,7 @@
 os:
   editPreset: "nvim-remote"
 gui:
+  showFileTree: false
   nerdFontsVersion: "3"
   theme:
     optionsTextColor:
