@@ -80,13 +80,17 @@ Packages to install:
 - ffmpeg
 - firefox
 - fzf
+- gh
 - gimp
 - git-delta
 - git-lfs
 - glab
 - inkscape
+- jj
+- jjui
 - jq
 - k6
+- lazygit
 - libreoffice
 - moc
 - mupdf
@@ -96,6 +100,7 @@ Packages to install:
 - networkmanager
 - networkmanager-openvpn
 - openvpn
+- pass
 - pdfgrep
 - postman9-bin / atac
 - powerline-fonts
@@ -117,6 +122,7 @@ Packages to install:
 - zathura-pdf-mupdf
 - zathura-pdf-poppler
 - zathura-plugin-djvu
+- cargo install glab-tui-crate
 
 - cargo
 - github-cli

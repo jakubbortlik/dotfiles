@@ -1,0 +1,248 @@
+[ui]
+theme = "kanagawa-dragon"
+
+[preview]
+position = "auto"          # auto | right | bottom
+show_at_start = true
+width_percentage = 50.0
+width_increment_percentage = 5.0
+
+[[bindings]]
+action = "ui.file_search_toggle"
+key = "ctrl+f"
+scope = "revisions"
+desc = "toggle file search"
+
+[[bindings]]
+action = "ui.cancel"
+scope  = "ui"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "help.cancel"
+scope  = "help"
+key    = "ctrl+["
+desc   = "close"
+
+[[bindings]]
+action = "help.cancel"
+scope  = "help.filter"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revset.cancel"
+scope  = "revset"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.cancel"
+scope  = "revisions"
+key    = "ctrl+["
+desc   = "clear selection"
+
+[[bindings]]
+action = "revisions.quick_search.clear"
+scope  = "revisions.quick_search"
+key    = "ctrl+["
+desc   = "clear"
+
+[[bindings]]
+action = "revisions.rebase.cancel"
+scope  = "revisions.rebase"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.squash.cancel"
+scope  = "revisions.squash"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.revert.cancel"
+scope  = "revisions.revert"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.duplicate.cancel"
+scope  = "revisions.duplicate"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.details.cancel"
+scope  = "revisions.details"
+key    = "ctrl+["
+desc   = "close"
+
+[[bindings]]
+action = "revisions.details.confirmation.cancel"
+scope  = "revisions.details.confirmation"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.evolog.cancel"
+scope  = "revisions.evolog"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.abandon.cancel"
+scope  = "revisions.abandon"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.absorb.cancel"
+scope  = "revisions.absorb"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.set_parents.cancel"
+scope  = "revisions.set_parents"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.inline_describe.cancel"
+scope  = "revisions.inline_describe"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.set_bookmark.cancel"
+scope  = "revisions.set_bookmark"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.diff_range.cancel"
+scope  = "revisions.diff_range"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.new_between.cancel"
+scope  = "revisions.new_between"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.target_picker.cancel"
+scope  = "revisions.target_picker"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.ace_jump.cancel"
+scope  = "revisions.ace_jump"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "revisions.quick_search.input.cancel"
+scope  = "revisions.quick_search.input"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "status.input.cancel"
+scope  = "status.input"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "file_search.cancel"
+scope  = "file_search"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "bookmarks.cancel"
+scope  = "bookmarks"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "bookmarks.cancel"
+scope  = "bookmarks.filter"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "git.cancel"
+scope  = "git"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "git.cancel"
+scope  = "git.filter"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "oplog.close"
+scope  = "oplog"
+key    = "ctrl+["
+desc   = "close"
+
+[[bindings]]
+action = "oplog.quick_search.clear"
+scope  = "oplog.quick_search"
+key    = "ctrl+["
+desc   = "clear"
+
+[[bindings]]
+action = "undo.cancel"
+scope  = "undo"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "redo.cancel"
+scope  = "redo"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "ui.cancel"
+scope  = "diff"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "command_history.close"
+scope  = "command_history"
+key    = "ctrl+["
+desc   = "close"
+
+[[bindings]]
+action = "input.cancel"
+scope  = "input"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "password.cancel"
+scope  = "password"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "choose.cancel"
+scope  = "choose"
+key    = "ctrl+["
+desc   = "cancel"
+
+[[bindings]]
+action = "choose.cancel"
+scope  = "choose.filter"
+key    = "ctrl+["
+desc   = "cancel"
