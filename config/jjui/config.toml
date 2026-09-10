@@ -8,6 +8,18 @@ width_percentage = 50.0
 width_increment_percentage = 5.0
 
 [[bindings]]
+action = "ui.preview_half_page_up"
+scope  = "revisions.details"
+key    = "K"
+desc   = "halp page up"
+
+[[bindings]]
+action = "ui.preview_half_page_down"
+scope  = "revisions.details"
+key    = "J"
+desc   = "halp page down"
+
+[[bindings]]
 action = "ui.file_search_toggle"
 key = "ctrl+f"
 scope = "revisions"

@@ -30,3 +30,11 @@ gui:
     searchingActiveBorderColor:
       - "#ff9e3b"
       - "bold"
+customCommands:
+  - key: '<space>'
+    context: 'files'
+    command: >
+      git {{if .SelectedFile.HasUnstagedChanges}}add{{else}}reset{{end}} -- {{.SelectedFile.Name | quote}} && tmux send-keys -t "$TMUX_PANE" 'j'
+
+    description: 'Toggle staged and move down'
+    output: none
