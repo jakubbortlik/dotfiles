@@ -1,0 +1,4 @@
+[opener]
+play = [
+	{ run = "mpv %s", block = true, orphan = false, for = "unix" },
+]
