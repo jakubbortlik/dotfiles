@@ -1,0 +1,20 @@
+# configure as many display profiles as you need
+# refer to "man kanshi" to find out how to configure profiles
+# https://github.com/emersion/kanshi#configuration-file
+# * get your current screen name: swaymsg -t get_outputs
+# * set the resolution and position for your screen: output HDMI1 mode 1920x1080 position 0,0
+# * set the scaling for your screen: output HDMI1 scale 2
+
+profile laptop {
+    output eDP-1 enable scale 1.2 position 0,0
+}
+
+profile docked {
+    output eDP-1 enable scale 1.2 position 160,1200
+    output "Dell Inc. DELL P2725DE J427M84" enable mode 2560x1440 position 0,0 scale 1.2
+}
+
+profile philips {
+    output eDP-1 enable scale 1.2 position 160,1080
+    output "Philips Consumer Electronics Company Philips 226VL UKC1229036316" enable mode 1920x1080 position 0,0 scale 1
+}
