@@ -9,3 +9,6 @@ moc/equalizer
 moc/softmixer
 moc/playlist.m3u
 moc/last_directory
+/config/jjui/.luarc.json
+/config/jjui/types.lua
+/moc/pid
