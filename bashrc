@@ -329,6 +329,8 @@ ra() {
 }
 bind '"\C-o":"ra\C-m"'
 
+# FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= eval "$(fzf --bash)"
+export FZF_DEFAULT_OPTS="--bind ctrl-a:toggle-all"
 
 glab_mr_list() {
   glab mr list 2>/dev/null | grep '^!' | awk -F'\t' '{branch=$4; gsub(/.*\(|[\)].*/, "", branch); print branch "\t" $3 "\t" $2}' | column -t -s '	'
