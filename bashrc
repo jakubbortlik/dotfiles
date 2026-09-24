@@ -627,6 +627,14 @@ rec() {
 
   sox -t pulseaudio "${SINK}".monitor "${name}".wav channels 1 trim 0 ${seconds}
 }
+
+num=01
+yd() {
+  echo Downloading ${num}_$2.opus
+  yt-dlp -x $1 -o ${num}_$2
+  num=$(printf "%02d" $((${num#0} + 1)))
+}
+
 colors() {
   local fgc bgc vals seq0
 
