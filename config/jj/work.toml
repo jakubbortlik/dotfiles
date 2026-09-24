@@ -1,0 +1,6 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+--when.repositories = ["~/Gitlab"]
+
+[user]
+name = "Jakub Bortlík"
+email = "jakub.bortlik@phonexia.com"

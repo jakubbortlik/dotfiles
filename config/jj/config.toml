@@ -1,0 +1,15 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "Jakub Bortlík"
+email = "jakub.bortlik@proton.me"
+
+[ui]
+default-command = "log"
+
+[git]
+private-commits = '''description('private:*')'''
+
+[aliases]
+l  = ["log", "-r", "::@"]
+ll = ["log", "-r", "::@", "-T", "builtin_log_detailed"]
