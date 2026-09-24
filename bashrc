@@ -635,6 +635,8 @@ yd() {
   num=$(printf "%02d" $((${num#0} + 1)))
 }
 
+alias tc="nvim ~/.tmux.conf"
+
 colors() {
   local fgc bgc vals seq0
 
