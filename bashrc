@@ -585,6 +585,48 @@ ex ()
   fi
 }
 
+rec() {
+  sink=$(pactl list sinks short | head -n 1 | awk '{print $2}')
+  if [[ $sink == "" ]]; then
+    echo "Error: 'pactl list sinks' didn't return any sink"
+    return
+  fi
+
+  name=$1
+  if [[ $name == "" ]]; then
+    echo "Error: You must provide a file name"
+    return
+  fi
+  if [[ -r "${name}".wav ]]; then
+    echo -ne "Warning: Overwrite '"${name}".wav'? [y/N] "
+    read -r ANSWER
+    if [[ $ANSWER =~ [^yY] ]]; then
+      return
+    fi
+  fi
+
+  seconds=""
+  unit=""
+  if [[ $2 =~ ^[0-9]+(:[0-9]+)$ ]]; then
+    seconds=$(echo "(${2%%:*}*60)+${2##*:}+4"|bc)
+  elif [[ $2 =~ ^[0-9]+$ ]]; then
+    seconds=$(echo "(${2%%:*}*60)+4"|bc)
+    unit=" minutes"
+  fi
+  if [[ $seconds == "" ]]; then
+    echo "Warning: No valid duration specified. Recording will not stop automatically!"
+  else
+    echo "Info: Will record for approximately $2${unit} ($seconds seconds)"
+  fi
+
+  for i in {3..1}; do
+    echo -ne " Recording starts in: $i\033[0K\r"
+    sleep 1
+  done
+  echo -ne "\033[0K\r"
+
+  sox -t pulseaudio "${SINK}".monitor "${name}".wav channels 1 trim 0 ${seconds}
+}
 colors() {
   local fgc bgc vals seq0
 
