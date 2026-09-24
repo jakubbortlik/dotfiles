@@ -252,12 +252,43 @@ git_status() {
   fi
 }
 
+jj_branch() {
+  local bm
+  bm=$(jj log -r 'latest(bookmarks() & ::@)' --no-graph -T 'bookmarks.join(",")'
+    2>/dev/null)
+  echo "jj:${bm:-(no bookmark)}"
+}
+
+vcs_branch() {
+  if jj root &>/dev/null; then
+    jj_branch
+  else
+    git_branch
+  fi
+}
+
+jj_status() {
+  if jj status 2> /dev/null | grep -q "no changes"; then
+    echo " "
+  else
+    echo "* "
+  fi
+}
+
+vcs_status() {
+  if jj root &>/dev/null; then
+    jj_status
+  else
+    git_status
+  fi
+}
+
 # \[\033[01;38;5;243m\] - ANSI bold ([01]) foreground (38;5) color 243
 if [ "$color_prompt" = yes ]; then
-    export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;36m\]${PS1X}\[\033[00;38;5;243m\] $(git_branch)$(git_status)$(bg_jobs)\[\033[00m\]\$ '
+    export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;36m\]${PS1X}\[\033[00;38;5;243m\] $(vcs_branch)$(vcs_status)$(bg_jobs)\[\033[00m\]\$ '
 else
   echo "NO COLOR PROMPT"
-  export PS1='\u@\h:\w\[\033[01;91\] $(git_branch)$(bg_jobs)\[\033[00m\]\$ '
+  export PS1='\u@\h:\w\[\033[01;91\] $(vcs_branch)$(vcs_status)$(bg_jobs)\[\033[00m\]\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -357,6 +388,27 @@ export -f gf
 export -f gt
 export -f gr
 export -f gw
+
+# Bookmark at or before @ — jj's equivalent of "current branch".
+jj_current_bookmark() {
+  jj log -r 'latest(bookmarks() & ::@)' --no-graph -T 'bookmarks.join(",")' 2>/dev/null
+}
+
+glab() {
+  if { [ -d .jj ] || jj root &>/dev/null; } && [ -z "$3" ]; then
+    case "$1 $2" in
+      "mr view"|"mr diff"|"ci view")
+        local bm
+        bm=$(jj_current_bookmark)
+        if [ -n "$bm" ]; then
+          command glab "$1" "$2" "$bm" "${@:3}"
+          return
+        fi
+        ;;
+    esac
+  fi
+  command glab "$@"
+}
 
 # Fuzzy find directory to start up a tmux [s]ession in or attach to an existing one
 bind -x '"\C-g\C-s":"tmux-sessionizer"'
