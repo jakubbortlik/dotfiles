@@ -20,11 +20,7 @@ alias mv="mv -i"
 alias cp="cp -i"
 
 # Editor aliases and functions
-if command -v nvim > /dev/null 2>&1; then
-  export EDITOR=nvim
-else
-  export EDITOR=/home/bortlik/code/squashfs-root/usr/bin/nvim
-fi
+export EDITOR=nvim
 export MANWIDTH=999
 export MANPAGER='nvim +Man!'
 
