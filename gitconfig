@@ -8,7 +8,7 @@
 [diff "praat"]
 	lextconv = base64
 [alias]
-    al = config --get-regexp alias
+	al = config --get-regexp alias
 	b = branch
 	co = checkout
 	com = checkout main
@@ -18,11 +18,11 @@
 	diffview = "!nvim -c DiffviewOpen"
 	l = log --graph --pretty=format:'%Cred%h%Creset %an: %s%Creset%C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	ll = log --oneline --graph --all --decorate
-    rpo = remote prune origin
+	rpo = remote prune origin
 	s = status
 	sb = status -sb
 	sw = switch
-    w = worktree
+	w = worktree
 	ba = branch -a
 [credential]
 	helper = store
@@ -39,15 +39,15 @@
 [interactive]
 	diffFilter = delta --color-only
 [delta]
-    navigate = true
-    light = false
-    line-numbers = true
+	navigate = true
+	light = false
+	line-numbers = true
 [merge]
-    conflictstyle = diff3
+	conflictstyle = diff3
 [diff]
-    colorMoved = default
+	colorMoved = default
 [includeIf "gitdir:~/Gitlab/"]
-    path = .gitconfig.work
+	path = .gitconfig.work
 [init]
 	defaultbranch = main
 [rerere]
