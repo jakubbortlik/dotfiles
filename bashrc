@@ -511,6 +511,11 @@ alias t='tmux'
 alias ta='tmux attach -d'
 alias ts='tmux ls'
 
+# Kubectl aliases:
+alias k='kubectl'
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k
+
 # wc aliases:
 alias lc='wc -l'
 
