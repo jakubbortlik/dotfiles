@@ -475,6 +475,10 @@ lg() {
   lazygit $@
 }
 
+j() {
+  jjui $@
+}
+
 lull() {
   for lfs_object in "$@"; do
     git lfs pull --include="${lfs_object}" --exclude="";
