@@ -20,6 +20,18 @@ key    = "J"
 desc   = "halp page down"
 
 [[bindings]]
+action = "ui.preview_half_page_up"
+scope  = "revisions"
+key    = "K"
+desc   = "halp page up"
+
+[[bindings]]
+action = "ui.preview_half_page_down"
+scope  = "revisions"
+key    = "J"
+desc   = "halp page down"
+
+[[bindings]]
 action = "ui.file_search_toggle"
 key = "ctrl+f"
 scope = "revisions"
