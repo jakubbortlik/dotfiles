@@ -225,11 +225,13 @@ shopt -s checkwinsize
 # Set a fancy prompt (non-color, unless we know we "want" color)
 if [[ -n ${TMUX} ]]; then
   export TERM="tmux-256color"
+elif [[ -n ${KITTY_PID} ]]; then
+  export TERM="xterm-kitty"
 else
   export TERM="xterm-256color"
 fi
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+ xterm-color|*-256color|*-kitty) color_prompt=yes;;
 esac
 
 PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf -- "~";IFS=/; for q in ${p:1}; do printf -- /"${q:0:4}"; done; printf -- "${q:4}")'

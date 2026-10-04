@@ -16,5 +16,5 @@ profile docked {
 
 profile philips {
     output eDP-1 enable scale 1.2 position 160,1080
-    output "Philips Consumer Electronics Company Philips 226VL UKC1229036316" enable mode 1920x1080 position 0,0 scale 1
+    output HDMI-A-1 enable mode 1920x1080 position 0,0 scale 1
 }
