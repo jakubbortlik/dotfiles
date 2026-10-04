@@ -669,5 +669,12 @@ colors() {
 # correct some typing mistakes with the `cd` command
 shopt -s cdspell
 
-export PATH=$(command -v pyenv &>/dev/null && echo $(pyenv root)/shims:)$HOME/local/bin:$HOME/.local/bin:$HOME/go/bin:/usr/lib/node_modules/node/bin:/usr/bin/vendor_perl:$PATH
+export PATH=$(command -v pyenv &>/dev/null && echo $(pyenv root)/shims:)$HOME/local/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/go/bin:/usr/lib/node_modules/node/bin:/usr/bin/vendor_perl:$PATH
+
+# Nvim versions
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
+
+export XDG_CACHE_HOME=$HOME/.cache
+export GOCACHE=$HOME/.cache/go
+
 # vim:set sw=2 ts=2 ft=sh:
