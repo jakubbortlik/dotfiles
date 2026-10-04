@@ -34,7 +34,7 @@ customCommands:
   - key: '<space>'
     context: 'files'
     command: >
-      git {{if .SelectedFile.HasUnstagedChanges}}add{{else}}reset{{end}} -- {{.SelectedFile.Name | quote}} && tmux send-keys -t "$TMUX_PANE" 'j'
+      git {{if .SelectedFile.HasUnstagedChanges}}add{{else}}reset{{end}} -- {{.SelectedFile.Name | quote}} && [[ $TMUX != "" ]] && tmux send-keys -t "$TMUX_PANE" 'j' || echo "no tmux no j"
 
     description: 'Toggle staged and move down'
     output: none
