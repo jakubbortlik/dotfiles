@@ -1,3 +1,6 @@
+[bookmark]
+interactive_bookmark_pane = true
+
 [ui]
 theme = "kanagawa-dragon"
 
